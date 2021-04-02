@@ -100,7 +100,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>org.idvlop.cinemaAppClient.Main</mainClass>
+					<mainClass>org.team.dna2.serviceDesk_client.Main</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -117,7 +117,7 @@
 							<transformers>
 								<transformer
 										implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>org.idvlop.cinemaAppClient.Main</mainClass>
+									<mainClass>org.team.dna2.serviceDesk_client.Main</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

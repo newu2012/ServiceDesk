@@ -12,6 +12,4 @@ public class Main {
 		Application.launch(ClientApplication.class, args);
 	}
 
-
 }
-
