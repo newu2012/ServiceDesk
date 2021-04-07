@@ -1,6 +1,5 @@
 package team.dna2.serviceDesk_client;
 
-
 import javafx.application.Application;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

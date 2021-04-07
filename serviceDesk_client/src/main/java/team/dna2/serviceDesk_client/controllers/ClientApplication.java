@@ -20,6 +20,7 @@ public class ClientApplication extends Application {
 
     @Override
     public void init() throws  Exception{
+        System.out.println("Application inits");
         springContext = new SpringApplicationBuilder(Main.class).run();
         springContext = SpringApplication.run(Main.class);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/RootLayout.fxml"));
@@ -29,8 +30,11 @@ public class ClientApplication extends Application {
 
     @Override
     public void start(Stage stage) {
+        System.out.println("Application starts");
+
         springContext.publishEvent(new StageReadyEvent(stage));
-        stage.setScene(new Scene(rootNode, 700, 700));
+        stage.setScene(new Scene(rootNode, 1366, 768));
+        stage.setTitle("UDV Service-Desk");
         stage.setMinWidth(700);
         stage.setMinHeight(700);
         stage.show();
@@ -38,6 +42,7 @@ public class ClientApplication extends Application {
 
     @Override
     public void stop() {
+        System.out.println("Application stops");
         springContext.close();
         Platform.exit();
     }
