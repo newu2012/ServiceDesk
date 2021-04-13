@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+
+<TilePane vgap="10" hgap="10" orientation="VERTICAL"
+          xmlns:fx="http://javafx.com/fxml">
+    <Button fx:id="loginButton" text="Войти в аккаунт" onAction="#buttonClicked" />
+</TilePane>
