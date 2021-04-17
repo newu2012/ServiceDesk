@@ -26,12 +26,11 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="50.0" layoutY="62.0" prefWidth="500.0" promptText="Password">
+            <PasswordField fx:id="Password" layoutX="50.0" layoutY="62.0" prefWidth="500.0" promptText="Password">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="ForgotPasswordButton" layoutX="430.0" layoutY="113.0" mnemonicParsing="false" prefWidth="120.0" text="Забыли пароль?" underline="true" />
             <Button fx:id="LogInButton" defaultButton="true" layoutX="200.0" layoutY="173.0" mnemonicParsing="false" onAction="#LogInClicked" prefHeight="50.0" prefWidth="200.0" text="Войти">
                <opaqueInsets>
                   <Insets />
@@ -40,6 +39,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
+            <Button fx:id="ForgotPasswordButton" layoutX="430.0" layoutY="113.0" mnemonicParsing="false" prefWidth="120.0" text="Забыли пароль?" underline="true" />
          </children>
       </AnchorPane>
    </center>

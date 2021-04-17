@@ -9,6 +9,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class LoginScreenController {
@@ -25,19 +29,27 @@ public class LoginScreenController {
     @FXML
     private Image LogInScreenImage; // Надо обязательно добавлять картинку в target, чтобы она появлялась в приложении
 
+    private Map<String, String> credentials = new HashMap<>();
+
     @FXML
     private void LogInClicked() throws IOException {
         CheckLogIn();
-
-        if (LogInButton.getText().equals("Вы успешно вошли в аккаунт!"))
-            LogInButton.setText("Наконец-то я сделал этот грёбанный контроллер");
-        else
-            LogInButton.setText("Вы успешно вошли в аккаунт!");
     }
 
-    private void CheckLogIn() throws IOException {
+    private void CheckLogIn() throws IOException, NullPointerException {
+        var userPassword = credentials.get(Email.getText());
+        if (userPassword != null && userPassword.equals(Password.getText())) {
+            System.out.println("Successful Log In");
+            LogInButton.setText("Вы успешно вошли в аккаунт");
+        }
+        else
+            LogInButton.setText("Ошибка входа");
     }
 
     public LoginScreenController() {
+        credentials.put("newu2011@gmail.com", "admin");
+        credentials.put("pasifficid@gmail.com", "admin");
+        credentials.put("skywalkersakhno@gmail.com", "admin");
+        credentials.put("anna.00kon@gmail.com", "admin");
     }
 }
