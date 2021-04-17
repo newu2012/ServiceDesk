@@ -1,0 +1,25 @@
+.navigation-menu {
+    -fx-background-color: #302E2E;
+}
+
+.logo {
+    -fx-font-size: 36;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.logo:hover {
+    -fx-fill: #00D29D;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+.navigation-menu-text {
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+}
+
+.navigation-menu-text:hover {
+    -fx-fill: #00D29D;
+}

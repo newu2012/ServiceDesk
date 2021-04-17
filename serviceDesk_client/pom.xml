@@ -143,7 +143,9 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
-					<include>**/*.fxml</include>
+					<include>images/*</include>
+					<include>views/*.fxml</include>
+					<include>views/*.css</include>
 				</includes>
 			</resource>
 		</resources>
