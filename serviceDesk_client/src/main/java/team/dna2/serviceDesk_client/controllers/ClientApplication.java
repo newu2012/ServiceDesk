@@ -13,6 +13,8 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class ClientApplication extends Application {
     private Parent rootNode;
@@ -32,7 +34,7 @@ public class ClientApplication extends Application {
         fxmlLoader.setClassLoader(LoginScreenController.class.getClassLoader()); // Не используется, так как руками назначил контроллер
         fxmlLoader.setControllerFactory(springContext::getBean);
 
-        LoginScreenController controller = new LoginScreenController(); // Вот эта
+        LoginScreenController controller = new LoginScreenController(this); // Вот эта
         fxmlLoader.setController(controller); // И эта строки наконец починили всё
 
         rootNode = fxmlLoader.load();
@@ -57,6 +59,14 @@ public class ClientApplication extends Application {
         System.out.println("Application stops");
         springContext.close();
         Platform.exit();
+    }
+
+    public void ChangeScene(String fxmlUrl) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl));
+        stage.setHeight(768);
+        stage.setWidth(1366);
+        stage.centerOnScreen();
+        stage.getScene().setRoot(pane);
     }
 
     public static class StageReadyEvent extends ApplicationEvent {
