@@ -61,7 +61,7 @@ public class ClientApplication extends Application {
         Platform.exit();
     }
 
-    public void ChangeScene(String fxmlUrl) throws IOException {
+    public void ChangeScene(String fxmlUrl) throws IOException, NullPointerException {
         Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl));
         stage.setHeight(768);
         stage.setWidth(1366);
