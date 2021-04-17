@@ -43,10 +43,8 @@ public class ClientApplication extends Application {
 
         springContext.publishEvent(new StageReadyEvent(stage));
 
-        stage.setScene(new Scene(rootNode, 1366, 768));
+        stage.setScene(new Scene(rootNode, 600, 500));
         stage.setTitle("UDV Service-Desk");
-        stage.setMinWidth(700);
-        stage.setMinHeight(700);
 
         stage.show();
     }
