@@ -17,6 +17,7 @@ import team.dna2.serviceDesk_client.Main;
 public class ClientApplication extends Application {
     private Parent rootNode;
     private ConfigurableApplicationContext springContext;
+    private Stage stage;
 
     @Override
     public void init() throws Exception {
@@ -42,9 +43,11 @@ public class ClientApplication extends Application {
         System.out.println("Application starts");
 
         springContext.publishEvent(new StageReadyEvent(stage));
+        this.stage = stage;
 
         stage.setScene(new Scene(rootNode, 600, 500));
         stage.setTitle("UDV Service-Desk");
+        stage.setResizable(false);
 
         stage.show();
     }
