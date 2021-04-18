@@ -50,6 +50,7 @@ public class ClientApplication extends Application {
         stage.setScene(new Scene(rootNode, 600, 500));
         stage.setTitle("UDV Service-Desk");
         stage.setResizable(false);
+        rootNode.requestFocus();
 
         stage.show();
     }

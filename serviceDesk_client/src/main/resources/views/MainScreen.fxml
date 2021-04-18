@@ -11,7 +11,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
+            <Text fill="WHITE" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
                <font>
                   <Font name="System Bold Italic" size="36.0" />
                </font>
