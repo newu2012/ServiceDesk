@@ -17,12 +17,15 @@ import java.io.IOException;
 
 @SpringBootApplication
 public class ClientApplication extends Application {
+    public static ClientApplication clientApplication;
     private Parent rootNode;
     private ConfigurableApplicationContext springContext;
     private Stage stage;
+    private FXMLLoader fxmlLoader;
 
     @Override
     public void init() throws Exception {
+        clientApplication = this;
         System.out.println("Application inits");
 
         springContext = new SpringApplicationBuilder(Main.class)
@@ -30,11 +33,11 @@ public class ClientApplication extends Application {
                 .run(getParameters().getRaw().toArray(new String[0]));
         springContext = SpringApplication.run(Main.class);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/LoginScreen.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("/views/LoginScreen.fxml"));
         fxmlLoader.setClassLoader(LoginScreenController.class.getClassLoader()); // Не используется, так как руками назначил контроллер
         fxmlLoader.setControllerFactory(springContext::getBean);
 
-        LoginScreenController controller = new LoginScreenController(this); // Вот эта
+        LoginScreenController controller = new LoginScreenController(); // Вот эта
         fxmlLoader.setController(controller); // И эта строки наконец починили всё
 
         rootNode = fxmlLoader.load();
@@ -64,11 +67,20 @@ public class ClientApplication extends Application {
 
     public void ChangeScene(String fxmlUrl) throws IOException, NullPointerException {
         Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl));
-        stage.setHeight(768);
-        stage.setWidth(1366);
-        stage.centerOnScreen();
+
+        if (stage.getHeight() <= 700) {
+            stage.setHeight(768);
+            stage.setWidth(1366);
+            stage.centerOnScreen();
+        }
+
         stage.getScene().setRoot(pane);
     }
+
+    public static ClientApplication GetClientApplicationInstance() {
+        return clientApplication;
+    }
+
 
     public static class StageReadyEvent extends ApplicationEvent {
         public StageReadyEvent(Stage stage) {

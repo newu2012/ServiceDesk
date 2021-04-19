@@ -47,8 +47,8 @@ public class LoginScreenController {
             LogInButton.setText("Ошибка входа");
     }
 
-    public LoginScreenController(ClientApplication clientApplication) {
-        this.clientApplication = clientApplication;
+    public LoginScreenController() {
+        clientApplication = ClientApplication.GetClientApplicationInstance();
 
         credentials.put("admin", "admin");
         credentials.put("newu2011@gmail.com", "admin");
