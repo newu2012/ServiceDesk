@@ -64,13 +64,29 @@ public class MainScreenController implements Initializable {
         TicketsTable.setItems(tickets);
     }
 
-    public MainScreenController () {
+    public void MainScreenController () {
 
     }
 
+    public void AddTicket (Integer id,
+                           String title,
+                           String category,
+                           String software) {
+        tickets.add(new Ticket(
+                id,
+                title,
+                "Авто Создатель",
+                "Открыто",
+                category,
+                "Авто Дата создания",
+                null,
+                software,
+                null
+        ));
+    }
 
     @FXML
     public void OpenPlaceholderImage() {
-        PlaceholderImage.setVisible(true);
+        // PlaceholderImage.setVisible(true);  Чисто тест
     }
 }

@@ -1,3 +1,18 @@
+.main-pane {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-cursor: hand;
+}
+
+.main-button {
+    -fx-font-size: 20;
+    -fx-background-color: #00D29D;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+}
+
 .navigation-menu {
     -fx-background-color: #302E2E;
 }
@@ -13,6 +28,7 @@
     -fx-fill: #00D29D;
     -fx-font-style: italic;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
 .navigation-menu-text {
@@ -22,4 +38,5 @@
 
 .navigation-menu-text:hover {
     -fx-fill: #00D29D;
+    -fx-cursor: hand;
 }
