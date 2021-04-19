@@ -2,13 +2,18 @@ package team.dna2.serviceDesk_client.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.models.Ticket;
@@ -27,6 +32,9 @@ public class MainScreenController implements Initializable {
     @FXML private Text Logo;
     @FXML private Text Tickets;
     @FXML private ImageView PlaceholderImage;
+    @FXML private Button CreateTicketButton;
+    @FXML private Button RefreshTableButton;
+
 
     @FXML private TableView<Ticket> TicketsTable;
     @FXML public TableColumn<Ticket, Integer> id;
@@ -39,7 +47,10 @@ public class MainScreenController implements Initializable {
     @FXML public TableColumn<Ticket, String> software;
     @FXML public TableColumn<Ticket, String> helper;
 
-    private ObservableList<Ticket> tickets = FXCollections.observableArrayList(
+
+    public static int ticketsCounter;
+
+    public static ObservableList<Ticket> tickets = FXCollections.observableArrayList(
             new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка","19.04.2021", "","Service-Desk", "Никита"),
             new Ticket(2, "Работает", "Никита", "Проверено", "Задача","19.04.2021", "","Service-Desk", "Никита"),
             new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка","21.04.2021", "","Service-Desk", "Денис"),
@@ -62,13 +73,14 @@ public class MainScreenController implements Initializable {
         helper.setCellValueFactory(new PropertyValueFactory<>("Helper"));
 
         TicketsTable.setItems(tickets);
+        ticketsCounter = tickets.size();
     }
 
     public void MainScreenController () {
 
     }
 
-    public void AddTicket (Integer id,
+    public static void AddTicket (Integer id,
                            String title,
                            String category,
                            String software) {
@@ -83,6 +95,33 @@ public class MainScreenController implements Initializable {
                 software,
                 null
         ));
+
+        for (Ticket ticket: tickets
+             ) {
+            System.out.println("Id - " + ticket.id + " Category - " + ticket.category);
+        }
+    }
+
+    @FXML
+    public void RefreshTableButtonClicked() {
+        TicketsTable.setItems(tickets);
+    }
+
+    @FXML
+    public void CreateTicketButtonClicked() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/views/CreateTicketScreen.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 850, 680);
+            Stage stage = new Stage();
+            stage.setTitle("Создание обращения");
+            stage.setScene(scene);
+            stage.show();
+            stage.requestFocus();
+        } catch (IOException e) {
+        }
+
+        RefreshTableButtonClicked();
     }
 
     @FXML

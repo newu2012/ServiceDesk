@@ -38,11 +38,12 @@
    <center>
       <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>
-            <Button defaultButton="true" layoutX="133.0" layoutY="40.0" mnemonicParsing="false" styleClass="main-button" text="+ Добавить обращение" textAlignment="CENTER">
+            <Button fx:id="CreateTicketButton" defaultButton="true" layoutX="133.0" layoutY="40.0" mnemonicParsing="false" onAction="#CreateTicketButtonClicked" styleClass="main-button" text="+ Добавить обращение" textAlignment="CENTER">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
+            <Button fx:id="RefreshTableButton" layoutX="400.0" layoutY="40.0" mnemonicParsing="false" onAction="#RefreshTableButtonClicked" styleClass="refresh-button" text="Обновить данные в таблице" />
             <TableView fx:id="TicketsTable" layoutX="133.0" layoutY="100.0" maxHeight="550.0" maxWidth="1100.0" minHeight="550.0" minWidth="1100.0" prefHeight="550.0" prefWidth="1100.0">
               <columns>
                 <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />
