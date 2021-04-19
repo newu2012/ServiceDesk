@@ -33,12 +33,20 @@ public class MainScreenController implements Initializable {
     @FXML public TableColumn<Ticket, String> title;
     @FXML public TableColumn<Ticket, String> creator;
     @FXML public TableColumn<Ticket, String> status;
+    @FXML public TableColumn<Ticket, String> category;
     @FXML public TableColumn<Ticket, String> creationDate;
+    @FXML public TableColumn<Ticket, String> changeDate;
     @FXML public TableColumn<Ticket, String> software;
     @FXML public TableColumn<Ticket, String> helper;
 
     private ObservableList<Ticket> tickets = FXCollections.observableArrayList(
-            new Ticket(1, "Работает", "Я", "Открыто", "19.04.2021", "Service-Desk", "Я")
+            new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка","19.04.2021", "","Service-Desk", "Никита"),
+            new Ticket(2, "Работает", "Никита", "Проверено", "Задача","19.04.2021", "","Service-Desk", "Никита"),
+            new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка","21.04.2021", "","Service-Desk", "Денис"),
+            new Ticket(4, "Починил, проверяй", "Александр Великий", "Зарегистрировано", "Вопрос","22.04.2021", "","Service-Desk", "Саня"),
+            new Ticket(5, "Ничего не починено", "Денис", "Открыто", "Ошибка","22.04.2021", "","Service-Desk", "Денис"),
+            new Ticket(6, "КОГДА БУДЕТ КОД", "АНЯ", "Открыто", "Ошибка","19.04.2021", "","Service-Desk", "Аня"),
+            new Ticket(7, "Ну всё, я пошла кодить сама...", "Аня", "Закрыто", "Задача","20.04.2021", "","Service-Desk", "Аня")
     );
 
     @Override
@@ -47,7 +55,9 @@ public class MainScreenController implements Initializable {
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         creator.setCellValueFactory(new PropertyValueFactory<>("Creator"));
         status.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        category.setCellValueFactory(new PropertyValueFactory<>("Category"));
         creationDate.setCellValueFactory(new PropertyValueFactory<>("CreationDate"));
+        changeDate.setCellValueFactory(new PropertyValueFactory<>("ChangeDate"));
         software.setCellValueFactory(new PropertyValueFactory<>("Software"));
         helper.setCellValueFactory(new PropertyValueFactory<>("Helper"));
 

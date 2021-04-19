@@ -8,7 +8,9 @@ public class Ticket {
     public SimpleStringProperty title;
     public SimpleStringProperty creator;
     public SimpleStringProperty status;
+    public SimpleStringProperty category;
     public SimpleStringProperty creationDate;
+    public SimpleStringProperty changeDate;
     public SimpleStringProperty software;
     public SimpleStringProperty helper;
 
@@ -16,14 +18,18 @@ public class Ticket {
                   String title,
                   String creator,
                   String status,
+                  String category,
                   String creationDate,
+                  String changeDate,
                   String software,
                   String helper) {
         this.id = new SimpleIntegerProperty(id);
         this.title = new SimpleStringProperty(title);
         this.creator = new SimpleStringProperty(creator);
         this.status = new SimpleStringProperty(status);
+        this.category = new SimpleStringProperty(category);
         this.creationDate = new SimpleStringProperty(creationDate);
+        this.changeDate = new SimpleStringProperty(changeDate);
         this.software = new SimpleStringProperty(software);
         this.helper = new SimpleStringProperty(helper);
     }
@@ -60,12 +66,28 @@ public class Ticket {
         this.status.set(status);
     }
 
+    public String getCategory() {
+        return category.get();
+    }
+
+    public void setCategory(String category) {
+        this.category.set(category);
+    }
+
     public String getCreationDate() {
         return creationDate.get();
     }
 
     public void setCreationDate(String creationDate) {
         this.creationDate.set(creationDate);
+    }
+
+    public String getChangeDate() {
+        return changeDate.get();
+    }
+
+    public void setChangeDate(String changeDate) {
+        this.changeDate.set(changeDate);
     }
 
     public String getSoftware() {

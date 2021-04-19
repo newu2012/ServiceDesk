@@ -36,15 +36,17 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="TicketsTable" layoutX="123.0" layoutY="60.0" maxHeight="700.0" maxWidth="1200.0" minHeight="550.0" minWidth="900.0" prefHeight="600.0" prefWidth="1120.0">
+            <TableView fx:id="TicketsTable" layoutX="73.0" layoutY="60.0" maxHeight="700.0" maxWidth="1250.0" minHeight="550.0" minWidth="900.0" prefHeight="600.0" prefWidth="1220.0">
               <columns>
                 <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />
-                <TableColumn fx:id="title" maxWidth="400.0" prefWidth="300.0" text="Тема" />
-                  <TableColumn fx:id="creator" maxWidth="250.0" minWidth="0.0" prefWidth="200.0" text="Автор" />
-                  <TableColumn fx:id="status" maxWidth="120.0" minWidth="0.0" prefWidth="120.0" text="Статус" />
-                  <TableColumn fx:id="creationDate" maxWidth="120.0" minWidth="0.0" prefWidth="120.0" text="Дата" />
-                  <TableColumn fx:id="software" maxWidth="250.0" minWidth="0.0" prefWidth="150.0" text="Название ПО" />
-                  <TableColumn fx:id="helper" maxWidth="250.0" minWidth="0.0" prefWidth="200.0" text="Исполнитель" />
+                <TableColumn fx:id="title" maxWidth="450.0" minWidth="100.0" prefWidth="350.0" text="Тема" />
+                  <TableColumn fx:id="creator" maxWidth="250.0" minWidth="50.0" prefWidth="150.0" text="Автор" />
+                  <TableColumn fx:id="status" maxWidth="100.0" minWidth="30.0" text="Статус" />
+                  <TableColumn fx:id="category" maxWidth="100.0" minWidth="30.0" text="Тип" />
+                  <TableColumn fx:id="creationDate" maxWidth="120.0" minWidth="60.0" prefWidth="120.0" text="Дата создания" />
+                  <TableColumn fx:id="changeDate" maxWidth="120.0" minWidth="60.0" prefWidth="120.0" text="Дата изменения" />
+                  <TableColumn fx:id="helper" maxWidth="250.0" minWidth="50.0" prefWidth="150.0" text="Исполнитель" />
+                  <TableColumn fx:id="software" maxWidth="250.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
               </columns>
             </TableView>
          </children>
