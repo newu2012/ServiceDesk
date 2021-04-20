@@ -20,9 +20,10 @@ import team.dna2.serviceDesk_client.models.Ticket;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 
 @Component
 public class MainScreenController implements Initializable {
@@ -49,19 +50,14 @@ public class MainScreenController implements Initializable {
 
 
     public static int ticketsCounter;
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm");
 
-    public static ObservableList<Ticket> tickets = FXCollections.observableArrayList(
-            new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка","19.04.2021", "","Service-Desk", "Никита"),
-            new Ticket(2, "Работает", "Никита", "Проверено", "Задача","19.04.2021", "","Service-Desk", "Никита"),
-            new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка","21.04.2021", "","Service-Desk", "Денис"),
-            new Ticket(4, "Починил, проверяй", "Александр Великий", "Зарегистрировано", "Вопрос","22.04.2021", "","Service-Desk", "Саня"),
-            new Ticket(5, "Ничего не починено", "Денис", "Открыто", "Ошибка","22.04.2021", "","Service-Desk", "Денис"),
-            new Ticket(6, "КОГДА БУДЕТ КОД", "АНЯ", "Открыто", "Ошибка","19.04.2021", "","Service-Desk", "Аня"),
-            new Ticket(7, "Ну всё, я пошла кодить сама...", "Аня", "Закрыто", "Задача","20.04.2021", "","Service-Desk", "Аня")
-    );
+    public static ObservableList<Ticket> tickets;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         creator.setCellValueFactory(new PropertyValueFactory<>("Creator"));
@@ -72,12 +68,25 @@ public class MainScreenController implements Initializable {
         software.setCellValueFactory(new PropertyValueFactory<>("Software"));
         helper.setCellValueFactory(new PropertyValueFactory<>("Helper"));
 
+        MainScreenController();
         TicketsTable.setItems(tickets);
         ticketsCounter = tickets.size();
     }
 
-    public void MainScreenController () {
-
+    public void MainScreenController() {
+        try {
+            tickets = FXCollections.observableArrayList(
+                    new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null,"Service-Desk", "Никита"),
+                    new Ticket(2, "Работает", "Никита", "Проверено", "Задача", null, null,"Service-Desk", "Никита"),
+                    new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
+                    new Ticket(4, "Починил, проверяй", "Александр Великий", "Зарегистрировано", "Вопрос", null, null,"Service-Desk", "Саня"),
+                    new Ticket(5, "Ничего не починено", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
+                    new Ticket(6, "КОГДА БУДЕТ КОД", "АНЯ", "Открыто", "Ошибка", null, null,"Service-Desk", "Аня"),
+                    new Ticket(7, "Ну всё, я пошла кодить сама...", "Аня", "Закрыто", "Задача", null, null,"Service-Desk", "Аня")
+            );
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void AddTicket (Integer id,
@@ -90,7 +99,7 @@ public class MainScreenController implements Initializable {
                 "Авто Создатель",
                 "Открыто",
                 category,
-                "Авто Дата создания",
+                new Date(),
                 null,
                 software,
                 null

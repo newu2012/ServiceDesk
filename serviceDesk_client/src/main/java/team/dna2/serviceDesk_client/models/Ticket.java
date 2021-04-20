@@ -1,7 +1,12 @@
 package team.dna2.serviceDesk_client.models;
 
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Ticket {
     public SimpleIntegerProperty id;
@@ -9,18 +14,19 @@ public class Ticket {
     public SimpleStringProperty creator;
     public SimpleStringProperty status;
     public SimpleStringProperty category;
-    public SimpleStringProperty creationDate;
-    public SimpleStringProperty changeDate;
+    public SimpleObjectProperty<Date> creationDate;
+    public SimpleObjectProperty<Date> changeDate;
     public SimpleStringProperty software;
     public SimpleStringProperty helper;
+
 
     public Ticket(Integer id,
                   String title,
                   String creator,
                   String status,
                   String category,
-                  String creationDate,
-                  String changeDate,
+                  Date creationDate,
+                  Date changeDate,
                   String software,
                   String helper) {
         this.id = new SimpleIntegerProperty(id);
@@ -28,8 +34,8 @@ public class Ticket {
         this.creator = new SimpleStringProperty(creator);
         this.status = new SimpleStringProperty(status);
         this.category = new SimpleStringProperty(category);
-        this.creationDate = new SimpleStringProperty(creationDate);
-        this.changeDate = new SimpleStringProperty(changeDate);
+        this.creationDate = new SimpleObjectProperty<Date>(creationDate);
+        this.changeDate = new SimpleObjectProperty<Date>(changeDate);
         this.software = new SimpleStringProperty(software);
         this.helper = new SimpleStringProperty(helper);
     }
@@ -74,19 +80,19 @@ public class Ticket {
         this.category.set(category);
     }
 
-    public String getCreationDate() {
+    public Date getCreationDate() {
         return creationDate.get();
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate.set(creationDate);
     }
 
-    public String getChangeDate() {
+    public Date getChangeDate() {
         return changeDate.get();
     }
 
-    public void setChangeDate(String changeDate) {
+    public void setChangeDate(Date changeDate) {
         this.changeDate.set(changeDate);
     }
 
