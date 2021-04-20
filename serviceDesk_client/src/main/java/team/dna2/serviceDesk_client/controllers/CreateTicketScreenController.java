@@ -42,15 +42,14 @@ public class CreateTicketScreenController implements Initializable {
 
     }
 
+    @FXML
     public void CreateTicketButtonClicked() {
         MainScreenController.AddTicket(++MainScreenController.ticketsCounter,
                 TitleField.getText(),
                 category.getSelectedToggle().toString().split("'")[1],
                 SoftwareBox.getValue());
 
-        // TODO Автоматическое закрытие окна
-        //final Node source = (Node) e.getSource();
-        //final Stage stage = (Stage) source.getScene().getWindow();
-        //stage.close();
+        Stage stage = (Stage) CreateTicketButton.getScene().getWindow();
+        stage.close();
     }
 }
