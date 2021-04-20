@@ -40,6 +40,7 @@ public class LoginScreenController {
     private void CheckLogIn() throws IOException, NullPointerException {
         var user = User.users.stream().filter(us -> Email.getText().equals(us.getEmail())).findAny().orElse(null);
         if (user != null && Password.getText().equals(user.getPassword())) {
+            User.currentUser = user;
             System.out.println("Successful Log In");
             LogInButton.setText("Вы успешно вошли в аккаунт");
 

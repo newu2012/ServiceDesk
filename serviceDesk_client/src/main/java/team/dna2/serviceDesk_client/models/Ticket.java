@@ -12,6 +12,7 @@ public class Ticket {
     public SimpleIntegerProperty id;
     public SimpleStringProperty title;
     public SimpleStringProperty creator;
+    public SimpleIntegerProperty creatorId;
     public SimpleStringProperty status;
     public SimpleStringProperty category;
     public SimpleObjectProperty<Date> creationDate;
@@ -23,6 +24,7 @@ public class Ticket {
     public Ticket(Integer id,
                   String title,
                   String creator,
+                  Integer creatorId,
                   String status,
                   String category,
                   Date creationDate,
@@ -32,6 +34,7 @@ public class Ticket {
         this.id = new SimpleIntegerProperty(id);
         this.title = new SimpleStringProperty(title);
         this.creator = new SimpleStringProperty(creator);
+        this.creatorId = new SimpleIntegerProperty(creatorId);
         this.status = new SimpleStringProperty(status);
         this.category = new SimpleStringProperty(category);
         this.creationDate = new SimpleObjectProperty<Date>(creationDate);
@@ -62,6 +65,14 @@ public class Ticket {
 
     public void setCreator(String creator) {
         this.creator.set(creator);
+    }
+
+    public int getCreatorId() {
+        return creatorId.get();
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId.set(creatorId);
     }
 
     public String getStatus() {

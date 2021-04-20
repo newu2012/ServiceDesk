@@ -76,13 +76,14 @@ public class MainScreenController implements Initializable {
     public void MainScreenController() {
         try {
             tickets = FXCollections.observableArrayList(
-                    new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null,"Service-Desk", "Никита"),
-                    new Ticket(2, "Работает", "Никита", "Проверено", "Задача", null, null,"Service-Desk", "Никита"),
-                    new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
-                    new Ticket(4, "Починил, проверяй", "Александр Великий", "Зарегистрировано", "Вопрос", null, null,"Service-Desk", "Саня"),
-                    new Ticket(5, "Ничего не починено", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
-                    new Ticket(6, "КОГДА БУДЕТ КОД", "АНЯ", "Открыто", "Ошибка", null, null,"Service-Desk", "Аня"),
-                    new Ticket(7, "Ну всё, я пошла кодить сама...", "Аня", "Закрыто", "Задача", null, null,"Service-Desk", "Аня")
+                    new Ticket(1, "Новое обращение", User.currentUser.getFullName(), User.currentUser.getId(), "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null, "Service-Desk", null)
+                    // new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null,"Service-Desk", "Никита"),
+                    // new Ticket(2, "Работает", "Никита", "Проверено", "Задача", null, null,"Service-Desk", "Никита"),
+                    // new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
+                    // new Ticket(4, "Починил, проверяй", "Александр Великий", "Зарегистрировано", "Вопрос", null, null,"Service-Desk", "Саня"),
+                    // new Ticket(5, "Ничего не починено", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
+                    // new Ticket(6, "КОГДА БУДЕТ КОД", "АНЯ", "Открыто", "Ошибка", null, null,"Service-Desk", "Аня"),
+                    // new Ticket(7, "Ну всё, я пошла кодить сама...", "Аня", "Закрыто", "Задача", null, null,"Service-Desk", "Аня")
             );
         } catch (ParseException e) {
             e.printStackTrace();
@@ -96,7 +97,8 @@ public class MainScreenController implements Initializable {
         tickets.add(new Ticket(
                 id,
                 title,
-                "Авто Создатель",
+                User.currentUser.getFullName(),
+                User.currentUser.getId(),
                 "Открыто",
                 category,
                 new Date(),

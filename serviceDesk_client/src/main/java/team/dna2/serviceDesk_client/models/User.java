@@ -16,11 +16,13 @@ public class User {
     public SimpleStringProperty fullName;
 
     public static ArrayList<User> users = new ArrayList<User>();
-    public static int nextId;
+    public static User currentUser;
+    public static int nextId = 1;
 
     public User(String email,
                 String password,
                 String fullName) {
+        id = new SimpleIntegerProperty(nextId);
         this.email = new SimpleStringProperty(email);
         this.password = new SimpleStringProperty(password);
         this.fullName = new SimpleStringProperty(fullName);
