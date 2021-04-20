@@ -31,7 +31,7 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="LogInButton" defaultButton="true" layoutX="175.0" layoutY="173.0" mnemonicParsing="false" onAction="#LogInClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Войти">
+            <Button fx:id="LogInButton" defaultButton="true" layoutX="175.0" layoutY="173.0" mnemonicParsing="false" onAction="#LogInButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Войти">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

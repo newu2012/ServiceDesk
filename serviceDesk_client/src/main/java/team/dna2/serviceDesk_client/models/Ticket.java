@@ -21,9 +21,22 @@ public class Ticket {
     public SimpleStringProperty software;
     public SimpleStringProperty helper;
 
-    public static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+    public static ArrayList<Ticket> tickets = new ArrayList<Ticket>(); // Список обращений всей системы
     public static int nextId = 1;
 
+    /**
+     * WIP
+     * Создание обращения (тикета). Обращение - основная сущность системы
+     * @param title Тема обращения, не менее 10 символов
+     * @param creator ФИО создателя обращения (нужно будет убрать, потом брать ссылкой через ID)
+     * @param creatorId ID создателя обращения
+     * @param status Статус обращения (отдельный файл статусов)
+     * @param category Категория обращения (отдельный файл категорий)
+     * @param creationDate Дата создания, ставится автоматически при создании обращения
+     * @param changeDate Дата последнего изменения/комментирования/смены статуса обращения
+     * @param software Название ПО, по которому создаётся обращение
+     * @param helper Разработчик, назначенный на работу с обращением
+     */
     public Ticket(
                   String title,
                   String creator,

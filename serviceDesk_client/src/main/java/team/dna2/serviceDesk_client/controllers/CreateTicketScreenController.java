@@ -2,22 +2,17 @@ package team.dna2.serviceDesk_client.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.awt.event.InputEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Контроллер для экрана создания обращения
+ */
 public class CreateTicketScreenController implements Initializable {
     private ClientApplication clientApplication;
 
@@ -31,9 +26,16 @@ public class CreateTicketScreenController implements Initializable {
     @FXML private TextArea DescriptionTextArea;
     @FXML private Button CreateTicketButton;
 
-    ObservableList<String> software = FXCollections.observableArrayList("Service-Desk", "Other");
-    ObservableList<String> modules = FXCollections.observableArrayList("Authentication", "Tickets", "Profile", "Other");
+    ObservableList<String> software = FXCollections.observableArrayList("Service-Desk", "Other"); // TODO в отдельный файл
+    ObservableList<String> modules = FXCollections.observableArrayList("Authentication", "Tickets", "Profile", "Other"); // TODO в отдельный файл
 
+    /**
+     * WIP
+     * При старте приложения заполняет элементы с выбором ПО и модулей ПО данными
+     * TODO Переделать, потому что надо вынести их в отдельный файл и обновлять при каждом обновлении таблицы обращений
+     * @param location Не используется
+     * @param resources Не используется
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         SoftwareBox.setItems(software);
@@ -42,7 +44,6 @@ public class CreateTicketScreenController implements Initializable {
 
     public void CreateTicketScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
-
     }
 
     @FXML
@@ -55,10 +56,10 @@ public class CreateTicketScreenController implements Initializable {
 
         MainScreenController.AddTicket(
                 TitleField.getText(),
-                category.getSelectedToggle().toString().split("'")[1],
+                category.getSelectedToggle().toString().split("'")[1], // Костыль для выбора названия radioButton
                 SoftwareBox.getValue());
 
         Stage stage = (Stage) CreateTicketButton.getScene().getWindow();
-        stage.close();
+        stage.close(); // Закрытие этого окна
     }
 }

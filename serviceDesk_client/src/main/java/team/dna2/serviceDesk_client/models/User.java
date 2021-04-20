@@ -1,12 +1,10 @@
 package team.dna2.serviceDesk_client.models;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 @Component
 public class User {
@@ -15,10 +13,17 @@ public class User {
     public SimpleStringProperty password;
     public SimpleStringProperty fullName;
 
-    public static ArrayList<User> users = new ArrayList<User>();
-    public static User currentUser;
+    public static ArrayList<User> users = new ArrayList<User>(); // Список пользователей всей системы
+    public static User currentUser; // Активный пользователь системы. Меняется после выхода из аккаунта.
     public static int nextId = 1;
 
+    /**
+     * WIP ?
+     * Создание новых пользователей
+     * @param email Электронная почта пользователя
+     * @param password Пароль (пока не хэш) пользователя
+     * @param fullName ФИО пользователя
+     */
     public User(String email,
                 String password,
                 String fullName) {

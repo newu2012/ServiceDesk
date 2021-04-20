@@ -16,6 +16,11 @@ import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
 
+/**
+ * Класс, отвечающий за подготовку к запуску приложения, его запуск и закрытие.
+ * Есть некоторые иные вещи, которые стоит вынести из файла
+ * Вообще, тут лучше у Дениса узнавать
+ */
 @SpringBootApplication
 public class ClientApplication extends Application {
     public static ClientApplication clientApplication;
@@ -24,6 +29,11 @@ public class ClientApplication extends Application {
     private Stage stage;
     private FXMLLoader fxmlLoader;
 
+    /**
+     * Тут происходит подготовка к запуску приложения.
+     * Выполняется раньше всего вообще во всём приложении (сразу после Main.main)
+     * @throws Exception Не помню зачем
+     */
     @Override
     public void init() throws Exception {
         clientApplication = this;
@@ -34,7 +44,7 @@ public class ClientApplication extends Application {
                 .run(getParameters().getRaw().toArray(new String[0]));
         springContext = SpringApplication.run(Main.class);
 
-        SetUpStandardUsers();
+        SetUpStandardUsers(); // Добавление пользователей по умолчанию
 
         fxmlLoader = new FXMLLoader(getClass().getResource("/views/InitLoading.fxml"));
         fxmlLoader.setClassLoader(InitLoadingController.class.getClassLoader()); // Не используется, так как руками назначил контроллер
@@ -46,6 +56,11 @@ public class ClientApplication extends Application {
         rootNode = fxmlLoader.load();
     }
 
+    /**
+     * Запуск приложения, происходит после инициализации
+     * @param stage Похоже, что начальный stage, не разбирался
+     * @throws IOException Из-за нахождения файла по ссылке
+     */
     @Override
     public void start(Stage stage) throws IOException{
         System.out.println("Application starts");
@@ -63,6 +78,9 @@ public class ClientApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Закрытие приложения
+     */
     @Override
     public void stop() {
         System.out.println("Application stops");
@@ -70,6 +88,11 @@ public class ClientApplication extends Application {
         Platform.exit();
     }
 
+    /**
+     * Пользователи по умолчанию
+     * Пароли хранятся пока что прямо так, поэтому они "admin"
+     * TODO приделать хэширование паролей на клиенте
+     */
     public void SetUpStandardUsers() {
         User.users.add(new User("admin", "admin", "Админ Админович"));
         User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко"));
@@ -78,21 +101,25 @@ public class ClientApplication extends Application {
         User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина"));
     }
 
+    /**
+     * Основной способ смены экрана (сцены)
+     * @param fxmlUrl Название файла экрана типа "Screen.fxml"
+     * @throws IOException Из-за работы с ссылкой на файл
+     * @throws NullPointerException Не помню почему
+     */
     public void ChangeScene(String fxmlUrl) throws IOException, NullPointerException {
-        Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl));
+        Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
 
-
-        if (!fxmlUrl.equals("LoginScreen.fxml")) {
+        if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
             stage.setWidth(1366);
             stage.setHeight(768);
-            stage.centerOnScreen();
         }
-        else {
+        else { // Иначе небольшое окошко
             stage.setWidth(600);
             stage.setHeight(550);
-            stage.centerOnScreen();
         }
 
+        stage.centerOnScreen();
         stage.getScene().setRoot(pane);
     }
 
@@ -100,7 +127,10 @@ public class ClientApplication extends Application {
         return clientApplication;
     }
 
-
+    /**
+     * Хз что это, не использую.
+     * Есть зачем-то при старте приложения
+     */
     public static class StageReadyEvent extends ApplicationEvent {
         public StageReadyEvent(Stage stage) {
             super(stage);

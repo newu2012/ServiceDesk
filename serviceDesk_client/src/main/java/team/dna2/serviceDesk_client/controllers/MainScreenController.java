@@ -2,15 +2,14 @@ package team.dna2.serviceDesk_client.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -21,13 +20,15 @@ import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 import static team.dna2.serviceDesk_client.models.Ticket.tickets;
 
+/**
+ * Контроллер экрана со списком обращений
+ */
 @Component
 public class MainScreenController implements Initializable {
     private ClientApplication clientApplication;
@@ -53,6 +54,13 @@ public class MainScreenController implements Initializable {
     public ObservableList<Ticket> oTickets = FXCollections.observableArrayList(Ticket.tickets);
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm"); // Надо переводить потом дату в строку, но хз как в таблице хранить
 
+    /**
+     * WIP
+     * Запускается при подготовке старта приложения.
+     * Выполняются первичные настройки у столбцов таблицы обращений.
+     * @param location По идее ссылка на fxml файл, но не используется
+     * @param resources По идее путь до файла с ресурсами, но не используется
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -70,25 +78,32 @@ public class MainScreenController implements Initializable {
         RefreshTicketTable();
     }
 
+    /**
+     * Используется для работы со сценами (переходами по экранам). Пока не разобрался как работает.
+     */
     public void MainScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
-        try {
-            tickets.add(
-                    new Ticket( "Новое обращение", User.currentUser.getFullName(), User.currentUser.getId(), "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null, "Service-Desk", null)
-                    // new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null,"Service-Desk", "Никита"),
-                    // new Ticket(2, "Работает", "Никита", "Проверено", "Задача", null, null,"Service-Desk", "Никита"),
-                    // new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
-                    // new Ticket(4, "Починил, проверяй", "Александр Великий", "Зарегистрировано", "Вопрос", null, null,"Service-Desk", "Саня"),
-                    // new Ticket(5, "Ничего не починено", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
-                    // new Ticket(6, "КОГДА БУДЕТ КОД", "АНЯ", "Открыто", "Ошибка", null, null,"Service-Desk", "Аня"),
-                    // new Ticket(7, "Ну всё, я пошла кодить сама...", "Аня", "Закрыто", "Задача", null, null,"Service-Desk", "Аня")
-            );
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+        // Используется для добавления начальных данных в таблицу при запуске. Запускается при каждом входе пользователя.
+        // Может быть древним и не используемым
+        // try {
+        //     tickets.add(
+        //             new Ticket( "Новое обращение", User.currentUser.getFullName(), User.currentUser.getId(), "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null, "Service-Desk", null)
+        //     );
+        // } catch (ParseException e) {
+        //     e.printStackTrace();
+        // }
     }
 
-    public static void AddTicket (
+    /**
+     * WIP
+     * Основной метод создания обращения, используется в GUI.
+     * @param title Название обращения, минимум 10 символов
+     * @param category Категория обращения, на выбор одна из 3 кнопок
+     * @param software Название ПО, выбирается пользователем
+     *                 надо ещё module, но пока не сделал
+     */
+    public static void AddTicket(
             String title,
             String category,
             String software) {
@@ -104,7 +119,7 @@ public class MainScreenController implements Initializable {
                 null
         ));
 
-        for (Ticket ticket: tickets) {
+        for (Ticket ticket : tickets) {
             System.out.println("Id - " + ticket.id + " , Category - " + ticket.category);
         }
     }
@@ -114,11 +129,17 @@ public class MainScreenController implements Initializable {
         RefreshTicketTable();
     }
 
+    /**
+     * Обновляет таблицу тикетов на GUI. Сначала переводим лист в читаемый javafx формат, потом показываем.
+     */
     public void RefreshTicketTable() {
         oTickets = FXCollections.observableArrayList(Ticket.tickets);
         TicketsTable.setItems((oTickets));
     }
 
+    /**
+     * Запускает набор действий для создания нового окна
+     */
     @FXML
     public void CreateTicketButtonClicked() {
         try {
@@ -131,13 +152,23 @@ public class MainScreenController implements Initializable {
             stage.show();
             stage.requestFocus();
         } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
         }
 
-        RefreshTicketTable();
+        RefreshTicketTable(); // Не будет лишним
     }
 
     @FXML
-    public void OpenPlaceholderImage() throws IOException {
+    public void LogOutButtonClicked() throws IOException {
+        LogOut(); // Метод временно назначен на логотип
+    }
+
+    /**
+     * WIP
+     * Производит выход из аккаунта, позволяя сменить пользователя.
+     * @throws IOException Нужен из-за смены сцены
+     */
+    public void LogOut() throws IOException {
         clientApplication.ChangeScene("LoginScreen.fxml");
     }
 }
