@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="600.0" prefHeight="500.0" prefWidth="600.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.LoginScreenController">
    <top>
       <ImageView fitHeight="250.0" fitWidth="757.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
@@ -31,7 +31,7 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="LogInButton" defaultButton="true" layoutX="175.0" layoutY="173.0" mnemonicParsing="false" styleClass="main-button" onAction="#LogInClicked" prefHeight="50.0" prefWidth="200.0" text="Войти">
+            <Button fx:id="LogInButton" defaultButton="true" layoutX="175.0" layoutY="173.0" mnemonicParsing="false" onAction="#LogInClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Войти">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

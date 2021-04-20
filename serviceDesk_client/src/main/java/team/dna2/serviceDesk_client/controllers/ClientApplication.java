@@ -36,18 +36,18 @@ public class ClientApplication extends Application {
 
         SetUpStandardUsers();
 
-        fxmlLoader = new FXMLLoader(getClass().getResource("/views/LoginScreen.fxml"));
-        fxmlLoader.setClassLoader(LoginScreenController.class.getClassLoader()); // Не используется, так как руками назначил контроллер
+        fxmlLoader = new FXMLLoader(getClass().getResource("/views/InitLoading.fxml"));
+        fxmlLoader.setClassLoader(InitLoadingController.class.getClassLoader()); // Не используется, так как руками назначил контроллер
         fxmlLoader.setControllerFactory(springContext::getBean);
 
-        LoginScreenController controller = new LoginScreenController(); // Вот эта
+        InitLoadingController controller = new InitLoadingController(); // Вот эта
         fxmlLoader.setController(controller); // И эта строки наконец починили всё
 
         rootNode = fxmlLoader.load();
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException{
         System.out.println("Application starts");
 
         springContext.publishEvent(new StageReadyEvent(stage));
@@ -57,6 +57,8 @@ public class ClientApplication extends Application {
         stage.setTitle("UDV Service-Desk");
         stage.setResizable(false);
         rootNode.requestFocus();
+
+        InitLoadingController.LoadLoginScreen();
 
         stage.show();
     }
@@ -79,9 +81,15 @@ public class ClientApplication extends Application {
     public void ChangeScene(String fxmlUrl) throws IOException, NullPointerException {
         Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl));
 
-        if (stage.getHeight() <= 700) {
-            stage.setHeight(768);
+
+        if (!fxmlUrl.equals("LoginScreen.fxml")) {
             stage.setWidth(1366);
+            stage.setHeight(768);
+            stage.centerOnScreen();
+        }
+        else {
+            stage.setWidth(600);
+            stage.setHeight(550);
             stage.centerOnScreen();
         }
 

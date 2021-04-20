@@ -19,6 +19,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CreateTicketScreenController implements Initializable {
+    private ClientApplication clientApplication;
+
     @FXML private TextField TitleField;
     @FXML private ToggleGroup category;
     @FXML private RadioButton QuestionRadioButton;
@@ -39,6 +41,7 @@ public class CreateTicketScreenController implements Initializable {
     }
 
     public void CreateTicketScreenController() {
+        clientApplication = ClientApplication.GetClientApplicationInstance();
 
     }
 

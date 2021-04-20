@@ -26,6 +26,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 
+import static team.dna2.serviceDesk_client.models.Ticket.tickets;
+
 @Component
 public class MainScreenController implements Initializable {
     private ClientApplication clientApplication;
@@ -36,9 +38,8 @@ public class MainScreenController implements Initializable {
     @FXML private ImageView PlaceholderImage;
     @FXML private Button CreateTicketButton;
     @FXML private Button RefreshTableButton;
-
-
     @FXML private TableView<Ticket> TicketsTable;
+
     @FXML public TableColumn<Ticket, Integer> id;
     @FXML public TableColumn<Ticket, String> title;
     @FXML public TableColumn<Ticket, String> creator;
@@ -49,11 +50,8 @@ public class MainScreenController implements Initializable {
     @FXML public TableColumn<Ticket, String> software;
     @FXML public TableColumn<Ticket, String> helper;
 
-
-    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm");
-
-    public static ObservableList<Ticket> tickets;
-    public static ObservableList<User> users;
+    public ObservableList<Ticket> oTickets = FXCollections.observableArrayList(Ticket.tickets);
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm"); // Надо переводить потом дату в строку, но хз как в таблице хранить
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,12 +66,14 @@ public class MainScreenController implements Initializable {
         helper.setCellValueFactory(new PropertyValueFactory<>("Helper"));
 
         MainScreenController();
-        TicketsTable.setItems(tickets);
+        oTickets = FXCollections.observableArrayList(Ticket.tickets);
+        RefreshTicketTable();
     }
 
     public void MainScreenController() {
+        clientApplication = ClientApplication.GetClientApplicationInstance();
         try {
-            tickets = FXCollections.observableArrayList(
+            tickets.add(
                     new Ticket( "Новое обращение", User.currentUser.getFullName(), User.currentUser.getId(), "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null, "Service-Desk", null)
                     // new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null,"Service-Desk", "Никита"),
                     // new Ticket(2, "Работает", "Никита", "Проверено", "Задача", null, null,"Service-Desk", "Никита"),
@@ -104,15 +104,19 @@ public class MainScreenController implements Initializable {
                 null
         ));
 
-        for (Ticket ticket: tickets
-             ) {
-            System.out.println("Id - " + ticket.id + " Category - " + ticket.category);
+        for (Ticket ticket: tickets) {
+            System.out.println("Id - " + ticket.id + " , Category - " + ticket.category);
         }
     }
 
     @FXML
     public void RefreshTableButtonClicked() {
-        TicketsTable.setItems(tickets);
+        RefreshTicketTable();
+    }
+
+    public void RefreshTicketTable() {
+        oTickets = FXCollections.observableArrayList(Ticket.tickets);
+        TicketsTable.setItems((oTickets));
     }
 
     @FXML
@@ -129,11 +133,11 @@ public class MainScreenController implements Initializable {
         } catch (IOException e) {
         }
 
-        RefreshTableButtonClicked();
+        RefreshTicketTable();
     }
 
     @FXML
-    public void OpenPlaceholderImage() {
-        // PlaceholderImage.setVisible(true);  Чисто тест
+    public void OpenPlaceholderImage() throws IOException {
+        clientApplication.ChangeScene("LoginScreen.fxml");
     }
 }

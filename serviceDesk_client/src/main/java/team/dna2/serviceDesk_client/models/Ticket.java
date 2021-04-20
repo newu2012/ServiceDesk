@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Ticket {
@@ -20,6 +21,7 @@ public class Ticket {
     public SimpleStringProperty software;
     public SimpleStringProperty helper;
 
+    public static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
     public static int nextId = 1;
 
     public Ticket(
