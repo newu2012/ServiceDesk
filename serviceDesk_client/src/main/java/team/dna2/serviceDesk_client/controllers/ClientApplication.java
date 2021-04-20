@@ -12,6 +12,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
+import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
 
@@ -32,6 +33,8 @@ public class ClientApplication extends Application {
                 .sources(ClientApplication.class)
                 .run(getParameters().getRaw().toArray(new String[0]));
         springContext = SpringApplication.run(Main.class);
+
+        SetUpStandardUsers();
 
         fxmlLoader = new FXMLLoader(getClass().getResource("/views/LoginScreen.fxml"));
         fxmlLoader.setClassLoader(LoginScreenController.class.getClassLoader()); // Не используется, так как руками назначил контроллер
@@ -63,6 +66,14 @@ public class ClientApplication extends Application {
         System.out.println("Application stops");
         springContext.close();
         Platform.exit();
+    }
+
+    public void SetUpStandardUsers() {
+        User.users.add(new User("admin", "admin", "Админ Админович"));
+        User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко"));
+        User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат"));
+        User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Александр Сахно"));
+        User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина"));
     }
 
     public void ChangeScene(String fxmlUrl) throws IOException, NullPointerException {

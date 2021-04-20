@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.models.Ticket;
+import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,11 +54,10 @@ public class MainScreenController implements Initializable {
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm");
 
     public static ObservableList<Ticket> tickets;
+    public static ObservableList<User> users;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         creator.setCellValueFactory(new PropertyValueFactory<>("Creator"));

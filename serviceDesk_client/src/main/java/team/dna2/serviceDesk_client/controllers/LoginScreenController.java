@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_client.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -7,9 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -28,16 +32,14 @@ public class LoginScreenController {
     @FXML
     private Image LogInScreenImage; // Надо обязательно добавлять картинку в target, чтобы она появлялась в приложении
 
-    private Map<String, String> credentials = new HashMap<>();
-
     @FXML
     private void LogInClicked() throws IOException {
         CheckLogIn();
     }
 
     private void CheckLogIn() throws IOException, NullPointerException {
-        var userPassword = credentials.get(Email.getText());
-        if (userPassword != null && userPassword.equals(Password.getText())) {
+        var user = User.users.stream().filter(us -> Email.getText().equals(us.getEmail())).findAny().orElse(null);
+        if (user != null && Password.getText().equals(user.getPassword())) {
             System.out.println("Successful Log In");
             LogInButton.setText("Вы успешно вошли в аккаунт");
 
@@ -50,10 +52,5 @@ public class LoginScreenController {
     public LoginScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
 
-        credentials.put("admin", "admin");
-        credentials.put("newu2011@gmail.com", "admin");
-        credentials.put("pasifficid@gmail.com", "admin");
-        credentials.put("skywalkersakhno@gmail.com", "admin");
-        credentials.put("anna.00kon@gmail.com", "admin");
     }
 }

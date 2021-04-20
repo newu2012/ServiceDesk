@@ -17,13 +17,13 @@
       <AnchorPane prefHeight="605.0" prefWidth="840.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="293.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Создание обращения" textAlignment="CENTER" />
-            <Text layoutX="95.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Тема обращения" />
-            <TextField fx:id="TitleField" layoutX="95.0" layoutY="105.0" prefWidth="650.0" promptText="На странице &quot;Список обращений&quot; сложно найти кнопку &quot;Добавить обращение&quot;">
+            <Text layoutX="95.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Тема обращения*" />
+            <TextField fx:id="TitleField" layoutX="95.0" layoutY="105.0" prefWidth="650.0" promptText="Не менее 10 символов">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Text layoutX="95.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Тип обращения:" />
+            <Text layoutX="95.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Тип обращения*" />
             <RadioButton fx:id="QuestionRadioButton" layoutX="260.0" layoutY="159.0" mnemonicParsing="false" selected="true" text="Вопрос">
                <font>
                   <Font size="18.0" />
@@ -42,7 +42,7 @@
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <Text layoutX="95.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Наименование ПО" />
+            <Text layoutX="95.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Наименование ПО*" />
             <ChoiceBox fx:id="SoftwareBox" layoutX="95.0" layoutY="280.0" prefHeight="25.0" prefWidth="650.0" />
             <Text layoutX="95.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Функциональный модуль ПО" />
             <ChoiceBox fx:id="ModuleBox" layoutX="95.0" layoutY="350.0" prefHeight="25.0" prefWidth="650.0" />
