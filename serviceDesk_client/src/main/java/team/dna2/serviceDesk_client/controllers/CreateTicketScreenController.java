@@ -50,7 +50,7 @@ public class CreateTicketScreenController implements Initializable {
         if (SoftwareBox.getValue() == null)
             throw new IllegalStateException(); // TODO Внешняя валидация
 
-        MainScreenController.AddTicket(++MainScreenController.ticketsCounter,
+        MainScreenController.AddTicket(
                 TitleField.getText(),
                 category.getSelectedToggle().toString().split("'")[1],
                 SoftwareBox.getValue());

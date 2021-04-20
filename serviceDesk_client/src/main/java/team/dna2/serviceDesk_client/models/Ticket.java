@@ -20,8 +20,9 @@ public class Ticket {
     public SimpleStringProperty software;
     public SimpleStringProperty helper;
 
+    public static int nextId = 1;
 
-    public Ticket(Integer id,
+    public Ticket(
                   String title,
                   String creator,
                   Integer creatorId,
@@ -31,7 +32,7 @@ public class Ticket {
                   Date changeDate,
                   String software,
                   String helper) {
-        this.id = new SimpleIntegerProperty(id);
+        id = new SimpleIntegerProperty(nextId++);
         this.title = new SimpleStringProperty(title);
         this.creator = new SimpleStringProperty(creator);
         this.creatorId = new SimpleIntegerProperty(creatorId);
@@ -45,10 +46,6 @@ public class Ticket {
 
     public int getId() {
         return id.get();
-    }
-
-    public void setId(Integer id) {
-        this.id.set(id);
     }
 
     public String getTitle() {

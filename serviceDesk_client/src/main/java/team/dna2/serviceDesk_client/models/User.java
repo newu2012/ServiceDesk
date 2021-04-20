@@ -22,7 +22,7 @@ public class User {
     public User(String email,
                 String password,
                 String fullName) {
-        id = new SimpleIntegerProperty(nextId);
+        this.id = new SimpleIntegerProperty(nextId++);
         this.email = new SimpleStringProperty(email);
         this.password = new SimpleStringProperty(password);
         this.fullName = new SimpleStringProperty(fullName);
@@ -30,10 +30,6 @@ public class User {
 
     public int getId() {
         return id.get();
-    }
-
-    public void setId() {
-        this.id.set(nextId++);
     }
 
     public String getEmail() {

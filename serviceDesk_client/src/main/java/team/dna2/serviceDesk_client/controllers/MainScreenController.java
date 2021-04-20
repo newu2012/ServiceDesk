@@ -50,7 +50,6 @@ public class MainScreenController implements Initializable {
     @FXML public TableColumn<Ticket, String> helper;
 
 
-    public static int ticketsCounter;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm");
 
     public static ObservableList<Ticket> tickets;
@@ -70,13 +69,12 @@ public class MainScreenController implements Initializable {
 
         MainScreenController();
         TicketsTable.setItems(tickets);
-        ticketsCounter = tickets.size();
     }
 
     public void MainScreenController() {
         try {
             tickets = FXCollections.observableArrayList(
-                    new Ticket(1, "Новое обращение", User.currentUser.getFullName(), User.currentUser.getId(), "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null, "Service-Desk", null)
+                    new Ticket( "Новое обращение", User.currentUser.getFullName(), User.currentUser.getId(), "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null, "Service-Desk", null)
                     // new Ticket(1, "Не Работает", "Никита", "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null,"Service-Desk", "Никита"),
                     // new Ticket(2, "Работает", "Никита", "Проверено", "Задача", null, null,"Service-Desk", "Никита"),
                     // new Ticket(3, "Опять не работает", "Денис", "Открыто", "Ошибка", null, null,"Service-Desk", "Денис"),
@@ -90,12 +88,11 @@ public class MainScreenController implements Initializable {
         }
     }
 
-    public static void AddTicket (Integer id,
-                           String title,
-                           String category,
-                           String software) {
+    public static void AddTicket (
+            String title,
+            String category,
+            String software) {
         tickets.add(new Ticket(
-                id,
                 title,
                 User.currentUser.getFullName(),
                 User.currentUser.getId(),
