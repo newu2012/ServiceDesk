@@ -44,6 +44,12 @@ public class CreateTicketScreenController implements Initializable {
 
     @FXML
     public void CreateTicketButtonClicked() {
+        if (TitleField.getPromptText().equals(TitleField.getText()) || TitleField.getText().length() < 10)
+            throw new IllegalStateException(); // TODO Внешняя валидация
+
+        if (SoftwareBox.getValue() == null)
+            throw new IllegalStateException(); // TODO Внешняя валидация
+
         MainScreenController.AddTicket(++MainScreenController.ticketsCounter,
                 TitleField.getText(),
                 category.getSelectedToggle().toString().split("'")[1],

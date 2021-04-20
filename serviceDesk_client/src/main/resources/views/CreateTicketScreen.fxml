@@ -24,7 +24,7 @@
                </font>
             </TextField>
             <Text layoutX="95.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Тип обращения:" />
-            <RadioButton fx:id="QuestionRadioButton" layoutX="260.0" layoutY="159.0" mnemonicParsing="false" text="Вопрос">
+            <RadioButton fx:id="QuestionRadioButton" layoutX="260.0" layoutY="159.0" mnemonicParsing="false" selected="true" text="Вопрос">
                <font>
                   <Font size="18.0" />
                </font>
