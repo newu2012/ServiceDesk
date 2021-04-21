@@ -42,12 +42,16 @@ public class CreateTicketScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         SoftwareBox.setItems(oSoftware);
         ModuleBox.setItems(modules);
+        ModuleBox.setDisable(true);
     }
 
     public void CreateTicketScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 
+    /**
+     * При выборе из выпадающего списка ПО. Добавляет модули ПО для выбранного ПО в список модулей ПО.
+     */
     @FXML
     public void SoftwareBoxChanged() {
         String currentSoftware = SoftwareBox.getValue().getName();
@@ -57,6 +61,7 @@ public class CreateTicketScreenController implements Initializable {
                 .orElse(null).getSoftwareModules();
         modules = FXCollections.observableArrayList(newModules);
         ModuleBox.setItems(modules);
+        ModuleBox.setDisable(false);
     }
 
     @FXML
