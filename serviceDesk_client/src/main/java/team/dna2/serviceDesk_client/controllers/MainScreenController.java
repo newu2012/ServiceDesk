@@ -31,6 +31,7 @@ import static team.dna2.serviceDesk_client.models.Ticket.tickets;
  */
 @Component
 public class MainScreenController implements Initializable {
+    public static MainScreenController mainScreenController;
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
@@ -82,6 +83,7 @@ public class MainScreenController implements Initializable {
      * Используется для работы со сценами (переходами по экранам). Пока не разобрался как работает.
      */
     public void MainScreenController() {
+        mainScreenController = this;
         clientApplication = ClientApplication.GetClientApplicationInstance();
 
         // Используется для добавления начальных данных в таблицу при запуске. Запускается при каждом входе пользователя.
@@ -119,8 +121,10 @@ public class MainScreenController implements Initializable {
                 null
         ));
 
+        mainScreenController.RefreshTicketTable();
+
         for (Ticket ticket : tickets) {
-            System.out.println("Id - " + ticket.id + " , Category - " + ticket.category);
+            System.out.println("Id - " + ticket.getId() + ", Category - " + ticket.getCategory() + ", Software - " + ticket.getSoftware());
         }
     }
 

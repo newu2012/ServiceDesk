@@ -43,7 +43,7 @@
                </font>
             </RadioButton>
             <Text layoutX="95.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Наименование ПО*" />
-            <ChoiceBox fx:id="SoftwareBox" layoutX="95.0" layoutY="280.0" prefHeight="25.0" prefWidth="650.0" />
+            <ChoiceBox fx:id="SoftwareBox" layoutX="95.0" layoutY="280.0" prefHeight="25.0" prefWidth="650.0" onAction="#SoftwareBoxChanged"/>
             <Text layoutX="95.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Функциональный модуль ПО" />
             <ChoiceBox fx:id="ModuleBox" layoutX="95.0" layoutY="350.0" prefHeight="25.0" prefWidth="650.0" />
             <Text layoutX="95.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Описание" />

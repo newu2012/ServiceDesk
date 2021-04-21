@@ -12,14 +12,14 @@ import java.util.Date;
 public class Ticket {
     public SimpleIntegerProperty id;
     public SimpleStringProperty title;
-    public SimpleStringProperty creator;
+    public SimpleStringProperty creator; // DELETE
     public SimpleIntegerProperty creatorId;
-    public SimpleStringProperty status;
-    public SimpleStringProperty category;
+    public SimpleStringProperty status; // -> statusId
+    public SimpleStringProperty category; // -> categoryId
     public SimpleObjectProperty<Date> creationDate;
     public SimpleObjectProperty<Date> changeDate;
-    public SimpleStringProperty software;
-    public SimpleStringProperty helper;
+    public SimpleStringProperty software; // -> softwareId
+    public SimpleStringProperty helper; // -> helperId
 
     public static ArrayList<Ticket> tickets = new ArrayList<Ticket>(); // Список обращений всей системы
     public static int nextId = 1;
@@ -47,7 +47,7 @@ public class Ticket {
                   Date changeDate,
                   String software,
                   String helper) {
-        id = new SimpleIntegerProperty(nextId++);
+        this.id = new SimpleIntegerProperty(nextId++);
         this.title = new SimpleStringProperty(title);
         this.creator = new SimpleStringProperty(creator);
         this.creatorId = new SimpleIntegerProperty(creatorId);

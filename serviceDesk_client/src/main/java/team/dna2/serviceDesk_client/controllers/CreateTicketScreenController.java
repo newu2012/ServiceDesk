@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import team.dna2.serviceDesk_client.models.Software;
+import team.dna2.serviceDesk_client.models.SoftwareModule;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,13 +23,13 @@ public class CreateTicketScreenController implements Initializable {
     @FXML private RadioButton QuestionRadioButton;
     @FXML private RadioButton ErrorRadioButton;
     @FXML private RadioButton FeatureRadioButton;
-    @FXML private ChoiceBox<String> SoftwareBox;
-    @FXML private ChoiceBox<String> ModuleBox;
+    @FXML private ChoiceBox<Software> SoftwareBox;
+    @FXML private ChoiceBox<SoftwareModule> ModuleBox;
     @FXML private TextArea DescriptionTextArea;
     @FXML private Button CreateTicketButton;
 
-    ObservableList<String> software = FXCollections.observableArrayList("Service-Desk", "Other"); // TODO в отдельный файл
-    ObservableList<String> modules = FXCollections.observableArrayList("Authentication", "Tickets", "Profile", "Other"); // TODO в отдельный файл
+    ObservableList<Software> oSoftware = FXCollections.observableArrayList(Software.software);
+    ObservableList<SoftwareModule> modules = FXCollections.observableArrayList(); // TODO в отдельный файл
 
     /**
      * WIP
@@ -38,12 +40,23 @@ public class CreateTicketScreenController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SoftwareBox.setItems(software);
+        SoftwareBox.setItems(oSoftware);
         ModuleBox.setItems(modules);
     }
 
     public void CreateTicketScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
+    }
+
+    @FXML
+    public void SoftwareBoxChanged() {
+        String currentSoftware = SoftwareBox.getValue().getName();
+        var newModules = oSoftware
+                .stream().filter(software -> software.getName().equals(currentSoftware))
+                .findFirst()
+                .orElse(null).getSoftwareModules();
+        modules = FXCollections.observableArrayList(newModules);
+        ModuleBox.setItems(modules);
     }
 
     @FXML
@@ -57,7 +70,7 @@ public class CreateTicketScreenController implements Initializable {
         MainScreenController.AddTicket(
                 TitleField.getText(),
                 category.getSelectedToggle().toString().split("'")[1], // Костыль для выбора названия radioButton
-                SoftwareBox.getValue());
+                SoftwareBox.getValue().getName());
 
         Stage stage = (Stage) CreateTicketButton.getScene().getWindow();
         stage.close(); // Закрытие этого окна

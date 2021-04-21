@@ -12,9 +12,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
+import team.dna2.serviceDesk_client.models.Software;
+import team.dna2.serviceDesk_client.models.SoftwareModule;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Класс, отвечающий за подготовку к запуску приложения, его запуск и закрытие.
@@ -44,7 +47,7 @@ public class ClientApplication extends Application {
                 .run(getParameters().getRaw().toArray(new String[0]));
         springContext = SpringApplication.run(Main.class);
 
-        SetUpStandardUsers(); // Добавление пользователей по умолчанию
+        SetUpPlaceholders(); // Добавление данных по умолчанию (пользователи, софт, модули)
 
         fxmlLoader = new FXMLLoader(getClass().getResource("/views/InitLoading.fxml"));
         fxmlLoader.setClassLoader(InitLoadingController.class.getClassLoader()); // Не используется, так как руками назначил контроллер
@@ -88,12 +91,18 @@ public class ClientApplication extends Application {
         Platform.exit();
     }
 
+    public void SetUpPlaceholders() {
+        SetUpPlaceholderUsers();
+        SetUpPlaceholderSoftware();
+        SetUpPlaceholderSoftwareModules();
+    }
+
     /**
      * Пользователи по умолчанию
      * Пароли хранятся пока что прямо так, поэтому они "admin"
      * TODO приделать хэширование паролей на клиенте
      */
-    public void SetUpStandardUsers() {
+    public void SetUpPlaceholderUsers() {
         User.users.add(new User("admin", "admin", "Админ Админович"));
         User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко"));
         User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат"));
@@ -101,6 +110,22 @@ public class ClientApplication extends Application {
         User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина"));
     }
 
+    public void SetUpPlaceholderSoftware() {
+        Software.software.add(new Software("Service-Desk", "Приложение для работы с обращениями пользователей"));
+        Software.software.add(new Software("Other"));
+    }
+
+    public void SetUpPlaceholderSoftwareModules() {
+        ArrayList<SoftwareModule> serviceDeskModules = new ArrayList<SoftwareModule>();
+        serviceDeskModules.add(new SoftwareModule("Вход в аккаунт", "Проблемы со входом или что-то ещё"));
+        serviceDeskModules.add(new SoftwareModule("Обращения", "Невозможность создать обращение, отсутствие созданного обращения..."));
+        serviceDeskModules.add(new SoftwareModule("Профиль пользователя", "Не меняется аватар..."));
+        serviceDeskModules.add(new SoftwareModule("Профиль организации", "Не получается добавить коллег в организацию..."));
+
+        Software.software.get(0).setSoftwareModules(serviceDeskModules); // Можно заменить имеющийся список
+        Software.software.get(0).addSoftwareModule(new SoftwareModule("Другое...")); // Или просто добавить запись
+    }
+    
     /**
      * Основной способ смены экрана (сцены)
      * @param fxmlUrl Название файла экрана типа "Screen.fxml"
