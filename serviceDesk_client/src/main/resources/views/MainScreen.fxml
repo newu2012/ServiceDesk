@@ -44,7 +44,8 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="RefreshTableButton" layoutX="400.0" layoutY="40.0" mnemonicParsing="false" onAction="#RefreshTableButtonClicked" styleClass="refresh-button" text="Обновить данные в таблице" />
+            <Button fx:id="RefreshTableButton" layoutX="400.0" layoutY="45.0" mnemonicParsing="false" onAction="#RefreshTableButtonClicked" styleClass="big-button" text="Обновить данные в таблице" />
+            <Button fx:id="ChangeCreatorFilterButton" layoutX="983.0" layoutY="45.0" mnemonicParsing="false" onAction="#ChangeCreatorFilterButtonClicked" styleClass="big-button" text="Только мои обращения" />
             <TableView fx:id="TicketsTable" layoutX="133.0" layoutY="100.0" maxHeight="550.0" maxWidth="1100.0" minHeight="550.0" minWidth="1100.0" prefHeight="550.0" prefWidth="1100.0">
               <columns>
                 <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />

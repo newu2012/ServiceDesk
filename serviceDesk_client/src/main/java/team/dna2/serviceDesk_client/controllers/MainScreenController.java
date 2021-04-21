@@ -21,8 +21,10 @@ import team.dna2.serviceDesk_client.models.User;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import static team.dna2.serviceDesk_client.models.Ticket.tickets;
 
@@ -40,6 +42,7 @@ public class MainScreenController implements Initializable {
     @FXML private ImageView PlaceholderImage;
     @FXML private Button CreateTicketButton;
     @FXML private Button RefreshTableButton;
+    @FXML private Button ChangeCreatorFilterButton;
     @FXML private TableView<Ticket> TicketsTable;
 
     @FXML public TableColumn<Ticket, Integer> id;
@@ -53,6 +56,8 @@ public class MainScreenController implements Initializable {
     @FXML public TableColumn<Ticket, String> helper;
 
     public ObservableList<Ticket> oTickets = FXCollections.observableArrayList(Ticket.tickets);
+
+    public static boolean showOnlyCurrentUserTickets = false;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm"); // Надо переводить потом дату в строку, но хз как в таблице хранить
 
     /**
@@ -136,9 +141,22 @@ public class MainScreenController implements Initializable {
     /**
      * Обновляет таблицу тикетов на GUI. Сначала переводим лист в читаемый javafx формат, потом показываем.
      */
+    @FXML
     public void RefreshTicketTable() {
-        oTickets = FXCollections.observableArrayList(Ticket.tickets);
+        if (showOnlyCurrentUserTickets)
+            oTickets = FXCollections.observableArrayList(new ArrayList<Ticket> (tickets
+                    .stream().filter(ticket -> ticket.getCreatorId() == User.currentUser.getId())
+                    .collect(Collectors.toList())));
+        else
+            oTickets = FXCollections.observableArrayList(tickets);
         TicketsTable.setItems((oTickets));
+    }
+
+    @FXML
+    public void ChangeCreatorFilterButtonClicked() {
+        showOnlyCurrentUserTickets = !showOnlyCurrentUserTickets;
+        System.out.println("OnlyCUTickets - " + showOnlyCurrentUserTickets);
+        RefreshTicketTable();
     }
 
     /**
