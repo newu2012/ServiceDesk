@@ -29,12 +29,12 @@ public class CreateTicketScreenController implements Initializable {
     @FXML private Button CreateTicketButton;
 
     ObservableList<Software> oSoftware = FXCollections.observableArrayList(Software.software);
-    ObservableList<SoftwareModule> modules = FXCollections.observableArrayList(); // TODO в отдельный файл
+    ObservableList<SoftwareModule> modules = FXCollections.observableArrayList();
 
     /**
      * WIP
      * При старте приложения заполняет элементы с выбором ПО и модулей ПО данными
-     * TODO Переделать, потому что надо вынести их в отдельный файл и обновлять при каждом обновлении таблицы обращений
+     * TODO Переделать, потому что надо обновлять при каждом обновлении таблицы обращений
      * @param location Не используется
      * @param resources Не используется
      */
@@ -72,10 +72,23 @@ public class CreateTicketScreenController implements Initializable {
         if (SoftwareBox.getValue() == null)
             throw new IllegalStateException(); // TODO Внешняя валидация
 
+        int moduleId = 0;
+        if (ModuleBox.getValue() != null)
+            moduleId = Software.software
+                    .stream().filter(software -> software.softwareModules
+                    .stream().filter(softwareModule -> softwareModule.getName().equals(ModuleBox.getValue().getName()))
+                    .findFirst().get().getName().equals(ModuleBox.getValue().getName()))
+                    .findFirst().get().getSoftwareModules()
+                    .stream().filter(softwareModule -> softwareModule.getName().equals(ModuleBox.getValue().getName()))
+                    .findFirst().get().getId();
+
         MainScreenController.AddTicket(
                 TitleField.getText(),
                 category.getSelectedToggle().toString().split("'")[1], // Костыль для выбора названия radioButton
-                SoftwareBox.getValue().getName());
+                SoftwareBox.getValue().getName(),
+                moduleId);
+
+        System.out.println("SoftwareId=" + SoftwareBox.getValue().getId() + " ModuleId=" + moduleId);
 
         Stage stage = (Stage) CreateTicketButton.getScene().getWindow();
         stage.close(); // Закрытие этого окна

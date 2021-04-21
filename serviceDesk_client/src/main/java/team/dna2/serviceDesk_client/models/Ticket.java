@@ -4,8 +4,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,6 +17,7 @@ public class Ticket {
     public SimpleObjectProperty<Date> creationDate;
     public SimpleObjectProperty<Date> changeDate;
     public SimpleStringProperty software; // -> softwareId
+    public SimpleIntegerProperty moduleId;
     public SimpleStringProperty helper; // -> helperId
 
     public static ArrayList<Ticket> tickets = new ArrayList<Ticket>(); // Список обращений всей системы
@@ -26,6 +25,7 @@ public class Ticket {
 
     /**
      * WIP
+     * TODO Переделать согласно БД + нужным для таблицы полям
      * Создание обращения (тикета). Обращение - основная сущность системы
      * @param title Тема обращения, не менее 10 символов
      * @param creator ФИО создателя обращения (нужно будет убрать, потом брать ссылкой через ID)
@@ -35,6 +35,7 @@ public class Ticket {
      * @param creationDate Дата создания, ставится автоматически при создании обращения
      * @param changeDate Дата последнего изменения/комментирования/смены статуса обращения
      * @param software Название ПО, по которому создаётся обращение
+     * @param moduleId Название модуля ПО, по которому создаётся обращение
      * @param helper Разработчик, назначенный на работу с обращением
      */
     public Ticket(
@@ -46,6 +47,7 @@ public class Ticket {
                   Date creationDate,
                   Date changeDate,
                   String software,
+                  Integer moduleId,
                   String helper) {
         this.id = new SimpleIntegerProperty(nextId++);
         this.title = new SimpleStringProperty(title);
@@ -56,6 +58,7 @@ public class Ticket {
         this.creationDate = new SimpleObjectProperty<Date>(creationDate);
         this.changeDate = new SimpleObjectProperty<Date>(changeDate);
         this.software = new SimpleStringProperty(software);
+        this.moduleId = new SimpleIntegerProperty(moduleId);
         this.helper = new SimpleStringProperty(helper);
     }
 
@@ -125,6 +128,14 @@ public class Ticket {
 
     public void setSoftware(String software) {
         this.software.set(software);
+    }
+
+    public Integer getModuleId() {
+        return moduleId.get();
+    }
+
+    public void setModuleId(Integer moduleId) {
+        this.moduleId.set(moduleId);
     }
 
     public String getHelper() {

@@ -91,6 +91,7 @@ public class MainScreenController implements Initializable {
         mainScreenController = this;
         clientApplication = ClientApplication.GetClientApplicationInstance();
 
+        // TODO Выделить в отдельный метод для ввода Placeholder обращений
         // Используется для добавления начальных данных в таблицу при запуске. Запускается при каждом входе пользователя.
         // Может быть древним и не используемым
         // try {
@@ -104,16 +105,18 @@ public class MainScreenController implements Initializable {
 
     /**
      * WIP
+     * TODO ВЫНЕСТИ РАБОТУ С ТИКЕТОМ К TICKET, ОСТАЛЬНОЕ ПЕРЕДЕЛАТЬ
      * Основной метод создания обращения, используется в GUI.
      * @param title Название обращения, минимум 10 символов
      * @param category Категория обращения, на выбор одна из 3 кнопок
      * @param software Название ПО, выбирается пользователем
-     *                 надо ещё module, но пока не сделал
+     * @param moduleId Название модуля ПО, выбирается пользователем
      */
     public static void AddTicket(
             String title,
             String category,
-            String software) {
+            String software,
+            Integer moduleId) {
         tickets.add(new Ticket(
                 title,
                 User.currentUser.getFullName(),
@@ -123,14 +126,16 @@ public class MainScreenController implements Initializable {
                 new Date(),
                 null,
                 software,
+                moduleId,
                 null
         ));
 
         mainScreenController.RefreshTicketTable();
 
-        for (Ticket ticket : tickets) {
-            System.out.println("Id - " + ticket.getId() + ", Category - " + ticket.getCategory() + ", Software - " + ticket.getSoftware());
-        }
+        // TODO Вынести в метод для логирования
+        // for (Ticket ticket : tickets) {
+        //     System.out.println("Id - " + ticket.getId() + ", Category - " + ticket.getCategory() + ", Software - " + ticket.getSoftware());
+        // }
     }
 
     @FXML
@@ -139,7 +144,8 @@ public class MainScreenController implements Initializable {
     }
 
     /**
-     * Обновляет таблицу тикетов на GUI. Сначала переводим лист в читаемый javafx формат, потом показываем.
+     * Обновляет таблицу тикетов на GUI. Если пользователь просил показывать толко его обращения, то делаем так.
+     * Переводим лист в читаемый javafx формат, потом показываем.
      */
     @FXML
     public void RefreshTicketTable() {
