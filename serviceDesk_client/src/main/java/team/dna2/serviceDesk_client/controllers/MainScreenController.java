@@ -116,7 +116,7 @@ public class MainScreenController implements Initializable {
     public static void AddTicket(
             String title,
             String category,
-            String software,
+            String software, // TODO переделать в softwareId
             Integer moduleId) {
         tickets.add(new Ticket(
                 title,

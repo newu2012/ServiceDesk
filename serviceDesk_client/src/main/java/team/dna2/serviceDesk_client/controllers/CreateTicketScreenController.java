@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import team.dna2.serviceDesk_client.models.Category;
 import team.dna2.serviceDesk_client.models.Software;
 import team.dna2.serviceDesk_client.models.SoftwareModule;
 
@@ -19,15 +20,13 @@ public class CreateTicketScreenController implements Initializable {
     private ClientApplication clientApplication;
 
     @FXML private TextField TitleField;
-    @FXML private ToggleGroup category;
-    @FXML private RadioButton QuestionRadioButton;
-    @FXML private RadioButton ErrorRadioButton;
-    @FXML private RadioButton FeatureRadioButton;
+    @FXML private ChoiceBox<Category> CategoryBox;
     @FXML private ChoiceBox<Software> SoftwareBox;
     @FXML private ChoiceBox<SoftwareModule> ModuleBox;
     @FXML private TextArea DescriptionTextArea;
     @FXML private Button CreateTicketButton;
 
+    ObservableList<Category> oCategories = FXCollections.observableArrayList(Category.categories);
     ObservableList<Software> oSoftware = FXCollections.observableArrayList(Software.software);
     ObservableList<SoftwareModule> modules = FXCollections.observableArrayList();
 
@@ -40,8 +39,13 @@ public class CreateTicketScreenController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        CategoryBox.setItems(oCategories);
         SoftwareBox.setItems(oSoftware);
         ModuleBox.setItems(modules);
+
+        // TODO Раскоментить, если захотим сделать заранее выбор у боксов
+        // CategoryBox.setValue(oCategories.get(0));
+        // SoftwareBox.setValue(oSoftware.get(0));
         ModuleBox.setDisable(true);
     }
 
@@ -69,6 +73,9 @@ public class CreateTicketScreenController implements Initializable {
         if (TitleField.getPromptText().equals(TitleField.getText()) || TitleField.getText().length() < 10)
             throw new IllegalStateException(); // TODO Внешняя валидация
 
+        if (CategoryBox.getValue() == null)
+            throw new IllegalStateException(); // TODO Внешняя валидация
+
         if (SoftwareBox.getValue() == null)
             throw new IllegalStateException(); // TODO Внешняя валидация
 
@@ -84,7 +91,7 @@ public class CreateTicketScreenController implements Initializable {
 
         MainScreenController.AddTicket(
                 TitleField.getText(),
-                category.getSelectedToggle().toString().split("'")[1], // Костыль для выбора названия radioButton
+                CategoryBox.getValue().getName(),
                 SoftwareBox.getValue().getName(),
                 moduleId);
 

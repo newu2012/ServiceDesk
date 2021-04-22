@@ -12,6 +12,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
+import team.dna2.serviceDesk_client.models.Category;
 import team.dna2.serviceDesk_client.models.Software;
 import team.dna2.serviceDesk_client.models.SoftwareModule;
 import team.dna2.serviceDesk_client.models.User;
@@ -93,6 +94,7 @@ public class ClientApplication extends Application {
 
     public void SetUpPlaceholders() {
         SetUpPlaceholderUsers();
+        SetUpPlaceholderCategories();
         SetUpPlaceholderSoftware();
         SetUpPlaceholderSoftwareModules();
     }
@@ -108,6 +110,12 @@ public class ClientApplication extends Application {
         User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат"));
         User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Александр Сахно"));
         User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина"));
+    }
+
+    public void SetUpPlaceholderCategories() {
+        Category.categories.add(new Category("Вопрос", "Если Вам что-то не понятно"));
+        Category.categories.add(new Category("Ошибка", "Если Вам кажется,что что-то работает не так как нужно"));
+        Category.categories.add(new Category("Предложение функционала", "Если Вам хочется увидеть что-то новое в приложении"));
     }
 
     public void SetUpPlaceholderSoftware() {
