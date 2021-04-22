@@ -12,7 +12,7 @@ public class Ticket {
     public SimpleStringProperty title;
     public SimpleStringProperty creator; // DELETE
     public SimpleIntegerProperty creatorId;
-    public SimpleStringProperty status; // -> statusId
+    public SimpleObjectProperty<TicketStatus> status;
     public SimpleStringProperty category; // -> categoryId
     public SimpleObjectProperty<Date> creationDate;
     public SimpleObjectProperty<Date> changeDate;
@@ -42,7 +42,7 @@ public class Ticket {
                   String title,
                   String creator,
                   Integer creatorId,
-                  String status,
+                  TicketStatus status,
                   String category,
                   Date creationDate,
                   Date changeDate,
@@ -53,7 +53,7 @@ public class Ticket {
         this.title = new SimpleStringProperty(title);
         this.creator = new SimpleStringProperty(creator);
         this.creatorId = new SimpleIntegerProperty(creatorId);
-        this.status = new SimpleStringProperty(status);
+        this.status = new SimpleObjectProperty<TicketStatus>(status);
         this.category = new SimpleStringProperty(category);
         this.creationDate = new SimpleObjectProperty<Date>(creationDate);
         this.changeDate = new SimpleObjectProperty<Date>(changeDate);
@@ -90,11 +90,11 @@ public class Ticket {
         this.creatorId.set(creatorId);
     }
 
-    public String getStatus() {
+    public TicketStatus getStatus() {
         return status.get();
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TicketStatus status) {
         this.status.set(status);
     }
 

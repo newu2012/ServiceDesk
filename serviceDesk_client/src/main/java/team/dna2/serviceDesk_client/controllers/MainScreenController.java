@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.models.Ticket;
+import team.dna2.serviceDesk_client.models.TicketStatus;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
@@ -121,7 +122,7 @@ public class MainScreenController implements Initializable {
                 title,
                 User.currentUser.getFullName(),
                 User.currentUser.getId(),
-                "Открыто",
+                TicketStatus.OPEN,
                 category,
                 new Date(),
                 null,
