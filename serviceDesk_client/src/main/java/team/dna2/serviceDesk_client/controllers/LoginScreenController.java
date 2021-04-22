@@ -51,7 +51,7 @@ public class LoginScreenController {
             System.out.println("Successful Log In");
             LogInButton.setText("Вы успешно вошли в аккаунт");
 
-            clientApplication.ChangeScene("MainScreen.fxml");
+            clientApplication.ChangeScene("TicketsUserScreen.fxml");
         }
         else
             LogInButton.setText("Ошибка входа");

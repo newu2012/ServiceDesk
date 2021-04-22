@@ -33,8 +33,8 @@ import static team.dna2.serviceDesk_client.models.Ticket.tickets;
  * Контроллер экрана со списком обращений
  */
 @Component
-public class MainScreenController implements Initializable {
-    public static MainScreenController mainScreenController;
+public class TicketsUserScreenController implements Initializable {
+    public static TicketsUserScreenController ticketsUserScreenController;
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
@@ -89,7 +89,7 @@ public class MainScreenController implements Initializable {
      * Используется для работы со сценами (переходами по экранам). Пока не разобрался как работает.
      */
     public void MainScreenController() {
-        mainScreenController = this;
+        ticketsUserScreenController = this;
         clientApplication = ClientApplication.GetClientApplicationInstance();
 
         // TODO Выделить в отдельный метод для ввода Placeholder обращений
@@ -131,7 +131,7 @@ public class MainScreenController implements Initializable {
                 null
         ));
 
-        mainScreenController.RefreshTicketTable();
+        ticketsUserScreenController.RefreshTicketTable();
 
         // TODO Вынести в метод для логирования
         // for (Ticket ticket : tickets) {

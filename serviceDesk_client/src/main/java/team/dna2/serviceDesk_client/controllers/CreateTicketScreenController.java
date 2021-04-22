@@ -89,7 +89,7 @@ public class CreateTicketScreenController implements Initializable {
                     .stream().filter(softwareModule -> softwareModule.getName().equals(ModuleBox.getValue().getName()))
                     .findFirst().get().getId();
 
-        MainScreenController.AddTicket(
+        TicketsUserScreenController.AddTicket(
                 TitleField.getText(),
                 CategoryBox.getValue().getName(),
                 SoftwareBox.getValue().getName(),
