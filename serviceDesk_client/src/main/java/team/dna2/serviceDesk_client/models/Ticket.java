@@ -19,6 +19,7 @@ public class Ticket {
     public SimpleStringProperty software; // -> softwareId
     public SimpleIntegerProperty moduleId;
     public SimpleStringProperty helper; // -> helperId
+    public SimpleStringProperty description; // -> helperId
 
     public static ArrayList<Ticket> tickets = new ArrayList<Ticket>(); // Список обращений всей системы
     public static int nextId = 1;
@@ -48,7 +49,8 @@ public class Ticket {
                   Date changeDate,
                   String software,
                   Integer moduleId,
-                  String helper) {
+                  String helper,
+                  String description) {
         this.id = new SimpleIntegerProperty(nextId++);
         this.title = new SimpleStringProperty(title);
         this.creator = new SimpleStringProperty(creator);
@@ -60,6 +62,12 @@ public class Ticket {
         this.software = new SimpleStringProperty(software);
         this.moduleId = new SimpleIntegerProperty(moduleId);
         this.helper = new SimpleStringProperty(helper);
+        this.description = new SimpleStringProperty(description);
+    }
+
+    @Override
+    public String toString() {
+        return this.getTitle() + " - " + this.getCategory() + " - " + this.getDescription();
     }
 
     public int getId() {
@@ -144,5 +152,13 @@ public class Ticket {
 
     public void setHelper(String helper) {
         this.helper.set(helper);
+    }
+
+    public String getDescription() {
+        return description.get();
+    }
+
+    public void setDescription(String description) {
+        this.description.set(description);
     }
 }

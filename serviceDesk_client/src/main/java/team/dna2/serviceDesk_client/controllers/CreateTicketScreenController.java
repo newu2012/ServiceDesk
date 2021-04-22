@@ -93,7 +93,8 @@ public class CreateTicketScreenController implements Initializable {
                 TitleField.getText(),
                 CategoryBox.getValue().getName(),
                 SoftwareBox.getValue().getName(),
-                moduleId);
+                moduleId,
+                DescriptionTextArea.getText());
 
         System.out.println("SoftwareId=" + SoftwareBox.getValue().getId() + " ModuleId=" + moduleId);
 

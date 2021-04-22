@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -92,6 +93,23 @@ public class TicketsUserScreenController implements Initializable {
         ticketsUserScreenController = this;
         clientApplication = ClientApplication.GetClientApplicationInstance();
 
+        TicketsTable.setRowFactory(ticketTableView -> {
+            TableRow<Ticket> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Ticket rowData = row.getItem();
+                    System.out.println(rowData);
+                    try {
+                        OpenShowTicketUserScreen();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    // TODO Вызов метода с открытием нового окна для просмотра обращения
+                }
+            });
+            return row;
+        });
+
         // TODO Выделить в отдельный метод для ввода Placeholder обращений
         // Используется для добавления начальных данных в таблицу при запуске. Запускается при каждом входе пользователя.
         // Может быть древним и не используемым
@@ -117,7 +135,8 @@ public class TicketsUserScreenController implements Initializable {
             String title,
             String category,
             String software, // TODO переделать в softwareId
-            Integer moduleId) {
+            Integer moduleId,
+            String description) {
         tickets.add(new Ticket(
                 title,
                 User.currentUser.getFullName(),
@@ -128,7 +147,8 @@ public class TicketsUserScreenController implements Initializable {
                 null,
                 software,
                 moduleId,
-                null
+                null,
+                description
         ));
 
         ticketsUserScreenController.RefreshTicketTable();
@@ -166,11 +186,18 @@ public class TicketsUserScreenController implements Initializable {
         RefreshTicketTable();
     }
 
+
+
     /**
-     * Запускает набор действий для создания нового окна
+     * Запускает набор действий для создания нового окна с созданием обращения
      */
     @FXML
     public void CreateTicketButtonClicked() {
+        OpenCreateTicketScreenWindow();
+        RefreshTicketTable(); // Не будет лишним
+    }
+
+    public void OpenCreateTicketScreenWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/views/CreateTicketScreen.fxml"));
@@ -183,8 +210,10 @@ public class TicketsUserScreenController implements Initializable {
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
+    }
 
-        RefreshTicketTable(); // Не будет лишним
+    public void OpenShowTicketUserScreen() throws IOException{
+        clientApplication.ChangeScene("LoginScreen.fxml");
     }
 
     @FXML
