@@ -65,6 +65,37 @@ public class Ticket {
         this.description = new SimpleStringProperty(description);
     }
 
+    /**
+     * WIP
+     *
+     * Основной метод создания обращения, используется в GUI.
+     * @param title Название обращения, минимум 10 символов
+     * @param category Категория обращения, на выбор одна из 3 кнопок
+     * @param software Название ПО, выбирается пользователем
+     * @param moduleId Название модуля ПО, выбирается пользователем
+     * @param description Полное текстовое описание обращения
+     */
+    public static void AddTicket(
+        String title,
+        String category,
+        String software, // TODO переделать в softwareId
+        Integer moduleId,
+        String description) {
+            tickets.add(new Ticket(
+                    title,
+                    User.currentUser.getFullName(),
+                    User.currentUser.getId(),
+                    TicketStatus.OPEN,
+                    category,
+                    new Date(),
+                    null,
+                    software,
+                    moduleId,
+                    null,
+                    description
+            ));
+    }
+
     @Override
     public String toString() {
         return this.getTitle() + " - " + this.getCategory() + " - " + this.getDescription();

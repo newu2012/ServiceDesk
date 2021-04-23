@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import team.dna2.serviceDesk_client.models.Category;
 import team.dna2.serviceDesk_client.models.Software;
 import team.dna2.serviceDesk_client.models.SoftwareModule;
+import team.dna2.serviceDesk_client.models.Ticket;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -89,7 +90,7 @@ public class CreateTicketScreenController implements Initializable {
                     .stream().filter(softwareModule -> softwareModule.getName().equals(ModuleBox.getValue().getName()))
                     .findFirst().get().getId();
 
-        TicketsUserScreenController.AddTicket(
+        Ticket.AddTicket(
                 TitleField.getText(),
                 CategoryBox.getValue().getName(),
                 SoftwareBox.getValue().getName(),
