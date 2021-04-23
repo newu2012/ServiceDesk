@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import team.dna2.serviceDesk_client.ScreenManager;
 import team.dna2.serviceDesk_client.models.Ticket;
 import team.dna2.serviceDesk_client.models.TicketStatus;
 import team.dna2.serviceDesk_client.models.User;
@@ -100,7 +101,7 @@ public class TicketsUserScreenController implements Initializable {
                     Ticket rowData = row.getItem();
                     System.out.println(rowData);
                     try {
-                        OpenShowTicketUserScreen();
+                        ShowTicketUserScreen();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -151,7 +152,7 @@ public class TicketsUserScreenController implements Initializable {
                 description
         ));
 
-        ticketsUserScreenController.RefreshTicketTable();
+        ticketsUserScreenController.RefreshTicketTable(); // TODO Вынести в отдельный класс для общего Refresh
 
         // TODO Вынести в метод для логирования
         // for (Ticket ticket : tickets) {
@@ -212,13 +213,13 @@ public class TicketsUserScreenController implements Initializable {
         }
     }
 
-    public void OpenShowTicketUserScreen() throws IOException{
+    public void ShowTicketUserScreen() throws IOException{
         clientApplication.ChangeScene("LoginScreen.fxml");
     }
 
     @FXML
     public void LogOutButtonClicked() throws IOException {
-        LogOut(); // Метод временно назначен на логотип
+        ScreenManager.LogOut(); // Метод временно назначен на логотип
     }
 
     /**

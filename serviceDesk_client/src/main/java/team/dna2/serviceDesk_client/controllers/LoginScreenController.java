@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import team.dna2.serviceDesk_client.ScreenManager;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
@@ -51,7 +52,7 @@ public class LoginScreenController {
             System.out.println("Successful Log In");
             LogInButton.setText("Вы успешно вошли в аккаунт");
 
-            clientApplication.ChangeScene("TicketsUserScreen.fxml");
+            ScreenManager.LogIn();
         }
         else
             LogInButton.setText("Ошибка входа");

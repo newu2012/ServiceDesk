@@ -12,6 +12,7 @@ public class User {
     public SimpleStringProperty email;
     public SimpleStringProperty password;
     public SimpleStringProperty fullName;
+    public SimpleStringProperty role;
 
     public static ArrayList<User> users = new ArrayList<User>(); // Список пользователей всей системы
     public static User currentUser; // Активный пользователь системы. Меняется после выхода из аккаунта.
@@ -26,11 +27,12 @@ public class User {
      */
     public User(String email,
                 String password,
-                String fullName) {
+                String fullName, String role) {
         this.id = new SimpleIntegerProperty(nextId++);
         this.email = new SimpleStringProperty(email);
         this.password = new SimpleStringProperty(password);
         this.fullName = new SimpleStringProperty(fullName);
+        this.role = new SimpleStringProperty(role);
     }
 
     public int getId() {
@@ -61,4 +63,11 @@ public class User {
         this.fullName.set(fullName);
     }
 
+    public String getRole() {
+        return role.get();
+    }
+
+    public void setRole(String role) {
+        this.role.set(role);
+    }
 }

@@ -12,10 +12,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
-import team.dna2.serviceDesk_client.models.Category;
-import team.dna2.serviceDesk_client.models.Software;
-import team.dna2.serviceDesk_client.models.SoftwareModule;
-import team.dna2.serviceDesk_client.models.User;
+import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.models.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +30,7 @@ public class ClientApplication extends Application {
     private ConfigurableApplicationContext springContext;
     private Stage stage;
     private FXMLLoader fxmlLoader;
+    private ScreenManager screenManager;
 
     /**
      * Тут происходит подготовка к запуску приложения.
@@ -68,6 +67,7 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException{
         System.out.println("Application starts");
+        screenManager = new ScreenManager();
 
         springContext.publishEvent(new StageReadyEvent(stage));
         this.stage = stage;
@@ -105,11 +105,11 @@ public class ClientApplication extends Application {
      * TODO приделать хэширование паролей на клиенте
      */
     public void SetUpPlaceholderUsers() {
-        User.users.add(new User("admin", "admin", "Админ Админович"));
-        User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко"));
-        User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат"));
-        User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Александр Сахно"));
-        User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина"));
+        User.users.add(new User("admin", "admin", "Админ Админович", Role.DEVELOPER.getStatus()));
+        User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко", Role.MEMBER.getStatus()));
+        User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат", Role.MEMBER.getStatus()));
+        User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Александр Сахно", Role.MEMBER.getStatus()));
+        User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина", Role.MEMBER.getStatus()));
     }
 
     public void SetUpPlaceholderCategories() {

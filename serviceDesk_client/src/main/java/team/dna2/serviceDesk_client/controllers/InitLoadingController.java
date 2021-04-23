@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_client.controllers;
 
 import javafx.fxml.Initializable;
+import team.dna2.serviceDesk_client.ScreenManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +28,7 @@ public class InitLoadingController implements Initializable {
      * Меняет эту пустую сцену на сцену (экран) входа в аккаунт
      * @throws IOException Нужен из-за указания пути файла
      */
-    public static void LoadLoginScreen() throws IOException{
-        clientApplication.ChangeScene("LoginScreen.fxml");
+    public static void LoadLoginScreen() throws IOException {
+        ScreenManager.InitToLogIn();
     }
 }
