@@ -1,3 +1,37 @@
+.main-pane {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-cursor: hand;
+    -fx-background-color: #20B2AA;
+    -fx-background-radius: 27;
+    -fx-text-fill: #ffffff;
+}
+
+.main-button {
+    -fx-font-size: 20;
+    -fx-background-color: #00D29D;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+}
+
+.big-button {
+    -fx-font-size: 16;
+    -fx-background-color: #00D0D0;
+    -fx-pref-width: 250;
+    -fx-pref-height: 30;
+}
+
+.title-text {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+.big-description-text {
+    -fx-font-size: 18;
+}
+
 .navigation-menu {
     -fx-background-color: #302E2E;
 }
@@ -13,13 +47,31 @@
     -fx-fill: #00D29D;
     -fx-font-style: italic;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
 .navigation-menu-text {
     -fx-font-size: 30;
-    -fx-text-fill: white;
+    -fx-fill: white;
 }
 
 .navigation-menu-text:hover {
     -fx-fill: #00D29D;
+    -fx-cursor: hand;
+}
+
+.navigation-menu-subtext {
+    -fx-text-alignment: center;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.navigation-menu-subtext:hover {
+    -fx-fill: #00D29D;
+    -fx-cursor: hand;
+}
+
+.choice-box {
+    -fx-font-size: 14;
 }
