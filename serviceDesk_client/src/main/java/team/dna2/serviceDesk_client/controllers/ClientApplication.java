@@ -16,10 +16,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
 import team.dna2.serviceDesk_client.PlaceholdersManager;
 import team.dna2.serviceDesk_client.ScreenManager;
-import team.dna2.serviceDesk_client.models.*;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Класс, отвечающий за подготовку к запуску приложения, его запуск и закрытие.
@@ -65,10 +61,9 @@ public class ClientApplication extends Application {
     /**
      * Запуск приложения, происходит после инициализации
      * @param stage Похоже, что начальный stage, не разбирался
-     * @throws IOException Из-за нахождения файла по ссылке
      */
     @Override
-    public void start(Stage stage) throws IOException{
+    public void start(Stage stage) {
         System.out.println("Application starts");
         screenManager = new ScreenManager();
 
@@ -95,8 +90,6 @@ public class ClientApplication extends Application {
         Platform.exit();
     }
 
-
-    
     /**
      * Основной способ смены экрана (сцены)
      * @param fxmlUrl Название файла экрана типа "Screen.fxml"

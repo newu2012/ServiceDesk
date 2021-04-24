@@ -6,24 +6,24 @@ import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
 
-public class MemberProfileScreenController {
+public class DeveloperProfileScreenController {
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
     //region FXMLNodes
     @FXML private Text Logo;
     @FXML private Text Tickets;
+    @FXML private Text Compendiums;
+    @FXML private Text Statistics;
     @FXML private Text MyProfile;
     @FXML private ImageView MyProfileImage;
-    @FXML private Text MyOrganisation;
-    @FXML private ImageView MyOrganisationImage;
     //endregion
 
-    public MemberProfileScreenController() {
+    public DeveloperProfileScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 
-    //region MemberMenu
+    //region DeveloperMenu
     /**
      * Переход на экран со списком обращений
      */
@@ -34,20 +34,29 @@ public class MemberProfileScreenController {
 
     /**
      * WIP
+     * Переход на экран со списком справочников
+     */
+    @FXML
+    public void CompendiumsClicked() {
+        ScreenManager.OpenCompendiums();
+    }
+
+    /**
+     * WIP
+     * Переход на экран со статистикой
+     */
+    @FXML
+    public void StatisticsClicked() {
+        ScreenManager.OpenStatistics();
+    }
+
+    /**
+     * WIP
      * Открытие экрана личного профиля
      */
     @FXML
     public void MyProfileClicked() {
         ScreenManager.OpenMyProfile();
-    }
-
-    /**
-     * WIP
-     * Открытие экрана профиля организации
-     */
-    @FXML
-    public void MyOrganisationClicked() {
-        ScreenManager.OpenOrganisation();
     }
 
     /**

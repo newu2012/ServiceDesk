@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
 import team.dna2.serviceDesk_client.models.Role;
@@ -128,5 +127,23 @@ public class ScreenManager {
             clientApplication.ChangeScene("MemberOrganisationScreen.fxml");
         else if (Role.DEVELOPER.getRole().equals(userRole))
             clientApplication.ChangeScene("DeveloperOrganisationScreen.fxml");
+    }
+
+    /**
+     * WIP
+     * Экран просмотра справочников
+     */
+    public static void OpenCompendiums() {
+        if (Role.DEVELOPER.getRole().equals(userRole))
+            clientApplication.ChangeScene("DeveloperCompendiumsScreen.fxml");
+    }
+
+    /**
+     * WIP
+     * Экран просмотра статистики
+     */
+    public static void OpenStatistics() {
+        if (Role.DEVELOPER.getRole().equals(userRole))
+            clientApplication.ChangeScene("DeveloperStatisticsScreen.fxml");
     }
 }

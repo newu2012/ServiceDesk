@@ -6,7 +6,7 @@ import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
 
-public class MemberProfileScreenController {
+public class MemberShowTicketScreenController {
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
@@ -19,7 +19,7 @@ public class MemberProfileScreenController {
     @FXML private ImageView MyOrganisationImage;
     //endregion
 
-    public MemberProfileScreenController() {
+    public MemberShowTicketScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 

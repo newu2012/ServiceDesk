@@ -1,9 +1,7 @@
 package team.dna2.serviceDesk_client.models;
 
-
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.util.StringConverter;
 
 import java.util.ArrayList;
 
