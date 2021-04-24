@@ -16,7 +16,7 @@
          <children>
             <Text layoutX="293.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Создание обращения" textAlignment="CENTER" />
             <Text layoutX="95.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Тема обращения*" />
-            <TextField fx:id="TitleField" layoutX="95.0" layoutY="135.0" prefWidth="650.0" promptText="Не менее 10 символов">
+            <TextField fx:id="TitleField" layoutX="95.0" layoutY="135.0" prefWidth="650.0" promptText="Не менее 10 символов" styleClass="text-field">
                <font>
                   <Font size="16.0" />
                </font>

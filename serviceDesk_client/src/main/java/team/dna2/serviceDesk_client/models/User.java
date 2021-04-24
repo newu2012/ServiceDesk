@@ -19,15 +19,17 @@ public class User {
     public static int nextId = 1;
 
     /**
-     * WIP ?
+     * WIP
      * Создание новых пользователей
      * @param email Электронная почта пользователя
      * @param password Пароль (пока не хэш) пользователя
      * @param fullName ФИО пользователя
+     * @param role Роль пользователя (DEVELOPER, OWNER, MEMBER)
      */
     public User(String email,
                 String password,
-                String fullName, String role) {
+                String fullName,
+                String role) {
         this.id = new SimpleIntegerProperty(nextId++);
         this.email = new SimpleStringProperty(email);
         this.password = new SimpleStringProperty(password);

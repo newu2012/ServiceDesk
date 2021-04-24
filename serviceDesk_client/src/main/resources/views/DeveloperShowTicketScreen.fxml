@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.DeveloperShowTicketScreenController">
+   <top>
+      <HBox alignment="CENTER_LEFT" maxHeight="64.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <Text fx:id="Logo" fill="WHITE" onMouseClicked="#LogOutButtonClicked" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
+               <font>
+                  <Font name="System Bold Italic" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="Tickets" fill="WHITE" onMouseClicked="#TicketsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Обращения" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="Compendiums" fill="WHITE" layoutX="250.0" layoutY="54.0" onMouseClicked="#CompendiumsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Справочники" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="Statistics" fill="WHITE" layoutX="450.0" layoutY="54.0" onMouseClicked="#StatisticsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Статистика" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <AnchorPane prefHeight="64.0" prefWidth="579.0" />
+            <HBox alignment="BASELINE_RIGHT" maxHeight="64.0" maxWidth="400.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="64.0" prefWidth="400.0" HBox.hgrow="NEVER">
+               <children>
+                  <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
+                     <children>
+                        <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
+                        <ImageView fx:id="MyProfileImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyProfileClicked" pickOnBounds="true" preserveRatio="true" styleClass="navigation-menu-image">
+                           <image>
+                              <Image url="@../images/character.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children></HBox>
+   </top>
+   <bottom>
+      <ImageView fx:id="PlaceholderImage" fitHeight="782.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true" visible="false" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../images/MainScreenPlaceholder.png" />
+         </image>
+      </ImageView>
+   </bottom>
+   <center>
+      <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="133.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Просмотр обращения" />
+         </children>
+         <BorderPane.margin>
+            <Insets top="64.0" />
+         </BorderPane.margin>
+      </Pane>
+   </center>
+</BorderPane>

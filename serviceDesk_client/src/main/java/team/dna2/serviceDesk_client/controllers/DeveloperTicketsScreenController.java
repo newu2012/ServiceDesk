@@ -28,16 +28,16 @@ import static team.dna2.serviceDesk_client.models.Ticket.tickets;
  * Контроллер экрана со списком обращений
  */
 @Component
-public class MemberTicketsScreenController implements Initializable {
+public class DeveloperTicketsScreenController implements Initializable {
     private ClientApplication clientApplication;
 
     //region FXMLNodes
     @FXML private Text Logo;
     @FXML private Text Tickets;
+    @FXML private Text Compendiums;
+    @FXML private Text Statistics;
     @FXML private Text MyProfile;
     @FXML private ImageView MyProfileImage;
-    @FXML private Text MyOrganisation;
-    @FXML private ImageView MyOrganisationImage;
     @FXML private Button CreateTicketButton;
     @FXML private Button RefreshTableButton;
     @FXML private Button ChangeCreatorFilterButton;
@@ -89,7 +89,7 @@ public class MemberTicketsScreenController implements Initializable {
     /**
      * Используется для работы со сценами (переходами по экранам). Пока не разобрался как работает.
      */
-    public MemberTicketsScreenController() {
+    public DeveloperTicketsScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 
@@ -103,7 +103,7 @@ public class MemberTicketsScreenController implements Initializable {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Ticket rowData = row.getItem();
                     System.out.println(rowData);
-                    ShowTicketUserScreen();
+                    ShowTicketScreen();
                 }
             });
             return row;
@@ -156,11 +156,11 @@ public class MemberTicketsScreenController implements Initializable {
      * При двойном клике на ячейку таблицы открывает просмотр обращения
      */
     @FXML
-    public void ShowTicketUserScreen() {
+    public void ShowTicketScreen() {
         ScreenManager.ShowTicket();
     }
 
-    //region MemberMenu
+    //region DeveloperMenu
     /**
      * Переход на экран со списком обращений
      */
@@ -171,20 +171,29 @@ public class MemberTicketsScreenController implements Initializable {
 
     /**
      * WIP
+     * Переход на экран со списком справочников
+     */
+    @FXML
+    public void CompendiumsClicked() {
+        ScreenManager.OpenCompendiums();
+    }
+
+    /**
+     * WIP
+     * Переход на экран со статистикой
+     */
+    @FXML
+    public void StatisticsClicked() {
+        ScreenManager.OpenStatistics();
+    }
+
+    /**
+     * WIP
      * Открытие экрана личного профиля
      */
     @FXML
     public void MyProfileClicked() {
         ScreenManager.OpenMyProfile();
-    }
-
-    /**
-     * WIP
-     * Открытие экрана профиля организации
-     */
-    @FXML
-    public void MyOrganisationClicked() {
-        ScreenManager.OpenOrganisation();
     }
 
     /**

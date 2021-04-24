@@ -20,16 +20,13 @@ public class LoginScreenController {
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
-    @FXML
-    private Button LogInButton;
-    @FXML
-    private TextField Email;
-    @FXML
-    private PasswordField Password;
-    @FXML
-    private Button ForgotPasswordButton;
-    @FXML
-    private Image LogInScreenImage;
+    //region FXMLNodes
+    @FXML private Button LogInButton;
+    @FXML private TextField Email;
+    @FXML private PasswordField Password;
+    @FXML private Button ForgotPasswordButton;
+    @FXML private Image LogInScreenImage;
+    //endregion
 
     @FXML
     private void LogInButtonClicked() throws IOException {
@@ -39,10 +36,9 @@ public class LoginScreenController {
     /**
      * WIP
      * Проверяет возможность входа в аккаунт с указанными данными
-     * @throws IOException Из-за поиска fxml
      * @throws NullPointerException Почему-то кидалась, сейчас точно не скажу
      */
-    private void CheckLogIn() throws IOException, NullPointerException {
+    private void CheckLogIn() throws NullPointerException {
         var user = User.users.stream() // Есть пользователь с таким email
                 .filter(us -> Email.getText().equals(us.getEmail()))
                 .findAny()
@@ -52,7 +48,7 @@ public class LoginScreenController {
             System.out.println("Successful Log In");
             LogInButton.setText("Вы успешно вошли в аккаунт");
 
-            ScreenManager.LogIn();
+            ScreenManager.OpenTickets();
         }
         else
             LogInButton.setText("Ошибка входа");

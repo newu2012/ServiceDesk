@@ -3,8 +3,6 @@ package team.dna2.serviceDesk_client.models;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.util.ArrayList;
-
 public class SoftwareModule {
     public SimpleIntegerProperty id;
     public SimpleStringProperty name;

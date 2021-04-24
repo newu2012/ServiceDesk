@@ -47,10 +47,11 @@ public class CreateTicketScreenController implements Initializable {
         // TODO Раскоментить, если захотим сделать заранее выбор у боксов
         // CategoryBox.setValue(oCategories.get(0));
         // SoftwareBox.setValue(oSoftware.get(0));
+
         ModuleBox.setDisable(true);
     }
 
-    public void CreateTicketScreenController() {
+    public CreateTicketScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 
@@ -71,14 +72,37 @@ public class CreateTicketScreenController implements Initializable {
 
     @FXML
     public void CreateTicketButtonClicked() {
-        if (TitleField.getPromptText().equals(TitleField.getText()) || TitleField.getText().length() < 10)
-            throw new IllegalStateException(); // TODO Внешняя валидация
+        boolean validationError = false;
 
-        if (CategoryBox.getValue() == null)
-            throw new IllegalStateException(); // TODO Внешняя валидация
+        if (TitleField.getPromptText().equals(TitleField.getText()) || TitleField.getText().length() < 10) {
+            TitleField.getStyleClass().add("text-field-error");
+            validationError = true;
+        }
+        else {
+            TitleField.getStyleClass().clear();
+            TitleField.getStyleClass().addAll("text-input", "text-field");
+        }
 
-        if (SoftwareBox.getValue() == null)
-            throw new IllegalStateException(); // TODO Внешняя валидация
+        if (CategoryBox.getValue() == null) {
+            CategoryBox.getStyleClass().add("choice-box-error");
+            validationError = true;
+        }
+        else {
+            CategoryBox.getStyleClass().clear();
+            CategoryBox.getStyleClass().addAll("choice-box");
+        }
+
+        if (SoftwareBox.getValue() == null) {
+            SoftwareBox.getStyleClass().add("choice-box-error");
+            validationError = true;
+        }
+        else {
+            SoftwareBox.getStyleClass().clear();
+            SoftwareBox.getStyleClass().addAll("choice-box");
+        }
+
+        if (validationError)
+            return;
 
         int moduleId = 0;
         if (ModuleBox.getValue() != null)

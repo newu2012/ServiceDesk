@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,10 +16,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
 import team.dna2.serviceDesk_client.PlaceholdersManager;
 import team.dna2.serviceDesk_client.ScreenManager;
-import team.dna2.serviceDesk_client.models.*;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Класс, отвечающий за подготовку к запуску приложения, его запуск и закрытие.
@@ -63,10 +61,9 @@ public class ClientApplication extends Application {
     /**
      * Запуск приложения, происходит после инициализации
      * @param stage Похоже, что начальный stage, не разбирался
-     * @throws IOException Из-за нахождения файла по ссылке
      */
     @Override
-    public void start(Stage stage) throws IOException{
+    public void start(Stage stage) {
         System.out.println("Application starts");
         screenManager = new ScreenManager();
 
@@ -93,28 +90,33 @@ public class ClientApplication extends Application {
         Platform.exit();
     }
 
-
-    
     /**
      * Основной способ смены экрана (сцены)
      * @param fxmlUrl Название файла экрана типа "Screen.fxml"
-     * @throws IOException Из-за работы с ссылкой на файл
-     * @throws NullPointerException Не помню почему
      */
-    public void ChangeScene(String fxmlUrl) throws IOException, NullPointerException {
-        Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
+    public void ChangeScene(String fxmlUrl) {
+        try {
+            Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
 
-        if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
-            stage.setWidth(1380); // Тогда реальная ширина 1366
-            stage.setHeight(775); // Тоже самое
-        }
-        else { // Иначе небольшое окошко
-            stage.setWidth(600);
-            stage.setHeight(550);
-        }
+            if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
+                stage.setWidth(1380); // Тогда реальная ширина 1366
+                stage.setHeight(775); // Тоже самое
+            }
+            else { // Иначе небольшое окошко
+                stage.setWidth(600);
+                stage.setHeight(550);
+            }
 
-        stage.centerOnScreen();
-        stage.getScene().setRoot(pane);
+            stage.centerOnScreen();
+            stage.getScene().setRoot(pane);
+        }
+        catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            if (e.getLocalizedMessage().equals("Location is required.")) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Этот экран для этой роли ещё не сделан.", ButtonType.CLOSE);
+                alert.showAndWait();
+            }
+        }
     }
 
     public static ClientApplication GetClientApplicationInstance() {
