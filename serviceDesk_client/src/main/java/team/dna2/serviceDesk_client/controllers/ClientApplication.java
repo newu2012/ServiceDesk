@@ -105,8 +105,8 @@ public class ClientApplication extends Application {
         Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
 
         if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
-            stage.setWidth(1366);
-            stage.setHeight(768);
+            stage.setWidth(1380); // Тогда реальная ширина 1366
+            stage.setHeight(775); // Тоже самое
         }
         else { // Иначе небольшое окошко
             stage.setWidth(600);

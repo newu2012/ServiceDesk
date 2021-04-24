@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -14,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.MemberTicketsScreenController">
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" maxHeight="64.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
          <children>
             <Text fx:id="Logo" fill="WHITE" onMouseClicked="#LogOutButtonClicked" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
                <font>
@@ -26,6 +27,31 @@
                   <Font size="36.0" />
                </font>
             </Text>
+            <AnchorPane prefHeight="64.0" prefWidth="579.0" />
+            <HBox alignment="BASELINE_RIGHT" maxHeight="64.0" maxWidth="400.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="64.0" prefWidth="400.0" HBox.hgrow="NEVER">
+               <children>
+                  <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
+                     <children>
+                        <Text fx:id="MyProfile" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/character.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0">
+                     <children>
+                        <Text fx:id="MyOrganisation" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="RIGHT" wrappingWidth="136.0" />
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/three-friends.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
          </children></HBox>
    </top>
    <bottom>

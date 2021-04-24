@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -39,6 +40,10 @@ public class MemberTicketsScreenController implements Initializable {
 
     @FXML private Text Logo;
     @FXML private Text Tickets;
+    @FXML private Text MyProfile;
+    @FXML private ImageView MyProfileImage;
+    @FXML private Text MyOrganisation;
+    @FXML private ImageView MyOrganisationImage;
     @FXML private ImageView PlaceholderImage;
     @FXML private Button CreateTicketButton;
     @FXML private Button RefreshTableButton;
@@ -91,7 +96,6 @@ public class MemberTicketsScreenController implements Initializable {
     public MemberTicketsScreenController() {
         memberTicketsScreenController = this;
         clientApplication = ClientApplication.GetClientApplicationInstance();
-
 
         // TODO Выделить в отдельный метод для ввода Placeholder обращений
         // Используется для добавления начальных данных в таблицу при запуске. Запускается при каждом входе пользователя.

@@ -52,10 +52,22 @@
 
 .navigation-menu-text {
     -fx-font-size: 30;
-    -fx-text-fill: white;
+    -fx-fill: white;
 }
 
 .navigation-menu-text:hover {
+    -fx-fill: #00D29D;
+    -fx-cursor: hand;
+}
+
+.navigation-menu-subtext {
+    -fx-text-alignment: center;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.navigation-menu-subtext:hover {
     -fx-fill: #00D29D;
     -fx-cursor: hand;
 }
