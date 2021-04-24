@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -115,8 +117,12 @@ public class ClientApplication extends Application {
             stage.centerOnScreen();
             stage.getScene().setRoot(pane);
         }
-        catch (IOException e) {
+        catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
+            if (e.getLocalizedMessage().equals("Location is required.")) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Этот экран для этой роли ещё не сделан.", ButtonType.CLOSE);
+                alert.showAndWait();
+            }
         }
     }
 

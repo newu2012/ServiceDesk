@@ -134,7 +134,7 @@ public class MemberTicketsScreenController implements Initializable {
 
     @FXML
     public void MyOrganisationClicked() {
-        ScreenManager.OpenMyOrganisation();
+        ScreenManager.OpenOrganisation();
     }
 
     /**

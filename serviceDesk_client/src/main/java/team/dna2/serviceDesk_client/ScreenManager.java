@@ -2,6 +2,8 @@ package team.dna2.serviceDesk_client;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.apache.commons.lang3.NotImplementedException;
@@ -34,7 +36,7 @@ public class ScreenManager {
     }
 
     /**
-     *
+     * Сохранение дополнительного окна (создание обращения...) чтобы было открыто не больше одного
      */
     public static void UpdateSecondScreen() {
         secondScreen = Stage.getWindows().get(1);
@@ -71,6 +73,13 @@ public class ScreenManager {
      * Создание обращения в новом окне
      */
     public static void CreateTicket() {
+        if (Stage.getWindows().size() == 2) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Невозможно открыть более 1 дополнительного окна", ButtonType.CLOSE);
+            alert.showAndWait();
+
+            return;
+        }
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(ScreenManager.class.getResource("/views/CreateTicketScreen.fxml"));
@@ -80,6 +89,7 @@ public class ScreenManager {
             stage.setScene(scene);
             stage.show();
             stage.requestFocus();
+            secondScreen = stage.getOwner();
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }
@@ -96,6 +106,10 @@ public class ScreenManager {
             clientApplication.ChangeScene("MemberShowTicketScreen.fxml");
     }
 
+    /**
+     * WIP
+     * Экран личного профиля
+     */
     public static void OpenMyProfile() {
         if (Role.DEVELOPER.getRole().equals(userRole))
             clientApplication.ChangeScene("DeveloperProfile.fxml");
@@ -103,11 +117,16 @@ public class ScreenManager {
             clientApplication.ChangeScene("MemberOrganisation.fxml");
     }
 
-    public static void OpenMyOrganisation() {
+    /**
+     * WIP
+     * Экран оранизации пользователя
+     */
+    public static void OpenOrganisation() {
         if (Role.OWNER.getRole().equals(userRole))
             clientApplication.ChangeScene("OwnerOrganisation.fxml");
         else if (Role.MEMBER.getRole().equals(userRole))
             clientApplication.ChangeScene("MemberOrganisation.fxml");
-        else throw new NotImplementedException();
+        else if (Role.DEVELOPER.getRole().equals(userRole))
+            clientApplication.ChangeScene("DeveloperOrganisation.fxml");
     }
 }
