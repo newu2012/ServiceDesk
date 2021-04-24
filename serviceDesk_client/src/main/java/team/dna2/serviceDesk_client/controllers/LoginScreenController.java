@@ -52,7 +52,7 @@ public class LoginScreenController {
             System.out.println("Successful Log In");
             LogInButton.setText("Вы успешно вошли в аккаунт");
 
-            ScreenManager.LogIn();
+            ScreenManager.OpenTickets();
         }
         else
             LogInButton.setText("Ошибка входа");

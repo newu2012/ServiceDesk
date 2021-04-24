@@ -53,7 +53,7 @@ public class ScreenManager {
      * WIP
      * Успешный вход в аккаунт
      */
-    public static void LogIn() {
+    public static void OpenTickets() {
         UpdateMainScreen();
         userRole = User.currentUser.getRole();
         if (Role.DEVELOPER.getRole().equals(userRole))
@@ -112,9 +112,9 @@ public class ScreenManager {
      */
     public static void OpenMyProfile() {
         if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperProfile.fxml");
+            clientApplication.ChangeScene("DeveloperProfileScreen.fxml");
         else
-            clientApplication.ChangeScene("MemberOrganisation.fxml");
+            clientApplication.ChangeScene("MemberProfileScreen.fxml");
     }
 
     /**
@@ -123,10 +123,10 @@ public class ScreenManager {
      */
     public static void OpenOrganisation() {
         if (Role.OWNER.getRole().equals(userRole))
-            clientApplication.ChangeScene("OwnerOrganisation.fxml");
+            clientApplication.ChangeScene("OwnerOrganisationScreen.fxml");
         else if (Role.MEMBER.getRole().equals(userRole))
-            clientApplication.ChangeScene("MemberOrganisation.fxml");
+            clientApplication.ChangeScene("MemberOrganisationScreen.fxml");
         else if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperOrganisation.fxml");
+            clientApplication.ChangeScene("DeveloperOrganisationScreen.fxml");
     }
 }

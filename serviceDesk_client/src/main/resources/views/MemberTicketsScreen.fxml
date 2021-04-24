@@ -22,7 +22,7 @@
                   <Font name="System Bold Italic" size="36.0" />
                </font>
             </Text>
-            <Text fx:id="Tickets" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Обращения" textAlignment="CENTER" wrappingWidth="240.0">
+            <Text fx:id="Tickets" fill="WHITE" onMouseClicked="#TicketsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Обращения" textAlignment="CENTER" wrappingWidth="240.0">
                <font>
                   <Font size="36.0" />
                </font>
@@ -33,9 +33,9 @@
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
                      <children>
                         <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
-                        <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#MyProfileClicked" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyProfileClicked" pickOnBounds="true" preserveRatio="true" styleClass="navigation-menu-image">
                            <image>
-                              <Image url="@../images/character.png"  />
+                              <Image url="@../images/character.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -43,7 +43,7 @@
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0">
                      <children>
                         <Text fx:id="MyOrganisation" layoutY="30.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="RIGHT" wrappingWidth="136.0" />
-                        <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#MyOrganisationClicked" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyOrganisationClicked" pickOnBounds="true" preserveRatio="true" styleClass="navigation-menu-image">
                            <image>
                               <Image url="@../images/three-friends.png" />
                            </image>

@@ -72,6 +72,10 @@
     -fx-cursor: hand;
 }
 
+.navigation-menu-image:hover {
+    -fx-cursor: hand;
+}
+
 .choice-box {
     -fx-font-size: 14;
 }

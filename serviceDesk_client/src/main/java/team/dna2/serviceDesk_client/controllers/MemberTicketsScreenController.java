@@ -34,10 +34,9 @@ import static team.dna2.serviceDesk_client.models.Ticket.tickets;
  */
 @Component
 public class MemberTicketsScreenController implements Initializable {
-    public static MemberTicketsScreenController memberTicketsScreenController;
     private ClientApplication clientApplication;
-    private ApplicationContext context;
 
+    //region FXMLNodes
     @FXML private Text Logo;
     @FXML private Text Tickets;
     @FXML private Text MyProfile;
@@ -48,7 +47,9 @@ public class MemberTicketsScreenController implements Initializable {
     @FXML private Button RefreshTableButton;
     @FXML private Button ChangeCreatorFilterButton;
     @FXML private TableView<Ticket> TicketsTable;
+    //endregion
 
+    //region TableColumns
     @FXML public TableColumn<Ticket, Integer> id;
     @FXML public TableColumn<Ticket, String> title;
     @FXML public TableColumn<Ticket, String> creator;
@@ -58,6 +59,7 @@ public class MemberTicketsScreenController implements Initializable {
     @FXML public TableColumn<Ticket, String> changeDate;
     @FXML public TableColumn<Ticket, String> software;
     @FXML public TableColumn<Ticket, String> helper;
+    //endregion
 
     public ObservableList<Ticket> oTickets = FXCollections.observableArrayList(Ticket.tickets);
 
@@ -93,21 +95,12 @@ public class MemberTicketsScreenController implements Initializable {
      * Используется для работы со сценами (переходами по экранам). Пока не разобрался как работает.
      */
     public MemberTicketsScreenController() {
-        memberTicketsScreenController = this;
         clientApplication = ClientApplication.GetClientApplicationInstance();
-
-        // TODO Выделить в отдельный метод для ввода Placeholder обращений
-        // Используется для добавления начальных данных в таблицу при запуске. Запускается при каждом входе пользователя.
-        // Может быть древним и не используемым
-        // try {
-        //     tickets.add(
-        //             new Ticket( "Новое обращение", User.currentUser.getFullName(), User.currentUser.getId(), "Открыто", "Ошибка", dateFormat.parse("20:04:2021, 15:14"), null, "Service-Desk", null)
-        //     );
-        // } catch (ParseException e) {
-        //     e.printStackTrace();
-        // }
     }
 
+    /**
+     * Чтобы при дабл-клике ЛКМ открывалось окно с просмотром обращения
+     */
     public void TicketTableSetRowFactory() {
         TicketsTable.setRowFactory(ticketTableView -> {
             TableRow<Ticket> row = new TableRow<>();
@@ -115,26 +108,11 @@ public class MemberTicketsScreenController implements Initializable {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Ticket rowData = row.getItem();
                     System.out.println(rowData);
-                    try {
-                        ShowTicketUserScreen();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    // TODO Вызов метода с открытием нового окна для просмотра обращения
+                    ShowTicketUserScreen();
                 }
             });
             return row;
         });
-    }
-
-    @FXML
-    public void MyProfileClicked() {
-        ScreenManager.OpenMyProfile();
-    }
-
-    @FXML
-    public void MyOrganisationClicked() {
-        ScreenManager.OpenOrganisation();
     }
 
     /**
@@ -181,20 +159,45 @@ public class MemberTicketsScreenController implements Initializable {
 
     /**
      * При двойном клике на ячейку таблицы открывает просмотр обращения
-     * @throws IOException Нужен из-за смены сцены
      */
     @FXML
-    public void ShowTicketUserScreen() throws IOException{
+    public void ShowTicketUserScreen() {
         ScreenManager.ShowTicket();
+    }
+
+    //region MemberMenu
+    /**
+     * Переход на экран со списком обращений
+     */
+    @FXML
+    public void TicketsClicked() {
+        ScreenManager.OpenTickets();
     }
 
     /**
      * WIP
-     * Производит выход из аккаунта, позволяя сменить пользователя.
-     * @throws IOException Нужен из-за смены сцены
+     * Открытие экрана личного профиля
      */
     @FXML
-    public void LogOutButtonClicked() throws IOException {
+    public void MyProfileClicked() {
+        ScreenManager.OpenMyProfile();
+    }
+
+    /**
+     * WIP
+     * Открытие экрана профиля организации
+     */
+    @FXML
+    public void MyOrganisationClicked() {
+        ScreenManager.OpenOrganisation();
+    }
+
+    /**
+     * Производит выход из аккаунта, позволяя сменить пользователя.
+     */
+    @FXML
+    public void LogOutButtonClicked() {
         ScreenManager.LogOut(); // Метод временно назначен на логотип
     }
+    //endregion
 }
