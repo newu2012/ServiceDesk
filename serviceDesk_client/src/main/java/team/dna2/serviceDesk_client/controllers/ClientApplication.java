@@ -98,23 +98,26 @@ public class ClientApplication extends Application {
     /**
      * Основной способ смены экрана (сцены)
      * @param fxmlUrl Название файла экрана типа "Screen.fxml"
-     * @throws IOException Из-за работы с ссылкой на файл
-     * @throws NullPointerException Не помню почему
      */
-    public void ChangeScene(String fxmlUrl) throws IOException, NullPointerException {
-        Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
+    public void ChangeScene(String fxmlUrl) {
+        try {
+            Parent pane = FXMLLoader.load(getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
 
-        if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
-            stage.setWidth(1380); // Тогда реальная ширина 1366
-            stage.setHeight(775); // Тоже самое
-        }
-        else { // Иначе небольшое окошко
-            stage.setWidth(600);
-            stage.setHeight(550);
-        }
+            if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
+                stage.setWidth(1380); // Тогда реальная ширина 1366
+                stage.setHeight(775); // Тоже самое
+            }
+            else { // Иначе небольшое окошко
+                stage.setWidth(600);
+                stage.setHeight(550);
+            }
 
-        stage.centerOnScreen();
-        stage.getScene().setRoot(pane);
+            stage.centerOnScreen();
+            stage.getScene().setRoot(pane);
+        }
+        catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 
     public static ClientApplication GetClientApplicationInstance() {

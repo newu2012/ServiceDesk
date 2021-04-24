@@ -44,7 +44,6 @@ public class MemberTicketsScreenController implements Initializable {
     @FXML private ImageView MyProfileImage;
     @FXML private Text MyOrganisation;
     @FXML private ImageView MyOrganisationImage;
-    @FXML private ImageView PlaceholderImage;
     @FXML private Button CreateTicketButton;
     @FXML private Button RefreshTableButton;
     @FXML private Button ChangeCreatorFilterButton;
@@ -128,7 +127,15 @@ public class MemberTicketsScreenController implements Initializable {
         });
     }
 
+    @FXML
+    public void MyProfileClicked() {
+        ScreenManager.OpenMyProfile();
+    }
 
+    @FXML
+    public void MyOrganisationClicked() {
+        ScreenManager.OpenMyOrganisation();
+    }
 
     /**
      * Обновление таблицы обращений по желанию пользователя

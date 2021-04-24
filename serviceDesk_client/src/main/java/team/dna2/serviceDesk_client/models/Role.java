@@ -5,18 +5,18 @@ public enum Role {
     OWNER("Владелец ЛК Заказчика"),
     DEVELOPER("Разработчик");
 
-    private final String status;
+    private final String role;
 
-    Role(String status) {
-        this.status = status;
+    Role(String role) {
+        this.role = role;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRole() {
+        return role;
     }
 
     @Override
     public String toString() {
-        return this.getStatus();
+        return this.getRole();
     }
 }

@@ -32,18 +32,18 @@
                <children>
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
                      <children>
-                        <Text fx:id="MyProfile" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
-                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
+                        <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#MyProfileClicked" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/character.png" />
+                              <Image url="@../images/character.png"  />
                            </image>
                         </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0">
                      <children>
-                        <Text fx:id="MyOrganisation" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="RIGHT" wrappingWidth="136.0" />
-                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="MyOrganisation" layoutY="30.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="RIGHT" wrappingWidth="136.0" />
+                        <ImageView fitHeight="64.0" fitWidth="64.0" onMouseClicked="#MyOrganisationClicked" layoutX="136.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/three-friends.png" />
                            </image>

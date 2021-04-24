@@ -18,11 +18,14 @@ public class PlaceholdersManager {
      * TODO приделать хэширование паролей на клиенте
      */
     public static void SetUpPlaceholderUsers() {
-        User.users.add(new User("admin", "admin", "Админ Админович", Role.DEVELOPER.getStatus()));
-        User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко", Role.MEMBER.getStatus()));
-        User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат", Role.MEMBER.getStatus()));
-        User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Александр Сахно", Role.MEMBER.getStatus()));
-        User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина", Role.MEMBER.getStatus()));
+        User.users.add(new User("admin", "admin", "Админ Админович", Role.DEVELOPER.getRole()));
+        User.users.add(new User("user", "user", "Юзер Юзерович", Role.MEMBER.getRole()));
+        User.users.add(new User("owner", "owner", "Заказчик Заказчиков", Role.OWNER.getRole()));
+
+        User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко", Role.MEMBER.getRole()));
+        User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат", Role.MEMBER.getRole()));
+        User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Александр Сахно", Role.MEMBER.getRole()));
+        User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина", Role.MEMBER.getRole()));
     }
 
     public static void SetUpPlaceholderCategories() {
