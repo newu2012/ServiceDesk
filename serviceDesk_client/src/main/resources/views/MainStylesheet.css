@@ -2,6 +2,14 @@
     -fx-background-color: white;
 }
 
+.pane-borders {
+    -fx-border-width: 3;
+    -fx-border-color: #777777;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-text-fill: #ffffff;
+}
+
 .button {
     -fx-cursor: hand;
     -fx-background-color: #20B2AA;
@@ -24,8 +32,7 @@
 }
 
 .title-text {
-    -fx-font-size: 24;
-    -fx-font-weight: bold;
+    -fx-font-size: 26;
 }
 
 .big-description-text {
@@ -92,4 +99,29 @@
 .text-field-error {
     -fx-border-color: red;
     -fx-border-width: 2;
+}
+
+.text-info {
+    -fx-font-size: 16;
+}
+
+.tab-pane {
+    -fx-border-width: 2;
+    -fx-border-color: #302E2E;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-text-fill: #ffffff;
+}
+
+.tab-header-background {
+    -fx-background-color:white;
+}
+
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em;
+}
+
+.tab {
+    -fx-font-size: 20;
 }
