@@ -83,6 +83,14 @@
     -fx-cursor: hand;
 }
 
+.text-area {
+    -fx-wrap-text: true;
+}
+
+.jfx-text-area {
+    -fx-wrap-text: true;
+}
+
 .choice-box {
     -fx-font-size: 14;
 }
@@ -132,7 +140,6 @@
 
 .jfx-tab-pane .tab {
     -fx-background-color: #DDDDDD;
-    -fx-fit-to-width: true; // BRED
 }
 
 .jfx-tab-pane .tab-label {
@@ -152,4 +159,3 @@
 .jfx-tab-pane .tab:selected {
     -fx-background-color: white;
 }
-

@@ -12,8 +12,7 @@ public class Software {
 
     public static ArrayList<Software> software = new ArrayList<Software>(); // Список всех ПО в системе
     public ArrayList<SoftwareModule> softwareModules = new ArrayList<SoftwareModule>(); // Список всех модулей этого ПО
-
-    public static int nextId = 1;
+    public static int nextId = 0;
 
     public Software(String name) {
         this.id = new SimpleIntegerProperty(nextId++);
@@ -50,6 +49,11 @@ public class Software {
     public ArrayList<SoftwareModule> getSoftwareModules() {
         return softwareModules;
     }
+
+    public SoftwareModule getSoftwareModuleById(int id) {return softwareModules
+            .stream().filter(sm -> sm.getId() == id)
+            .findFirst()
+            .orElse(null);}
 
     public void setSoftwareModules(ArrayList<SoftwareModule> softwareModules) {
         this.softwareModules = softwareModules;

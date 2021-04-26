@@ -10,8 +10,8 @@ public class Category {
     public SimpleStringProperty name;
     public SimpleStringProperty description;
 
-    public static int nextId = 1;
     public static ArrayList<Category> categories = new ArrayList<Category>(); // Список всех категорий обращений
+    public static int nextId = 0;
 
     public Category(String name) {
         this.id = new SimpleIntegerProperty(nextId++);

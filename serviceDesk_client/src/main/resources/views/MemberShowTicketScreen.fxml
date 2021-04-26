@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -57,14 +58,22 @@
       <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="172.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Просмотр обращения" />
-            <AnchorPane layoutX="172.0" layoutY="64.0" maxHeight="550.0" prefHeight="550.0" prefWidth="800.0" styleClass="pane-borders">
+            <AnchorPane layoutX="172.0" layoutY="64.0" maxHeight="550.0" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="10.0">
+                  <ScrollPane maxWidth="680.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="10.0">
                      <content>
-                        <VBox minHeight="520.0" prefHeight="520.0" prefWidth="760.0">
+                        <VBox maxWidth="760.0" minHeight="520.0" minWidth="760.0" prefHeight="520.0" prefWidth="760.0">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
+                           <children>
+                              <AnchorPane fx:id="TicketMainPane" maxWidth="760.0" minHeight="100.0" minWidth="760.0" prefHeight="100.0" prefWidth="760.0">
+                                 <children>
+                                    <Text fx:id="Title" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                    <JFXTextArea fx:id="Description" maxHeight="1500.0" maxWidth="600.0" minHeight="25.0" minWidth="600.0" prefColumnCount="0" prefHeight="25.0" wrapText="true" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="40.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
                         </VBox>
                      </content>
                   </ScrollPane>
@@ -90,12 +99,12 @@
                         <Insets bottom="15.0" right="10.0" top="15.0" />
                      </padding>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Зарегистрировано" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Открыто" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text fx:id="Status" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Зарегистрировано" />
+                        <Text fx:id="Category" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Открыто" />
+                        <Text fx:id="Software" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text fx:id="Module" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text fx:id="CreationDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text fx:id="ChangeDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
                      </children>
                   </VBox>

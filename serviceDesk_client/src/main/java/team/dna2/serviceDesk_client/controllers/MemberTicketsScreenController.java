@@ -103,6 +103,7 @@ public class MemberTicketsScreenController implements Initializable {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Ticket rowData = row.getItem();
                     System.out.println(rowData);
+                    Ticket.currentTicket = rowData;
                     ShowTicketUserScreen();
                 }
             });

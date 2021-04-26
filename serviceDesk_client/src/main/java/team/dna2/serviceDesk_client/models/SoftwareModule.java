@@ -8,7 +8,7 @@ public class SoftwareModule {
     public SimpleStringProperty name;
     public SimpleStringProperty description;
 
-    public static int nextId = 1;
+    public static int nextId = 0;
 
     public SoftwareModule(String name) {
         this.id = new SimpleIntegerProperty(nextId++);
