@@ -1,13 +1,22 @@
 package team.dna2.serviceDesk_client.controllers;
 
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
 
-public class MemberOrganisationScreenController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MemberOrganisationScreenController implements Initializable {
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
@@ -18,7 +27,38 @@ public class MemberOrganisationScreenController {
     @FXML private ImageView MyProfileImage;
     @FXML private Text MyOrganisation;
     @FXML private ImageView MyOrganisationImage;
+    @FXML private Pane OrganisationMainPane;
     //endregion
+    //region FXMLOrganisationInfo
+    @FXML private JFXTabPane MainTabPane;
+    //endregion
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        MainTabPane = new JFXTabPane();
+        OrganisationMainPane.getChildren().add(MainTabPane);
+
+        //region MainTabSets
+        MainTabPane.setLayoutX(133);
+        MainTabPane.setLayoutY(59);
+        MainTabPane.setMinWidth(1100);
+        MainTabPane.setMaxWidth(1100);
+        MainTabPane.setMinHeight(580);
+        MainTabPane.setMaxHeight(580);
+        MainTabPane.setTabMinHeight(30);
+        MainTabPane.setTabMaxHeight(30);
+        //endregion
+
+        var infoTab = new Tab();
+        var membersTab = new Tab();
+        var licensesTab = new Tab();
+
+        infoTab.setText("Информация об организации");
+        membersTab.setText("Список представителей заказчика");
+        licensesTab.setText("Список лицензий");
+
+        MainTabPane.getTabs().addAll(infoTab,membersTab, licensesTab);
+    }
 
     public MemberOrganisationScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();

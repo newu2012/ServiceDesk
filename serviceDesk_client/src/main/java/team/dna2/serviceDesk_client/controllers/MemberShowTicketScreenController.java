@@ -1,12 +1,19 @@
 package team.dna2.serviceDesk_client.controllers;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
 
-public class MemberShowTicketScreenController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MemberShowTicketScreenController implements Initializable {
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
@@ -18,9 +25,17 @@ public class MemberShowTicketScreenController {
     @FXML private Text MyOrganisation;
     @FXML private ImageView MyOrganisationImage;
     //endregion
+    //region FXMLTicketInfo
+    @FXML private VBox UsersInfo;
+    //endregion
 
     public MemberShowTicketScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
     //region MemberMenu

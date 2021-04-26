@@ -54,32 +54,9 @@
          </children></HBox>
    </top>
    <center>
-      <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="708.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
+      <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="708.0" prefWidth="1366.0" BorderPane.alignment="CENTER" fx:id="OrganisationMainPane">
          <children>
             <Text layoutX="133.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Моя организация" />
-            <TabPane layoutX="133.0" layoutY="59.0" prefHeight="580.0" prefWidth="1100.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0">
-              <tabs>
-                <Tab text="Сведения об организации">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab text="Список представителей">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </Tab>
-                  <Tab text="Список лицензий">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
-                  </Tab>
-              </tabs>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TabPane>
          </children>
          <BorderPane.margin>
             <Insets />
