@@ -89,6 +89,8 @@
 
 .jfx-text-area {
     -fx-wrap-text: true;
+    -jfx-focus-color: #00D29D;
+    -fx-font-size: 14;
 }
 
 .choice-box {
@@ -158,4 +160,20 @@
 
 .jfx-tab-pane .tab:selected {
     -fx-background-color: white;
+}
+
+.profile-image {
+    -fx-image: url("./../images/character.png");
+}
+
+.profile-image:hover {
+    -fx-image: url("./../images/three-friends.png");
+}
+
+.organisation-image {
+    -fx-image: url("./../images/three-friends.png");
+}
+
+.organisation-image:hover {
+    -fx-image: url("./../images/character.png");
 }

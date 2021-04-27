@@ -57,7 +57,7 @@ public class MemberShowTicketScreenController implements Initializable {
         Software.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getName());
         Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getSoftwareModuleById(Ticket.currentTicket.getModuleId()).getName());
         CreationDate.setText(Ticket.currentTicket.getCreationDate().toString());
-        ChangeDate.setText(Ticket.currentTicket.getChangeDate().toString()); // TODO Переделать
+        // ChangeDate.setText(Ticket.currentTicket.getChangeDate().toString()); // TODO Переделать
         //endregion
         Description.addEventHandler(KeyEvent.KEY_TYPED, keyEvent -> {
             int areaRows = Description.getText().length() / 96 + 1; // TODO Автоматическая выставка высоты от текста

@@ -104,7 +104,7 @@ public class CreateTicketScreenController implements Initializable {
         if (validationError)
             return;
 
-        int moduleId = 0;
+        int moduleId = -1;
 
         if (ModuleBox.getValue() != null)
             moduleId = Software.software

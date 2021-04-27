@@ -111,6 +111,11 @@ public class ClientApplication extends Application {
             stage.getScene().setRoot(pane);
         }
         catch (Exception e) {
+            // Вывод ошибки в консоль
+            // for (StackTraceElement el: e.getStackTrace()) {
+            //     System.out.println(el.toString());
+            // }
+
             System.out.println(e.getLocalizedMessage());
             if (e.getLocalizedMessage().equals("Location is required.")) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Этот экран для этой роли ещё не сделан.", ButtonType.CLOSE);

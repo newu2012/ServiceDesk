@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,20 +31,28 @@
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
                      <children>
                         <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
-                        <ImageView fx:id="MyProfileImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyProfileClicked" pickOnBounds="true" preserveRatio="true" styleClass="navigation-menu-image">
+                        <ImageView fx:id="MyProfileImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyProfileClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/character.png" />
                            </image>
+                           <styleClass>
+                              <String fx:value="navigation-menu-image" />
+                              <String fx:value="profile-image" />
+                           </styleClass>
                         </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0">
                      <children>
                         <Text fx:id="MyOrganisation" layoutY="30.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="RIGHT" wrappingWidth="136.0" />
-                        <ImageView fx:id="MyOrganisationImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyOrganisationClicked" pickOnBounds="true" preserveRatio="true" styleClass="navigation-menu-image">
+                        <ImageView fx:id="MyOrganisationImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyOrganisationClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/three-friends.png" />
                            </image>
+                           <styleClass>
+                              <String fx:value="navigation-menu-image" />
+                              <String fx:value="organisation-image" />
+                           </styleClass>
                         </ImageView>
                      </children>
                   </AnchorPane>
@@ -54,7 +61,7 @@
          </children></HBox>
    </top>
    <center>
-      <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="708.0" prefWidth="1366.0" BorderPane.alignment="CENTER" fx:id="OrganisationMainPane">
+      <Pane fx:id="OrganisationMainPane" maxWidth="1366.0" minWidth="1366.0" prefHeight="708.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="133.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Моя организация" />
          </children>

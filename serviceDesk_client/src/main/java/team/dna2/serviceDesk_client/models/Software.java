@@ -50,7 +50,8 @@ public class Software {
         return softwareModules;
     }
 
-    public SoftwareModule getSoftwareModuleById(int id) {return softwareModules
+    public SoftwareModule getSoftwareModuleById(int id) {
+        return id == -1 || id > softwareModules.size() ? new SoftwareModule("") : softwareModules
             .stream().filter(sm -> sm.getId() == id)
             .findFirst()
             .orElse(null);}
