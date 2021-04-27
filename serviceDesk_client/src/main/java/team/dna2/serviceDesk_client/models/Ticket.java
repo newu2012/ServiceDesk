@@ -4,22 +4,22 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Ticket {
     public SimpleIntegerProperty id;
     public SimpleStringProperty title;
-    public SimpleStringProperty creator; // DELETE
     public SimpleIntegerProperty creatorId;
     public SimpleObjectProperty<TicketStatus> status;
     public SimpleStringProperty category; // -> categoryId
     public SimpleObjectProperty<Date> creationDate;
     public SimpleObjectProperty<Date> changeDate;
-    public SimpleIntegerProperty softwareId; // -> softwareId
+    public SimpleIntegerProperty softwareId;
     public SimpleIntegerProperty moduleId;
-    public SimpleStringProperty helper; // -> helperId
-    public SimpleStringProperty description; // -> helperId
+    public SimpleIntegerProperty helperId;
+    public SimpleStringProperty description;
 
     public static ArrayList<Ticket> tickets = new ArrayList<Ticket>(); // Список обращений всей системы
     public static Ticket currentTicket; // Активное просматриваемое активным пользователем обращение
@@ -30,7 +30,6 @@ public class Ticket {
      * TODO Переделать согласно БД + нужным для таблицы полям
      * Создание обращения (тикета). Обращение - основная сущность системы
      * @param title Тема обращения, не менее 10 символов
-     * @param creator ФИО создателя обращения (нужно будет убрать, потом брать ссылкой через ID)
      * @param creatorId ID создателя обращения
      * @param status Статус обращения (отдельный файл статусов)
      * @param category Категория обращения (отдельный файл категорий)
@@ -38,11 +37,10 @@ public class Ticket {
      * @param changeDate Дата последнего изменения/комментирования/смены статуса обращения
      * @param softwareId ID ПО, по которому создаётся обращение
      * @param moduleId ID модуля ПО, по которому создаётся обращение
-     * @param helper Разработчик, назначенный на работу с обращением
+     * @param helperId Разработчик, назначенный на работу с обращением
      */
     public Ticket(
                   String title,
-                  String creator,
                   Integer creatorId,
                   TicketStatus status,
                   String category,
@@ -50,11 +48,10 @@ public class Ticket {
                   Date changeDate,
                   Integer softwareId,
                   Integer moduleId,
-                  String helper,
+                  Integer helperId,
                   String description) {
         this.id = new SimpleIntegerProperty(nextId++);
         this.title = new SimpleStringProperty(title);
-        this.creator = new SimpleStringProperty(creator);
         this.creatorId = new SimpleIntegerProperty(creatorId);
         this.status = new SimpleObjectProperty<TicketStatus>(status);
         this.category = new SimpleStringProperty(category);
@@ -62,7 +59,7 @@ public class Ticket {
         this.changeDate = new SimpleObjectProperty<Date>(changeDate);
         this.softwareId = new SimpleIntegerProperty(softwareId);
         this.moduleId = new SimpleIntegerProperty(moduleId);
-        this.helper = new SimpleStringProperty(helper);
+        this.helperId = new SimpleIntegerProperty(helperId);
         this.description = new SimpleStringProperty(description);
     }
 
@@ -83,7 +80,6 @@ public class Ticket {
         String description) {
             tickets.add(new Ticket(
                     title,
-                    User.currentUser.getFullName(),
                     User.currentUser.getId(),
                     TicketStatus.OPEN,
                     category,
@@ -91,7 +87,7 @@ public class Ticket {
                     null,
                     softwareId,
                     moduleId,
-                    null,
+                    -1,
                     description
             ));
     }
@@ -111,14 +107,6 @@ public class Ticket {
 
     public void setTitle(String title) {
         this.title.set(title);
-    }
-
-    public String getCreator() {
-        return creator.get();
-    }
-
-    public void setCreator(String creator) {
-        this.creator.set(creator);
     }
 
     public int getCreatorId() {
@@ -154,8 +142,8 @@ public class Ticket {
     }
 
     public Date getChangeDate() {
-        return null == changeDate ? null : changeDate.get();
-    }
+        return null == changeDate ? Date.from(Instant.ofEpochSecond(0)) : changeDate.get();
+    } // TODO Пустая строка при null
 
     public void setChangeDate(Date changeDate) {
         this.changeDate.set(changeDate);
@@ -177,12 +165,12 @@ public class Ticket {
         this.moduleId.set(moduleId);
     }
 
-    public String getHelper() {
-        return helper.get();
+    public Integer getHelperId() {
+        return helperId.get();
     }
 
-    public void setHelper(String helper) {
-        this.helper.set(helper);
+    public void setHelperId(Integer helperId) {
+        this.helperId.set(helperId);
     }
 
     public String getDescription() {

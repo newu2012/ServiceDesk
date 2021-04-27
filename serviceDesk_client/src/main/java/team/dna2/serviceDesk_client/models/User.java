@@ -16,7 +16,7 @@ public class User {
 
     public static ArrayList<User> users = new ArrayList<User>(); // Список пользователей всей системы
     public static User currentUser; // Активный пользователь системы. Меняется после выхода из аккаунта.
-    public static int nextId = 1;
+    public static int nextId = 0;
 
     /**
      * WIP

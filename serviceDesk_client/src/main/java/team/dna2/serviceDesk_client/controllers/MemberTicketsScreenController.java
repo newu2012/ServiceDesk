@@ -1,5 +1,7 @@
 package team.dna2.serviceDesk_client.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,8 +13,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.models.Software;
 import team.dna2.serviceDesk_client.models.Ticket;
 import team.dna2.serviceDesk_client.models.User;
 
@@ -72,13 +76,27 @@ public class MemberTicketsScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
-        creator.setCellValueFactory(new PropertyValueFactory<>("Creator"));
+        creator.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(User.users
+                        .get(ticketStringCellDataFeatures.getValue().getCreatorId())
+                        .getFullName()));
         status.setCellValueFactory(new PropertyValueFactory<>("Status"));
         category.setCellValueFactory(new PropertyValueFactory<>("Category"));
         creationDate.setCellValueFactory(new PropertyValueFactory<>("CreationDate"));
         changeDate.setCellValueFactory(new PropertyValueFactory<>("ChangeDate"));
-        software.setCellValueFactory(new PropertyValueFactory<>("Software"));
-        helper.setCellValueFactory(new PropertyValueFactory<>("Helper"));
+        software.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(Software.software
+                        .get(ticketStringCellDataFeatures.getValue().getSoftware())
+                        .getName()));
+        helper.setCellValueFactory(ticketStringCellDataFeatures -> {
+            if (ticketStringCellDataFeatures.getValue().getHelperId() == -1)
+                return new SimpleStringProperty("");
+            else return
+                    new SimpleStringProperty(User.users
+                            .get(ticketStringCellDataFeatures.getValue().getHelperId())
+                            .getFullName());
+        });
+
 
         oTickets = FXCollections.observableArrayList(Ticket.tickets);
         TicketTableSetRowFactory();
