@@ -2,10 +2,14 @@ package team.dna2.serviceDesk_client.controllers;
 
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -15,6 +19,7 @@ import team.dna2.serviceDesk_client.ScreenManager;
 import team.dna2.serviceDesk_client.models.Software;
 import team.dna2.serviceDesk_client.models.SoftwareModule;
 import team.dna2.serviceDesk_client.models.Ticket;
+import team.dna2.serviceDesk_client.models.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,6 +38,9 @@ public class MemberShowTicketScreenController implements Initializable {
     //endregion
     //region FXMLTicketInfo
     @FXML private Text Title;
+    @FXML private Text CreatorFullName;
+    @FXML private Text CreatorRole;
+    @FXML private ImageView CreatorAvatar;
     @FXML private JFXTextArea Description;
     @FXML private Text Status;
     @FXML private Text Category;
@@ -51,6 +59,9 @@ public class MemberShowTicketScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //region FieldsSets
         Title.setText(Ticket.currentTicket.getTitle());
+        CreatorFullName.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getFullName());
+        CreatorRole.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getRole());
+        CreatorAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getCreatorId()).getAvatarFileName())));
         Description.setText(Ticket.currentTicket.getDescription());
         Status.setText(Ticket.currentTicket.getStatus().toString());
         Category.setText(Ticket.currentTicket.getCategory());
@@ -59,8 +70,9 @@ public class MemberShowTicketScreenController implements Initializable {
         CreationDate.setText(Ticket.currentTicket.getCreationDate().toString());
         // ChangeDate.setText(Ticket.currentTicket.getChangeDate().toString()); // TODO Переделать
         //endregion
+
         Description.addEventHandler(KeyEvent.KEY_TYPED, keyEvent -> {
-            int areaRows = Description.getText().length() / 96 + 1; // TODO Автоматическая выставка высоты от текста
+            int areaRows = Description.getText().length() / 50 + 1; // TODO Автоматическая выставка высоты от текста
             Description.setPrefHeight(areaRows * 12);
         });
     }

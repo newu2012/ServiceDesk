@@ -56,13 +56,6 @@
             </HBox>
          </children></HBox>
    </top>
-   <bottom>
-      <ImageView fx:id="PlaceholderImage" fitHeight="782.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true" visible="false" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../images/MainScreenPlaceholder.png" />
-         </image>
-      </ImageView>
-   </bottom>
    <center>
       <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>

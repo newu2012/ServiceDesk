@@ -13,6 +13,7 @@ public class User {
     public SimpleStringProperty password;
     public SimpleStringProperty fullName;
     public SimpleStringProperty role;
+    public SimpleStringProperty avatarFileName;
 
     public static ArrayList<User> users = new ArrayList<User>(); // Список пользователей всей системы
     public static User currentUser; // Активный пользователь системы. Меняется после выхода из аккаунта.
@@ -35,6 +36,9 @@ public class User {
         this.password = new SimpleStringProperty(password);
         this.fullName = new SimpleStringProperty(fullName);
         this.role = new SimpleStringProperty(role);
+        if (role.equals(Role.DEVELOPER.getRole()))
+            this.avatarFileName = new SimpleStringProperty("character.png");
+        else this.avatarFileName = new SimpleStringProperty("three-friends.png");
     }
 
     public int getId() {
@@ -71,5 +75,13 @@ public class User {
 
     public void setRole(String role) {
         this.role.set(role);
+    }
+
+    public String getAvatarFileName() {
+        return avatarFileName.get();
+    }
+
+    public void setAvatarFileName(String avatarFileName) {
+        this.avatarFileName.set(avatarFileName);
     }
 }
