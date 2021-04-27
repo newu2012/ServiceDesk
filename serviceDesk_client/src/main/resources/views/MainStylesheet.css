@@ -83,6 +83,16 @@
     -fx-cursor: hand;
 }
 
+.text-area {
+    -fx-wrap-text: true;
+}
+
+.jfx-text-area {
+    -fx-wrap-text: true;
+    -jfx-focus-color: #00D29D;
+    -fx-font-size: 14;
+}
+
 .choice-box {
     -fx-font-size: 14;
 }
@@ -113,8 +123,16 @@
     -fx-text-fill: #ffffff;
 }
 
-.tab-header-background {
-    -fx-background-color:white;
+.jfx-tab-pane {
+    -fx-border-width: 2;
+    -fx-border-color: #302E2E;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-text-fill: #ffffff;
+}
+
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: white;
 }
 
 .tab-pane:top *.tab-header-area {
@@ -122,6 +140,40 @@
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em;
 }
 
-.tab {
+.jfx-tab-pane .tab {
+    -fx-background-color: #DDDDDD;
+}
+
+.jfx-tab-pane .tab-label {
     -fx-font-size: 20;
+    -fx-text-fill: #302E2E;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: #00D29D;
+    -fx-pref-height: 3;
+}
+
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: #00D29D;
+}
+
+.jfx-tab-pane .tab:selected {
+    -fx-background-color: white;
+}
+
+.profile-image {
+    -fx-image: url("./../images/character.png");
+}
+
+.profile-image:hover {
+    -fx-image: url("./../images/three-friends.png");
+}
+
+.organisation-image {
+    -fx-image: url("./../images/three-friends.png");
+}
+
+.organisation-image:hover {
+    -fx-image: url("./../images/character.png");
 }

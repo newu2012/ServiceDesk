@@ -4,64 +4,62 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Ticket {
     public SimpleIntegerProperty id;
     public SimpleStringProperty title;
-    public SimpleStringProperty creator; // DELETE
     public SimpleIntegerProperty creatorId;
     public SimpleObjectProperty<TicketStatus> status;
     public SimpleStringProperty category; // -> categoryId
     public SimpleObjectProperty<Date> creationDate;
     public SimpleObjectProperty<Date> changeDate;
-    public SimpleStringProperty software; // -> softwareId
+    public SimpleIntegerProperty softwareId;
     public SimpleIntegerProperty moduleId;
-    public SimpleStringProperty helper; // -> helperId
-    public SimpleStringProperty description; // -> helperId
+    public SimpleIntegerProperty helperId;
+    public SimpleStringProperty description;
 
     public static ArrayList<Ticket> tickets = new ArrayList<Ticket>(); // Список обращений всей системы
-    public static int nextId = 1;
+    public static Ticket currentTicket; // Активное просматриваемое активным пользователем обращение
+    public static int nextId = 0;
 
     /**
      * WIP
      * TODO Переделать согласно БД + нужным для таблицы полям
      * Создание обращения (тикета). Обращение - основная сущность системы
      * @param title Тема обращения, не менее 10 символов
-     * @param creator ФИО создателя обращения (нужно будет убрать, потом брать ссылкой через ID)
      * @param creatorId ID создателя обращения
      * @param status Статус обращения (отдельный файл статусов)
      * @param category Категория обращения (отдельный файл категорий)
      * @param creationDate Дата создания, ставится автоматически при создании обращения
      * @param changeDate Дата последнего изменения/комментирования/смены статуса обращения
-     * @param software Название ПО, по которому создаётся обращение
-     * @param moduleId Название модуля ПО, по которому создаётся обращение
-     * @param helper Разработчик, назначенный на работу с обращением
+     * @param softwareId ID ПО, по которому создаётся обращение
+     * @param moduleId ID модуля ПО, по которому создаётся обращение
+     * @param helperId Разработчик, назначенный на работу с обращением
      */
     public Ticket(
                   String title,
-                  String creator,
                   Integer creatorId,
                   TicketStatus status,
                   String category,
                   Date creationDate,
                   Date changeDate,
-                  String software,
+                  Integer softwareId,
                   Integer moduleId,
-                  String helper,
+                  Integer helperId,
                   String description) {
         this.id = new SimpleIntegerProperty(nextId++);
         this.title = new SimpleStringProperty(title);
-        this.creator = new SimpleStringProperty(creator);
         this.creatorId = new SimpleIntegerProperty(creatorId);
         this.status = new SimpleObjectProperty<TicketStatus>(status);
         this.category = new SimpleStringProperty(category);
         this.creationDate = new SimpleObjectProperty<Date>(creationDate);
         this.changeDate = new SimpleObjectProperty<Date>(changeDate);
-        this.software = new SimpleStringProperty(software);
+        this.softwareId = new SimpleIntegerProperty(softwareId);
         this.moduleId = new SimpleIntegerProperty(moduleId);
-        this.helper = new SimpleStringProperty(helper);
+        this.helperId = new SimpleIntegerProperty(helperId);
         this.description = new SimpleStringProperty(description);
     }
 
@@ -70,27 +68,26 @@ public class Ticket {
      * Основной метод создания обращения, используется в GUI.
      * @param title Название обращения, минимум 10 символов
      * @param category Категория обращения, на выбор одна из 3 кнопок
-     * @param software Название ПО, выбирается пользователем
+     * @param softwareId Название ПО, выбирается пользователем
      * @param moduleId Название модуля ПО, выбирается пользователем
      * @param description Полное текстовое описание обращения
      */
     public static void AddTicket(
         String title,
         String category,
-        String software, // TODO переделать в softwareId
+        Integer softwareId,
         Integer moduleId,
         String description) {
             tickets.add(new Ticket(
                     title,
-                    User.currentUser.getFullName(),
                     User.currentUser.getId(),
                     TicketStatus.OPEN,
                     category,
                     new Date(),
                     null,
-                    software,
+                    softwareId,
                     moduleId,
-                    null,
+                    -1,
                     description
             ));
     }
@@ -110,14 +107,6 @@ public class Ticket {
 
     public void setTitle(String title) {
         this.title.set(title);
-    }
-
-    public String getCreator() {
-        return creator.get();
-    }
-
-    public void setCreator(String creator) {
-        this.creator.set(creator);
     }
 
     public int getCreatorId() {
@@ -153,19 +142,19 @@ public class Ticket {
     }
 
     public Date getChangeDate() {
-        return changeDate.get();
-    }
+        return null == changeDate ? Date.from(Instant.ofEpochSecond(0)) : changeDate.get();
+    } // TODO Пустая строка при null
 
     public void setChangeDate(Date changeDate) {
         this.changeDate.set(changeDate);
     }
 
-    public String getSoftware() {
-        return software.get();
+    public Integer getSoftware() {
+        return softwareId.get();
     }
 
-    public void setSoftware(String software) {
-        this.software.set(software);
+    public void setSoftware(Integer softwareId) {
+        this.softwareId.set(softwareId);
     }
 
     public Integer getModuleId() {
@@ -176,12 +165,12 @@ public class Ticket {
         this.moduleId.set(moduleId);
     }
 
-    public String getHelper() {
-        return helper.get();
+    public Integer getHelperId() {
+        return helperId.get();
     }
 
-    public void setHelper(String helper) {
-        this.helper.set(helper);
+    public void setHelperId(Integer helperId) {
+        this.helperId.set(helperId);
     }
 
     public String getDescription() {

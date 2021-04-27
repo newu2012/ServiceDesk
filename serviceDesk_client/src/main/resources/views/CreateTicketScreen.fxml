@@ -28,7 +28,7 @@
             <Text layoutX="95.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Функциональный модуль ПО" />
             <ChoiceBox fx:id="ModuleBox" layoutX="95.0" layoutY="350.0" prefHeight="25.0" prefWidth="650.0" />
             <Text layoutX="95.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Описание" />
-            <TextArea fx:id="DescriptionTextArea" layoutX="95.0" layoutY="415.0" prefHeight="180.0" prefWidth="650.0" promptText="Дополнительная информация по обращению">
+            <TextArea fx:id="DescriptionTextArea" layoutX="95.0" layoutY="415.0" prefHeight="180.0" prefWidth="650.0" promptText="Дополнительная информация по обращению" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>

@@ -104,7 +104,8 @@ public class CreateTicketScreenController implements Initializable {
         if (validationError)
             return;
 
-        int moduleId = 0;
+        int moduleId = -1;
+
         if (ModuleBox.getValue() != null)
             moduleId = Software.software
                     .stream().filter(software -> software.softwareModules
@@ -117,7 +118,7 @@ public class CreateTicketScreenController implements Initializable {
         Ticket.AddTicket(
                 TitleField.getText(),
                 CategoryBox.getValue().getName(),
-                SoftwareBox.getValue().getName(),
+                SoftwareBox.getValue().getId(),
                 moduleId,
                 DescriptionTextArea.getText());
 

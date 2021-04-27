@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -40,10 +45,14 @@
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
                      <children>
                         <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
-                        <ImageView fx:id="MyProfileImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyProfileClicked" pickOnBounds="true" preserveRatio="true" styleClass="navigation-menu-image">
+                        <ImageView fx:id="MyProfileImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyProfileClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/character.png" />
                            </image>
+                           <styleClass>
+                              <String fx:value="navigation-menu-image" />
+                              <String fx:value="profile-image" />
+                           </styleClass>
                         </ImageView>
                      </children>
                   </AnchorPane>
@@ -51,20 +60,78 @@
             </HBox>
          </children></HBox>
    </top>
-   <bottom>
-      <ImageView fx:id="PlaceholderImage" fitHeight="782.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true" visible="false" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../images/MainScreenPlaceholder.png" />
-         </image>
-      </ImageView>
-   </bottom>
    <center>
       <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="133.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Просмотр обращения" />
+            <Text layoutX="172.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Просмотр обращения" />
+            <AnchorPane layoutX="172.0" layoutY="64.0" maxHeight="550.0" prefHeight="550.0" prefWidth="800.0">
+               <children>
+                  <ScrollPane fitToHeight="true" hbarPolicy="NEVER" maxWidth="680.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="10.0">
+                     <content>
+                        <VBox maxWidth="760.0" minHeight="520.0" minWidth="760.0" prefHeight="520.0" prefWidth="760.0" spacing="20.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <AnchorPane fx:id="TicketMainPane" maxWidth="740.0" minHeight="100.0" minWidth="740.0" prefWidth="740.0" styleClass="pane-borders">
+                                 <children>
+                                    <Text fx:id="Title" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                    <JFXTextArea fx:id="Description" editable="false" maxHeight="150.0" maxWidth="600.0" minHeight="150.0" minWidth="500.0" prefHeight="150.0" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                                    <Text fx:id="CreatorRole" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Представитель Заказчика" AnchorPane.leftAnchor="10.0" />
+                                    <Text fx:id="CreatorFullName" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Юзеревко Юзер Юзерович" textAlignment="CENTER" wrappingWidth="140.0" AnchorPane.leftAnchor="10.0" />
+                                    <ImageView fx:id="CreatorAvatar" fitHeight="64.0" fitWidth="64.0" layoutX="51.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane maxHeight="150.0" maxWidth="740.0" minHeight="100.0" minWidth="740.0" styleClass="pane-borders">
+                                 <children>
+                                    <JFXTextArea fx:id="Description1" maxHeight="150.0" maxWidth="600.0" minHeight="150.0" minWidth="500.0" prefHeight="150.0" promptText="Добавить комментарий" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" />
+                                    <ImageView fx:id="CreatorAvatarComment" fitHeight="64.0" fitWidth="64.0" layoutX="50.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children></AnchorPane>
+            <AnchorPane layoutX="1000.0" layoutY="64.0" maxHeight="550.0" maxWidth="306.0" minWidth="306.0" prefHeight="550.0" prefWidth="306.0" styleClass="pane-borders">
+               <children>
+                  <VBox maxHeight="250.0" maxWidth="154.0" minWidth="154.0" prefHeight="250.0" prefWidth="154.0" spacing="15.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Статус" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Тип обращения" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Название ПО" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Модуль ПО" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Дата создания" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Дата изменения" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Дата обработки" />
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+                     </padding>
+                  </VBox>
+                  <VBox layoutX="153.0" maxHeight="250.0" maxWidth="154.0" minWidth="154.0" prefHeight="250.0" prefWidth="154.0" spacing="15.0">
+                     <padding>
+                        <Insets bottom="15.0" right="10.0" top="15.0" />
+                     </padding>
+                     <children>
+                        <ChoiceBox fx:id="Status" onAction="#ChangeStatus" prefWidth="150.0" />
+                        <Text fx:id="Category" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Открыто" />
+                        <Text fx:id="Software" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text fx:id="Module" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text fx:id="CreationDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text fx:id="ChangeDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="UsersInfo" layoutY="260.0" prefHeight="250.0" prefWidth="306.0">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding></VBox>
+               </children>
+            </AnchorPane>
          </children>
          <BorderPane.margin>
-            <Insets top="64.0" />
+            <Insets />
          </BorderPane.margin>
       </Pane>
    </center>
