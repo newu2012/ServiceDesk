@@ -58,6 +58,10 @@ public class Software {
             .findFirst()
             .orElse(null);}
 
+    /**
+     * Стирает модуль по умолчанию "Не определено"
+     * @param softwareModules Лист из модулей для добавления к ПО
+     */
     public void setSoftwareModules(ArrayList<SoftwareModule> softwareModules) {
         this.softwareModules = softwareModules;
     }

@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
@@ -49,6 +50,14 @@ public class MemberShowTicketScreenController implements Initializable {
     @FXML private Text CreationDate;
     @FXML private Text ChangeDate;
     @FXML private VBox UsersInfo;
+
+    @FXML private Text TicketCreatorFullName;
+    @FXML private Text TicketCreatorRole;
+    @FXML private ImageView TicketCreatorAvatar;
+    @FXML private Pane TicketHelperPane;
+    @FXML private Text TicketHelperFullName;
+    @FXML private Text TicketHelperRole;
+    @FXML private ImageView TicketHelperAvatar;
     //endregion
 
     public MemberShowTicketScreenController() {
@@ -69,6 +78,17 @@ public class MemberShowTicketScreenController implements Initializable {
         Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getSoftwareModuleById(Ticket.currentTicket.getModuleId()).getName());
         CreationDate.setText(Ticket.currentTicket.getCreationDate().toString());
         // ChangeDate.setText(Ticket.currentTicket.getChangeDate().toString()); // TODO Переделать
+
+        TicketCreatorFullName.setText(CreatorFullName.getText());
+        TicketCreatorRole.setText(CreatorRole.getText());
+        TicketCreatorAvatar.setImage(CreatorAvatar.getImage());
+        if (Ticket.currentTicket.getHelperId() == -1)
+            TicketHelperPane.setVisible(false);
+        else {
+            TicketHelperFullName.setText(User.users.get(Ticket.currentTicket.getHelperId()).getFullName());
+            TicketHelperRole.setText(User.users.get(Ticket.currentTicket.getHelperId()).getRole());
+            TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getHelperId()).getAvatarFileName())));
+        }
         //endregion
 
         Description.addEventHandler(KeyEvent.KEY_TYPED, keyEvent -> {

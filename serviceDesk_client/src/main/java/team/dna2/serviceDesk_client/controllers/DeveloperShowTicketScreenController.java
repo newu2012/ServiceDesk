@@ -1,23 +1,28 @@
 package team.dna2.serviceDesk_client.controllers;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.models.Role;
 import team.dna2.serviceDesk_client.models.Ticket;
 import team.dna2.serviceDesk_client.models.TicketStatus;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class DeveloperShowTicketScreenController implements Initializable {
     private ClientApplication clientApplication;
@@ -44,6 +49,14 @@ public class DeveloperShowTicketScreenController implements Initializable {
     @FXML private Text CreationDate;
     @FXML private Text ChangeDate;
     @FXML private VBox UsersInfo;
+
+    @FXML private Text TicketCreatorFullName;
+    @FXML private Text TicketCreatorRole;
+    @FXML private ImageView TicketCreatorAvatar;
+    @FXML private Pane TicketHelperPane;
+    @FXML private ChoiceBox<User> TicketHelperFullName;
+    @FXML private Text TicketHelperRole;
+    @FXML private ImageView TicketHelperAvatar;
     //endregion
 
     public DeveloperShowTicketScreenController() {
@@ -67,12 +80,29 @@ public class DeveloperShowTicketScreenController implements Initializable {
         Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getSoftwareModuleById(Ticket.currentTicket.getModuleId()).getName());
         CreationDate.setText(Ticket.currentTicket.getCreationDate().toString());
         // ChangeDate.setText(Ticket.currentTicket.getChangeDate().toString()); // TODO Переделать
+
+        TicketCreatorFullName.setText(CreatorFullName.getText());
+        TicketCreatorRole.setText(CreatorRole.getText());
+        TicketCreatorAvatar.setImage(CreatorAvatar.getImage());
+        if (Ticket.currentTicket.getHelperId() == -1) {
+            TicketHelperFullName.setItems(FXCollections.observableList(User.users
+                    .stream().filter(user -> user.role.get().equals(Role.DEVELOPER.toString()))
+                    .collect(Collectors.toList())));
+        }
         //endregion
 
         Description.addEventHandler(KeyEvent.KEY_TYPED, keyEvent -> {
             int areaRows = Description.getText().length() / 50 + 1; // TODO Автоматическая выставка высоты от текста
             Description.setPrefHeight(areaRows * 12);
         });
+    }
+
+    public void SetTicketHelper() {
+        Ticket.currentTicket.setHelperId(TicketHelperFullName.getValue().getId());
+
+        TicketHelperFullName.setValue(User.users.get(Ticket.currentTicket.getHelperId()));
+        TicketHelperRole.setText(User.users.get(Ticket.currentTicket.getHelperId()).getRole());
+        TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getHelperId()).getAvatarFileName())));
     }
 
     @FXML

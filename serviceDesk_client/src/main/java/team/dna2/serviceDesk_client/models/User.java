@@ -41,6 +41,11 @@ public class User {
         else this.avatarFileName = new SimpleStringProperty("three-friends.png");
     }
 
+    @Override
+    public String toString() {
+        return getFullName();
+    }
+
     public int getId() {
         return id.get();
     }

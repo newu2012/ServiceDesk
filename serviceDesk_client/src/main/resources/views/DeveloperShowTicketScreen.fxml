@@ -97,7 +97,10 @@
                <children>
                   <VBox maxHeight="250.0" maxWidth="154.0" minWidth="154.0" prefHeight="250.0" prefWidth="154.0" spacing="15.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Статус" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Статус">
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin></Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Тип обращения" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Название ПО" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Модуль ПО" />
@@ -114,7 +117,7 @@
                         <Insets bottom="15.0" right="10.0" top="15.0" />
                      </padding>
                      <children>
-                        <ChoiceBox fx:id="Status" onAction="#ChangeStatus" prefWidth="150.0" />
+                        <ChoiceBox fx:id="Status" onAction="#ChangeStatus" prefWidth="144.0" />
                         <Text fx:id="Category" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Открыто" />
                         <Text fx:id="Software" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
                         <Text fx:id="Module" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="null" />
@@ -125,8 +128,71 @@
                   </VBox>
                   <VBox fx:id="UsersInfo" layoutY="260.0" prefHeight="250.0" prefWidth="306.0">
                      <padding>
-                        <Insets left="10.0" right="10.0" />
-                     </padding></VBox>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <BorderPane prefHeight="100.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <left>
+                              <ImageView fx:id="TicketCreatorAvatar" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets left="5.0" />
+                                 </BorderPane.margin>
+                              </ImageView>
+                           </left>
+                           <top>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Создатель обращения" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                           </top>
+                           <center>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Text fx:id="TicketCreatorFullName" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Юзеров Юзер Юзерович" textAlignment="CENTER" wrappingWidth="210.0">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin></Text>
+                                    <Text fx:id="TicketCreatorRole" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Представитель Заказчика" textAlignment="CENTER" wrappingWidth="210.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                        <BorderPane fx:id="TicketHelperPane" prefHeight="100.0" prefWidth="200.0">
+                           <left>
+                              <ImageView fx:id="TicketHelperAvatar" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets left="5.0" />
+                                 </BorderPane.margin>
+                              </ImageView>
+                           </left>
+                           <top>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Исполнитель" BorderPane.alignment="CENTER" />
+                           </top>
+                           <center>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ChoiceBox fx:id="TicketHelperFullName" onAction="#SetTicketHelper" prefHeight="30.0" prefWidth="245.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin></ChoiceBox>
+                                    <Text fx:id="TicketHelperRole" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Разработчик" textAlignment="CENTER" wrappingWidth="210.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </children></VBox>
                </children>
             </AnchorPane>
          </children>
