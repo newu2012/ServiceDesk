@@ -1,6 +1,8 @@
 package team.dna2.serviceDesk_client.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
@@ -17,10 +19,28 @@ public class MemberProfileScreenController {
     @FXML private ImageView MyProfileImage;
     @FXML private Text MyOrganisation;
     @FXML private ImageView MyOrganisationImage;
+
+    @FXML private Text FullName;
+    @FXML private Text Role;
+    @FXML private Text Email;
+    @FXML private Text CreationDate;
+    @FXML private ImageView Avatar;
+    @FXML private Button ChangeProfileButton;
+    @FXML private Button LogOutButton;
     //endregion
 
     public MemberProfileScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
+    }
+
+    @FXML
+    public void ChangeProfile() {
+        ScreenManager.ChangeProfile();
+    }
+
+    @FXML
+    public void LogOut() {
+        ScreenManager.LogOut();
     }
 
     //region MemberMenu
