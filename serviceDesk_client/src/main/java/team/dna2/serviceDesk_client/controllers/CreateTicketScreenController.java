@@ -20,12 +20,14 @@ import java.util.ResourceBundle;
 public class CreateTicketScreenController implements Initializable {
     private ClientApplication clientApplication;
 
+    //region FXMLNodes
     @FXML private TextField TitleField;
     @FXML private ChoiceBox<Category> CategoryBox;
     @FXML private ChoiceBox<Software> SoftwareBox;
     @FXML private ChoiceBox<SoftwareModule> ModuleBox;
     @FXML private TextArea DescriptionTextArea;
     @FXML private Button CreateTicketButton;
+    //endregion
 
     ObservableList<Category> oCategories = FXCollections.observableArrayList(Category.categories);
     ObservableList<Software> oSoftware = FXCollections.observableArrayList(Software.software);

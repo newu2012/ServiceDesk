@@ -35,6 +35,7 @@ public class ScreenManager {
     }
 
     /**
+     * WIP
      * Сохранение дополнительного окна (создание обращения...) чтобы было открыто не больше одного
      */
     public static void UpdateSecondScreen() {
@@ -48,9 +49,9 @@ public class ScreenManager {
         clientApplication.ChangeScene("LoginScreen.fxml");
     }
 
+    //region Tickets
     /**
-     * WIP
-     * Успешный вход в аккаунт
+     * Открытие списка обращений
      */
     public static void OpenTickets() {
         UpdateMainScreen();
@@ -72,30 +73,13 @@ public class ScreenManager {
      * Создание обращения в новом окне
      */
     public static void CreateTicket() {
-        if (Stage.getWindows().size() == 2) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Невозможно открыть более 1 дополнительного окна", ButtonType.CLOSE);
-            alert.showAndWait();
-
+        if (CheckForTwoWindows())
             return;
-        }
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(ScreenManager.class.getResource("/views/CreateTicketScreen.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 850, 680);
-            Stage stage = new Stage();
-            stage.setTitle("Создание обращения");
-            stage.setScene(scene);
-            stage.show();
-            stage.requestFocus();
-            secondScreen = stage.getOwner();
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
-        }
+        OpenSecondWindow("CreateTicketScreen.fxml", "Создание обращения");
     }
 
     /**
-     * WIP
      * Экран просмотра обращения
      */
     public static void ShowTicket() {
@@ -104,7 +88,9 @@ public class ScreenManager {
         else
             clientApplication.ChangeScene("MemberShowTicketScreen.fxml");
     }
+    //endregion
 
+    //region ProfileAndOrganisation
     /**
      * WIP
      * Экран личного профиля
@@ -114,6 +100,17 @@ public class ScreenManager {
             clientApplication.ChangeScene("DeveloperProfileScreen.fxml");
         else
             clientApplication.ChangeScene("MemberProfileScreen.fxml");
+    }
+
+    /**
+     * WIP
+     * Открывает второе окно для изменения информации профиля
+     */
+    public static void ChangeProfile() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("ChangeProfileScreen.fxml", "Изменение профиля");
     }
 
     /**
@@ -128,7 +125,9 @@ public class ScreenManager {
         else if (Role.DEVELOPER.getRole().equals(userRole))
             clientApplication.ChangeScene("DeveloperOrganisationScreen.fxml");
     }
+    //endregion
 
+    //region DeveloperOnly
     /**
      * WIP
      * Экран просмотра справочников
@@ -146,4 +145,33 @@ public class ScreenManager {
         if (Role.DEVELOPER.getRole().equals(userRole))
             clientApplication.ChangeScene("DeveloperStatisticsScreen.fxml");
     }
+    //endregion
+
+    //region Utils
+    public static boolean CheckForTwoWindows() {
+        if (Stage.getWindows().size() == 2) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Невозможно открыть более 1 дополнительного окна", ButtonType.CLOSE);
+            alert.showAndWait();
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void OpenSecondWindow(String fileName, String title) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(ScreenManager.class.getResource("/views/" + fileName));
+            Scene scene = new Scene(fxmlLoader.load(), 850, 680);
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(scene);
+            stage.show();
+            stage.requestFocus();
+            secondScreen = stage.getOwner();
+        } catch (IOException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+    }
+    //endregion
 }
