@@ -1,14 +1,20 @@
 package team.dna2.serviceDesk_client.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.models.Ticket;
+import team.dna2.serviceDesk_client.models.User;
 
-public class MemberProfileScreenController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MemberProfileScreenController implements Initializable {
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
@@ -31,6 +37,20 @@ public class MemberProfileScreenController {
 
     public MemberProfileScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        SetProfileInfo();
+        ScreenManager.mainScreen.focusedProperty().addListener((obs, oldVal, newVal) -> SetProfileInfo());
+    }
+
+    public void SetProfileInfo() {
+        FullName.setText(User.currentUser.getFullName());
+        Role.setText(User.currentUser.getRole());
+        Email.setText(User.currentUser.getEmail());
+        CreationDate.setText("29.04.2021"); // TODO Хранить у пользователя дату создания
+        Avatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
     }
 
     @FXML

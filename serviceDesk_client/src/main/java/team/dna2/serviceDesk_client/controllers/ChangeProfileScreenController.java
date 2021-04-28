@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import team.dna2.serviceDesk_client.models.*;
@@ -40,6 +41,7 @@ public class ChangeProfileScreenController implements Initializable {
         FirstName.setText(fullNameSplit[1]);
         if (fullNameSplit.length > 2)
             Patronymic.setText(fullNameSplit[2]);
+        Avatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
     }
 
     @FXML
