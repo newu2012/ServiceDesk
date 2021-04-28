@@ -70,7 +70,7 @@
    <center>
       <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="133.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Мой профиль" />
+            <Text layoutX="133.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Мой профиль" />
          </children>
          <BorderPane.margin>
             <Insets top="64.0" />
