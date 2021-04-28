@@ -18,12 +18,14 @@ public class Software {
         this.id = new SimpleIntegerProperty(nextId++);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty("");
+        this.softwareModules.add(new SoftwareModule(this.getId(), "Не определено"));
     }
 
     public Software(String name, String description) {
         this.id = new SimpleIntegerProperty(nextId++);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
+        this.softwareModules.add(new SoftwareModule(this.getId(), "Не определено"));
     }
 
     public int getId() {
@@ -51,7 +53,7 @@ public class Software {
     }
 
     public SoftwareModule getSoftwareModuleById(int id) {
-        return id == -1 || id > softwareModules.size() ? new SoftwareModule("") : softwareModules
+        return id == -1 || id > softwareModules.size() ? new SoftwareModule(this.getId(), "") : softwareModules
             .stream().filter(sm -> sm.getId() == id)
             .findFirst()
             .orElse(null);}

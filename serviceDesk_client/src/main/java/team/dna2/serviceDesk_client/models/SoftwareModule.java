@@ -5,25 +5,36 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class SoftwareModule {
     public SimpleIntegerProperty id;
+    public SimpleIntegerProperty softwareId;
     public SimpleStringProperty name;
     public SimpleStringProperty description;
 
     public static int nextId = 0;
 
-    public SoftwareModule(String name) {
+    public SoftwareModule(Integer softwareId, String name) {
         this.id = new SimpleIntegerProperty(nextId++);
+        this.softwareId = new SimpleIntegerProperty(softwareId);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty("");
     }
 
-    public SoftwareModule(String name, String description) {
+    public SoftwareModule(Integer softwareId, String name, String description) {
         this.id = new SimpleIntegerProperty(nextId++);
+        this.softwareId = new SimpleIntegerProperty(softwareId);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
     }
 
     public int getId() {
         return id.get();
+    }
+
+    public int getSoftwareId() {
+        return softwareId.get();
+    }
+
+    public void setSoftwareId(Integer softwareId) {
+        this.softwareId.set(softwareId);
     }
 
     public String getName() {

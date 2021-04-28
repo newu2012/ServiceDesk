@@ -60,9 +60,9 @@ public class CreateTicketScreenController implements Initializable {
      */
     @FXML
     public void SoftwareBoxChanged() {
-        String currentSoftware = SoftwareBox.getValue().getName();
+        int currentSoftware = SoftwareBox.getValue().getId();
         var newModules = oSoftware
-                .stream().filter(software -> software.getName().equals(currentSoftware))
+                .stream().filter(software -> software.getId() == currentSoftware)
                 .findFirst()
                 .orElse(null).getSoftwareModules();
         modules = FXCollections.observableArrayList(newModules);

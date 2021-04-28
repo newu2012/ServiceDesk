@@ -41,12 +41,13 @@ public class PlaceholdersManager {
 
     public static void SetUpPlaceholderSoftwareModules() {
         ArrayList<SoftwareModule> serviceDeskModules = new ArrayList<SoftwareModule>();
-        serviceDeskModules.add(new SoftwareModule("Вход в аккаунт", "Проблемы со входом или что-то ещё"));
-        serviceDeskModules.add(new SoftwareModule("Обращения", "Невозможность создать обращение, отсутствие созданного обращения..."));
-        serviceDeskModules.add(new SoftwareModule("Профиль пользователя", "Не меняется аватар..."));
-        serviceDeskModules.add(new SoftwareModule("Профиль организации", "Не получается добавить коллег в организацию..."));
+        serviceDeskModules.add(new SoftwareModule(0, "Не определено"));
+        serviceDeskModules.add(new SoftwareModule(0, "Вход в аккаунт", "Проблемы со входом или что-то ещё"));
+        serviceDeskModules.add(new SoftwareModule(0, "Обращения", "Невозможность создать обращение, отсутствие созданного обращения..."));
+        serviceDeskModules.add(new SoftwareModule(0, "Профиль пользователя", "Не меняется аватар..."));
+        serviceDeskModules.add(new SoftwareModule(0, "Профиль организации", "Не получается добавить коллег в организацию..."));
 
         Software.software.get(0).setSoftwareModules(serviceDeskModules); // Можно заменить имеющийся список
-        Software.software.get(0).addSoftwareModule(new SoftwareModule("Другое...")); // Или просто добавить запись
+        Software.software.get(0).addSoftwareModule(new SoftwareModule(0, "Другое...")); // Или просто добавить запись
     }
 }
