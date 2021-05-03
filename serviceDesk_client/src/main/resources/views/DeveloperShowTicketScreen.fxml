@@ -183,7 +183,7 @@
                                        <VBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </VBox.margin></ChoiceBox>
-                                    <Text fx:id="TicketHelperRole" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="Разработчик" textAlignment="CENTER" wrappingWidth="210.0">
+                                    <Text fx:id="TicketHelperRole" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" textAlignment="CENTER" wrappingWidth="210.0">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>

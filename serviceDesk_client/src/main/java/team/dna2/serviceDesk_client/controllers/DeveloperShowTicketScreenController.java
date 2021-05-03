@@ -21,6 +21,8 @@ import team.dna2.serviceDesk_client.models.TicketStatus;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -59,6 +61,8 @@ public class DeveloperShowTicketScreenController implements Initializable {
     @FXML private ImageView TicketHelperAvatar;
     //endregion
 
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+
     public DeveloperShowTicketScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
@@ -78,8 +82,7 @@ public class DeveloperShowTicketScreenController implements Initializable {
         Category.setText(Ticket.currentTicket.getCategory());
         Software.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getName());
         Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getSoftwareModuleById(Ticket.currentTicket.getModuleId()).getName());
-        CreationDate.setText(Ticket.currentTicket.getCreationDate().toString());
-        // ChangeDate.setText(Ticket.currentTicket.getChangeDate().toString()); // TODO Переделать
+        CreationDate.setText(dateFormat.format(Ticket.currentTicket.getCreationDate()));
 
         TicketCreatorFullName.setText(CreatorFullName.getText());
         TicketCreatorRole.setText(CreatorRole.getText());
@@ -103,6 +106,9 @@ public class DeveloperShowTicketScreenController implements Initializable {
         TicketHelperFullName.setValue(User.users.get(Ticket.currentTicket.getHelperId()));
         TicketHelperRole.setText(User.users.get(Ticket.currentTicket.getHelperId()).getRole());
         TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getHelperId()).getAvatarFileName())));
+
+        Ticket.currentTicket.setChangeDate(new Date());
+        ChangeDate.setText(dateFormat.format(Ticket.currentTicket.getChangeDate()));
     }
 
     @FXML

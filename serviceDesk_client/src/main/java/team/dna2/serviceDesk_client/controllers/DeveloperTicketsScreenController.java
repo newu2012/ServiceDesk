@@ -58,10 +58,10 @@ public class DeveloperTicketsScreenController implements Initializable {
     @FXML public TableColumn<Ticket, String> helper;
     //endregion
 
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
     public ObservableList<Ticket> oTickets = FXCollections.observableArrayList(Ticket.tickets);
 
     public static boolean showOnlyCurrentUserTickets = false;
-    public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy, HH:mm"); // Надо переводить потом дату в строку, но хз как в таблице хранить
 
     /**
      * WIP
@@ -80,8 +80,20 @@ public class DeveloperTicketsScreenController implements Initializable {
                         .getFullName()));
         status.setCellValueFactory(new PropertyValueFactory<>("Status"));
         category.setCellValueFactory(new PropertyValueFactory<>("Category"));
-        creationDate.setCellValueFactory(new PropertyValueFactory<>("CreationDate"));
-        changeDate.setCellValueFactory(new PropertyValueFactory<>("ChangeDate"));
+        // creationDate.setCellValueFactory(new PropertyValueFactory<>("CreationDate"));
+        creationDate.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getCreationDate())));
+        // changeDate.setCellValueFactory(new PropertyValueFactory<>("ChangeDate"));
+        changeDate.setCellValueFactory(ticketStringCellDataFeatures -> {
+            if (ticketStringCellDataFeatures.getValue()
+                    .getChangeDate()
+                    == null)
+                return new SimpleStringProperty("");
+            else
+                return new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getChangeDate()));
+        });
         software.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(Software.software
                         .get(ticketStringCellDataFeatures.getValue().getSoftware())
