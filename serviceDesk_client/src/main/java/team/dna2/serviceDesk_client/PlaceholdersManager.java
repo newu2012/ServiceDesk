@@ -22,10 +22,10 @@ public class PlaceholdersManager {
         User.users.add(new User("user", "user", "Юзер Юзерович", Role.MEMBER.getRole()));
         User.users.add(new User("owner", "owner", "Заказчик Заказчиков", Role.OWNER.getRole()));
 
-        User.users.add(new User("newu2011@gmail.com", "admin", "Никита Кононенко", Role.MEMBER.getRole()));
-        User.users.add(new User("pasifficid@gmail.com", "admin", "Денис Ишмурат", Role.MEMBER.getRole()));
-        User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Александр Сахно", Role.MEMBER.getRole()));
-        User.users.add(new User("anna.00kon@gmail.com", "admin", "Анна Конкина", Role.MEMBER.getRole()));
+        User.users.add(new User("newu2011@gmail.com", "admin", "Кононенко Никита ", Role.MEMBER.getRole()));
+        User.users.add(new User("pasifficid@gmail.com", "admin", "Ишмурат Денис ", Role.MEMBER.getRole()));
+        User.users.add(new User("skywalkersakhno@gmail.com", "admin", "Сахно Александр ", Role.MEMBER.getRole()));
+        User.users.add(new User("anna.00kon@gmail.com", "admin", "Конкина Анна", Role.MEMBER.getRole()));
     }
 
     public static void SetUpPlaceholderCategories() {
