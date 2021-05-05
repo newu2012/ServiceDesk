@@ -219,11 +219,11 @@ public class MemberTicketsScreenController implements Initializable {
     }
 
     /**
-     * Производит выход из аккаунта, позволяя сменить пользователя.
+     * Переход на экран со списком обращений
      */
     @FXML
-    public void LogOutButtonClicked() {
-        ScreenManager.LogOut(); // Метод временно назначен на логотип
+    public void LogoClicked() {
+        ScreenManager.OpenTickets();
     }
     //endregion
 }

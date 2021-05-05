@@ -19,7 +19,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" maxHeight="64.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
          <children>
-            <Text fx:id="Logo" fill="WHITE" onMouseClicked="#LogOutButtonClicked" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
+            <Text fx:id="Logo" fill="WHITE" onMouseClicked="#LogoClicked" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
                <font>
                   <Font name="System Bold Italic" size="36.0" />
                </font>
