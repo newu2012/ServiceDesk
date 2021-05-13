@@ -50,7 +50,7 @@ public class DeveloperShowTicketScreenController implements Initializable {
     @FXML private Text Module;
     @FXML private Text CreationDate;
     @FXML private Text ChangeDate;
-    @FXML private VBox UsersInfo;
+    @FXML private VBox TicketInfo;
 
     @FXML private Text TicketCreatorFullName;
     @FXML private Text TicketCreatorRole;

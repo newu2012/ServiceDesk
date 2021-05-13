@@ -76,7 +76,7 @@ public class CreateTicketScreenController implements Initializable {
     public void CreateTicketButtonClicked() {
         boolean validationError = false;
 
-        if (TitleField.getPromptText().equals(TitleField.getText()) || TitleField.getText().length() < 10) {
+        if (TitleField.getPromptText().equals(TitleField.getText()) || TitleField.getText().length() < 8) {
             TitleField.getStyleClass().add("text-field-error");
             validationError = true;
         }
