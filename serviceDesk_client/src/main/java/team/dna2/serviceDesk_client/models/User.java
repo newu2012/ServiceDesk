@@ -37,8 +37,11 @@ public class User {
         this.fullName = new SimpleStringProperty(fullName);
         this.role = new SimpleStringProperty(role);
         if (role.equals(Role.DEVELOPER.getRole()))
+            this.avatarFileName = new SimpleStringProperty("developer.png");
+        else if (role.equals(Role.MEMBER.getRole()) )
             this.avatarFileName = new SimpleStringProperty("character.png");
-        else this.avatarFileName = new SimpleStringProperty("three-friends.png");
+        else if (role.equals(Role.OWNER.getRole()) )
+            this.avatarFileName = new SimpleStringProperty("three-friends.png");
     }
 
     @Override

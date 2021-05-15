@@ -35,9 +35,6 @@
                      <children>
                         <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
                         <ImageView fx:id="MyProfileImage" fitHeight="64.0" fitWidth="64.0" layoutX="136.0" onMouseClicked="#MyProfileClicked" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/character.png" />
-                           </image>
                            <styleClass>
                               <String fx:value="navigation-menu-image" />
                               <String fx:value="profile-image" />

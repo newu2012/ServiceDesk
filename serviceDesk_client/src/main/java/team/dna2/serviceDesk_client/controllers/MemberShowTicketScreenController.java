@@ -70,6 +70,7 @@ public class MemberShowTicketScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
         //region FieldsSets
         Title.setText(Ticket.currentTicket.getTitle());
         CreatorFullName.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getFullName());

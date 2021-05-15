@@ -43,6 +43,7 @@ public class MemberProfileScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SetProfileInfo();
         ScreenManager.mainScreen.focusedProperty().addListener((obs, oldVal, newVal) -> SetProfileInfo());
+        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
     }
 
     public void SetProfileInfo() {

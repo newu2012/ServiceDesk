@@ -69,6 +69,7 @@ public class DeveloperShowTicketScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
         //region FieldsSets
         var oStatuses = FXCollections.observableArrayList(TicketStatus.values());
 
