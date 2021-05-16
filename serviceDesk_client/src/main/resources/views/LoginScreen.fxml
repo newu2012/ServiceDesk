@@ -8,9 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="600.0" prefHeight="500.0" prefWidth="600.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.LoginScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="600.0" prefHeight="500.0" prefWidth="600.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.LoginScreenController">
    <top>
       <ImageView fitHeight="250.0" fitWidth="757.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
@@ -21,17 +22,17 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="Email" layoutX="50.0" layoutY="14.0" prefWidth="500.0" promptText="Email">
+            <TextField fx:id="Email" layoutX="50.0" layoutY="14.0" prefWidth="500.0" promptText="Email" styleClass="word-format">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="Password" layoutX="50.0" layoutY="62.0" prefWidth="500.0" promptText="Password">
+            <PasswordField fx:id="Password" layoutX="50.0" layoutY="62.0" prefWidth="500.0" promptText="Password" styleClass="word-format">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="LogInButton" defaultButton="true" layoutX="175.0" layoutY="173.0" mnemonicParsing="false" onAction="#LogInButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Войти">
+            <Button fx:id="LogInButton" defaultButton="true" layoutX="175.0" layoutY="173.0" mnemonicParsing="false" onAction="#LogInButtonClicked" prefHeight="50.0" prefWidth="256.0" styleClass="main-button" text="Войти">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -40,6 +41,8 @@
                </font>
             </Button>
             <Button fx:id="ForgotPasswordButton" layoutX="430.0" layoutY="113.0" mnemonicParsing="false" prefWidth="120.0" text="Забыли пароль?" underline="true" />
+            <Line endX="399.0" endY="-0.19998931884765625" layoutX="151.0" layoutY="51.0" startX="-101.0" startY="-0.19998931884765625" stroke="#7d2e7e" strokeWidth="3.0" />
+            <Line endX="399.0" endY="-0.19998931884765625" layoutX="151.0" layoutY="98.0" startX="-101.0" startY="-0.19998931884765625" stroke="#7d2e7e" strokeWidth="3.0" />
          </children>
       </AnchorPane>
    </center>
