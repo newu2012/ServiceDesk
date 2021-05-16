@@ -24,7 +24,7 @@ javafx.base/com.sun.javafx.event=ALL-UNNAMED
 javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED
 
 # Package build
-Сборка Jar производится командой maven clean package
+Сборка Jar производится командой mvn package
 
 # GUI
-Для работы с GUI также лучше скачать JavaFX Scene Builder, а также установить в него библиотеку JFoeniX
+Для работы с GUI также лучше скачать JavaFX Scene Builder (https://gluonhq.com/products/scene-builder/#download), а также установить в него библиотеку JFoeniX (https://search.maven.org/remotecontent?filepath=com/jfoenix/jfoenix/9.0.10/jfoenix-9.0.10.jar).
