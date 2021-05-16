@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.ScreenManager;
@@ -56,5 +57,9 @@ public class LoginScreenController {
 
     public LoginScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
+    }
+
+    public void ForgotPasswordLabelClicked(MouseEvent mouseEvent) {
+        // TODO Реализовать сброс пароля
     }
 }
