@@ -14,6 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
@@ -35,9 +37,9 @@ public class MemberShowTicketScreenController implements Initializable {
     @FXML private Text Logo;
     @FXML private Text Tickets;
     @FXML private Text MyProfile;
-    @FXML private ImageView MyProfileImage;
+    @FXML private Circle MyProfileCircle;
     @FXML private Text MyOrganisation;
-    @FXML private ImageView MyOrganisationImage;
+    @FXML private Circle MyOrganisationCircle;
     //endregion
     //region FXMLTicketInfo
     @FXML private Text Title;
@@ -70,7 +72,9 @@ public class MemberShowTicketScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
+        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+        MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
+
         //region FieldsSets
         Title.setText(Ticket.currentTicket.getTitle());
         CreatorFullName.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getFullName());

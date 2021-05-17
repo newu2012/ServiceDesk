@@ -12,6 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.ScreenManager;
@@ -40,7 +42,7 @@ public class DeveloperTicketsScreenController implements Initializable {
     @FXML private Text Compendiums;
     @FXML private Text Statistics;
     @FXML private Text MyProfile;
-    @FXML private ImageView MyProfileImage;
+    @FXML private Circle MyProfileCircle;
     @FXML private Button CreateTicketButton;
     @FXML private Button RefreshTableButton;
     @FXML private Button ChangeCreatorFilterButton;
@@ -73,7 +75,7 @@ public class DeveloperTicketsScreenController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
+        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         creator.setCellValueFactory(ticketStringCellDataFeatures ->

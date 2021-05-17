@@ -5,6 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
@@ -22,9 +24,9 @@ public class MemberProfileScreenController implements Initializable {
     @FXML private Text Logo;
     @FXML private Text Tickets;
     @FXML private Text MyProfile;
-    @FXML private ImageView MyProfileImage;
+    @FXML private Circle MyProfileCircle;
     @FXML private Text MyOrganisation;
-    @FXML private ImageView MyOrganisationImage;
+    @FXML private Circle MyOrganisationCircle;
 
     @FXML private Text FullName;
     @FXML private Text Role;
@@ -43,7 +45,8 @@ public class MemberProfileScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SetProfileInfo();
         ScreenManager.mainScreen.focusedProperty().addListener((obs, oldVal, newVal) -> SetProfileInfo());
-        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
+        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+        MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
     }
 
     public void SetProfileInfo() {

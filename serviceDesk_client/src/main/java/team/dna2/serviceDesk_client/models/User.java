@@ -14,6 +14,7 @@ public class User {
     public SimpleStringProperty fullName;
     public SimpleStringProperty role;
     public SimpleStringProperty avatarFileName;
+    public SimpleStringProperty orgAvatarFileName;
 
     public static ArrayList<User> users = new ArrayList<User>(); // Список пользователей всей системы
     public static User currentUser; // Активный пользователь системы. Меняется после выхода из аккаунта.
@@ -42,6 +43,7 @@ public class User {
             this.avatarFileName = new SimpleStringProperty("character.png");
         else if (role.equals(Role.OWNER.getRole()) )
             this.avatarFileName = new SimpleStringProperty("three-friends.png");
+        this.orgAvatarFileName = new SimpleStringProperty("UrFU.png");
     }
 
     @Override
@@ -91,5 +93,13 @@ public class User {
 
     public void setAvatarFileName(String avatarFileName) {
         this.avatarFileName.set(avatarFileName);
+    }
+
+    public String getOrgAvatarFileName() {
+        return orgAvatarFileName.get();
+    }
+
+    public void setOrgAvatarFileName(String orgAvatarFileName) {
+        this.orgAvatarFileName.set(orgAvatarFileName);
     }
 }

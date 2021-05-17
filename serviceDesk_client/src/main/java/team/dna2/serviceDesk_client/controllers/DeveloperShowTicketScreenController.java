@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
@@ -36,7 +38,7 @@ public class DeveloperShowTicketScreenController implements Initializable {
     @FXML private Text Compendiums;
     @FXML private Text Statistics;
     @FXML private Text MyProfile;
-    @FXML private ImageView MyProfileImage;
+    @FXML private Circle MyProfileCircle;
     //endregion
     //region FXMLTicketInfo
     @FXML private Text Title;
@@ -69,7 +71,8 @@ public class DeveloperShowTicketScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
+        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+
         //region FieldsSets
         var oStatuses = FXCollections.observableArrayList(TicketStatus.values());
 

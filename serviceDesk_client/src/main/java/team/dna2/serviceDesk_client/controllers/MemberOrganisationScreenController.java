@@ -10,6 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
@@ -26,9 +28,9 @@ public class MemberOrganisationScreenController implements Initializable {
     @FXML private Text Logo;
     @FXML private Text Tickets;
     @FXML private Text MyProfile;
-    @FXML private ImageView MyProfileImage;
+    @FXML private Circle MyProfileCircle;
     @FXML private Text MyOrganisation;
-    @FXML private ImageView MyOrganisationImage;
+    @FXML private Circle MyOrganisationCircle;
     @FXML private Pane OrganisationMainPane;
     //endregion
     //region FXMLOrganisationInfo
@@ -37,7 +39,8 @@ public class MemberOrganisationScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
+        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+        MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
 
         MainTabPane = new JFXTabPane();
         OrganisationMainPane.getChildren().add(MainTabPane);
