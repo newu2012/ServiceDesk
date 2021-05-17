@@ -40,9 +40,9 @@ public class User {
         if (role.equals(Role.DEVELOPER.getRole()))
             this.avatarFileName = new SimpleStringProperty("developer.png");
         else if (role.equals(Role.MEMBER.getRole()) )
-            this.avatarFileName = new SimpleStringProperty("character.png");
+            this.avatarFileName = new SimpleStringProperty("Misha.png");
         else if (role.equals(Role.OWNER.getRole()) )
-            this.avatarFileName = new SimpleStringProperty("three-friends.png");
+            this.avatarFileName = new SimpleStringProperty("Obabkov.jpeg");
         this.orgAvatarFileName = new SimpleStringProperty("UrFU.png");
     }
 
