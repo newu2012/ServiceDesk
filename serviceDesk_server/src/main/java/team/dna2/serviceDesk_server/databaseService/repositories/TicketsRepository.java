@@ -6,4 +6,5 @@ import team.dna2.serviceDesk_server.databaseService.entities.Ticket;
 
 @Repository
 public interface TicketsRepository extends JpaRepository<Ticket, Long> {
+
 }
