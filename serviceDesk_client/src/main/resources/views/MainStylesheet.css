@@ -161,3 +161,7 @@
 .jfx-tab-pane .tab:selected {
     -fx-background-color: white;
 }
+
+.word-format {
+    -fx-text-fill: #7d2e7e;
+}

@@ -13,6 +13,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import org.springframework.stereotype.Component;
@@ -40,9 +42,9 @@ public class MemberTicketsScreenController implements Initializable {
     @FXML private Text Logo;
     @FXML private Text Tickets;
     @FXML private Text MyProfile;
-    @FXML private ImageView MyProfileImage;
+    @FXML private Circle MyProfileCircle;
     @FXML private Text MyOrganisation;
-    @FXML private ImageView MyOrganisationImage;
+    @FXML private Circle MyOrganisationCircle;
     @FXML private Button CreateTicketButton;
     @FXML private Button RefreshTableButton;
     @FXML private Button ChangeCreatorFilterButton;
@@ -75,7 +77,9 @@ public class MemberTicketsScreenController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        MyProfileImage.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
+        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+        MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
+
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         creator.setCellValueFactory(ticketStringCellDataFeatures ->
