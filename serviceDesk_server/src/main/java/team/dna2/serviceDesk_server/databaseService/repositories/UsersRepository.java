@@ -1,4 +1,16 @@
 package team.dna2.serviceDesk_server.databaseService.repositories;
 
-public interface UsersRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import team.dna2.serviceDesk_server.databaseService.entities.User;
+
+@Repository
+public interface UsersRepository extends JpaRepository<User, Long> {
+
+    @Query("UPDATE User SET isActive = false, blockDate = current_timestamp WHERE id = :userId")
+    void blockUserById(Long userId);
+
+    @Query("UPDATE User SET isActive = true, blockDate = null WHERE id = :userId")
+    void unblockUserById(Long userId);
 }

@@ -30,4 +30,7 @@ public class UserSessionToken implements Serializable {
 
     @Column(name = "expiration_datetime", nullable = false)
     private Timestamp expirationDateTime;
+
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive;
 }
