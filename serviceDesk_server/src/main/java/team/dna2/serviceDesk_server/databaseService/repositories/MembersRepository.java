@@ -11,11 +11,11 @@ import team.dna2.serviceDesk_server.databaseService.entities.User;
 
 @Repository
 public interface MembersRepository extends JpaRepository<Member, Long> {
-    @Query("update Member set isOwner=false where id = :memberId")
-    void updateMemberOwnershipById (Long memberId);
+    @Query("update Member set isOwner=false where id = :id")
+    void updateMemberOwnershipById (Long id);
 
-    @Query("update Member set isOwner=true where id=:memberId")
-    void setMemberOwnershipById (Long memberId);
+    @Query("update Member set isOwner=true where id=:id")
+    void setMemberOwnershipById (Long id);
 
     Long findMemberIdByOrganizationIdAndIsOwnerTrue(Long organizationId);
 }

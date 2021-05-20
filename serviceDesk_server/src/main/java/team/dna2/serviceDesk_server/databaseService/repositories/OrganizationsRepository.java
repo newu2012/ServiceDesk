@@ -8,9 +8,9 @@ import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 @Repository
 public interface OrganizationsRepository extends JpaRepository<Organization, Long> {
 
-    @Query("UPDATE Organization SET isActive=false, blockDate=current_timestamp WHERE id = :orgId")
-    void blockOrganizationById(Long orgId);
+    @Query("UPDATE Organization SET isActive=false, blockDate=current_timestamp WHERE id = :id")
+    void blockOrganizationById(Long id);
 
-    @Query("UPDATE Organization SET isActive=true, blockDate=null WHERE id = :orgId")
-    void unblockOrganizationById(Long orgId);
+    @Query("UPDATE Organization SET isActive=true, blockDate=null WHERE id = :id")
+    void unblockOrganizationById(Long id);
 }
