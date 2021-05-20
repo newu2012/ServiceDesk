@@ -17,5 +17,5 @@ public interface MembersRepository extends JpaRepository<Member, Long> {
     @Query("update Member set isOwner=true where id=:id")
     void setMemberOwnershipById (Long id);
 
-    Long findMemberIdByOrganizationIdAndIsOwnerTrue(Long organizationId);
+    Long findMemberIdByOrganization_IdAndIsOwnerTrue(Long organizationId);
 }
