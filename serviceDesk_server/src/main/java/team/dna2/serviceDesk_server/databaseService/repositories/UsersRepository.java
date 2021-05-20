@@ -13,4 +13,6 @@ public interface UsersRepository extends JpaRepository<User, Long> {
 
     @Query("UPDATE User SET isActive = true, blockDate = null WHERE id = :id")
     void unblockUserById(Long id);
+
+    User findByEmail(String email);
 }

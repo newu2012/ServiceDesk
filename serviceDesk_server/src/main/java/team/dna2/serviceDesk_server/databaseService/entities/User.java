@@ -4,11 +4,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import team.dna2.serviceDesk_server.databaseService.entities.enums.UserRoleEnum;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
@@ -16,7 +19,7 @@ import java.sql.Timestamp;
 @Setter
 @ToString
 @NoArgsConstructor
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -40,9 +43,10 @@ public class User implements Serializable {
     @Column(name = "patronymic_name", length = 31)
     private String patronymicName;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false, length = 63)
-    private UserRoleEnum role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(nullable = false)
+    private Set<CompendiumRole> roles;
 
     @OneToOne
     @JoinColumn(name = "avatar_file_id", referencedColumnName = "id")
@@ -56,4 +60,42 @@ public class User implements Serializable {
 
     @Column(name = "block_date")
     private Timestamp blockDate;
+
+    @Transient
+    private String passwordConfirm;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    @Override
+    public String getPassword() {
+        return passwordHash;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
