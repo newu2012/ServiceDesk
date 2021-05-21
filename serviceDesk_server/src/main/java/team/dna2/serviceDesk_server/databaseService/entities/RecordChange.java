@@ -11,12 +11,12 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "CHANGES")
+@Table(name = "RECORD_CHANGES")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Change implements Serializable {
+public class RecordChange implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
