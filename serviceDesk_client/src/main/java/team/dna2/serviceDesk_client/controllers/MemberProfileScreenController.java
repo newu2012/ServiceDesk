@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -101,6 +102,10 @@ public class MemberProfileScreenController implements Initializable {
     @FXML
     public void LogoClicked() {
         ScreenManager.OpenTickets();
+    }
+
+    public void PreviousScreenButtonClicked(MouseEvent mouseEvent) {
+        ScreenManager.ShowPreviousScreen();
     }
     //endregion
 }

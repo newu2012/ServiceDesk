@@ -203,6 +203,20 @@
     -fx-font-size: 14px;
 }
 
+.previous-screen-button
+{
+    -fx-text-fill: #E09B26;
+    -fx-font-size: 100px;
+    -fx-font-weight: bold;
+}
+
+.previous-screen-button:hover
+{
+    -fx-text-fill: #7d2e7e;
+    -fx-font-size: 100px;
+
+}
+
 #comptabpane
 {
     -fx-tab-min-height: 550;
