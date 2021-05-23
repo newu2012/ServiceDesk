@@ -202,3 +202,47 @@
     -fx-text-fill: black;
     -fx-font-size: 14px;
 }
+
+#comptabpane
+{
+    -fx-tab-min-height: 550;
+    -fx-tab-max-height: 550;
+    -fx-tab-min-width: 1250;
+    -fx-tab-max-width: 1250;
+}
+
+.tab .tab-label
+{
+    -fx-background-color: transparant;
+    -fx-alignment: center;
+}
+
+.tab
+{
+    -fx-background-color: #ebebeb;
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 0.0;
+    -fx-padding: 10 45 10 45;
+}
+
+.tab:selected
+{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-width: 2 2 0 0;
+    -fx-border-radius: 4;
+    -fx-border-color: #7d2e7e;
+}
+
+.tab:focused
+{
+    -fx-focus-color: transparent;
+}
+
+.tab-pane *.tab-header-background
+{
+    -fx-background-color: transparent;
+
+
+}
