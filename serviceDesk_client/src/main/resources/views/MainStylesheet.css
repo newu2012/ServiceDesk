@@ -179,4 +179,11 @@
 .table-view:row-selection .column-header-background .nested-column-header .table-column .label .text
 {
     -fx-fill: #7d2e7e;
+    -fx-font-size: 14px;
+}
+
+.table-view .table-cell
+{
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
 }
