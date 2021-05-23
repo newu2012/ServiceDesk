@@ -176,6 +176,8 @@ public class MemberTicketsScreenController implements Initializable {
     @FXML
     public void ChangeCreatorFilterButtonClicked() {
         showOnlyCurrentUserTickets = !showOnlyCurrentUserTickets;
+        ChangeCreatorFilterButton.setText(showOnlyCurrentUserTickets ? "🔎 Показать все обращения" : "🔎 Показать мои обращения");
+
         System.out.println("OnlyCUTickets - " + showOnlyCurrentUserTickets);
         RefreshTicketTable();
     }
