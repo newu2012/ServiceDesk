@@ -41,12 +41,25 @@
     -fx-pref-height: 40;
 }
 
+.large-button {
+    -fx-font-size: 16;
+    -fx-background-color: #E09B26;
+    -fx-text-fill: #000000;
+    -fx-pref-width: 280;
+    -fx-pref-height: 40;
+}
+
 .title-text {
     -fx-font-size: 26;
 }
 
 .big-description-text {
     -fx-font-size: 18;
+}
+
+.text-green-link {
+    -fx-font-size: 18;
+    -fx-fill: #00D29D;
 }
 
 .navigation-menu {

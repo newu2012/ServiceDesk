@@ -76,6 +76,8 @@ public class DeveloperTicketsScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+        MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
+
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         creator.setCellValueFactory(ticketStringCellDataFeatures ->

@@ -51,22 +51,25 @@
       <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="172.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Просмотр обращения" />
+            <ScrollPane prefHeight="467.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" visible="false" />
+              </content>
+            </ScrollPane>
             <AnchorPane layoutX="172.0" layoutY="64.0" maxHeight="550.0" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <ScrollPane fitToHeight="true" hbarPolicy="NEVER" maxWidth="680.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="10.0">
+                  <ScrollPane cache="true" fitToHeight="true" hbarPolicy="NEVER" layoutX="8.0" layoutY="10.0" maxWidth="680.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="10.0">
                      <content>
                         <VBox maxWidth="760.0" minHeight="520.0" minWidth="760.0" prefHeight="520.0" prefWidth="760.0" spacing="20.0">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                            <children>
-                              <AnchorPane fx:id="TicketMainPane" maxWidth="740.0" minHeight="100.0" minWidth="740.0" prefWidth="740.0" styleClass="pane-borders">
+                              <AnchorPane fx:id="TicketMainPane" maxWidth="740.0" minHeight="100.0" minWidth="636.0" prefHeight="206.0" prefWidth="636.0" styleClass="pane-borders">
                                  <children>
-                                    <Text fx:id="Title" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                    <Text fx:id="Title" layoutX="19.0" layoutY="38.423828125" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" wrappingWidth="98.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0" />
                                     <JFXTextArea fx:id="Description" editable="false" maxHeight="150.0" maxWidth="600.0" minHeight="150.0" minWidth="500.0" prefHeight="150.0" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
-                                    <Text fx:id="CreatorRole" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Представитель Заказчика" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" />
-                                    <Text fx:id="CreatorFullName" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Юзеревко Юзер Юзерович" textAlignment="CENTER" wrappingWidth="140.0" AnchorPane.leftAnchor="10.0" />
-                                    <ImageView fx:id="CreatorAvatar" fitHeight="64.0" fitWidth="64.0" layoutX="51.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="CreatorAvatar" fitHeight="64.0" fitWidth="64.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane maxHeight="150.0" maxWidth="740.0" minHeight="100.0" minWidth="740.0" styleClass="pane-borders">

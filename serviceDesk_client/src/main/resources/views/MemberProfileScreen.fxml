@@ -49,19 +49,14 @@
       <Pane prefHeight="500.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="133.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Мой профиль" />
-            <AnchorPane layoutX="133.0" layoutY="80.0" prefHeight="500.0" prefWidth="1100.0" styleClass="pane-borders">
+            <AnchorPane layoutX="133.0" layoutY="80.0" prefHeight="557.0" prefWidth="1100.0" styleClass="pane-borders">
                <children>
-                  <Button fx:id="ChangeProfileButton" defaultButton="true" mnemonicParsing="false" onAction="#ChangeProfile" styleClass="main-button" text="Редактировать профиль" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="25.0" />
-                  <ImageView fx:id="Avatar" fitHeight="256.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="120.0" />
-                  <Button fx:id="LogOutButton" mnemonicParsing="false" onAction="#LogOut" styleClass="big-button" text="Выйти из аккаунта" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" />
-                  <Text fx:id="FullName" layoutX="57.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Юзерко Юзер Юзерович" AnchorPane.leftAnchor="125.0" />
-                  <VBox layoutX="453.0" layoutY="123.0" prefHeight="256.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="123.0">
+                  <Button fx:id="ChangeProfileButton" defaultButton="true" layoutX="499.0" layoutY="99.0" mnemonicParsing="false" onAction="#ChangeProfile" prefHeight="0.0" styleClass="main-button-v2" text="Редактировать профиль" AnchorPane.rightAnchor="351.0" AnchorPane.topAnchor="99.0" />
+                  <ImageView fx:id="Avatar" fitHeight="256.0" fitWidth="256.0" layoutX="182.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="51.0" />
+                  <Button fx:id="LogOutButton" layoutX="459.0" layoutY="498.0" mnemonicParsing="false" onAction="#LogOut" styleClass="large-button" text="Выйти из аккаунта" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="459.0" AnchorPane.rightAnchor="459.0" />
+                  <Text fx:id="FullName" layoutX="496.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Юзерко Юзер Юзерович" AnchorPane.leftAnchor="496.0" />
+                  <VBox layoutX="496.0" layoutY="165.0" prefHeight="256.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="496.0" AnchorPane.topAnchor="165.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Роль" underline="true">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Электронная почта" underline="true">
                            <VBox.margin>
                               <Insets />
@@ -73,13 +68,16 @@
                         <Insets />
                      </opaqueInsets>
                   </VBox>
-                  <VBox layoutX="763.0" layoutY="123.0" prefHeight="256.0" prefWidth="420.0" spacing="10.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="123.0">
+                  <VBox layoutX="699.0" layoutY="162.0" prefHeight="259.0" prefWidth="363.0" spacing="10.0" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="699.0" AnchorPane.topAnchor="162.0">
                      <children>
-                        <Text fx:id="Role" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Представитель Заказчика" underline="true" />
                         <Text fx:id="Email" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="examplebox@mail.ru" underline="true" />
                         <Text fx:id="CreationDate" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="29.04.2021" underline="true" />
                      </children>
                   </VBox>
+                  <Text layoutX="191.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Организация" underline="true" />
+                  <ImageView fx:id="OrgAvatar" fitHeight="75.0" fitWidth="75.0" layoutX="191.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="OrganizationName" layoutX="292.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="*название организации*" underline="true" />
+                  <Text fx:id="Knopka" layoutX="191.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-green-link" text="Перейти в профиль орагнизации" underline="true" wrappingWidth="172.67578125" />
                </children>
             </AnchorPane>
          </children>
