@@ -46,6 +46,7 @@ public class ScreenManager {
 
     public static void ShowPreviousScreen() {
         clientApplication.ChangeScene(previousScreenUrl);
+        currentScreenUrl = previousScreenUrl;
     }
 
     public static void UpdateCurrentAndPreviousScreens(String newCurrentStringUrl) {
