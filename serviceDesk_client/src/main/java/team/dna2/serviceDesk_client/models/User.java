@@ -43,6 +43,11 @@ public class User {
         this.email = new SimpleStringProperty(email);
         this.password = new SimpleStringProperty(password);
         this.fullName = new SimpleStringProperty(fullName);
+        String[] fullNameSplit = fullName.split(" ");
+        lastName = (fullNameSplit[0]);
+        firstName = (fullNameSplit[1]);
+        if (fullNameSplit.length > 2)
+            patronymic = (fullNameSplit[2]);
         this.role = new SimpleStringProperty(role);
         if (role.equals(Role.DEVELOPER.getRole()))
             this.avatarFileName = new SimpleStringProperty("developer.png");
