@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -29,12 +30,12 @@ public class MemberProfileScreenController implements Initializable {
     @FXML private Circle MyOrganisationCircle;
 
     @FXML private Text FullName;
-    @FXML private Text Role;
     @FXML private Text Email;
     @FXML private Text CreationDate;
     @FXML private ImageView Avatar;
     @FXML private Button ChangeProfileButton;
     @FXML private Button LogOutButton;
+    @FXML private ImageView OrgAvatar;
     //endregion
 
     public MemberProfileScreenController() {
@@ -47,14 +48,15 @@ public class MemberProfileScreenController implements Initializable {
         ScreenManager.mainScreen.focusedProperty().addListener((obs, oldVal, newVal) -> SetProfileInfo());
         MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
         MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
+        MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
     }
 
     public void SetProfileInfo() {
         FullName.setText(User.currentUser.getFullName());
-        Role.setText(User.currentUser.getRole());
         Email.setText(User.currentUser.getEmail());
         CreationDate.setText("29.04.2021"); // TODO Хранить у пользователя дату создания
         Avatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())));
+        OrgAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName())));
     }
 
     @FXML
@@ -100,6 +102,10 @@ public class MemberProfileScreenController implements Initializable {
     @FXML
     public void LogoClicked() {
         ScreenManager.OpenTickets();
+    }
+
+    public void PreviousScreenButtonClicked(MouseEvent mouseEvent) {
+        ScreenManager.ShowPreviousScreen();
     }
     //endregion
 }

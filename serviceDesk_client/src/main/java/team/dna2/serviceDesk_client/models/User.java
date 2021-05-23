@@ -2,16 +2,23 @@ package team.dna2.serviceDesk_client.models;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Getter
+@Setter
 @Component
 public class User {
     public SimpleIntegerProperty id;
     public SimpleStringProperty email;
     public SimpleStringProperty password;
     public SimpleStringProperty fullName;
+    public String firstName;
+    public String lastName;
+    public String patronymic;
     public SimpleStringProperty role;
     public SimpleStringProperty avatarFileName;
     public SimpleStringProperty orgAvatarFileName;
@@ -36,7 +43,15 @@ public class User {
         this.email = new SimpleStringProperty(email);
         this.password = new SimpleStringProperty(password);
         this.fullName = new SimpleStringProperty(fullName);
+
+        String[] fullNameSplit = fullName.split(" ");
+        lastName = (fullNameSplit[0]);
+        firstName = (fullNameSplit[1]);
+        if (fullNameSplit.length > 2)
+            patronymic = (fullNameSplit[2]);
+
         this.role = new SimpleStringProperty(role);
+
         if (role.equals(Role.DEVELOPER.getRole()))
             this.avatarFileName = new SimpleStringProperty("developer.png");
         else if (role.equals(Role.MEMBER.getRole()) )
@@ -75,8 +90,23 @@ public class User {
         return fullName.get();
     }
 
+    public void setFullName(String lastName, String firstName, String patronymic) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.patronymic = patronymic;
+    }
+
     public void setFullName(String fullName) {
         this.fullName.set(fullName);
+        String[] fullNameSplit = User.currentUser.getFullName().split(" ");
+        lastName = (fullNameSplit[0]);
+        firstName = (fullNameSplit[1]);
+        if (fullNameSplit.length > 2)
+            patronymic = (fullNameSplit[2]);
+    }
+
+    public void setFullName() {
+        this.fullName.set(lastName + " " + firstName + " " + patronymic);
     }
 
     public String getRole() {

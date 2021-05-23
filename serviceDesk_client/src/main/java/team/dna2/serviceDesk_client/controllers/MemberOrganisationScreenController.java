@@ -41,6 +41,7 @@ public class MemberOrganisationScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
         MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
+        MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
 
         MainTabPane = new JFXTabPane();
         OrganisationMainPane.getChildren().add(MainTabPane);
@@ -60,9 +61,9 @@ public class MemberOrganisationScreenController implements Initializable {
         var membersTab = new Tab();
         var licensesTab = new Tab();
 
-        infoTab.setText("Информация об организации");
-        membersTab.setText("Список представителей заказчика");
-        licensesTab.setText("Список лицензий");
+            infoTab.setText("        Информация об организации        ");
+         membersTab.setText("     Список представителей заказчика     ");
+        licensesTab.setText("             Список лицензий             ");
 
         MainTabPane.getTabs().addAll(infoTab,membersTab, licensesTab);
     }

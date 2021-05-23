@@ -67,10 +67,10 @@
                         <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />
                         <TableColumn fx:id="title" maxWidth="450.0" minWidth="100.0" prefWidth="200.0" text="Тема" />
                         <TableColumn fx:id="creator" maxWidth="250.0" minWidth="50.0" prefWidth="150.0" text="Автор" />
-                        <TableColumn fx:id="status" maxWidth="120.0" minWidth="30.0" prefWidth="120.0" text="Статус" />
+                        <TableColumn fx:id="status" maxWidth="100.0" minWidth="30.0" text="Статус" />
                         <TableColumn fx:id="category" maxWidth="100.0" minWidth="30.0" text="Тип" />
-                        <TableColumn fx:id="creationDate" maxWidth="120.0" minWidth="60.0" prefWidth="120.0" text="Дата создания" />
-                        <TableColumn fx:id="changeDate" maxWidth="120.0" minWidth="60.0" prefWidth="120.0" text="Дата изменения" />
+                        <TableColumn fx:id="creationDate" maxWidth="140.0" minWidth="60.0" prefWidth="140.0" text="Дата создания" />
+                        <TableColumn fx:id="changeDate" maxWidth="140.0" minWidth="60.0" prefWidth="140.0" text="Дата изменения" />
                         <TableColumn fx:id="helper" maxWidth="250.0" minWidth="50.0" prefWidth="150.0" text="Исполнитель" />
                         <TableColumn fx:id="software" maxWidth="250.0" minWidth="30.0" prefWidth="100.0" text="Название ПО" />
                      </columns>

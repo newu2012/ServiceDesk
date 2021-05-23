@@ -79,6 +79,7 @@ public class MemberTicketsScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
         MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
+        MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
 
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));

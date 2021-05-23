@@ -18,6 +18,8 @@ public class ScreenManager {
     private static ClientApplication clientApplication;
     public static Window mainScreen;
     public static Window secondScreen;
+    public static String currentScreenUrl;
+    public static String previousScreenUrl;
     private static String userRole;
 
     /**
@@ -42,11 +44,22 @@ public class ScreenManager {
         secondScreen = Stage.getWindows().get(1);
     }
 
+    public static void ShowPreviousScreen() {
+        clientApplication.ChangeScene(previousScreenUrl);
+        currentScreenUrl = previousScreenUrl;
+    }
+
+    public static void UpdateCurrentAndPreviousScreens(String newCurrentStringUrl) {
+        previousScreenUrl = currentScreenUrl;
+        currentScreenUrl = newCurrentStringUrl;
+        clientApplication.ChangeScene(newCurrentStringUrl);
+    }
+
     /**
      * Переключение на экран входа в аккаунт при открытии приложения
      */
     public static void InitToLogIn() {
-        clientApplication.ChangeScene("LoginScreen.fxml");
+        UpdateCurrentAndPreviousScreens("LoginScreen.fxml");
     }
 
     //region Tickets
@@ -57,16 +70,16 @@ public class ScreenManager {
         UpdateMainScreen();
         userRole = User.currentUser.getRole();
         if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperTicketsScreen_v2.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperTicketsScreen_v2.fxml");
         else
-            clientApplication.ChangeScene("MemberTicketsScreen_v2.fxml");
+            UpdateCurrentAndPreviousScreens("MemberTicketsScreen_v2.fxml");
     }
 
     /**
      * Производит выход из аккаунта, позволяя сменить пользователя.
      */
     public static void LogOut() {
-        clientApplication.ChangeScene("LoginScreen.fxml");
+        UpdateCurrentAndPreviousScreens("LoginScreen.fxml");
     }
 
     /**
@@ -83,10 +96,11 @@ public class ScreenManager {
      * Экран просмотра обращения
      */
     public static void ShowTicket() {
+
         if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperShowTicketScreen.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperShowTicketScreen.fxml");
         else
-            clientApplication.ChangeScene("MemberShowTicketScreen.fxml");
+            UpdateCurrentAndPreviousScreens("MemberShowTicketScreen.fxml");
     }
     //endregion
 
@@ -97,9 +111,9 @@ public class ScreenManager {
      */
     public static void OpenMyProfile() {
         if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperProfileScreen.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperProfileScreen.fxml");
         else
-            clientApplication.ChangeScene("MemberProfileScreen.fxml");
+            UpdateCurrentAndPreviousScreens("MemberProfileScreen.fxml");
     }
 
     /**
@@ -119,11 +133,11 @@ public class ScreenManager {
      */
     public static void OpenOrganisation() {
         if (Role.OWNER.getRole().equals(userRole))
-            clientApplication.ChangeScene("OwnerOrganisationScreen.fxml");
+            UpdateCurrentAndPreviousScreens("OwnerOrganisationScreen.fxml");
         else if (Role.MEMBER.getRole().equals(userRole))
-            clientApplication.ChangeScene("MemberOrganisationScreen.fxml");
+            UpdateCurrentAndPreviousScreens("MemberOrganisationScreen.fxml");
         else if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperOrganisationScreen.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperOrganisationScreen.fxml");
     }
     //endregion
 
@@ -134,7 +148,7 @@ public class ScreenManager {
      */
     public static void OpenCompendiums() {
         if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperCompendiumsScreen.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperCompendiumsScreen.fxml");
     }
 
     /**
@@ -143,7 +157,7 @@ public class ScreenManager {
      */
     public static void OpenStatistics() {
         if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperStatisticsScreen.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperStatisticsScreen.fxml");
     }
     //endregion
 

@@ -45,6 +45,7 @@ public class DeveloperProfileScreenController implements Initializable {
         SetProfileInfo();
         ScreenManager.mainScreen.focusedProperty().addListener((obs, oldVal, newVal) -> SetProfileInfo());
         MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+        MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
     }
 
     public void SetProfileInfo() {
