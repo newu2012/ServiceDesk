@@ -76,8 +76,8 @@
                   </VBox>
                   <Text layoutX="191.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="Организация" underline="true" />
                   <ImageView fx:id="OrgAvatar" fitHeight="75.0" fitWidth="75.0" layoutX="191.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="OrganizationName" layoutX="292.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="*название организации*" underline="true" />
-                  <Text fx:id="Knopka" layoutX="191.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-green-link" text="Перейти в профиль орагнизации" underline="true" wrappingWidth="172.67578125" />
+                  <Text fx:id="Email1" layoutX="292.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-description-text" text="*название организации*" underline="true" />
+                  <Text fx:id="Knopka" layoutX="191.0" layoutY="452.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-green-link" text="Перейти в профиль организации" underline="true" wrappingWidth="191.67578125" />
                </children>
             </AnchorPane>
          </children>

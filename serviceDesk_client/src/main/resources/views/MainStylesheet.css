@@ -60,6 +60,8 @@
 .text-green-link {
     -fx-font-size: 18;
     -fx-fill: #00D29D;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
 }
 
 .navigation-menu {
