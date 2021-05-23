@@ -20,15 +20,25 @@
 .main-button {
     -fx-font-size: 20;
     -fx-background-color: #00D29D;
+    -fx-text-fill: #000000;
     -fx-pref-width: 250;
     -fx-pref-height: 50;
 }
 
+.main-button-v2 {
+    -fx-font-size: 16;
+    -fx-background-color: #00D29D;
+    -fx-text-fill: #000000;
+    -fx-pref-width: 250;
+    -fx-pref-height: 40;
+}
+
 .big-button {
     -fx-font-size: 16;
-    -fx-background-color: #00D0D0;
+    -fx-background-color: #DBE2E7;
+    -fx-text-fill: #000000;
     -fx-pref-width: 250;
-    -fx-pref-height: 30;
+    -fx-pref-height: 40;
 }
 
 .title-text {
@@ -164,4 +174,9 @@
 
 .word-format {
     -fx-text-fill: #7d2e7e;
+}
+
+.table-view:row-selection .column-header-background .nested-column-header .table-column .label .text
+{
+    -fx-fill: #7d2e7e;
 }

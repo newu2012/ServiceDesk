@@ -16,7 +16,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.MemberTicketsScreenController">
    <top>
-      <HBox alignment="CENTER_LEFT" maxHeight="64.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
+      <HBox alignment="CENTER_LEFT" maxHeight="96.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
          <children>
             <Text fx:id="Logo" fill="WHITE" onMouseClicked="#LogoClicked" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
                <font>
@@ -55,17 +55,17 @@
       </ImageView>
    </bottom>
    <center>
-      <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="704.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
+      <Pane maxWidth="1366.0" minWidth="1366.0" prefHeight="0.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="133.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Список обращений" />
-            <Button fx:id="CreateTicketButton" defaultButton="true" layoutX="133.0" layoutY="40.0" mnemonicParsing="false" onAction="#CreateTicketButtonClicked" styleClass="main-button" text="+ Добавить обращение" textAlignment="CENTER">
+            <Button fx:id="CreateTicketButton" defaultButton="true" layoutX="119.0" layoutY="40.0" mnemonicParsing="false" onAction="#CreateTicketButtonClicked" prefHeight="93.0" prefWidth="272.0" styleClass="main-button" text="+ Добавить обращение" textAlignment="CENTER">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="RefreshTableButton" layoutX="400.0" layoutY="45.0" mnemonicParsing="false" onAction="#RefreshTableButtonClicked" styleClass="big-button" text="Обновить данные в таблице" />
+            <Button fx:id="RefreshTableButton" layoutX="400.0" layoutY="45.0" mnemonicParsing="false" onAction="#RefreshTableButtonClicked" prefHeight="70.0" styleClass="big-button" text="Обновить данные в таблице" />
             <Button fx:id="ChangeCreatorFilterButton" layoutX="983.0" layoutY="45.0" mnemonicParsing="false" onAction="#ChangeCreatorFilterButtonClicked" styleClass="big-button" text="Только мои обращения" />
-            <TableView fx:id="TicketsTable" layoutX="133.0" layoutY="100.0" maxHeight="550.0" maxWidth="1100.0" minHeight="550.0" minWidth="1100.0" prefHeight="550.0" prefWidth="1100.0">
+            <TableView fx:id="TicketsTable" layoutX="133.0" layoutY="192.0" maxHeight="550.0" maxWidth="1100.0" minHeight="476.0" minWidth="1100.0" prefHeight="476.0" prefWidth="1179.0">
               <columns>
                 <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />
                 <TableColumn fx:id="title" maxWidth="450.0" minWidth="100.0" prefWidth="200.0" text="Тема" />

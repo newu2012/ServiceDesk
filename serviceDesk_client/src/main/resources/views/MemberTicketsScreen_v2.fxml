@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.MemberTicketsScreenController">
+    <top>
+        <HBox alignment="CENTER_LEFT" maxHeight="96.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
+            <children>
+                <Text fx:id="Logo" fill="WHITE" onMouseClicked="#LogoClicked" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
+                    <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                    </font>
+                </Text>
+                <AnchorPane prefHeight="64.0" prefWidth="733.0" />
+                <HBox alignment="BASELINE_RIGHT" maxHeight="64.0" maxWidth="400.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="64.0" prefWidth="400.0" HBox.hgrow="NEVER">
+                    <children>
+                        <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
+                            <children>
+                                <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="CENTER" wrappingWidth="136.0" />
+                                <Circle fx:id="MyProfileCircle" fill="DODGERBLUE" layoutX="168.0" layoutY="32.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0">
+                            <children>
+                                <Text fx:id="MyOrganisation" layoutY="30.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="CENTER" wrappingWidth="136.0" />
+                                <Circle fx:id="MyOrganisationCircle" fill="DODGERBLUE" layoutX="168.0" layoutY="32.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+            </children></HBox>
+    </top>
+    <center>
+       
+    </center>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="140.0" prefWidth="1366.0">
+               <children>
+                  <Text layoutX="120.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Список обращений" wrappingWidth="294.41939544677734" />
+                  <Line endX="-1.6" endY="1.5" layoutX="250.0" layoutY="58.0" startX="-126.0" startY="1.5" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="5.0" />
+                  <Button fx:id="CreateTicketButton" defaultButton="true" layoutX="120.0" layoutY="80.0" mnemonicParsing="false" onAction="#CreateTicketButtonClicked" prefHeight="30.0" prefWidth="272.0" styleClass="main-button-v2" text="+ Добавить обращение" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Button fx:id="RefreshTableButton" layoutX="970.0" layoutY="80.0" mnemonicParsing="false" onAction="#RefreshTableButtonClicked" prefHeight="46.0" styleClass="big-button" text="Обновить данные в таблице" />
+                  <Button fx:id="ChangeCreatorFilterButton" layoutX="400.0" layoutY="80.0" mnemonicParsing="false" onAction="#ChangeCreatorFilterButtonClicked" styleClass="big-button" text="🔎 Показать мои обращения" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="490.0" prefWidth="1366.0">
+               <children>
+                  <TableView fx:id="TicketsTable" layoutX="125.0" layoutY="7.0" maxHeight="550.0" maxWidth="1100.0" minHeight="440.0" minWidth="1100.0" prefHeight="470.0" prefWidth="1100.0">
+                     <columns>
+                        <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />
+                        <TableColumn fx:id="title" maxWidth="450.0" minWidth="100.0" prefWidth="200.0" text="Тема" />
+                        <TableColumn fx:id="creator" maxWidth="250.0" minWidth="50.0" prefWidth="150.0" text="Автор" />
+                        <TableColumn fx:id="status" maxWidth="120.0" minWidth="30.0" prefWidth="120.0" text="Статус" />
+                        <TableColumn fx:id="category" maxWidth="100.0" minWidth="30.0" text="Тип" />
+                        <TableColumn fx:id="creationDate" maxWidth="120.0" minWidth="60.0" prefWidth="120.0" text="Дата создания" />
+                        <TableColumn fx:id="changeDate" maxWidth="120.0" minWidth="60.0" prefWidth="120.0" text="Дата изменения" />
+                        <TableColumn fx:id="helper" maxWidth="250.0" minWidth="50.0" prefWidth="150.0" text="Исполнитель" />
+                        <TableColumn fx:id="software" maxWidth="250.0" minWidth="30.0" prefWidth="100.0" text="Название ПО" />
+                     </columns>
+                  </TableView>
+                  <Line endX="-18.000015258789062" endY="1.4999771118164062" layoutX="143.0" layoutY="32.0" startX="1082.0" startY="1.4999771118164062" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="2.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
