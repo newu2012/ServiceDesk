@@ -3,7 +3,10 @@ package team.dna2.serviceDesk_server.databaseService.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import team.dna2.serviceDesk_server.databaseService.entities.Member;
 import team.dna2.serviceDesk_server.databaseService.entities.Organization;
+
+import java.util.List;
 
 @Repository
 public interface OrganizationsRepository extends JpaRepository<Organization, Long> {
@@ -13,4 +16,11 @@ public interface OrganizationsRepository extends JpaRepository<Organization, Lon
 
     @Query("UPDATE Organization SET isActive=true, blockDate=null WHERE id = :id")
     void unblockOrganizationById(Long id);
+
+//    @Query("SELECT Organization from Member m where m.id =:id")
+//    Long findOrganizationByMember_id(Long id);
+//
+//    @Query("SELECT Member from Member where organization.id=:id")
+//    List<Member> findMembersByOrganization_Id(Long id);
+
 }

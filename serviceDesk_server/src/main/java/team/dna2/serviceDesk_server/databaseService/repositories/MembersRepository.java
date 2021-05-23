@@ -18,4 +18,8 @@ public interface MembersRepository extends JpaRepository<Member, Long> {
     void setMemberOwnershipById (Long id);
 
     Long findMemberIdByOrganization_IdAndIsOwnerTrue(Long organizationId);
+
+    Long findMembersByOrganization_Id(Long orgId);
+
+    Long findMemberByUserDetails_Id(Long userId);
 }

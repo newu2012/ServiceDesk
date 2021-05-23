@@ -1,8 +1,8 @@
+
 package team.dna2.serviceDesk_server.restControllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -14,19 +14,20 @@ import team.dna2.serviceDesk_server.databaseService.services.UserService;
 @RequestMapping("/registration")
 @Validated
 @Slf4j
-@Deprecated
 public class RegistrationController {
+
 
     @Autowired
     private UserService userService;
+
+
+    @GetMapping("/registration")
+    public String registration(Model model) {
+//        model.addAttribute("userForm", new User());
 //
-//    @GetMapping("/registration")
-//    public String registration(Model model) {
-////        model.addAttribute("userForm", new User());
-////
-//       return "registration";
-//    }
-//
+       return "registration";
+    }
+
 //    @PostMapping("/registration")
 //    public String addUser(@ModelAttribute("userForm") @Validated User userForm, BindingResult bindingResult, Model model) {
 //
@@ -44,4 +45,6 @@ public class RegistrationController {
 //
 //        return "redirect:/";
 //    }
+
+
 }
