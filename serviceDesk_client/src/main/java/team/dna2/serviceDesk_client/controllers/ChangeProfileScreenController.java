@@ -90,6 +90,9 @@ public class ChangeProfileScreenController implements Initializable {
                 " FirstName=" + FirstName.getText() +
                 " Patronymic=" + Patronymic.getText());
 
+        User.currentUser.setLastName(LastName.getText());
+        User.currentUser.setFirstName(FirstName.getText());
+        User.currentUser.setPatronymic(Patronymic.getText());
         User.currentUser.setFullName(LastName.getText() + " " + FirstName.getText() + " " + Patronymic.getText());
 
         if (changingPassword)

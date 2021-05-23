@@ -2,16 +2,23 @@ package team.dna2.serviceDesk_client.models;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Getter
+@Setter
 @Component
 public class User {
     public SimpleIntegerProperty id;
     public SimpleStringProperty email;
     public SimpleStringProperty password;
     public SimpleStringProperty fullName;
+    public String firstName;
+    public String lastName;
+    public String patronymic;
     public SimpleStringProperty role;
     public SimpleStringProperty avatarFileName;
     public SimpleStringProperty orgAvatarFileName;
@@ -77,6 +84,10 @@ public class User {
 
     public void setFullName(String fullName) {
         this.fullName.set(fullName);
+    }
+
+    public void setFullName() {
+        this.fullName.set(lastName + " " + firstName + " " + patronymic);
     }
 
     public String getRole() {
