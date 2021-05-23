@@ -82,8 +82,19 @@ public class User {
         return fullName.get();
     }
 
+    public void setFullName(String lastName, String firstName, String patronymic) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.patronymic = patronymic;
+    }
+
     public void setFullName(String fullName) {
         this.fullName.set(fullName);
+        String[] fullNameSplit = User.currentUser.getFullName().split(" ");
+        lastName = (fullNameSplit[0]);
+        firstName = (fullNameSplit[1]);
+        if (fullNameSplit.length > 2)
+            patronymic = (fullNameSplit[2]);
     }
 
     public void setFullName() {
