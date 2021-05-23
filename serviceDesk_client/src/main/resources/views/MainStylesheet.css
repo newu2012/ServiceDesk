@@ -175,3 +175,8 @@
 .word-format {
     -fx-text-fill: #7d2e7e;
 }
+
+.table-view:row-selection .column-header-background .nested-column-header .table-column .label .text
+{
+    -fx-fill: #7d2e7e;
+}

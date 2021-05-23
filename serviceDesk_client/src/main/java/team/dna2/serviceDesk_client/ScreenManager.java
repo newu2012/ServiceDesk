@@ -57,7 +57,7 @@ public class ScreenManager {
         UpdateMainScreen();
         userRole = User.currentUser.getRole();
         if (Role.DEVELOPER.getRole().equals(userRole))
-            clientApplication.ChangeScene("DeveloperTicketsScreen.fxml");
+            clientApplication.ChangeScene("DeveloperTicketsScreen_v2.fxml");
         else
             clientApplication.ChangeScene("MemberTicketsScreen_v2.fxml");
     }
