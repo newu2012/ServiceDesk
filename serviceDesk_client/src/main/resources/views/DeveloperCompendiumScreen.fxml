@@ -76,10 +76,10 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>
-                                          <TableView fx:id="LicenseTable" layoutX="70.0" layoutY="11.0" maxHeight="550.0" maxWidth="1100.0" minHeight="397.0" minWidth="1100.0" prefHeight="397.0" prefWidth="1100.0">
+                                          <TableView fx:id="LicenseTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="title" maxWidth="150.0" minWidth="100.0" prefWidth="150.0" text="Серийный номер" />
+                                                <TableColumn fx:id="license_id" maxWidth="100.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="license_serial_number" maxWidth="150.0" minWidth="100.0" prefWidth="150.0" text="Серийный номер" />
                                                 <TableColumn fx:id="creator" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Организация" />
                                                 <TableColumn fx:id="status" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
                                                 <TableColumn fx:id="category" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Ограничения" />
@@ -100,7 +100,16 @@
                                        <children>
                                           <Button fx:id="addTypeButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить тип обращения" />
                                        </children></AnchorPane>
-                                    <AnchorPane prefHeight="430.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="430.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="typeTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="license_id1" maxWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="license_serial_number1" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
+                                                <TableColumn fx:id="creator1" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="Описание" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
