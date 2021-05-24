@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -60,14 +64,30 @@
             </AnchorPane>
             <AnchorPane prefHeight="550.0" prefWidth="1366.0">
                <children>
-                  <TabPane id="tabPane" fx:id="comptabpane" layoutX="56.0" layoutY="20.0" prefHeight="550.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane id="tabPane" fx:id="comptabpane" layoutX="6.0" layoutY="18.0" prefHeight="550.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab fx:id="licensesTab" text="Лицензии">
                            <content>
                               <VBox prefHeight="458.0" prefWidth="1246.0">
                                  <children>
-                                    <AnchorPane prefHeight="56.0" prefWidth="1266.0" />
-                                    <AnchorPane prefHeight="202.0" prefWidth="1222.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="1266.0">
+                                       <children>
+                                          <Button fx:id="addLicenseButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить лицензию" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0">
+                                       <children>
+                                          <TableView fx:id="LicenseTable" layoutX="70.0" layoutY="11.0" maxHeight="550.0" maxWidth="1100.0" minHeight="397.0" minWidth="1100.0" prefHeight="397.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="id" maxWidth="100.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="title" maxWidth="150.0" minWidth="100.0" prefWidth="150.0" text="Серийный номер" />
+                                                <TableColumn fx:id="creator" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Организация" />
+                                                <TableColumn fx:id="status" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
+                                                <TableColumn fx:id="category" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Ограничения" />
+                                                <TableColumn fx:id="creationDate" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата начала" />
+                                                <TableColumn fx:id="changeDate" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата окончания" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -76,8 +96,11 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="1244.0">
+                                       <children>
+                                          <Button fx:id="addTypeButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить тип обращения" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="200.0" />
                                  </children>
                               </VBox>
                            </content>
@@ -86,8 +109,11 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="1244.0">
+                                       <children>
+                                          <Button fx:id="addCompSoftButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить справочник ПО" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="200.0" />
                                  </children>
                               </VBox>
                            </content>
@@ -96,8 +122,11 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addCompModSoftButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить модуль ПО" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0" />
                                  </children>
                               </VBox>
                            </content>
@@ -106,8 +135,11 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addOwnerButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить заказчика" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0" />
                                  </children>
                               </VBox>
                            </content>
@@ -116,8 +148,11 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addMemberButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить представителя" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0" />
                                  </children>
                               </VBox>
                            </content>
@@ -126,8 +161,11 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addDeveloperButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить разработчика" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0" />
                                  </children>
                               </VBox>
                            </content>
@@ -142,4 +180,11 @@
          </children>
       </VBox>
    </center>
+   <left>
+      <AnchorPane prefHeight="704.0" prefWidth="62.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="2.0" layoutY="50.0" prefHeight="110.0" prefWidth="75.0" styleClass="previous-screen-button" text="&lt;" />
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>
