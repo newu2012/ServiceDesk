@@ -7,6 +7,7 @@ import team.dna2.serviceDesk_server.databaseService.entities.Member;
 import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface OrganizationsRepository extends JpaRepository<Organization, Long> {
@@ -22,5 +23,8 @@ public interface OrganizationsRepository extends JpaRepository<Organization, Lon
 //
 //    @Query("SELECT Member from Member where organization.id=:id")
 //    List<Member> findMembersByOrganization_Id(Long id);
+
+
+    Optional<Organization> findOrganizationUser_Id(Long userId);
 
 }

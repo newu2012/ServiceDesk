@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Deprecated
 public enum UserRoleEnum {
     ROLE_USER,
-    ROLE_ADMIN,
     ROLE_MEMBER,
+    ROLE_OWNER,
     ROLE_DEVELOPER
 }
