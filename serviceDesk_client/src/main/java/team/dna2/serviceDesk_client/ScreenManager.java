@@ -148,7 +148,7 @@ public class ScreenManager {
      */
     public static void OpenCompendiums() {
         if (Role.DEVELOPER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("DeveloperCompendiumsScreen.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperCompendiumScreen.fxml");
     }
 
     /**
