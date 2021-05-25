@@ -118,24 +118,6 @@
     -fx-font-size: 14;
 }
 
-.choice-box {
-    -fx-font-size: 14;
-}
-
-.choice-box-error {
-    -fx-border-color: red;
-    -fx-border-width: 2;
-}
-
-.text-field {
-    -fx-font-size: 16;
-}
-
-.text-field-error {
-    -fx-border-color: red;
-    -fx-border-width: 2;
-}
-
 .text-info {
     -fx-font-size: 16;
 }
@@ -307,4 +289,22 @@
 .create-object-ChoiceBox .open-button .arrow
 {
     -fx-background-color: #7d2e7e;
+}
+
+.choice-box {
+    -fx-font-size: 16;
+}
+
+.choice-box-error {
+    -fx-border-color: red;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+}
+.text-field {
+    -fx-font-size: 16;
+}
+
+.text-field-error {
+    -fx-border-color: red;
+    -fx-border-width: 2;
 }
