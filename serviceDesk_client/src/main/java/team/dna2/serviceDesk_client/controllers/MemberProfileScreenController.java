@@ -11,7 +11,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
-import team.dna2.serviceDesk_client.models.Ticket;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.net.URL;
@@ -105,7 +104,7 @@ public class MemberProfileScreenController implements Initializable {
     }
 
     public void PreviousScreenButtonClicked(MouseEvent mouseEvent) {
-        ScreenManager.ShowPreviousScreen();
+        ScreenManager.TryShowPreviousScreen();
     }
     //endregion
 }

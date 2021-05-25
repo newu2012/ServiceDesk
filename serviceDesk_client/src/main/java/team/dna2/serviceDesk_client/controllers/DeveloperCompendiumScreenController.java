@@ -93,7 +93,7 @@ public class DeveloperCompendiumScreenController implements Initializable {
     }
 
     public void PreviousScreenButtonClicked(MouseEvent mouseEvent) {
-        ScreenManager.ShowPreviousScreen();
+        ScreenManager.TryShowPreviousScreen();
     }
 
     public void CreateLicenseButtonClicked(ActionEvent actionEvent) {

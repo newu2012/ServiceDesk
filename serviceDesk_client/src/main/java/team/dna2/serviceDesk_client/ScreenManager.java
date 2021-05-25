@@ -1,11 +1,14 @@
 package team.dna2.serviceDesk_client;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
 import team.dna2.serviceDesk_client.models.Role;
@@ -22,6 +25,7 @@ public class ScreenManager {
     public static String previousScreenUrl;
     private static String userRole;
 
+    //region MainMethods
     /**
      * Чтобы переключать экраны
      */
@@ -30,37 +34,35 @@ public class ScreenManager {
     }
 
     /**
-     * Сохранение основного окна, для дальнейшей работы с ним
+     * При закрытии основного экрана, полностью закрывается приложение
      */
-    public static void UpdateMainScreen() {
-        mainScreen = Stage.getWindows().get(0);
+    public static void CloseApplicationOnMainScreenClosing() {
+        ScreenManager.UpdateMainScreen();
+        ScreenManager.mainScreen.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     /**
-     * WIP
-     * Сохранение дополнительного окна (создание обращения...) чтобы было открыто не больше одного
+     * Переключает основной экран на предыдущий или закрывает окно, если это дополнительное окно
      */
-    public static void UpdateSecondScreen() {
-        secondScreen = Stage.getWindows().get(1);
+    public static void TryShowPreviousScreen() {
+        if (mainScreen.isFocused())
+            ShowPreviousScreen();
+        else
+            ((Stage) secondScreen).close();
     }
+    //endregion
 
-    public static void ShowPreviousScreen() {
-        clientApplication.ChangeScene(previousScreenUrl);
-        currentScreenUrl = previousScreenUrl;
-    }
-
-    public static void UpdateCurrentAndPreviousScreens(String newCurrentStringUrl) {
-        previousScreenUrl = currentScreenUrl;
-        currentScreenUrl = newCurrentStringUrl;
-        clientApplication.ChangeScene(newCurrentStringUrl);
-    }
-
+    //region Login
     /**
      * Переключение на экран входа в аккаунт при открытии приложения
      */
     public static void InitToLogIn() {
         UpdateCurrentAndPreviousScreens("LoginScreen.fxml");
     }
+    //endregion
 
     //region Tickets
     /**
@@ -172,6 +174,45 @@ public class ScreenManager {
     //endregion
 
     //region Utils
+
+
+
+    /**
+     * Сохранение основного окна, для дальнейшей работы с ним
+     */
+    public static void UpdateMainScreen() {
+        mainScreen = Stage.getWindows().get(0);
+    }
+
+    /**
+     * Сохранение дополнительного окна, для дальнейшей работы с ним
+     */
+    public static void UpdateSecondScreen() {
+        secondScreen = Stage.getWindows().get(1);
+    }
+
+    /**
+     * Переключает основной экран на предыдущий.
+     */
+    public static void ShowPreviousScreen() {
+        clientApplication.ChangeScene(previousScreenUrl);
+        currentScreenUrl = previousScreenUrl;
+    }
+
+    /**
+     * Обновляет сведения об нынешнем и прошлом открытых экранах.
+     * @param newCurrentStringUrl Полное название файла с экраном, на который нужно переключиться.
+     */
+    public static void UpdateCurrentAndPreviousScreens(String newCurrentStringUrl) {
+        previousScreenUrl = currentScreenUrl;
+        currentScreenUrl = newCurrentStringUrl;
+        clientApplication.ChangeScene(newCurrentStringUrl);
+    }
+
+    /**
+     * Проверка на наличие дополнительного окна
+     * @return Существует ли открытое дополнительное окно
+     */
     public static boolean CheckForTwoWindows() {
         if (Stage.getWindows().size() == 2) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Невозможно открыть более 1 дополнительного окна", ButtonType.CLOSE);
@@ -182,17 +223,25 @@ public class ScreenManager {
         return false;
     }
 
+    /**
+     * Открыть второе окно и поставить его по центру экрана
+     * @param fileName полное название файла экрана, который нужно открыть
+     * @param title название экрана, которое отображается в верхней рамке приложения
+     */
     public static void OpenSecondWindow(String fileName, String title) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(ScreenManager.class.getResource("/views/" + fileName));
+
             Scene scene = new Scene(fxmlLoader.load(), 850, 680);
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.setTitle(title);
             stage.setScene(scene);
             stage.show();
             stage.requestFocus();
-            secondScreen = stage.getOwner();
+
+            UpdateSecondScreen();
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
         }

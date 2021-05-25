@@ -34,7 +34,7 @@
                   <Font size="16.0" />
                </font>
             </TextArea>
-            <Label layoutY="82.0" styleClass="previous-screen-button" text="&lt;" />
+            <Label layoutY="82.0" styleClass="previous-screen-button" text="&lt;" onMouseClicked="#PreviousScreenButtonClicked"/>
          </children>
       </AnchorPane>
    </top>

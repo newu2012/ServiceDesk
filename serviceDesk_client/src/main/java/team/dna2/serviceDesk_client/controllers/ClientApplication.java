@@ -78,6 +78,7 @@ public class ClientApplication extends Application {
         InitLoadingController.LoadLoginScreen();
 
         stage.show();
+        ScreenManager.CloseApplicationOnMainScreenClosing();
     }
 
     /**
