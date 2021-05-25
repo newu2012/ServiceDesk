@@ -72,7 +72,7 @@
                                  <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="1266.0">
                                        <children>
-                                          <Button fx:id="addLicenseButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить лицензию" />
+                                          <Button fx:id="createLicenseButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#CreateLicenseButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить лицензию" />
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>

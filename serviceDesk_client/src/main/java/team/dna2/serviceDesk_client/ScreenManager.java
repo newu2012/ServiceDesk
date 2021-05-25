@@ -93,6 +93,16 @@ public class ScreenManager {
     }
 
     /**
+     * Создание лицензии в новом окне
+     */
+    public static void CreateLicense() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("CreateLicenseScreen.fxml", "Создание лицензии");
+    }
+
+    /**
      * Экран просмотра обращения
      */
     public static void ShowTicket() {

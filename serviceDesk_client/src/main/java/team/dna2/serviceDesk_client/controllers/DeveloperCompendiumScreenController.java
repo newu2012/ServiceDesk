@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_client.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -93,6 +94,10 @@ public class DeveloperCompendiumScreenController implements Initializable {
 
     public void PreviousScreenButtonClicked(MouseEvent mouseEvent) {
         ScreenManager.ShowPreviousScreen();
+    }
+
+    public void CreateLicenseButtonClicked(ActionEvent actionEvent) {
+        ScreenManager.CreateLicense();
     }
     //endregion
 }
