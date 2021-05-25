@@ -126,9 +126,7 @@ public class CreateTicketScreenController implements Initializable {
                 DescriptionTextArea.getText());
 
         System.out.println("SoftwareId=" + SoftwareBox.getValue().getId() + " ModuleId=" + moduleId);
-
-        Stage stage = (Stage) CreateTicketButton.getScene().getWindow();
-        stage.close(); // Закрытие этого окна
+        ScreenManager.CloseSecondScreen();
     }
 
     @FXML

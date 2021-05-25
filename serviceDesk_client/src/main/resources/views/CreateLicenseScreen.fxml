@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +20,7 @@
         </AnchorPane>
     </top>
     <bottom>
-        <Button fx:id="CreateTicketButton" defaultButton="true" mnemonicParsing="false" onAction="#CreateLicenseButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Создать лицензии" BorderPane.alignment="CENTER">
+        <Button fx:id="CreateLicenseButton" defaultButton="true" mnemonicParsing="false" onAction="#CreateLicenseButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Создать лицензии" BorderPane.alignment="CENTER">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
@@ -34,7 +35,7 @@
    <left>
       <AnchorPane prefHeight="458.0" prefWidth="80.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="9.0" layoutY="14.0" prefHeight="94.0" prefWidth="71.0" styleClass="previous-screen-button" text="&lt;" />
+            <Label layoutX="9.0" layoutY="14.0" onMouseClicked="#PreviousScreenButtonClicked" prefHeight="94.0" prefWidth="71.0" styleClass="previous-screen-button" text="&lt;" />
          </children>
       </AnchorPane>
    </left>
@@ -46,11 +47,11 @@
             <Label layoutX="60.0" layoutY="200.0" styleClass="big-description-text" text="ПО*" />
             <Label layoutX="60.0" layoutY="280.0" styleClass="big-description-text" text="Предусмотрено пользователей*" />
             <Label layoutX="60.0" layoutY="360.0" styleClass="big-description-text" text="Дата окончания*" />
-            <TextField layoutX="60.0" layoutY="70.0" prefHeight="35.0" prefWidth="600.0" styleClass="create-object-TextField" />
-            <TextField layoutX="60.0" layoutY="310.0" prefHeight="35.0" prefWidth="600.0" styleClass="create-object-TextField" />
-            <ChoiceBox layoutX="60.0" layoutY="150.0" prefWidth="600.0" styleClass="create-object-ChoiceBox" />
-            <ChoiceBox layoutX="60.0" layoutY="230.0" prefWidth="600.0" styleClass="create-object-ChoiceBox" />
-            <ChoiceBox layoutX="60.0" layoutY="390.0" prefWidth="600.0" styleClass="create-object-ChoiceBox" />
+            <TextField fx:id="SerialNumberField" layoutX="60.0" layoutY="70.0" prefHeight="35.0" prefWidth="600.0" styleClass="create-object-TextField" />
+            <TextField fx:id="UsersField" layoutX="60.0" layoutY="310.0" prefHeight="35.0" prefWidth="600.0" styleClass="create-object-TextField" />
+            <ChoiceBox fx:id="OrganisationBox" layoutX="60.0" layoutY="150.0" prefWidth="600.0" styleClass="create-object-ChoiceBox" />
+            <ChoiceBox fx:id="SoftwareBox" layoutX="60.0" layoutY="230.0" prefWidth="600.0" styleClass="create-object-ChoiceBox" />
+            <DatePicker fx:id="LicenseEndDate" layoutX="60.0" layoutY="390.0" prefWidth="600.0" styleClass="create-object-ChoiceBox" />
          </children>
       </AnchorPane>
    </center>

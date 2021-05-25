@@ -51,7 +51,14 @@ public class ScreenManager {
         if (mainScreen.isFocused())
             ShowPreviousScreen();
         else
-            ((Stage) secondScreen).close();
+            CloseSecondScreen();
+    }
+
+    /**
+     * Закрытие дополнительного окна.
+     */
+    public static void CloseSecondScreen() {
+        ((Stage) secondScreen).close();
     }
     //endregion
 
