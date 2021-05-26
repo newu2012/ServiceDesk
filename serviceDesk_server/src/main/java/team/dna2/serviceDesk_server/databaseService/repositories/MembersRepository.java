@@ -9,6 +9,9 @@ import team.dna2.serviceDesk_server.databaseService.entities.Member;
 import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 import team.dna2.serviceDesk_server.databaseService.entities.User;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface MembersRepository extends JpaRepository<Member, Long> {
     @Query("update Member set isOwner=false where id = :id")
@@ -17,5 +20,9 @@ public interface MembersRepository extends JpaRepository<Member, Long> {
     @Query("update Member set isOwner=true where id=:id")
     void setMemberOwnershipById (Long id);
 
-    Long findMemberIdByOrganization_IdAndIsOwnerTrue(Long organizationId);
+    Optional<Member> findMemberIdByOrganization_IdAndIsOwnerTrue(Long organizationId);
+
+    List<Member> findMembersByOrganization_Id(Long orgId);
+
+    Optional<Member> findMemberByUser_Id(Long userId);
 }
