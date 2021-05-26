@@ -114,11 +114,11 @@ public class ScreenManager {
     /**
      * Создание типов обращения в новом окне
      */
-    public static void CreateType() {
+    public static void CreateTicketCategory() {
         if (CheckForTwoWindows())
             return;
 
-        OpenSecondWindow("CreateTypeScreen.fxml", "Создание типа обращения");
+        OpenSecondWindow("CreateTicketCategoryScreen.fxml", "Создание типа обращения");
     }
 
     /**

@@ -76,15 +76,15 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>
-                                          <TableView fx:id="LicenseTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="LicensesTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="license_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="license_serial_number" maxWidth="150.0" minWidth="100.0" prefWidth="150.0" text="Серийный номер" />
-                                                <TableColumn fx:id="license_organization" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Организация" />
-                                                <TableColumn fx:id="license_software" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
-                                                <TableColumn fx:id="license_limit" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Ограничения" />
-                                                <TableColumn fx:id="license_start_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата начала" />
-                                                <TableColumn fx:id="license_ending_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата окончания" />
+                                                <TableColumn fx:id="LicenseId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="LicenseSerialNumber" maxWidth="150.0" minWidth="100.0" prefWidth="150.0" text="Серийный номер" />
+                                                <TableColumn fx:id="LicenseOrganisation" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Организация" />
+                                                <TableColumn fx:id="LicenseSoftware" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
+                                                <TableColumn fx:id="LicenseLimit" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Ограничения" />
+                                                <TableColumn fx:id="LicenseStartDate" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата начала" />
+                                                <TableColumn fx:id="LicenseEndDate" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата окончания" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>
@@ -92,17 +92,17 @@
                               </VBox>
                            </content>
                         </Tab>
-                      <Tab fx:id="typeTab" text="Типы обращений">
+                      <Tab fx:id="TicketCategoryTab" text="Типы обращений">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="1244.0">
                                        <children>
-                                          <Button fx:id="addTypeButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddTypeButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить тип обращения" />
+                                          <Button fx:id="addTicketCategoryButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddTicketCategoryButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить тип обращения" />
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="200.0">
                                        <children>
-                                          <TableView fx:id="typeTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="TicketCategoryTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
                                                 <TableColumn fx:id="type_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
                                                 <TableColumn fx:id="type_name" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
@@ -124,7 +124,7 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="200.0">
                                        <children>
-                                          <TableView fx:id="softwareTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="SoftwareTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
                                                 <TableColumn fx:id="software_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
                                                 <TableColumn fx:id="software_name" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
@@ -146,12 +146,12 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>
-                                          <TableView fx:id="softwareModulsTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="SoftwareModulesTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="software_id1" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="modul_name" maxWidth="310.0" minWidth="310.0" prefWidth="310.0" text="Название" />
-                                                <TableColumn fx:id="modul_soft_name" maxWidth="310.0" minWidth="310.0" prefWidth="310.0" text="Название ПО" />
-                                                 <TableColumn fx:id="modul_description" maxWidth="450.0" minWidth="450.0" prefWidth="450.0" text="Описание" />
+                                                <TableColumn fx:id="SoftwareModuleId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="SoftwareModuleName" maxWidth="310.0" minWidth="310.0" prefWidth="310.0" text="Название" />
+                                                <TableColumn fx:id="SoftwareModuleParentName" maxWidth="310.0" minWidth="310.0" prefWidth="310.0" text="Название ПО" />
+                                                 <TableColumn fx:id="SoftwareModuleDescription" maxWidth="450.0" minWidth="450.0" prefWidth="450.0" text="Описание" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>
@@ -169,7 +169,7 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>
-                                          <TableView fx:id="ownerTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="OwnersTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
                                                 <TableColumn fx:id="owner_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
                                                 <TableColumn fx:id="owner_logo" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="Лого" />
@@ -196,7 +196,7 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>
-                                          <TableView fx:id="ownerTable1" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="MembersTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
                                                 <TableColumn fx:id="member_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
                                                 <TableColumn fx:id="member_full_name" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="ФИО" />
@@ -222,7 +222,7 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>
-                                          <TableView fx:id="ownerTable11" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="DevelopersTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
                                                 <TableColumn fx:id="developer_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
                                                 <TableColumn fx:id="developer_full_name" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" text="ФИО" />

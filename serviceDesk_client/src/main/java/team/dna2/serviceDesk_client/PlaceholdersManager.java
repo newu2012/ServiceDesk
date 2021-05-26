@@ -3,6 +3,7 @@ package team.dna2.serviceDesk_client;
 import team.dna2.serviceDesk_client.models.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PlaceholdersManager {
     public static void SetUpPlaceholders() {
@@ -10,6 +11,7 @@ public class PlaceholdersManager {
         SetUpPlaceholderCategories();
         SetUpPlaceholderSoftware();
         SetUpPlaceholderSoftwareModules();
+        SetUpPlaceholderLicenses();
     }
 
     /**
@@ -53,5 +55,10 @@ public class PlaceholdersManager {
 
         Software.software.get(0).setSoftwareModules(serviceDeskModules); // Можно заменить имеющийся список
         Software.software.get(0).addSoftwareModule(new SoftwareModule(0, "Другое...")); // Или просто добавить запись
+    }
+
+    public static void SetUpPlaceholderLicenses() {
+        License.licenses.add(new License(123456L, 0L, 0L, 0L, new Date(),
+                new Date(System.currentTimeMillis() + 1000000000)));
     }
 }
