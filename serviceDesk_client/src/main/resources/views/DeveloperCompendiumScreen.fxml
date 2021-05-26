@@ -224,11 +224,11 @@
                                        <children>
                                           <TableView fx:id="DevelopersTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="developer_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="developer_full_name" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" text="ФИО" />
-                                                <TableColumn fx:id="developer_reg_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
-                                                <TableColumn fx:id="developer_status" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Статус" />
-                                                <TableColumn fx:id="developer_block_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
+                                                <TableColumn fx:id="DeveloperId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="DeveloperFullName" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" text="ФИО" />
+                                                <TableColumn fx:id="DeveloperRegDate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
+                                                <TableColumn fx:id="DeveloperStatus" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Статус" />
+                                                <TableColumn fx:id="DeveloperBlockDate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>

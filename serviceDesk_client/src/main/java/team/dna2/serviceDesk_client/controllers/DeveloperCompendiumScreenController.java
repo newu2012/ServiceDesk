@@ -61,9 +61,8 @@ public class DeveloperCompendiumScreenController implements Initializable {
             .filter(u -> u.getRole().equals("Владелец ЛК Заказчика")).collect(Collectors.toList()));
     public ObservableList<User> members = FXCollections.observableArrayList(User.users.stream()
             .filter(u -> u.organisationId != -1).collect(Collectors.toList()));
-    public ObservableList<User> developers = FXCollections
-            .observableArrayList(User.users.stream()
-            .filter(u -> u.getRole().equals("Разработчик")).collect(Collectors.toList()));
+    public ObservableList<User> developers = FXCollections.observableArrayList(User.users.stream()
+            .filter(u -> u.organisationId == -1).collect(Collectors.toList()));
     //endregion
 
     //region LicensesColumns
@@ -105,6 +104,17 @@ public class DeveloperCompendiumScreenController implements Initializable {
     @FXML public TableColumn<User, Object> MemberOrganisation;
     //endregion
 
+    //region OrganisationsColumns
+    //endregion
+
+    //region DevelopersColumns
+    @FXML public TableColumn<User, Long> DeveloperId;
+    @FXML public TableColumn<User, Object> DeveloperFullName;
+    @FXML public TableColumn<User, String> DeveloperRegDate;
+    @FXML public TableColumn<User, Object> DeveloperStatus;
+    @FXML public TableColumn<User, String> DeveloperBlockDate;
+    //endregion
+
     public DeveloperCompendiumScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
@@ -122,8 +132,9 @@ public class DeveloperCompendiumScreenController implements Initializable {
         initTicketCategoriesTable();
         initSoftwareTable();
         initSoftwareModulesTable();
-
+        initOrganisationTable();
         initMembersTable();
+        initDevelopersTable();
     }
 
     public void initLicensesTable() {
@@ -174,6 +185,10 @@ public class DeveloperCompendiumScreenController implements Initializable {
         SoftwareModulesTable.setItems(softwareModules);
     }
 
+    public void initOrganisationTable() {
+        // TODO Заполнить
+    }
+
     public void initMembersTable() {
         MemberId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         MemberFullName.setCellValueFactory(new PropertyValueFactory<>("FullName"));
@@ -190,6 +205,22 @@ public class DeveloperCompendiumScreenController implements Initializable {
         members = FXCollections.observableArrayList(User.users.stream()
                 .filter(u -> u.organisationId != -1).collect(Collectors.toList()));
         MembersTable.setItems(members);
+    }
+
+    public void initDevelopersTable() {
+        DeveloperId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        DeveloperFullName.setCellValueFactory(new PropertyValueFactory<>("FullName"));
+        DeveloperRegDate.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getRegistrationDate())));
+        DeveloperStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        DeveloperBlockDate.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getBlockDate())));
+
+        developers = FXCollections.observableArrayList(User.users.stream()
+                .filter(u -> u.organisationId == -1).collect(Collectors.toList()));
+        DevelopersTable.setItems(developers);
     }
 
     //region Add something to table
