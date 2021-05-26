@@ -102,6 +102,76 @@ public class ScreenManager {
     }
 
     /**
+     * Экран просмотра обращения
+     */
+    public static void ShowTicket() {
+
+        if (Role.DEVELOPER.getRole().equals(userRole))
+            UpdateCurrentAndPreviousScreens("DeveloperShowTicketScreen.fxml");
+        else
+            UpdateCurrentAndPreviousScreens("MemberShowTicketScreen.fxml");
+    }
+    //endregion
+
+    //region ProfileAndOrganisation
+    /**
+     * WIP
+     * Экран личного профиля
+     */
+    public static void OpenMyProfile() {
+        if (Role.DEVELOPER.getRole().equals(userRole))
+            UpdateCurrentAndPreviousScreens("DeveloperProfileScreen.fxml");
+        else
+            UpdateCurrentAndPreviousScreens("MemberProfileScreen.fxml");
+    }
+
+    /**
+     * WIP
+     * Открывает второе окно для изменения информации профиля
+     */
+    public static void ChangeProfile() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("ChangeProfileScreen.fxml", "Изменение профиля");
+    }
+
+    /**
+     * WIP
+     * Экран оранизации пользователя
+     */
+    public static void OpenOrganisation() {
+        if (Role.OWNER.getRole().equals(userRole))
+            UpdateCurrentAndPreviousScreens("OwnerOrganisationScreen.fxml");
+        else if (Role.MEMBER.getRole().equals(userRole))
+            UpdateCurrentAndPreviousScreens("MemberOrganisationScreen.fxml");
+        else if (Role.DEVELOPER.getRole().equals(userRole))
+            UpdateCurrentAndPreviousScreens("DeveloperOrganisationScreen.fxml");
+    }
+    //endregion
+
+    //region DeveloperMain
+    /**
+     * WIP
+     * Экран просмотра справочников
+     */
+    public static void OpenCompendiums() {
+        if (Role.DEVELOPER.getRole().equals(userRole))
+            UpdateCurrentAndPreviousScreens("DeveloperCompendiumScreen.fxml");
+    }
+
+    /**
+     * WIP
+     * Экран просмотра статистики
+     */
+    public static void OpenStatistics() {
+        if (Role.DEVELOPER.getRole().equals(userRole))
+            UpdateCurrentAndPreviousScreens("DeveloperStatisticsScreen.fxml");
+    }
+    //endregion
+
+    //region DeveloperCompendiums
+    /**
      * Создание лицензии в новом окне
      */
     public static void CreateLicense() {
@@ -169,74 +239,6 @@ public class ScreenManager {
             return;
 
         OpenSecondWindow("CreateDeveloperScreen.fxml", "Создание профиля разработчика");
-    }
-
-    /**
-     * Экран просмотра обращения
-     */
-    public static void ShowTicket() {
-
-        if (Role.DEVELOPER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("DeveloperShowTicketScreen.fxml");
-        else
-            UpdateCurrentAndPreviousScreens("MemberShowTicketScreen.fxml");
-    }
-    //endregion
-
-    //region ProfileAndOrganisation
-    /**
-     * WIP
-     * Экран личного профиля
-     */
-    public static void OpenMyProfile() {
-        if (Role.DEVELOPER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("DeveloperProfileScreen.fxml");
-        else
-            UpdateCurrentAndPreviousScreens("MemberProfileScreen.fxml");
-    }
-
-    /**
-     * WIP
-     * Открывает второе окно для изменения информации профиля
-     */
-    public static void ChangeProfile() {
-        if (CheckForTwoWindows())
-            return;
-
-        OpenSecondWindow("ChangeProfileScreen.fxml", "Изменение профиля");
-    }
-
-    /**
-     * WIP
-     * Экран оранизации пользователя
-     */
-    public static void OpenOrganisation() {
-        if (Role.OWNER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("OwnerOrganisationScreen.fxml");
-        else if (Role.MEMBER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("MemberOrganisationScreen.fxml");
-        else if (Role.DEVELOPER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("DeveloperOrganisationScreen.fxml");
-    }
-    //endregion
-
-    //region DeveloperOnly
-    /**
-     * WIP
-     * Экран просмотра справочников
-     */
-    public static void OpenCompendiums() {
-        if (Role.DEVELOPER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("DeveloperCompendiumScreen.fxml");
-    }
-
-    /**
-     * WIP
-     * Экран просмотра статистики
-     */
-    public static void OpenStatistics() {
-        if (Role.DEVELOPER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("DeveloperStatisticsScreen.fxml");
     }
     //endregion
 

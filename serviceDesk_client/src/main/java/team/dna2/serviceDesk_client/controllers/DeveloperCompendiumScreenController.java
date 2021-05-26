@@ -137,6 +137,7 @@ public class DeveloperCompendiumScreenController implements Initializable {
         initDevelopersTable();
     }
 
+    //region InitTables
     public void initLicensesTable() {
         LicenseId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         LicenseSerialNumber.setCellValueFactory(new PropertyValueFactory<>("SerialNumber"));
@@ -222,6 +223,7 @@ public class DeveloperCompendiumScreenController implements Initializable {
                 .filter(u -> u.organisationId == -1).collect(Collectors.toList()));
         DevelopersTable.setItems(developers);
     }
+    //endregion
 
     //region Add something to table
     public void AddLicenseButtonClicked(ActionEvent actionEvent) {
