@@ -54,15 +54,13 @@ public class DeveloperCompendiumScreenController implements Initializable {
             .observableArrayList(Category.categories);
     public ObservableList<Software> software = FXCollections
             .observableArrayList(Software.software);
-    // TODO Переделать softwareModules или саму таблицу, потому что мы раньше думали делать хранение модулей внутри ПО.
     public ObservableList<SoftwareModule> softwareModules = FXCollections
             .observableArrayList(SoftwareModule.softwareModules);
     public ObservableList<User> owners = FXCollections
             .observableArrayList(User.users.stream()
             .filter(u -> u.getRole().equals("Владелец ЛК Заказчика")).collect(Collectors.toList()));
-    public ObservableList<User> members = FXCollections
-            .observableArrayList(User.users.stream()
-            .filter(u -> u.getRole().equals("Представитель Заказчика")).collect(Collectors.toList()));
+    public ObservableList<User> members = FXCollections.observableArrayList(User.users.stream()
+            .filter(u -> u.organisationId != -1).collect(Collectors.toList()));
     public ObservableList<User> developers = FXCollections
             .observableArrayList(User.users.stream()
             .filter(u -> u.getRole().equals("Разработчик")).collect(Collectors.toList()));
@@ -79,15 +77,15 @@ public class DeveloperCompendiumScreenController implements Initializable {
     //endregion
 
     //region CategoriesColumns
-    @FXML public TableColumn<License, Long> CategoryId;
-    @FXML public TableColumn<License, Object> CategoryName;
-    @FXML public TableColumn<License, Object> CategoryDescription;
+    @FXML public TableColumn<Category, Long> CategoryId;
+    @FXML public TableColumn<Category, Object> CategoryName;
+    @FXML public TableColumn<Category, Object> CategoryDescription;
     //endregion
 
     //region SoftwareColumns
-    @FXML public TableColumn<SoftwareModule, Long> SoftwareId;
-    @FXML public TableColumn<SoftwareModule, Object> SoftwareName;
-    @FXML public TableColumn<SoftwareModule, Object> SoftwareDescription;
+    @FXML public TableColumn<Software, Long> SoftwareId;
+    @FXML public TableColumn<Software, Object> SoftwareName;
+    @FXML public TableColumn<Software, Object> SoftwareDescription;
     //endregion
 
     //region SoftwareModulesColumns
@@ -95,6 +93,16 @@ public class DeveloperCompendiumScreenController implements Initializable {
     @FXML public TableColumn<SoftwareModule, Object> SoftwareModuleName;
     @FXML public TableColumn<SoftwareModule, String> SoftwareModuleParentName;
     @FXML public TableColumn<SoftwareModule, Object> SoftwareModuleDescription;
+    //endregion
+
+    //region MembersColumns
+    @FXML public TableColumn<User, Long> MemberId;
+    @FXML public TableColumn<User, Object> MemberFullName;
+    @FXML public TableColumn<User, Object> MemberRole;
+    @FXML public TableColumn<User, String> MemberRegDate;
+    @FXML public TableColumn<User, Object> MemberStatus;
+    @FXML public TableColumn<User, String> MemberBlockDate;
+    @FXML public TableColumn<User, Object> MemberOrganisation;
     //endregion
 
     public DeveloperCompendiumScreenController() {
@@ -114,6 +122,8 @@ public class DeveloperCompendiumScreenController implements Initializable {
         initTicketCategoriesTable();
         initSoftwareTable();
         initSoftwareModulesTable();
+
+        initMembersTable();
     }
 
     public void initLicensesTable() {
@@ -162,6 +172,24 @@ public class DeveloperCompendiumScreenController implements Initializable {
 
         softwareModules = FXCollections.observableArrayList(SoftwareModule.softwareModules);
         SoftwareModulesTable.setItems(softwareModules);
+    }
+
+    public void initMembersTable() {
+        MemberId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        MemberFullName.setCellValueFactory(new PropertyValueFactory<>("FullName"));
+        MemberRole.setCellValueFactory(new PropertyValueFactory<>("Role"));
+        MemberRegDate.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getRegistrationDate())));
+        MemberStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        MemberBlockDate.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getBlockDate())));
+        MemberOrganisation.setCellValueFactory(new PropertyValueFactory<>("OrganisationId"));
+
+        members = FXCollections.observableArrayList(User.users.stream()
+                .filter(u -> u.organisationId != -1).collect(Collectors.toList()));
+        MembersTable.setItems(members);
     }
 
     //region Add something to table

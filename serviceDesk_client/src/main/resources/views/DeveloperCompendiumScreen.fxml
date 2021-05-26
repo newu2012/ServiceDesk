@@ -198,13 +198,13 @@
                                        <children>
                                           <TableView fx:id="MembersTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="member_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="member_full_name" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="ФИО" />
-                                                <TableColumn fx:id="member_role" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Роль" />
-                                                <TableColumn fx:id="member_reg_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
-                                                <TableColumn fx:id="member_status" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Статус" />
-                                                <TableColumn fx:id="member_block_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
-                                                <TableColumn fx:id="member_organization" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Организация" />
+                                                <TableColumn fx:id="MemberId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="MemberFullName" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="ФИО" />
+                                                <TableColumn fx:id="MemberRole" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Роль" />
+                                                <TableColumn fx:id="MemberRegDate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
+                                                <TableColumn fx:id="MemberStatus" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Статус" />
+                                                <TableColumn fx:id="MemberBlockDate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
+                                                <TableColumn fx:id="MemberOrganisation" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Организация" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>
