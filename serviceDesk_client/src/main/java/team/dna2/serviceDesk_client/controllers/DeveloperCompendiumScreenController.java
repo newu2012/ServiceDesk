@@ -72,7 +72,7 @@ public class DeveloperCompendiumScreenController implements Initializable {
     @FXML public TableColumn<License, Long> LicenseId;
     @FXML public TableColumn<License, Object> LicenseSerialNumber;
     @FXML public TableColumn<License, Object> LicenseOrganisation;
-    @FXML public TableColumn<License, Object> LicenseSoftware;
+    @FXML public TableColumn<License, String> LicenseSoftware;
     @FXML public TableColumn<License, Object> LicenseLimit;
     @FXML public TableColumn<License, String> LicenseStartDate;
     @FXML public TableColumn<License, String> LicenseEndDate;
@@ -84,11 +84,11 @@ public class DeveloperCompendiumScreenController implements Initializable {
     //region SoftwareColumns
     //endregion
 
-    //region LicensesColumns
-    @FXML public TableColumn<License, Long> SoftwareModuleId;
-    @FXML public TableColumn<License, Object> SoftwareModuleName;
-    @FXML public TableColumn<License, Object> SoftwareModuleParentName;
-    @FXML public TableColumn<License, Object> SoftwareModuleDescription;
+    //region SoftwareModulesColumns
+    @FXML public TableColumn<SoftwareModule, Long> SoftwareModuleId;
+    @FXML public TableColumn<SoftwareModule, Object> SoftwareModuleName;
+    @FXML public TableColumn<SoftwareModule, String> SoftwareModuleParentName;
+    @FXML public TableColumn<SoftwareModule, Object> SoftwareModuleDescription;
     //endregion
 
     public DeveloperCompendiumScreenController() {
@@ -113,6 +113,8 @@ public class DeveloperCompendiumScreenController implements Initializable {
         LicenseSerialNumber.setCellValueFactory(new PropertyValueFactory<>("SerialNumber"));
         LicenseOrganisation.setCellValueFactory(new PropertyValueFactory<>("OrganisationId"));
         LicenseSoftware.setCellValueFactory(new PropertyValueFactory<>("SoftwareId"));
+        LicenseSoftware.setCellValueFactory(ts ->
+                new SimpleStringProperty(software.get(Math.toIntExact(ts.getValue().getSoftwareId())).getName()));
         LicenseLimit.setCellValueFactory(new PropertyValueFactory<>("Limit"));
         LicenseStartDate.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
@@ -129,6 +131,8 @@ public class DeveloperCompendiumScreenController implements Initializable {
         SoftwareModuleId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         SoftwareModuleName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         SoftwareModuleParentName.setCellValueFactory(new PropertyValueFactory<>("SoftwareId"));
+        SoftwareModuleParentName.setCellValueFactory(ts ->
+                new SimpleStringProperty(software.get(Math.toIntExact(ts.getValue().getSoftwareId())).getName()));
         SoftwareModuleDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
 
         softwareModules = FXCollections.observableArrayList(SoftwareModule.softwareModules);
