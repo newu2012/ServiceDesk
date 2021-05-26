@@ -39,7 +39,7 @@ public class DeveloperCompendiumScreenController implements Initializable {
     @FXML private Circle MyProfileCircle;
 
     @FXML private TableView<License> LicensesTable;
-    @FXML private TableView<TicketCategory> TicketCategoryTable;
+    @FXML private TableView<Category> CategoriesTable;
     @FXML private TableView<Software> SoftwareTable;
     @FXML private TableView<SoftwareModule> SoftwareModulesTable;
     @FXML private TableView<User> OwnersTable;
@@ -50,8 +50,8 @@ public class DeveloperCompendiumScreenController implements Initializable {
     //region Table lists
     public ObservableList<License> licenses = FXCollections
             .observableArrayList(License.licenses);
-    public ObservableList<TicketCategory> ticketCategories = FXCollections
-            .observableArrayList(TicketCategory.ticketCategories);
+    public ObservableList<Category> categories = FXCollections
+            .observableArrayList(Category.categories);
     public ObservableList<Software> software = FXCollections
             .observableArrayList(Software.software);
     // TODO Переделать softwareModules или саму таблицу, потому что мы раньше думали делать хранение модулей внутри ПО.
@@ -78,10 +78,16 @@ public class DeveloperCompendiumScreenController implements Initializable {
     @FXML public TableColumn<License, String> LicenseEndDate;
     //endregion
 
-    //region TicketCategoriesColumns
+    //region CategoriesColumns
+    @FXML public TableColumn<License, Long> CategoryId;
+    @FXML public TableColumn<License, Object> CategoryName;
+    @FXML public TableColumn<License, Object> CategoryDescription;
     //endregion
 
     //region SoftwareColumns
+    @FXML public TableColumn<SoftwareModule, Long> SoftwareId;
+    @FXML public TableColumn<SoftwareModule, Object> SoftwareName;
+    @FXML public TableColumn<SoftwareModule, Object> SoftwareDescription;
     //endregion
 
     //region SoftwareModulesColumns
@@ -105,6 +111,8 @@ public class DeveloperCompendiumScreenController implements Initializable {
 
     public void initTables() {
         initLicensesTable();
+        initTicketCategoriesTable();
+        initSoftwareTable();
         initSoftwareModulesTable();
     }
 
@@ -127,10 +135,27 @@ public class DeveloperCompendiumScreenController implements Initializable {
         LicensesTable.setItems(licenses);
     }
 
+    public void initTicketCategoriesTable() {
+        CategoryId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        CategoryName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        CategoryDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
+
+        categories = FXCollections.observableArrayList(Category.categories);
+        CategoriesTable.setItems(categories);
+    }
+
+    public void initSoftwareTable() {
+        SoftwareId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        SoftwareName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        SoftwareDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
+
+        software = FXCollections.observableArrayList(Software.software);
+        SoftwareTable.setItems(software);
+    }
+
     public void initSoftwareModulesTable() {
         SoftwareModuleId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         SoftwareModuleName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        SoftwareModuleParentName.setCellValueFactory(new PropertyValueFactory<>("SoftwareId"));
         SoftwareModuleParentName.setCellValueFactory(ts ->
                 new SimpleStringProperty(software.get(Math.toIntExact(ts.getValue().getSoftwareId())).getName()));
         SoftwareModuleDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
@@ -144,11 +169,11 @@ public class DeveloperCompendiumScreenController implements Initializable {
         ScreenManager.CreateLicense();
     }
 
-    public void AddTicketCategoryButtonClicked(ActionEvent actionEvent) {
-        ScreenManager.CreateTicketCategory();
+    public void AddCategoryButtonClicked(ActionEvent actionEvent) {
+        ScreenManager.CreateCategory();
     }
 
-    public void AddCompSoftButtonClicked(ActionEvent actionEvent) {
+    public void AddSoftwareButtonClicked(ActionEvent actionEvent) {
         ScreenManager.CreateSoftware();
     }
 

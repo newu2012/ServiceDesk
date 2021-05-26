@@ -66,7 +66,7 @@
                <children>
                   <TabPane id="tabPane" fx:id="comptabpane" layoutX="6.0" layoutY="18.0" prefHeight="550.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab fx:id="licensesTab" text="Лицензии">
+                      <Tab fx:id="LicensesTab" text="Лицензии">
                            <content>
                               <VBox prefHeight="458.0" prefWidth="1246.0">
                                  <children>
@@ -92,21 +92,21 @@
                               </VBox>
                            </content>
                         </Tab>
-                      <Tab fx:id="TicketCategoryTab" text="Типы обращений">
+                      <Tab fx:id="CategoryTab" text="Типы обращений">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="1244.0">
                                        <children>
-                                          <Button fx:id="addTicketCategoryButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddTicketCategoryButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить тип обращения" />
+                                          <Button fx:id="addCategoryButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddCategoryButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить тип обращения" />
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="200.0">
                                        <children>
-                                          <TableView fx:id="TicketCategoryTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="CategoriesTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="type_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="type_name" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
-                                                <TableColumn fx:id="type_description" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="Описание" />
+                                                <TableColumn fx:id="CategoryId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="CategoryName" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
+                                                <TableColumn fx:id="CategoryDescription" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="Описание" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>
@@ -114,21 +114,21 @@
                               </VBox>
                            </content>
                         </Tab>
-                        <Tab fx:id="compSoftTab" text="Справочник ПО">
+                        <Tab fx:id="SoftwareTab" text="Справочник ПО">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="1244.0">
                                        <children>
-                                          <Button fx:id="addCompSoftButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddCompSoftButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить справочник ПО" />
+                                          <Button fx:id="addSoftwareButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddSoftwareButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить справочник ПО" />
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="200.0">
                                        <children>
                                           <TableView fx:id="SoftwareTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="software_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="software_name" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
-                                                <TableColumn fx:id="software_description" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="Описание" />
+                                                <TableColumn fx:id="SoftwareId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="SoftwareName" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
+                                                <TableColumn fx:id="SoftwareDescription" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="Описание" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>
@@ -136,7 +136,7 @@
                               </VBox>
                            </content>
                         </Tab>
-                        <Tab fx:id="compModSoftTab" text="Справочник модулей ПО">
+                        <Tab fx:id="SoftwareModulesTab" text="Справочник модулей ПО">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -159,7 +159,7 @@
                               </VBox>
                            </content>
                         </Tab>
-                        <Tab fx:id="ownerTab" text="Заказчики">
+                        <Tab fx:id="OwnersTab" text="Заказчики">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -186,7 +186,7 @@
                               </VBox>
                            </content>
                         </Tab>
-                        <Tab fx:id="memberTab" text="Представители">
+                        <Tab fx:id="MembersTab" text="Представители">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -212,7 +212,7 @@
                               </VBox>
                            </content>
                         </Tab>
-                        <Tab fx:id="developerTab" text="Разработчики">
+                        <Tab fx:id="DevelopersTab" text="Разработчики">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
