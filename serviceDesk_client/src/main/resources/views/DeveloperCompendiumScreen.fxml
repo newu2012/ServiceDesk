@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.DeveloperTicketsScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.DeveloperCompendiumScreenController">
     <top>
         <HBox alignment="CENTER_LEFT" maxHeight="64.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
             <children>
@@ -52,22 +56,38 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="63.0" prefWidth="1366.0">
+            <AnchorPane prefHeight="60.0" prefWidth="1366.0">
                <children>
-                  <Text layoutX="120.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Справочники" wrappingWidth="294.41939544677734" />
-                  <Line endX="-1.6" endY="1.5" layoutX="250.0" layoutY="58.0" startX="-126.0" startY="1.5" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="5.0" />
+                  <Text layoutX="42.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Справочники" wrappingWidth="294.41939544677734" />
+                  <Line endX="-1.6" endY="1.5" layoutX="172.0" layoutY="58.0" startX="-126.0" startY="1.5" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="5.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="550.0" prefWidth="1366.0">
                <children>
-                  <TabPane id="tabPane" fx:id="comptabpane" layoutX="56.0" layoutY="20.0" prefHeight="550.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane id="tabPane" fx:id="comptabpane" layoutX="6.0" layoutY="18.0" prefHeight="550.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab fx:id="licensesTab" text="Лицензии">
                            <content>
                               <VBox prefHeight="458.0" prefWidth="1246.0">
                                  <children>
-                                    <AnchorPane prefHeight="56.0" prefWidth="1266.0" />
-                                    <AnchorPane prefHeight="202.0" prefWidth="1222.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="1266.0">
+                                       <children>
+                                          <Button fx:id="createLicenseButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddLicenseButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить лицензию" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0">
+                                       <children>
+                                          <TableView fx:id="LicenseTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="license_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="license_serial_number" maxWidth="150.0" minWidth="100.0" prefWidth="150.0" text="Серийный номер" />
+                                                <TableColumn fx:id="license_organization" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Организация" />
+                                                <TableColumn fx:id="license_software" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
+                                                <TableColumn fx:id="license_limit" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Ограничения" />
+                                                <TableColumn fx:id="license_start_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата начала" />
+                                                <TableColumn fx:id="license_ending_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата окончания" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -76,8 +96,20 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="1244.0">
+                                       <children>
+                                          <Button fx:id="addTypeButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddTypeButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить тип обращения" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="typeTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="type_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="type_name" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
+                                                <TableColumn fx:id="type_description" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="Описание" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -86,8 +118,20 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="1244.0">
+                                       <children>
+                                          <Button fx:id="addCompSoftButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddCompSoftButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить справочник ПО" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="softwareTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="software_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="software_name" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Название" />
+                                                <TableColumn fx:id="software_description" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" text="Описание" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -96,8 +140,21 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addModSoftButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddModSoftButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить модуль ПО" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0">
+                                       <children>
+                                          <TableView fx:id="softwareModulsTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="software_id1" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="modul_name" maxWidth="310.0" minWidth="310.0" prefWidth="310.0" text="Название" />
+                                                <TableColumn fx:id="modul_soft_name" maxWidth="310.0" minWidth="310.0" prefWidth="310.0" text="Название ПО" />
+                                                 <TableColumn fx:id="modul_description" maxWidth="450.0" minWidth="450.0" prefWidth="450.0" text="Описание" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -106,8 +163,25 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addOwnerButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddOwnerButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить заказчика" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0">
+                                       <children>
+                                          <TableView fx:id="ownerTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="owner_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="owner_logo" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="Лого" />
+                                                <TableColumn fx:id="owner_organization" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Организация" />
+                                                <TableColumn fx:id="owner_LK" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Владелец ЛК" />
+                                                <TableColumn fx:id="owner_description" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" text="Описание" />
+                                                <TableColumn fx:id="owner_reg_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
+                                                 <TableColumn fx:id="owner_status" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Статус" />
+                                                 <TableColumn fx:id="owner_block_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -116,8 +190,24 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addMemberButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddMemberButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить представителя" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0">
+                                       <children>
+                                          <TableView fx:id="ownerTable1" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="member_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="member_full_name" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="ФИО" />
+                                                <TableColumn fx:id="member_role" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Роль" />
+                                                <TableColumn fx:id="member_reg_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
+                                                <TableColumn fx:id="member_status" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Статус" />
+                                                <TableColumn fx:id="member_block_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
+                                                <TableColumn fx:id="member_organization" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Организация" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -126,8 +216,22 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="60.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="addDeveloperButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddDeveloperButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить разработчика" />
+                                       </children></AnchorPane>
+                                    <AnchorPane prefHeight="430.0" prefWidth="1244.0">
+                                       <children>
+                                          <TableView fx:id="ownerTable11" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                             <columns>
+                                                <TableColumn fx:id="developer_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="developer_full_name" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" text="ФИО" />
+                                                <TableColumn fx:id="developer_reg_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
+                                                <TableColumn fx:id="developer_status" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Статус" />
+                                                <TableColumn fx:id="developer_block_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
+                                             </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </children>
                               </VBox>
                            </content>
@@ -142,4 +246,11 @@
          </children>
       </VBox>
    </center>
+   <left>
+      <AnchorPane prefHeight="704.0" prefWidth="62.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="2.0" layoutY="50.0" onMouseClicked="#PreviousScreenButtonClicked" prefHeight="110.0" prefWidth="75.0" styleClass="previous-screen-button" text="&lt;" />
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>

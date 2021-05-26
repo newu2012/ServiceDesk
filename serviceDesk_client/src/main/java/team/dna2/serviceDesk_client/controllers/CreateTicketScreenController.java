@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import team.dna2.serviceDesk_client.ScreenManager;
 import team.dna2.serviceDesk_client.models.Category;
 import team.dna2.serviceDesk_client.models.Software;
 import team.dna2.serviceDesk_client.models.SoftwareModule;
@@ -82,7 +83,7 @@ public class CreateTicketScreenController implements Initializable {
         }
         else {
             TitleField.getStyleClass().clear();
-            TitleField.getStyleClass().addAll("text-input", "text-field");
+            TitleField.getStyleClass().addAll("text-input", "create-object-TextField");
         }
 
         if (CategoryBox.getValue() == null) {
@@ -91,7 +92,7 @@ public class CreateTicketScreenController implements Initializable {
         }
         else {
             CategoryBox.getStyleClass().clear();
-            CategoryBox.getStyleClass().addAll("choice-box");
+            CategoryBox.getStyleClass().addAll("create-object-ChoiceBox", "choice-box");
         }
 
         if (SoftwareBox.getValue() == null) {
@@ -100,7 +101,7 @@ public class CreateTicketScreenController implements Initializable {
         }
         else {
             SoftwareBox.getStyleClass().clear();
-            SoftwareBox.getStyleClass().addAll("choice-box");
+            SoftwareBox.getStyleClass().addAll("create-object-ChoiceBox", "choice-box");
         }
 
         if (validationError)
@@ -125,8 +126,11 @@ public class CreateTicketScreenController implements Initializable {
                 DescriptionTextArea.getText());
 
         System.out.println("SoftwareId=" + SoftwareBox.getValue().getId() + " ModuleId=" + moduleId);
+        ScreenManager.CloseSecondScreen();
+    }
 
-        Stage stage = (Stage) CreateTicketButton.getScene().getWindow();
-        stage.close(); // Закрытие этого окна
+    @FXML
+    public void PreviousScreenButtonClicked() {
+        ScreenManager.TryShowPreviousScreen();
     }
 }
