@@ -96,8 +96,12 @@ public class DeveloperCompendiumScreenController implements Initializable {
         ScreenManager.TryShowPreviousScreen();
     }
 
-    public void CreateLicenseButtonClicked(ActionEvent actionEvent) {
+    public void AddLicenseButtonClicked(ActionEvent actionEvent) {
         ScreenManager.CreateLicense();
+    }
+
+    public void AddTypeButtonClicked(ActionEvent actionEvent) {
+        ScreenManager.CreateType();
     }
     //endregion
 }

@@ -112,6 +112,16 @@ public class ScreenManager {
     }
 
     /**
+     * Создание типов обращения в новом окне
+     */
+    public static void CreateType() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("CreateTypeScreen.fxml", "Создание типа обращения");
+    }
+
+    /**
      * Экран просмотра обращения
      */
     public static void ShowTicket() {
@@ -253,5 +263,6 @@ public class ScreenManager {
             System.out.println(e.getLocalizedMessage());
         }
     }
+
     //endregion
 }
