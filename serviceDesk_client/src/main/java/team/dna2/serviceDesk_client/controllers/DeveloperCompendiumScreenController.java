@@ -111,5 +111,9 @@ public class DeveloperCompendiumScreenController implements Initializable {
     public void AddModSoftButtonClicked(ActionEvent actionEvent) {
         ScreenManager.CreateModSoftware();
     }
+
+    public void AddOwnerButtonClicked(ActionEvent actionEvent) {
+        ScreenManager.CreateOwner();
+    }
     //endregion
 }

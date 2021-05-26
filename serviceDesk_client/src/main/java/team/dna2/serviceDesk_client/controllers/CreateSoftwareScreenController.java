@@ -14,7 +14,7 @@ public class CreateSoftwareScreenController {
     @FXML
     private TextArea SoftwareArea;
     @FXML
-    private Button CreateSoftwareTypeButton;
+    private Button CreateSoftwareButton;
 //endregion
 
     public void CreateSoftwareButtonClicked() {

@@ -142,6 +142,16 @@ public class ScreenManager {
     }
 
     /**
+     * Создание заказчика в новом окне
+     */
+    public static void CreateOwner() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("CreateOwnerScreen.fxml", "Создание профиля заказчика");
+    }
+
+    /**
      * Экран просмотра обращения
      */
     public static void ShowTicket() {
@@ -283,6 +293,7 @@ public class ScreenManager {
             System.out.println(e.getLocalizedMessage());
         }
     }
+
 
 
     //endregion

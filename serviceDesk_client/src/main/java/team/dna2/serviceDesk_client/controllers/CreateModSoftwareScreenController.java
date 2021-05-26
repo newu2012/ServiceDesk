@@ -16,7 +16,7 @@ public class CreateModSoftwareScreenController {
     @FXML
     private TextArea ModSoftwareArea;
     @FXML
-    private Button CreateModSoftwareTypeButton;
+    private Button CreateModSoftwareButton;
 //endregion
 
     public void CreateModSoftwareButtonClicked() {
