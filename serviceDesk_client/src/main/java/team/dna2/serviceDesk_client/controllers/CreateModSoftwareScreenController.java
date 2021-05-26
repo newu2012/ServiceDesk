@@ -17,7 +17,7 @@ public class CreateModSoftwareScreenController {
     private TextArea ModSoftwareArea;
     @FXML
     private Button CreateModSoftwareButton;
-//endregion
+    //endregion
 
     public void CreateModSoftwareButtonClicked() {
         //TODO ну ясен хрен тут еще что-то нужно
@@ -28,7 +28,6 @@ public class CreateModSoftwareScreenController {
 
         ScreenManager.CloseSecondScreen();
     }
-
 
     @FXML
     public void PreviousScreenButtonClicked() {
