@@ -103,5 +103,9 @@ public class DeveloperCompendiumScreenController implements Initializable {
     public void AddTypeButtonClicked(ActionEvent actionEvent) {
         ScreenManager.CreateType();
     }
+
+    public void AddCompSoftButtonClicked(ActionEvent actionEvent) {
+        ScreenManager.CreateCompSoftware();
+    }
     //endregion
 }

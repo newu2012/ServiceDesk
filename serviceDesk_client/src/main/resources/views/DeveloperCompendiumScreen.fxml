@@ -120,7 +120,7 @@
                                  <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="1244.0">
                                        <children>
-                                          <Button fx:id="addCompSoftButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить справочник ПО" />
+                                          <Button fx:id="addCompSoftButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddCompSoftButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить справочник ПО" />
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="200.0">
                                        <children>

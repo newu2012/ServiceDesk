@@ -122,6 +122,17 @@ public class ScreenManager {
     }
 
     /**
+     * Создание ПО в новом окне
+     */
+    public static void CreateCompSoftware() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("CreateCompSoftwareScreen.fxml", "Создание программного обеспечения");
+    }
+
+
+    /**
      * Экран просмотра обращения
      */
     public static void ShowTicket() {
