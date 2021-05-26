@@ -152,6 +152,16 @@ public class ScreenManager {
     }
 
     /**
+     * Создание Представителя заказчика в новом окне
+     */
+    public static void CreateMember() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("CreateMemberScreen.fxml", "Создание профиля ПЗ");
+    }
+
+    /**
      * Экран просмотра обращения
      */
     public static void ShowTicket() {
@@ -293,8 +303,5 @@ public class ScreenManager {
             System.out.println(e.getLocalizedMessage());
         }
     }
-
-
-
     //endregion
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="840.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.CreateMemberScreenController">
+    <top>
+        <AnchorPane prefHeight="80.0" prefWidth="840.0" BorderPane.alignment="CENTER">
+            <children>
+                <Text layoutX="209.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Создание представителя заказчика" textAlignment="CENTER" />
+            </children>
+        </AnchorPane>
+    </top>
+    <bottom>
+        <Button fx:id="CreateMemberButton" defaultButton="true" mnemonicParsing="false" onAction="#CreateMemberButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Создать представителя" BorderPane.alignment="CENTER">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <font>
+                <Font size="20.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets bottom="20.0" />
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+    <left>
+        <AnchorPane prefHeight="458.0" prefWidth="80.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="9.0" layoutY="14.0" onMouseClicked="#PreviousScreenButtonClicked" prefHeight="94.0" prefWidth="71.0" styleClass="previous-screen-button" text="&lt;" />
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="494.0" prefWidth="679.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="60.0" layoutY="50.0" styleClass="big-description-text" text="Email*" />
+                <Label layoutX="60.0" layoutY="130.0" styleClass="big-description-text" text="Фамилия*" />
+                <Label layoutX="60.0" layoutY="210.0" styleClass="big-description-text" text="Имя*" />
+                <Label layoutX="60.0" layoutY="370.0" styleClass="big-description-text" text="Пароль*" />
+                <Label layoutX="60.0" layoutY="440.0" styleClass="big-description-text" text="Повторите пароль*" />
+                <TextField fx:id="MemberEmailField" layoutX="60.0" layoutY="80.0" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" styleClass="create-object-TextField" />
+                <TextField fx:id="MemberSNameField" layoutX="60.0" layoutY="160.0" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" styleClass="create-object-TextField" />
+                <TextField fx:id="MemberFNameField" layoutX="60.0" layoutY="240.0" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" styleClass="create-object-TextField" />
+                <TextField fx:id="MemberPasswordField" layoutX="60.0" layoutY="395.0" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" styleClass="create-object-TextField" />
+                <TextField fx:id="MemberRPasswordField" layoutX="60.0" layoutY="465.0" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" styleClass="create-object-TextField" />
+            <Label layoutX="60.0" layoutY="290.0" styleClass="big-description-text" text="Организация*" />
+            <ChoiceBox fx:id="MemberChoiceBox" layoutX="60.0" layoutY="320.0" prefWidth="600.0" styleClass="create-object-ChoiceBox" />
+            </children>
+        </AnchorPane>
+    </center>
+    <right>
+        <AnchorPane prefHeight="530.0" prefWidth="80.0" BorderPane.alignment="CENTER" />
+    </right>
+</BorderPane>

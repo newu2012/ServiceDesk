@@ -22,7 +22,7 @@ public class CreateOwnerScreenController {
     @FXML
     private TextField OwnerRPasswordField;
     @FXML
-    private Button CreateModSoftwareTypeButton;
+    private Button CreateModSoftwareButton;
 //endregion
 
     public void CreateOwnerButtonClicked() {
@@ -44,5 +44,4 @@ public class CreateOwnerScreenController {
     public void PreviousScreenButtonClicked() {
         ScreenManager.TryShowPreviousScreen();
     }
-
 }
