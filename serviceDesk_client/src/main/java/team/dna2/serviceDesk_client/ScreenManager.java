@@ -131,6 +131,15 @@ public class ScreenManager {
         OpenSecondWindow("CreateSoftwareScreen.fxml", "Создание программного обеспечения");
     }
 
+    /**
+     * Создание модуля ПО в новом окне
+     */
+    public static void CreateModSoftware() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("CreateModSoftwareScreen.fxml", "Создание модуля программного обеспечения");
+    }
 
     /**
      * Экран просмотра обращения
@@ -274,6 +283,7 @@ public class ScreenManager {
             System.out.println(e.getLocalizedMessage());
         }
     }
+
 
     //endregion
 }
