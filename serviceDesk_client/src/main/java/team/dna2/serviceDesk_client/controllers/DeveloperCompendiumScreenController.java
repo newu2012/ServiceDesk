@@ -115,5 +115,9 @@ public class DeveloperCompendiumScreenController implements Initializable {
     public void AddOwnerButtonClicked(ActionEvent actionEvent) {
         ScreenManager.CreateOwner();
     }
+
+    public void AddMemberButtonClicked(ActionEvent actionEvent) {
+        ScreenManager.CreateMember();
+    }
     //endregion
 }
