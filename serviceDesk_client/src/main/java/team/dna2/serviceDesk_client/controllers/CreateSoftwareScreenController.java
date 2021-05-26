@@ -7,21 +7,21 @@ import team.dna2.serviceDesk_client.ScreenManager;
 import team.dna2.serviceDesk_client.models.Organisation;
 import team.dna2.serviceDesk_client.models.Software;
 
-public class CreateCompSoftwareScreenController {
+public class CreateSoftwareScreenController {
     //region FXMLNodes
     @FXML
-    private TextField CopmSoftwareNameField;
+    private TextField SoftwareNameField;
     @FXML
-    private TextArea CopmSoftwareArea;
+    private TextArea SoftwareArea;
     @FXML
-    private Button CreateCopmSoftwareTypeButton;
+    private Button CreateSoftwareTypeButton;
 //endregion
 
-    public void CreateCompSoftwareButtonClicked() {
+    public void CreateSoftwareButtonClicked() {
         //TODO ну ясен хрен тут еще что-то нужно
 
-        System.out.println("CopmSoftwareName=" + CopmSoftwareNameField.getText());
-        System.out.println("CopmSoftware=" + CopmSoftwareArea.getText());
+        System.out.println("SoftwareName = " + SoftwareNameField.getText());
+        System.out.println("Software = " + SoftwareArea.getText());
 
         ScreenManager.CloseSecondScreen();
     }

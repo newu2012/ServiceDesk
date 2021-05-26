@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="840.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.CreateCompSoftwareScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="840.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.CreateSoftwareScreenController">
     <top>
         <AnchorPane prefHeight="80.0" prefWidth="840.0" BorderPane.alignment="CENTER">
             <children>
@@ -19,7 +19,7 @@
         </AnchorPane>
     </top>
     <bottom>
-        <Button fx:id="CreateCopmSoftwareTypeButton" defaultButton="true" mnemonicParsing="false" onAction="#CreateCompSoftwareButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Создать ПО" BorderPane.alignment="CENTER">
+        <Button fx:id="CreateSoftwareTypeButton" defaultButton="true" mnemonicParsing="false" onAction="#CreateSoftwareButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Создать ПО" BorderPane.alignment="CENTER">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
@@ -43,8 +43,8 @@
             <children>
                 <Label layoutX="60.0" layoutY="40.0" styleClass="big-description-text" text="Название*" />
                 <Label layoutX="60.0" layoutY="200.0" styleClass="big-description-text" text="Описание" />
-                <TextField fx:id="CopmSoftwareNameField" layoutX="60.0" layoutY="70.0" prefHeight="35.0" prefWidth="600.0" promptText="Не менее 10 символов" styleClass="create-object-TextField" />
-                <TextArea fx:id="CopmSoftwareArea" layoutX="60.0" layoutY="230.0" prefHeight="240.0" prefWidth="600.0" promptText="Дополнительная информация по типу обращения" styleClass="create-object-TextField">
+                <TextField fx:id="SoftwareNameField" layoutX="60.0" layoutY="70.0" prefHeight="35.0" prefWidth="600.0" promptText="Не менее 10 символов" styleClass="create-object-TextField" />
+                <TextArea fx:id="SoftwareArea" layoutX="60.0" layoutY="230.0" prefHeight="240.0" prefWidth="600.0" promptText="Дополнительная информация по типу обращения" styleClass="create-object-TextField">
                <font>
                   <Font size="16.0" />
                </font></TextArea>

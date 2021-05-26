@@ -81,10 +81,10 @@
                                                 <TableColumn fx:id="license_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
                                                 <TableColumn fx:id="license_serial_number" maxWidth="150.0" minWidth="100.0" prefWidth="150.0" text="Серийный номер" />
                                                 <TableColumn fx:id="license_organization" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Организация" />
-                                                <TableColumn fx:id="licesne_software" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
-                                                <TableColumn fx:id="licesne_limit" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Ограничения" />
-                                                <TableColumn fx:id="licesne_start_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата начала" />
-                                                <TableColumn fx:id="licesne_ending_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата окончания" />
+                                                <TableColumn fx:id="license_software" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Название ПО" />
+                                                <TableColumn fx:id="license_limit" maxWidth="150.0" minWidth="30.0" prefWidth="150.0" text="Ограничения" />
+                                                <TableColumn fx:id="license_start_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата начала" />
+                                                <TableColumn fx:id="license_ending_date" maxWidth="200.0" minWidth="60.0" prefWidth="200.0" text="Дата окончания" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>
