@@ -162,6 +162,16 @@ public class ScreenManager {
     }
 
     /**
+     * Создание разработчика в новом окне
+     */
+    public static void CreateDeveloper() {
+        if (CheckForTwoWindows())
+            return;
+
+        OpenSecondWindow("CreateDeveloperScreen.fxml", "Создание профиля разработчика");
+    }
+
+    /**
      * Экран просмотра обращения
      */
     public static void ShowTicket() {

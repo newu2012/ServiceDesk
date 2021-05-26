@@ -218,7 +218,7 @@
                                  <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="200.0">
                                        <children>
-                                          <Button fx:id="addDeveloperButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить разработчика" />
+                                          <Button fx:id="addDeveloperButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddDeveloperButtonClicked" prefHeight="40.0" prefWidth="250.0" styleClass="add-compendiums-button" text="+ Добавить разработчика" />
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>

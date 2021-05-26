@@ -119,5 +119,9 @@ public class DeveloperCompendiumScreenController implements Initializable {
     public void AddMemberButtonClicked(ActionEvent actionEvent) {
         ScreenManager.CreateMember();
     }
+
+    public void AddDeveloperButtonClicked(ActionEvent actionEvent) {
+        ScreenManager.CreateDeveloper();
+    }
     //endregion
 }
