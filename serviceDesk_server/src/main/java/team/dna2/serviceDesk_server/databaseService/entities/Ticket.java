@@ -53,4 +53,7 @@ public class Ticket implements Serializable {
 
     @Column(name = "ticket_text", nullable = false, length = 8191)
     private String ticketText;
+
+    @Transient
+    private Organization organization;
 }
