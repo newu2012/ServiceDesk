@@ -129,10 +129,6 @@ public class ClientApplication extends Application {
         return clientApplication;
     }
 
-    /**
-     * Хз что это, не использую.
-     * Есть зачем-то при старте приложения
-     */
     public static class StageReadyEvent extends ApplicationEvent {
         public StageReadyEvent(Stage stage) {
             super(stage);

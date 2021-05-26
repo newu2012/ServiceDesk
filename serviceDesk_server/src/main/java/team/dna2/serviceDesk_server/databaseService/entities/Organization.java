@@ -37,7 +37,7 @@ public class Organization implements Serializable {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive;
 
-    @Column(name = "block_date", nullable = false)
+    @Column(name = "block_date")
     private Timestamp blockDate;
 
 }
