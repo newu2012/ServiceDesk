@@ -2,47 +2,29 @@ package team.dna2.serviceDesk_client.models;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class Category {
-    public SimpleIntegerProperty id;
-    public SimpleStringProperty name;
-    public SimpleStringProperty description;
+    public Long id;
+    public String name;
+    public String description;
 
-    public static ArrayList<Category> categories = new ArrayList<Category>(); // Список всех категорий обращений
-    public static int nextId = 0;
+    public static ArrayList<Category> categories = new ArrayList<>();
+    public static Long nextId = 0L;
 
     public Category(String name) {
-        this.id = new SimpleIntegerProperty(nextId++);
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty("");
+        new Category(name, "");
     }
 
     public Category(String name, String description) {
-        this.id = new SimpleIntegerProperty(nextId++);
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-    }
-
-    public int getId() {
-        return id.get();
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
+        this.id = nextId++;
+        this.name = name;
+        this.description = description;
     }
 
     @Override

@@ -17,10 +17,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.springframework.context.ApplicationContext;
 import team.dna2.serviceDesk_client.ScreenManager;
-import team.dna2.serviceDesk_client.models.Role;
-import team.dna2.serviceDesk_client.models.Ticket;
-import team.dna2.serviceDesk_client.models.TicketStatus;
-import team.dna2.serviceDesk_client.models.User;
+import team.dna2.serviceDesk_client.models.*;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -84,7 +81,7 @@ public class DeveloperShowTicketScreenController implements Initializable {
         Description.setText(Ticket.currentTicket.getDescription());
         Status.setItems(oStatuses);
         Status.setValue(oStatuses.stream().filter(st -> st.getStatus().equals(Ticket.currentTicket.getStatus().toString())).findFirst().orElse(null));
-        Category.setText(Ticket.currentTicket.getCategory());
+        Category.setText(team.dna2.serviceDesk_client.models.Category.categories.get(Ticket.currentTicket.getCategoryId()).getName());
         Software.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getName());
         Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getSoftwareModuleById(Ticket.currentTicket.getModuleId()).getName());
         CreationDate.setText(dateFormat.format(Ticket.currentTicket.getCreationDate()));

@@ -120,7 +120,7 @@ public class CreateTicketScreenController implements Initializable {
 
         Ticket.AddTicket(
                 TitleField.getText(),
-                CategoryBox.getValue().getName(),
+                Math.toIntExact(CategoryBox.getValue().getId()),
                 SoftwareBox.getValue().getId(),
                 moduleId,
                 DescriptionTextArea.getText());
