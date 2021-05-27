@@ -14,6 +14,7 @@ import team.dna2.serviceDesk_client.models.User;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 
@@ -39,8 +40,8 @@ public class LoginScreenController {
     }
 
     private void printSomeInfo () throws Exception{
-        URL url = new URL("https://www.dnd5eapi.co/api/classes");
-        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+        URL url = new URL("http://localhost:8080/developer/licenses/0");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
         con.setConnectTimeout(5000);
@@ -63,7 +64,11 @@ public class LoginScreenController {
      * @throws NullPointerException Почему-то кидалась, сейчас точно не скажу
      */
     private void CheckLogIn() throws NullPointerException, Exception {
+        try {
         printSomeInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         var user = User.users.stream() // Есть пользователь с таким email
                 .filter(us -> Email.getText().equals(us.getEmail()))
