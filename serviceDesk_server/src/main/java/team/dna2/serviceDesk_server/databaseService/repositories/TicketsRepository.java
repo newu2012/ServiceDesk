@@ -15,13 +15,6 @@ public interface TicketsRepository extends JpaRepository<Ticket, Long> {
     //Взять все тикеты по исполнителю
     List<Ticket> findTicketsByDeveloper_Id(Long devId);
 
-    //List<Ticket> findTicketsByOrganization_Id(Long orgId);
+    List<Ticket> findTicketsByOrganization_Id(Long orgId);
 
-
-//    @Query("select Ticket from Ticket t join Member m where m.organization.id = :orgId")
-//    List<Ticket> findTicketsByOrganizationName();
-
-    //найти тикет по организации
-    //от организации найти мембера
-    //возможно стоит оставлять организацию в тикете(!)
 }

@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import team.dna2.serviceDesk_server.databaseService.entities.CompendiumTicketCategory;
 import team.dna2.serviceDesk_server.databaseService.entities.Member;
 import team.dna2.serviceDesk_server.databaseService.entities.Ticket;
-import team.dna2.serviceDesk_server.databaseService.services.CompendiumTicketCategoryService;
 import team.dna2.serviceDesk_server.databaseService.services.MemberService;
 import team.dna2.serviceDesk_server.databaseService.services.TicketService;
 
@@ -31,7 +29,7 @@ public class MemberController {
 
     @GetMapping("/tickets/{ticketId}")
     public Ticket getSelectedTicket(@PathVariable Long ticketId){
-        return ticketService.getOneTicket(ticketId);
+        return ticketService.getOneById(ticketId);
     }
 
     @Resource
