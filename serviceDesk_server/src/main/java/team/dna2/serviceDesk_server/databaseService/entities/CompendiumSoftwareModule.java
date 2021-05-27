@@ -1,18 +1,13 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "COMPENDIUM_SOFTWARE_MODULES")
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 public class CompendiumSoftwareModule implements Serializable {
     @Id

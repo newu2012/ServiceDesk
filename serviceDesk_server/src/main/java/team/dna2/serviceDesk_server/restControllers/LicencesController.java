@@ -1,11 +1,13 @@
 package team.dna2.serviceDesk_server.restControllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import team.dna2.serviceDesk_server.databaseService.entities.CompendiumLicence;
 import team.dna2.serviceDesk_server.databaseService.services.CompendiumLicenceService;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -17,7 +19,7 @@ public class LicencesController {
     private CompendiumLicenceService licenceService;
 
     @GetMapping("/")
-    public List<CompendiumLicence> getAllLicences() {
+    public Collection<CompendiumLicence> getAllLicences() {
         return licenceService.getAllLicences();
     }
 
@@ -26,9 +28,12 @@ public class LicencesController {
         return  licenceService.getOneById(licenceId);
     }
 
+    /*
     @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
     public String addLicence(@RequestBody CompendiumLicence licence){
         return "200";
         //TODO
     }
+    */
 }

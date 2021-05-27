@@ -1,9 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,11 +9,10 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "COMPENDIUM_LICENCES")
-@Getter
-@Setter
-@ToString
 @NoArgsConstructor
-public class CompendiumLicence implements Serializable {
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@Data
+public class CompendiumLicence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

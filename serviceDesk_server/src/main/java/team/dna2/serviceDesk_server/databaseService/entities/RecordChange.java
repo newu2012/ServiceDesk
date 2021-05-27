@@ -1,9 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnum;
 
 import javax.persistence.*;
@@ -12,9 +9,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "RECORD_CHANGES")
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 public class RecordChange implements Serializable {
     @Id

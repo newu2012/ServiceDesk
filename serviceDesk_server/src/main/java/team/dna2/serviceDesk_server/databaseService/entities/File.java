@@ -1,18 +1,13 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "FILES")
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 public class File implements Serializable {
     @Id

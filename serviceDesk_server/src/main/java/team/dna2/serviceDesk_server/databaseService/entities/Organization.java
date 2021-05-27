@@ -1,9 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,9 +8,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "ORGANIZATIONS")
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 public class Organization implements Serializable {
     @Id

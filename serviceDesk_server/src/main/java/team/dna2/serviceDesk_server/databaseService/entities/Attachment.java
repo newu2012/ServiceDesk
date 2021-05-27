@@ -1,9 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnum;
 
 import javax.persistence.*;
@@ -11,9 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "ATTACHMENTS")
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 public class Attachment implements Serializable {
     @Id

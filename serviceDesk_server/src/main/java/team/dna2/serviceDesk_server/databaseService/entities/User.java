@@ -1,9 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -15,9 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 public class User implements Serializable, UserDetails {
     @Id
