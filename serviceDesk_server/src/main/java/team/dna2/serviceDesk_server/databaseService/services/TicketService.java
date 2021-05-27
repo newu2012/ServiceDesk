@@ -17,11 +17,11 @@ public class TicketService {
     @Resource
     private MembersRepository membersRepository;
 
-    public List<Ticket> getAllTicketsByOrganization(Long orgId){
+    public List<Ticket> getAllTicketsByOrganization(Long orgId) {
         return ticketsRepository.findTicketsByOrganization_Id(orgId);
     }
 
-    public Ticket getOneTicket(Long ticketId){
+    public Ticket getOneTicket(Long ticketId) {
         var ticket = ticketsRepository.findById(ticketId);
         if(ticket.isPresent())
             return ticketsRepository.findById(ticketId).get();

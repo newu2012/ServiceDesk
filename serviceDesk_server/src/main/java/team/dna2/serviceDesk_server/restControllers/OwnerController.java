@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/owner")
+@RequestMapping("/api/owner")
 @Slf4j
 public class OwnerController {
 }
