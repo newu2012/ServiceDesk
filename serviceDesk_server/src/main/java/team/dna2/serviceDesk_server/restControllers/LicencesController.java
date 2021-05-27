@@ -26,7 +26,7 @@ public class LicencesController {
         return  licenceService.getOneById(licenceId);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/")
     public String addLicence(@RequestBody CompendiumLicence licence){
         return "200";
         //TODO
