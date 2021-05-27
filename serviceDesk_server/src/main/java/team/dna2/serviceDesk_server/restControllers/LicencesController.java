@@ -21,7 +21,7 @@ public class LicencesController {
         return licenceService.getAllLicences();
     }
 
-    @GetMapping("/licence-{licenceId}")
+    @GetMapping("/id/{licenceId}")
     public CompendiumLicence getLicence(@PathVariable Long licenceId) {
         return  licenceService.getOneById(licenceId);
     }
