@@ -41,7 +41,13 @@ public class LoginScreenController {
     }
 
     private void printSomeInfo () throws Exception{ // TODO Вынести отсюда нахер. Здесь должен быть только вызов методов ServerManager
+
+
+
+
+
         HttpURLConnection con = ServerManager.SetConnection("developer/licences/");
+
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
