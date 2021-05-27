@@ -4,6 +4,7 @@ import org.jboss.resteasy.client.jaxrs.internal.ClientResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
+import team.dna2.serviceDesk_client.models.License;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -14,6 +15,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class ServerManager {
     private static ClientApplication clientApplication;
@@ -29,40 +32,49 @@ public class ServerManager {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 
-    public static HttpURLConnection SetConnection(String url) {
+    public static String SetConnection(String url) {
         return SetConnection(url, "GET");
     }
 
-    public static HttpURLConnection SetConnection(String url, String method) {
-        try {
-            Client client = ClientBuilder.newClient();
-            WebTarget target = client.target(baseUrl + url);
-            String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+    public static String SetConnection(String url, String method) {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(baseUrl + url);
 
-            System.out.println(response);
+        return target.request(MediaType.APPLICATION_JSON).get(String.class);
+    }
 
-            URL newUrl = new URL(baseUrl + url);
-            HttpURLConnection con = (HttpURLConnection) newUrl.openConnection();
-            con.setRequestMethod(method);
-            con.setConnectTimeout(5000);
-            con.setReadTimeout(5000);
+    public static ArrayList<License> TryGetResponseMessage(String responseMessage) {
+        // JSONObject obj =  new JSONObject(responseMessage);
+        // JSONArray objects = obj.getJSONArray("");
+        JSONArray arr = new JSONArray(responseMessage);
 
-            int status = con.getResponseCode();
-            System.out.println("Response status code=" + status);
-            return con;
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        ArrayList<License> newLicences = new ArrayList<>();
+
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject element = arr.getJSONObject(i);
+            License license = new License(
+                    element.getString("serialNumber"),
+                    0L,
+                    0L,
+                    element.getLong("usersLimit"),
+                    new Date(),
+                    new Date(System.currentTimeMillis() + 100000000000L));
+            newLicences.add(license);
+
+            System.out.println(element);
         }
 
-        return null;
+        return newLicences;
     }
 
-    public static void TryGetResponseMessage(HttpURLConnection connection) {
-        // TODO
+    public static ArrayList<License> UpdateArrayListFromResponse(ArrayList<License> list, ArrayList<License> responseList) {
+        list.addAll(responseList);
+
+        return list;
     }
     //endregion
+
+    public static void FetchLicences() {
+        UpdateArrayListFromResponse(License.licenses, TryGetResponseMessage(SetConnection(DeveloperLicences)));
+    }
 }

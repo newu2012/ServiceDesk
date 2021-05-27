@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 public class License {
     private Long id;
-    private Long serialNumber;
+    private String serialNumber;
     private Long organisationId;
     private Long softwareId;
     private Long limit;
@@ -21,7 +21,7 @@ public class License {
     public static ArrayList<License> licenses = new ArrayList<>();
     public static Long nextId = 0L;
 
-    public License(Long serialNumber, Long organisationId, Long softwareId, Long limit, Date startDate, Date endDate) {
+    public License(String serialNumber, Long organisationId, Long softwareId, Long limit, Date startDate, Date endDate) {
         this.id = nextId++;
         this.serialNumber = serialNumber;
         this.organisationId = organisationId;

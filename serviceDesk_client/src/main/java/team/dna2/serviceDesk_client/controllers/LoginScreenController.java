@@ -18,6 +18,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static team.dna2.serviceDesk_client.ServerManager.FetchLicences;
+
 
 /**
  * Контроллер экран входа в аккаунт
@@ -40,23 +42,8 @@ public class LoginScreenController {
         CheckLogIn();
     }
 
-    private void printSomeInfo () throws Exception{ // TODO Вынести отсюда нахер. Здесь должен быть только вызов методов ServerManager
-
-
-
-
-
-        HttpURLConnection con = ServerManager.SetConnection("developer/licences/");
-
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer content = new StringBuffer();
-        while ((inputLine = in.readLine()) != null)
-            content.append(inputLine);
-        in.close();
-        System.out.println(content);
+    private void printSomeInfo () {
+        FetchLicences();
     }
 
     /**

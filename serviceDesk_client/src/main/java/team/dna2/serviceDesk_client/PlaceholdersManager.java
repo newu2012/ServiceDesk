@@ -57,7 +57,7 @@ public class PlaceholdersManager {
     }
 
     public static void SetUpPlaceholderLicenses() {
-        License.licenses.add(new License(123456L, 0L, 0L, 0L, new Date(),
+        License.licenses.add(new License("AAA-111", 0L, 0L, 0L, new Date(),
                 new Date(System.currentTimeMillis() + 1000000000)));
     }
 }
