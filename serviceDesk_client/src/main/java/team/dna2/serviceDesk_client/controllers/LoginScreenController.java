@@ -9,12 +9,16 @@ import javafx.scene.input.MouseEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.ServerManager;
 import team.dna2.serviceDesk_client.models.User;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static team.dna2.serviceDesk_client.ServerManager.FetchLicences;
 
 
 /**
@@ -38,23 +42,8 @@ public class LoginScreenController {
         CheckLogIn();
     }
 
-    private void printSomeInfo () throws Exception{
-        URL url = new URL("https://www.dnd5eapi.co/api/classes");
-        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-
-        con.setConnectTimeout(5000);
-        con.setReadTimeout(5000);
-
-        int status = con.getResponseCode();
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer content = new StringBuffer();
-        while ((inputLine = in.readLine()) != null)
-            content.append(inputLine);
-        in.close();
-        System.out.println(content);
+    private void printSomeInfo () {
+        FetchLicences();
     }
 
     /**
@@ -63,7 +52,11 @@ public class LoginScreenController {
      * @throws NullPointerException Почему-то кидалась, сейчас точно не скажу
      */
     private void CheckLogIn() throws NullPointerException, Exception {
+        try {
         printSomeInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         var user = User.users.stream() // Есть пользователь с таким email
                 .filter(us -> Email.getText().equals(us.getEmail()))

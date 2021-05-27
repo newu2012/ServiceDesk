@@ -1,9 +1,8 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -15,9 +14,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
-@Getter
-@Setter
-@ToString
+@Data
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
 public class User implements Serializable, UserDetails {
     @Id

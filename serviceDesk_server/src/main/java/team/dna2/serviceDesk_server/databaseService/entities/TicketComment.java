@@ -1,9 +1,8 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,9 +10,8 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "TICKET_COMMENTS")
-@Getter
-@Setter
-@ToString
+@Data
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
 public class TicketComment implements Serializable {
     @Id

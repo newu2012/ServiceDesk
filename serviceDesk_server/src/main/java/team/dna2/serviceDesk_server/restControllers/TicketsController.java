@@ -1,31 +1,45 @@
 package team.dna2.serviceDesk_server.restControllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 import team.dna2.serviceDesk_server.databaseService.entities.Ticket;
+import team.dna2.serviceDesk_server.databaseService.services.OrganizationService;
 import team.dna2.serviceDesk_server.databaseService.services.TicketService;
 
 import javax.annotation.Resource;
-import java.util.Collections;
-import java.util.List;
+import java.util.Collection;
 
-@Deprecated
 @RestController
 @RequestMapping("/tickets")
+@Slf4j
 public class TicketsController {
 
     @Resource
     private TicketService ticketService;
 
-    @GetMapping
-    public List<Ticket> getAllTickets(@RequestParam Long userId) {
-        try {
-            return ticketService.getAllTicketsByOrganization(userId);
-        }
-        catch (Exception e) {
-            return Collections.emptyList();
-        }
+    @Resource
+    private OrganizationService organizationService;
+
+    @GetMapping("/")
+    public Collection<Ticket> getTickets(Long userId){
+        Organization org = organizationService.getOrganizationByUserId(userId);
+        return ticketService.getAllTicketsByOrganization(org.getId());
     }
+
+    @GetMapping("/{ticketId}")
+    public Ticket getTicket(@PathVariable Long ticketId){
+        return ticketService.getOneById(ticketId);
+    }
+
+    @GetMapping("/by-author/{authorId}")
+    public Collection<Ticket> getTicketsByAuthor(@PathVariable Long authorId){
+        return ticketService.getAllByAuthor(authorId);
+    }
+
+    @GetMapping("/by-dev/{devId}")
+    public Collection<Ticket> getTicketsByDeveloper(@PathVariable Long devId){
+        return ticketService.getAllByDev(devId);
+    }
+
 }

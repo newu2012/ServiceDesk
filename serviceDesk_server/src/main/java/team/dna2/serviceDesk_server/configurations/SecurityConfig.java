@@ -3,14 +3,12 @@ package team.dna2.serviceDesk_server.configurations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.savedrequest.NullRequestCache;
 import team.dna2.serviceDesk_server.databaseService.services.UserService;
 
 @Configuration
@@ -31,14 +29,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                .and().authorizeRequests()
-                    .antMatchers("/**").permitAll()
-                    .antMatchers("/developer/**").hasRole("DEVELOPER")
-                    .antMatchers("/member/**").hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
-                    .antMatchers("/owner/**").hasAnyRole("OWNER", "DEVELOPER");
-
+        http
+            .csrf().disable()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+            .and().authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/developer/**").permitAll()//.hasRole("DEVELOPER")
+                .antMatchers("/member/**").permitAll()//.hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
+                .antMatchers("/owner/**").permitAll();//.hasAnyRole("OWNER", "DEVELOPER");
     }
 
 }

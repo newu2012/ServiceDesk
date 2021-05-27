@@ -3,11 +3,7 @@ package team.dna2.serviceDesk_server.databaseService.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import team.dna2.serviceDesk_server.databaseService.entities.Member;
 import team.dna2.serviceDesk_server.databaseService.entities.Organization;
-
-import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface OrganizationsRepository extends JpaRepository<Organization, Long> {
@@ -25,6 +21,6 @@ public interface OrganizationsRepository extends JpaRepository<Organization, Lon
 //    List<Member> findMembersByOrganization_Id(Long id);
 
 
-    Optional<Organization> findOrganizationUser_Id(Long userId);
+    //Optional<Organization> findOrganizationUser_Id(Long userId);
 
 }

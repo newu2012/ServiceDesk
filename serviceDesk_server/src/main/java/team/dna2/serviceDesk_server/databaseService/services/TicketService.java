@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.services;
 
 import org.springframework.stereotype.Service;
+import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 import team.dna2.serviceDesk_server.databaseService.entities.Ticket;
 import team.dna2.serviceDesk_server.databaseService.repositories.MembersRepository;
 import team.dna2.serviceDesk_server.databaseService.repositories.TicketsRepository;
@@ -14,18 +15,27 @@ public class TicketService {
     @Resource
     private TicketsRepository ticketsRepository;
 
-    @Resource
-    private MembersRepository membersRepository;
-
-    public List<Ticket> getAllTicketsByOrganization(Long orgId){
+    public List<Ticket> getAllTicketsByOrganization(Long orgId) {
         return ticketsRepository.findTicketsByOrganization_Id(orgId);
     }
 
-    public Ticket getOneTicket(Long ticketId){
+    public List<Ticket> getAllByAuthor(Long authorId){
+        return ticketsRepository.findTicketsByAuthor_Id(authorId);
+    }
+
+    public List<Ticket> getAllByDev(Long devId){
+        return ticketsRepository.findTicketsByDeveloper_Id(devId);
+    }
+
+    public Ticket getOneById(Long ticketId) {
         var ticket = ticketsRepository.findById(ticketId);
-        if(ticket.isPresent())
+        if (ticket.isPresent())
             return ticketsRepository.findById(ticketId).get();
         else
             throw new NullPointerException();
+    }
+
+    public List<Ticket> getAll(){
+        return ticketsRepository.findAll();
     }
 }

@@ -2,7 +2,6 @@ package team.dna2.serviceDesk_server.databaseService.entities.enums;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
 
 @Getter
 @NoArgsConstructor

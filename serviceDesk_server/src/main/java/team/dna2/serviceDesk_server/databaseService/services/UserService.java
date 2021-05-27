@@ -13,7 +13,6 @@ import team.dna2.serviceDesk_server.databaseService.repositories.UsersRepository
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.security.auth.login.LoginException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -21,17 +20,14 @@ import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
 
-    @PersistenceContext
-    private EntityManager em;
-
     @Autowired
     UsersRepository userRepository;
-
     @Autowired
     CompendiumRoleRepository roleRepository;
-
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
