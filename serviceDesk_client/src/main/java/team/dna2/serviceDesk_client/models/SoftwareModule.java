@@ -3,12 +3,15 @@ package team.dna2.serviceDesk_client.models;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.ArrayList;
+
 public class SoftwareModule {
     public SimpleIntegerProperty id;
     public SimpleIntegerProperty softwareId;
     public SimpleStringProperty name;
     public SimpleStringProperty description;
 
+    public static ArrayList<SoftwareModule> softwareModules = new ArrayList<>();
     public static int nextId = 0;
 
     public SoftwareModule(Integer softwareId, String name) {
@@ -16,6 +19,7 @@ public class SoftwareModule {
         this.softwareId = new SimpleIntegerProperty(softwareId);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty("");
+        softwareModules.add(this);
     }
 
     public SoftwareModule(Integer softwareId, String name, String description) {
@@ -23,6 +27,7 @@ public class SoftwareModule {
         this.softwareId = new SimpleIntegerProperty(softwareId);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
+        softwareModules.add(this);
     }
 
     public int getId() {
