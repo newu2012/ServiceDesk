@@ -27,7 +27,8 @@ public class LicencesController {
     }
 
     @PostMapping("/add")
-    public String addLicence(CompendiumLicence licence){
+    public String addLicence(@RequestBody CompendiumLicence licence){
         return "200";
+        //TODO
     }
 }

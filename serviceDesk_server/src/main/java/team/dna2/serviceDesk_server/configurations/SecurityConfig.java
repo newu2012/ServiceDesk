@@ -31,14 +31,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                .and().authorizeRequests()
-                    .antMatchers("/**").permitAll()
-                    .antMatchers("/developer/**").permitAll()//.hasRole("DEVELOPER")
-                    .antMatchers("/member/**").permitAll()//.hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
-                    .antMatchers("/owner/**").permitAll();//.hasAnyRole("OWNER", "DEVELOPER");
-
+        http
+            .csrf().disable()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+            .and().authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/developer/**").permitAll()//.hasRole("DEVELOPER")
+                .antMatchers("/member/**").permitAll()//.hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
+                .antMatchers("/owner/**").permitAll();//.hasAnyRole("OWNER", "DEVELOPER");
     }
 
 }
