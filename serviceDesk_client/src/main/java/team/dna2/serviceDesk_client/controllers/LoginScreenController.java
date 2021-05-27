@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.ServerManager;
 import team.dna2.serviceDesk_client.models.User;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -39,15 +40,9 @@ public class LoginScreenController {
         CheckLogIn();
     }
 
-    private void printSomeInfo () throws Exception{
-        URL url = new URL("http://localhost:8080/developer/licences/");
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
+    private void printSomeInfo () throws Exception{ // TODO Вынести отсюда нахер. Здесь должен быть только вызов методов ServerManager
+        HttpURLConnection con = ServerManager.SetConnection("developer/licences/");
 
-        con.setConnectTimeout(5000);
-        con.setReadTimeout(5000);
-
-        int status = con.getResponseCode();
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String inputLine;
