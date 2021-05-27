@@ -13,7 +13,7 @@ public class Ticket {
     public SimpleStringProperty title;
     public SimpleIntegerProperty creatorId;
     public SimpleObjectProperty<TicketStatus> status;
-    public SimpleStringProperty category; // -> categoryId
+    public SimpleIntegerProperty categoryId;
     public SimpleObjectProperty<Date> creationDate;
     public SimpleObjectProperty<Date> changeDate;
     public SimpleIntegerProperty softwareId;
@@ -32,7 +32,7 @@ public class Ticket {
      * @param title Тема обращения, не менее 10 символов
      * @param creatorId ID создателя обращения
      * @param status Статус обращения (отдельный файл статусов)
-     * @param category Категория обращения (отдельный файл категорий)
+     * @param categoryId Категория обращения (отдельный файл категорий)
      * @param creationDate Дата создания, ставится автоматически при создании обращения
      * @param changeDate Дата последнего изменения/комментирования/смены статуса обращения
      * @param softwareId ID ПО, по которому создаётся обращение
@@ -43,7 +43,7 @@ public class Ticket {
                   String title,
                   Integer creatorId,
                   TicketStatus status,
-                  String category,
+                  Integer categoryId,
                   Date creationDate,
                   Date changeDate,
                   Integer softwareId,
@@ -54,7 +54,7 @@ public class Ticket {
         this.title = new SimpleStringProperty(title);
         this.creatorId = new SimpleIntegerProperty(creatorId);
         this.status = new SimpleObjectProperty<TicketStatus>(status);
-        this.category = new SimpleStringProperty(category);
+        this.categoryId = new SimpleIntegerProperty(categoryId);
         this.creationDate = new SimpleObjectProperty<Date>(creationDate);
         this.changeDate = new SimpleObjectProperty<Date>(changeDate);
         this.softwareId = new SimpleIntegerProperty(softwareId);
@@ -67,14 +67,14 @@ public class Ticket {
      * WIP
      * Основной метод создания обращения, используется в GUI.
      * @param title Название обращения, минимум 10 символов
-     * @param category Категория обращения, на выбор одна из 3 кнопок
+     * @param categoryId Категория обращения, на выбор одна из кнопок
      * @param softwareId Название ПО, выбирается пользователем
      * @param moduleId Название модуля ПО, выбирается пользователем
      * @param description Полное текстовое описание обращения
      */
     public static void AddTicket(
         String title,
-        String category,
+        Integer categoryId,
         Integer softwareId,
         Integer moduleId,
         String description) {
@@ -82,7 +82,7 @@ public class Ticket {
                     title,
                     User.currentUser.getId(),
                     TicketStatus.OPEN,
-                    category,
+                    categoryId,
                     new Date(),
                     null,
                     softwareId,
@@ -94,7 +94,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return this.getTitle() + " - " + this.getCategory() + " - " + this.getDescription();
+        return this.getTitle() + " - " + this.getCategoryId() + " - " + this.getDescription();
     }
 
     public int getId() {
@@ -125,12 +125,12 @@ public class Ticket {
         this.status.set(status);
     }
 
-    public String getCategory() {
-        return category.get();
+    public int getCategoryId() {
+        return categoryId.get();
     }
 
-    public void setCategory(String category) {
-        this.category.set(category);
+    public void setCategoryId(int category) {
+        this.categoryId.set(category);
     }
 
     public Date getCreationDate() {

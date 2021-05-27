@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -22,6 +23,11 @@ public class User {
     public SimpleStringProperty role;
     public SimpleStringProperty avatarFileName;
     public SimpleStringProperty orgAvatarFileName;
+
+    public String status;
+    public Long organisationId;
+    public Date registrationDate;
+    public Date blockDate;
 
     public static ArrayList<User> users = new ArrayList<User>(); // Список пользователей всей системы
     public static User currentUser; // Активный пользователь системы. Меняется после выхода из аккаунта.
@@ -51,13 +57,23 @@ public class User {
             patronymic = (fullNameSplit[2]);
 
         this.role = new SimpleStringProperty(role);
+        this.status = "Активен";
+        this.registrationDate = new Date();
+        this.blockDate = new Date(System.currentTimeMillis() + 1000000000);
 
-        if (role.equals(Role.DEVELOPER.getRole()))
+
+        if (role.equals(Role.DEVELOPER.getRole())) {
+            this.organisationId = -1L;
             this.avatarFileName = new SimpleStringProperty("developer.png");
-        else if (role.equals(Role.MEMBER.getRole()) )
+        }
+        else if (role.equals(Role.MEMBER.getRole()) ) {
+            this.organisationId = 0L;
             this.avatarFileName = new SimpleStringProperty("Misha.png");
-        else if (role.equals(Role.OWNER.getRole()) )
+        }
+        else if (role.equals(Role.OWNER.getRole()) ) {
+            this.organisationId = 0L;
             this.avatarFileName = new SimpleStringProperty("Obabkov.jpeg");
+        }
         this.orgAvatarFileName = new SimpleStringProperty("UrFU.png");
     }
 

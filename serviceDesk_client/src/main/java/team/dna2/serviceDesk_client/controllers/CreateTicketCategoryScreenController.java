@@ -7,17 +7,17 @@ import team.dna2.serviceDesk_client.ScreenManager;
 import team.dna2.serviceDesk_client.models.Organisation;
 import team.dna2.serviceDesk_client.models.Software;
 
-public class CreateTypeScreenController {
+public class CreateTicketCategoryScreenController {
     //region FXMLNodes
     @FXML
     private TextField TypeNameField;
     @FXML
     private TextArea TypeDescriptionArea;
     @FXML
-    private Button CreateTypeButton;
-//endregion
+    private Button CreateTicketCategoryButton;
+    //endregion
 
-    public void CreateTypeButtonClicked() {
+    public void CreateTicketCategoryButtonClicked() {
     //TODO ну ясен хрен тут еще что-то нужно
 
         System.out.println("TypeName=" + TypeNameField.getText());
@@ -25,7 +25,6 @@ public class CreateTypeScreenController {
 
         ScreenManager.CloseSecondScreen();
     }
-
 
     @FXML
     public void PreviousScreenButtonClicked() {
