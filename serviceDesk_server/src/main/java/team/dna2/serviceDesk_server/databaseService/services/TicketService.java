@@ -15,12 +15,6 @@ public class TicketService {
     @Resource
     private TicketsRepository ticketsRepository;
 
-    @Resource
-    private MembersRepository membersRepository;
-
-    @Resource
-    private OrganizationService organizationService;
-
     public List<Ticket> getAllTicketsByOrganization(Long orgId) {
         return ticketsRepository.findTicketsByOrganization_Id(orgId);
     }
