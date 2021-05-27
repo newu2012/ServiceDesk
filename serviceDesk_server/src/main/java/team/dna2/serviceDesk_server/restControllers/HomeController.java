@@ -16,6 +16,26 @@ public class HomeController {
         return "HELLO WORLD! THIS IS SERVICE DESK! DO YOU SEE?";
     }
 
+    @GetMapping("/developer")
+    public String getDev() {
+        return "HELLO DEVELOPER! THIS IS SERVICE DESK! DO YOU SEE ME?";
+    }
+
+    @GetMapping("/member")
+    public String getMember() {
+        return "HELLO MEMBER! THIS IS SERVICE DESK! DO YOU SEE ME?";
+    }
+
+    @GetMapping("/owner")
+    public String getOwner() {
+        return "HELLO OWNER! THIS IS SERVICE DESK! DO YOU SEE ME?";
+    }
+
+    @GetMapping("/member/tickets")
+    public String getTickets() {
+        return "HELLO OWNER! THIS IS TICKETS! DO YOU SEE ME?";
+    }
+
 //    @PostMapping("/logout")
 //    public String logOut(){
 //        return "logout";
