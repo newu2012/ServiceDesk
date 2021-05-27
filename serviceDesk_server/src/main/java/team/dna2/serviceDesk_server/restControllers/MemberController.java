@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/member")
+@RequestMapping("/member")
 @Slf4j
 public class MemberController {
 
@@ -22,7 +22,7 @@ public class MemberController {
 //    }
     //TODO
 
-    @GetMapping("/tickets/ticket-{ticketId}")
+    @GetMapping("/tickets/{ticketId}")
     public Ticket getSelectedTicket(@PathVariable Long ticketId){
         return ticketService.getOneTicket(ticketId);
     }

@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/developer")
+@RequestMapping("/developer")
 @Slf4j
 public class DeveloperController {
 
