@@ -6,6 +6,7 @@ import team.dna2.serviceDesk_server.databaseService.entities.CompendiumLicence;
 import team.dna2.serviceDesk_server.databaseService.services.CompendiumLicenceService;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class LicencesController {
     @Resource
     private CompendiumLicenceService licenceService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<CompendiumLicence> getAllLicences() {
         return licenceService.getAllLicences();
     }
@@ -26,7 +27,7 @@ public class LicencesController {
         return  licenceService.getOneById(licenceId);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public String addLicence(CompendiumLicence licence){
         return "200";
     }
