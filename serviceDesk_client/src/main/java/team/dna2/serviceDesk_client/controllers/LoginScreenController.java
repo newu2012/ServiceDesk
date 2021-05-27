@@ -40,7 +40,7 @@ public class LoginScreenController {
     }
 
     private void printSomeInfo () throws Exception{
-        URL url = new URL("http://localhost:8080/developer/licenses/0");
+        URL url = new URL("http://localhost:8080/developer/licences/");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
