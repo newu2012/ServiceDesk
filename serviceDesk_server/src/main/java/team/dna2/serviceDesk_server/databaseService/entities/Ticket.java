@@ -1,13 +1,9 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.*;
-import org.springframework.context.annotation.Bean;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.TicketStatusEnum;
-import team.dna2.serviceDesk_server.databaseService.repositories.MembersRepository;
-import team.dna2.serviceDesk_server.databaseService.repositories.OrganizationsRepository;
-import team.dna2.serviceDesk_server.databaseService.services.OrganizationService;
 
-import javax.annotation.Resource;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;

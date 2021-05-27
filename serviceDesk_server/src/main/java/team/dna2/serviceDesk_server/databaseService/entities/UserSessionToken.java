@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;

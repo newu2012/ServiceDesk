@@ -6,7 +6,6 @@ import team.dna2.serviceDesk_server.databaseService.repositories.MembersReposito
 import team.dna2.serviceDesk_server.databaseService.repositories.TicketsRepository;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class TicketService {

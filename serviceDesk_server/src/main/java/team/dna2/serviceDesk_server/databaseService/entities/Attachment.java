@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnum;
 
 import javax.persistence.*;

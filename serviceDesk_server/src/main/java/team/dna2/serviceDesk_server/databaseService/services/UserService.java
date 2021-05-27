@@ -13,7 +13,6 @@ import team.dna2.serviceDesk_server.databaseService.repositories.UsersRepository
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.security.auth.login.LoginException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
