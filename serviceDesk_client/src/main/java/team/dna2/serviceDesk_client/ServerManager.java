@@ -1,7 +1,14 @@
 package team.dna2.serviceDesk_client;
 
+import org.jboss.resteasy.client.jaxrs.internal.ClientResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -28,6 +35,12 @@ public class ServerManager {
 
     public static HttpURLConnection SetConnection(String url, String method) {
         try {
+            Client client = ClientBuilder.newClient();
+            WebTarget target = client.target(baseUrl + url);
+            String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+
+            System.out.println(response);
+
             URL newUrl = new URL(baseUrl + url);
             HttpURLConnection con = (HttpURLConnection) newUrl.openConnection();
             con.setRequestMethod(method);
