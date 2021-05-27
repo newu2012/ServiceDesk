@@ -9,25 +9,25 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/developer/licences")
+@RequestMapping("/developer/licences")
 @Slf4j
 public class LicencesController {
 
     @Resource
     private CompendiumLicenceService licenceService;
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<CompendiumLicence> getAllLicences() {
         return licenceService.getAllLicences();
     }
 
-    @GetMapping("/id/{licenceId}")
+    @GetMapping("/{licenceId}")
     public CompendiumLicence getLicence(@PathVariable Long licenceId) {
         return  licenceService.getOneById(licenceId);
     }
 
-//    @PostMapping("/add")
-//    public String addLicence(CompendiumLicence licence){
-//        return "200";
-//    }
+    @PostMapping("/add")
+    public String addLicence(CompendiumLicence licence){
+        return "200";
+    }
 }

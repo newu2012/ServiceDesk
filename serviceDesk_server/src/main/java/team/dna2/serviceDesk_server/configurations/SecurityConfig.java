@@ -35,9 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and().authorizeRequests()
                     .antMatchers("/**").permitAll()
-                    .antMatchers("/api/developer/**").hasRole("DEVELOPER")
-                    .antMatchers("/api/member/**").hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
-                    .antMatchers("/api/owner/**").hasAnyRole("OWNER", "DEVELOPER");
+                    .antMatchers("/developer/**").hasRole("DEVELOPER")
+                    .antMatchers("/member/**").hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
+                    .antMatchers("/owner/**").hasAnyRole("OWNER", "DEVELOPER");
 
     }
 
