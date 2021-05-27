@@ -5,9 +5,12 @@ import team.dna2.serviceDesk_server.databaseService.entities.Member;
 import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 import team.dna2.serviceDesk_server.databaseService.repositories.MembersRepository;
 
+import javax.annotation.Resource;
+
 @Service
 public class OrganizationService {
 
+    @Resource
     private MembersRepository membersRepository;
 
     public Organization getOrganizationByUserId(Long userId){

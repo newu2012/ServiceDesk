@@ -4,8 +4,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.context.annotation.Bean;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.TicketStatusEnum;
+import team.dna2.serviceDesk_server.databaseService.repositories.MembersRepository;
+import team.dna2.serviceDesk_server.databaseService.repositories.OrganizationsRepository;
+import team.dna2.serviceDesk_server.databaseService.services.OrganizationService;
 
+import javax.annotation.Resource;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -54,6 +59,8 @@ public class Ticket implements Serializable {
     @Column(name = "ticket_text", nullable = false, length = 8191)
     private String ticketText;
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
     private Organization organization;
+
 }

@@ -16,10 +16,11 @@ public class MemberController {
     @Resource
     private TicketService ticketService;
 
-    @GetMapping("/tickets")
-    public List<Ticket> getTickets(Long orgId){
-        return ticketService.getAllTicketsByOrganization(orgId);
-    }
+//    @GetMapping("/tickets")
+//    public List<Ticket> getTickets(Long orgId){
+//        return ticketService.getAllTicketsByOrganization(orgId);
+//    }
+    //TODO
 
     @GetMapping("/tickets/ticket-{ticketId}")
     public Ticket getSelectedTicket(@PathVariable Long ticketId){

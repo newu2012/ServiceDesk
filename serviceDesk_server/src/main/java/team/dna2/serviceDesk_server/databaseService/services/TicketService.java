@@ -17,9 +17,13 @@ public class TicketService {
     @Resource
     private MembersRepository membersRepository;
 
-    public List<Ticket> getAllTicketsByOrganization(Long orgId) {
-        return ticketsRepository.findTicketsByOrganization_Id(orgId);
-    }
+    @Resource
+    private OrganizationService organizationService;
+
+//    public List<Ticket> getAllTicketsByOrganization(Long orgId) {
+//        return organizationService.getOrganizationByUserId();
+//    }
+    //TODO
 
     public Ticket getOneTicket(Long ticketId) {
         var ticket = ticketsRepository.findById(ticketId);

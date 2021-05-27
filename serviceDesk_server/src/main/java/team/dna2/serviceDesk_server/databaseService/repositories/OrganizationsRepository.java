@@ -25,6 +25,6 @@ public interface OrganizationsRepository extends JpaRepository<Organization, Lon
 //    List<Member> findMembersByOrganization_Id(Long id);
 
 
-    Optional<Organization> findOrganizationUser_Id(Long userId);
+    //Optional<Organization> findOrganizationUser_Id(Long userId);
 
 }
