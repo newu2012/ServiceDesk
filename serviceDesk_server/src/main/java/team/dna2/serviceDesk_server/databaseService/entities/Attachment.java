@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnum;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ATTACHMENTS")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
 public class Attachment implements Serializable {
     @Id

@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "USER_SESSION_TOKENS")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
 public class UserSessionToken implements Serializable {
     @Id

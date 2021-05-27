@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnum;
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "RECORD_CHANGES")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
 public class RecordChange implements Serializable {
     @Id

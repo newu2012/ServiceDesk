@@ -17,7 +17,7 @@ public class CompendiumSoftwareModuleService {
         return softwareModulesRepository.getOne(id);
     }
 
-    public List<CompendiumSoftwareModule> getAllSoftwareModules(){
+    public List<CompendiumSoftwareModule> getAll() {
         return softwareModulesRepository.findAll();
     }
 }

@@ -26,7 +26,7 @@ public class SoftwareController {
 
     @GetMapping("/")
     public Collection<CompendiumSoftware> getAllSoftware(){
-        return softwareService.getAllSoftware();
+        return softwareService.getAll();
     }
 
     @GetMapping("/{softwareId}")
@@ -36,7 +36,7 @@ public class SoftwareController {
 
     @GetMapping("/modules")
     public Collection<CompendiumSoftwareModule> getAllModules(){
-        return moduleService.getAllSoftwareModules();
+        return moduleService.getAll();
     }
 
     @GetMapping("/modules/{moduleId}")

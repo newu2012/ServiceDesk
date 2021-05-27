@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,13 +10,14 @@ import java.io.Serializable;
 @Entity
 @Table(name = "COMPENDIUM_SOFTWARE")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
 public class CompendiumSoftware implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
+
     @Column(name = "software_name", unique = true, nullable = false, length = 128)
     private String softwareName;
 

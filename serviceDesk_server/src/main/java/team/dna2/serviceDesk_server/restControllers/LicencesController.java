@@ -21,7 +21,7 @@ public class LicencesController {
 
     @GetMapping("/")
     public Collection<CompendiumLicence> getAllLicences() {
-        return licenceService.getAllLicences();
+        return licenceService.getAll();
     }
 
     @GetMapping("/{licenceId}")

@@ -17,7 +17,7 @@ public class CompendiumTicketCategoryService {
         return ticketCategoriesRepository.getOne(id);
     }
 
-    public List<CompendiumTicketCategory> getAllTicketCategories(){
+    public List<CompendiumTicketCategory> getAll() {
         return ticketCategoriesRepository.findAll();
     }
 }

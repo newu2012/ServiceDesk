@@ -18,7 +18,7 @@ public class CompendiumLicenceService {
         return licencesRepository.getOne(id);
     }
 
-    public List<CompendiumLicence> getAllLicences(){
+    public List<CompendiumLicence> getAll() {
         return licencesRepository.findAll();
     }
 

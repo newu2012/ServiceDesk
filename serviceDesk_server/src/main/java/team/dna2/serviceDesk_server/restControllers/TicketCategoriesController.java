@@ -21,7 +21,7 @@ public class TicketCategoriesController {
 
     @GetMapping("/")
     public Collection<CompendiumTicketCategory> getAllTicketCategories(){
-        return ticketCategoryService.getAllTicketCategories();
+        return ticketCategoryService.getAll();
     }
 
     @GetMapping("/{ticketCategoryId}")

@@ -26,7 +26,7 @@ public class TicketService {
 
     public Ticket getOneTicket(Long ticketId) {
         var ticket = ticketsRepository.findById(ticketId);
-        if(ticket.isPresent())
+        if (ticket.isPresent())
             return ticketsRepository.findById(ticketId).get();
         else
             throw new NullPointerException();

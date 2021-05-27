@@ -11,10 +11,10 @@ import java.util.Optional;
 @Repository
 public interface MembersRepository extends JpaRepository<Member, Long> {
     @Query("update Member set isOwner=false where id = :id")
-    void updateMemberOwnershipById (Long id);
+    void updateMemberOwnershipById(Long id);
 
     @Query("update Member set isOwner=true where id=:id")
-    void setMemberOwnershipById (Long id);
+    void setMemberOwnershipById(Long id);
 
     Optional<Member> findMemberIdByOrganization_IdAndIsOwnerTrue(Long organizationId);
 

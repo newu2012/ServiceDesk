@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "COMPENDIUM_ROLES")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Data
 @NoArgsConstructor
 public class CompendiumRole implements Serializable, GrantedAuthority {
@@ -32,11 +34,11 @@ public class CompendiumRole implements Serializable, GrantedAuthority {
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public CompendiumRole (Long id) {
+    public CompendiumRole(Long id) {
         this.id = id;
     }
 
-    public CompendiumRole (Long id, String name) {
+    public CompendiumRole(Long id, String name) {
         this.id = id;
         this.name = name;
     }
