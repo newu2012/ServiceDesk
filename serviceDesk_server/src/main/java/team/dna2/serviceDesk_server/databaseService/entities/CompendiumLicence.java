@@ -22,7 +22,7 @@ public class CompendiumLicence implements Serializable {
     private Long id;
 
     @Column(name = "serial_number", nullable = false, unique = true)
-    private Long serialNumber;
+    private String serialNumber;
 
     @ManyToOne
     @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
