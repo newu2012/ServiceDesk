@@ -9,9 +9,6 @@ import java.util.List;
 
 @Service
 public class MemberService {
-//    MembersRepository rep;
-//
-//    Long a = rep.findMemberIdByOrganizationIdAndIsOwnerTrue(1L);
 
     @Resource
     private MembersRepository membersRepository;
