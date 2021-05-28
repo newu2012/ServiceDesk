@@ -20,7 +20,8 @@ import team.dna2.serviceDesk_client.models.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MemberOrganisationScreenController implements Initializable {
+public class MemberOrganisationScreenController
+{ //implements Initializable {
     private ClientApplication clientApplication;
     private ApplicationContext context;
 
@@ -37,6 +38,7 @@ public class MemberOrganisationScreenController implements Initializable {
     @FXML private JFXTabPane MainTabPane;
     //endregion
 
+    /**
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
@@ -71,6 +73,7 @@ public class MemberOrganisationScreenController implements Initializable {
     public MemberOrganisationScreenController() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
+    */
 
     //region MemberMenu
     /**
