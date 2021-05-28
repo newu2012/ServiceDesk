@@ -3,6 +3,7 @@ package team.dna2.serviceDesk_client;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -19,6 +20,9 @@ import java.io.IOException;
 @Component
 public class ScreenManager {
     private static ClientApplication clientApplication;
+    public static Stage stage;
+
+
     public static Window mainScreen;
     public static Window secondScreen;
     public static String currentScreenUrl;
@@ -244,7 +248,40 @@ public class ScreenManager {
 
     //region Utils
 
+    /**
+     * Основной способ смены экрана (сцены)
+     * @param fxmlUrl Название файла экрана типа "Screen.fxml"
+     */
+    public static void ChangeScene(String fxmlUrl) {
+        try {
+            Parent pane = FXMLLoader.load(clientApplication.getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
 
+            if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
+                stage.setWidth(1380); // Тогда реальная ширина 1366
+                stage.setHeight(775); // Тоже самое
+            }
+            else { // Иначе небольшое окошко
+                stage.setWidth(600);
+                stage.setHeight(550);
+            }
+
+            stage.centerOnScreen();
+            stage.getScene().setRoot(pane);
+        }
+        catch (Exception e) {
+            // TODO Логирование
+            // Вывод ошибки в консоль
+            // for (StackTraceElement el: e.getStackTrace()) {
+            //     System.out.println(el.toString());
+            // }
+
+            System.out.println(e.getLocalizedMessage());
+            if (e.getLocalizedMessage().equals("Location is required.")) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Этот экран для этой роли ещё не сделан.", ButtonType.CLOSE);
+                alert.showAndWait();
+            }
+        }
+    }
 
     /**
      * Сохранение основного окна, для дальнейшей работы с ним
@@ -264,7 +301,7 @@ public class ScreenManager {
      * Переключает основной экран на предыдущий.
      */
     public static void ShowPreviousScreen() {
-        clientApplication.ChangeScene(previousScreenUrl);
+        ChangeScene(previousScreenUrl);
         currentScreenUrl = previousScreenUrl;
     }
 
@@ -275,7 +312,7 @@ public class ScreenManager {
     public static void UpdateCurrentAndPreviousScreens(String newCurrentStringUrl) {
         previousScreenUrl = currentScreenUrl;
         currentScreenUrl = newCurrentStringUrl;
-        clientApplication.ChangeScene(newCurrentStringUrl);
+        ChangeScene(newCurrentStringUrl);
     }
 
     /**
