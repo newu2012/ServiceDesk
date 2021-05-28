@@ -1,21 +1,24 @@
 package team.dna2.serviceDesk_client;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
 import team.dna2.serviceDesk_client.models.Role;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @Component
 public class ScreenManager {
@@ -246,15 +249,51 @@ public class ScreenManager {
     }
     //endregion
 
-    //region Utils
+    //region Alerts
+    private static void ShowAlert(Alert.AlertType alertType, String title, String header,
+                                  int secondsToShow, String message) {
+        ButtonType buttonCancelLocalised = new ButtonType("Закрыть", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ShowAlert(alertType, title, header, secondsToShow, message, buttonCancelLocalised);
+    }
 
+    private static void ShowAlert(Alert.AlertType alertType, String title, String header,
+                                  int secondsToShow, String message, ButtonType... buttons) {
+        Alert alert = new Alert(alertType, message, buttons);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+
+        Timeline idleStage = new Timeline( new KeyFrame( Duration.seconds(secondsToShow), event -> {
+            alert.setResult(ButtonType.CANCEL);
+            alert.hide();
+        }));
+        idleStage.setCycleCount(1);
+        idleStage.play();
+
+        alert.showAndWait();
+    }
+
+    public static void ShowAlertError(String message) {
+        ShowAlert(Alert.AlertType.ERROR, "Ошибка", "Ошибка", 5, message);
+    }
+
+    public static void ShowAlertCreate(String message) {
+        ShowAlert(Alert.AlertType.INFORMATION, "Успешное создание", "Успешное создание", 3, message);
+    }
+
+    public static void ShowAlertChange(String message) {
+        ShowAlert(Alert.AlertType.INFORMATION, "Успешное изменение", "Успешное изменение", 3, message);
+    }
+    //endregion
+
+    //region Utils
     /**
      * Основной способ смены экрана (сцены)
      * @param fxmlUrl Название файла экрана типа "Screen.fxml"
      */
     public static void ChangeScene(String fxmlUrl) {
         try {
-            Parent pane = FXMLLoader.load(clientApplication.getClass().getResource("/views/" + fxmlUrl)); // Файлы лежат в папке views
+            Parent pane = FXMLLoader.load(Objects.requireNonNull(clientApplication.
+                    getClass().getResource("/views/" + fxmlUrl))); // Файлы лежат в папке views
 
             if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
                 stage.setWidth(1380); // Тогда реальная ширина 1366
@@ -282,6 +321,8 @@ public class ScreenManager {
             }
         }
     }
+
+
 
     /**
      * Сохранение основного окна, для дальнейшей работы с ним
