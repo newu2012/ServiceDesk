@@ -104,19 +104,15 @@ public class CreateTicketScreenController implements Initializable {
             SoftwareBox.getStyleClass().addAll("create-object-ChoiceBox", "choice-box");
         }
 
-        if (validationError)
+        if (validationError) {
+            ScreenManager.ShowAlertError("Неверно заполнены поля обращения.");
             return;
+        }
 
         int moduleId = -1;
 
         if (ModuleBox.getValue() != null)
-            moduleId = Software.software
-                    .stream().filter(software -> software.softwareModules
-                    .stream().filter(softwareModule -> softwareModule.getName().equals(ModuleBox.getValue().getName()))
-                    .findFirst().get().getName().equals(ModuleBox.getValue().getName()))
-                    .findFirst().get().getSoftwareModules()
-                    .stream().filter(softwareModule -> softwareModule.getName().equals(ModuleBox.getValue().getName()))
-                    .findFirst().get().getId();
+            moduleId = ModuleBox.getValue().getId();
 
         Ticket.AddTicket(
                 TitleField.getText(),
@@ -126,6 +122,7 @@ public class CreateTicketScreenController implements Initializable {
                 DescriptionTextArea.getText());
 
         System.out.println("SoftwareId=" + SoftwareBox.getValue().getId() + " ModuleId=" + moduleId);
+        ScreenManager.ShowAlertCreate("Успешное создание обращения!");
         ScreenManager.CloseSecondScreen();
     }
 
