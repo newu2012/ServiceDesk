@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -22,12 +23,7 @@
                   <Font name="System Bold Italic" size="36.0" />
                </font>
             </Text>
-            <Text fx:id="Tickets" fill="WHITE" onMouseClicked="#TicketsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Обращения" textAlignment="CENTER" wrappingWidth="200.0">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Text>
-            <AnchorPane prefHeight="64.0" prefWidth="579.0" />
+            <AnchorPane prefHeight="64.0" prefWidth="745.0" />
             <HBox alignment="BASELINE_RIGHT" maxHeight="64.0" maxWidth="400.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="64.0" prefWidth="400.0" HBox.hgrow="NEVER">
                <children>
                   <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
@@ -49,7 +45,7 @@
    <center>
       <Pane prefHeight="500.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="131.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Мой профиль" />
+            <Text layoutX="124.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Мой профиль" />
             <AnchorPane layoutX="133.0" layoutY="80.0" prefHeight="557.0" prefWidth="1100.0" styleClass="pane-borders">
                <children>
                   <Button fx:id="ChangeProfileButton" defaultButton="true" layoutX="499.0" layoutY="99.0" mnemonicParsing="false" onAction="#ChangeProfile" prefHeight="0.0" styleClass="main-button-v2" text="Редактировать профиль" AnchorPane.rightAnchor="351.0" AnchorPane.topAnchor="99.0" />
@@ -81,11 +77,12 @@
                   <Text fx:id="Knopka" layoutX="191.0" layoutY="452.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-green-link" text="Перейти в профиль организации" underline="true" wrappingWidth="191.67578125" />
                </children>
             </AnchorPane>
-            <Label layoutX="-4.0" layoutY="50.0" onMouseClicked="#PreviousScreenButtonClicked" prefHeight="110.0" prefWidth="75.0" styleClass="previous-screen-button" text="&lt;" textAlignment="RIGHT">
+            <Label layoutX="2.0" layoutY="50.0" onMouseClicked="#PreviousScreenButtonClicked" prefHeight="110.0" prefWidth="75.0" styleClass="previous-screen-button" text="&lt;" textAlignment="RIGHT">
                <font>
                   <Font size="100.0" />
                </font>
             </Label>
+            <Line endX="-1.6" endY="1.5" layoutX="253.0" layoutY="58.0" startX="-126.0" startY="1.5" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="5.0" />
          </children>
          <BorderPane.margin>
             <Insets />

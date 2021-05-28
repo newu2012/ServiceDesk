@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -43,13 +43,21 @@
          </children></HBox>
    </top>
    <center>
-      <Pane fx:id="OrganisationMainPane" maxWidth="1366.0" minWidth="1366.0" prefHeight="708.0" prefWidth="1366.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="133.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Моя организация" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="488.0" prefWidth="1243.0" />
          </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </Pane>
+      </VBox>
    </center>
+   <left>
+      <AnchorPane prefHeight="704.0" prefWidth="62.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="2.0" layoutY="50.0" styleClass="previous-screen-button" text="&lt;" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="704.0" prefWidth="115.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
