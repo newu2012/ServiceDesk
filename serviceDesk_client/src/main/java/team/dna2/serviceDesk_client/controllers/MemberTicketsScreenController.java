@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.models.Category;
 import team.dna2.serviceDesk_client.models.Software;
 import team.dna2.serviceDesk_client.models.Ticket;
 import team.dna2.serviceDesk_client.models.User;
@@ -88,12 +89,11 @@ public class MemberTicketsScreenController implements Initializable {
                         .get(ticketStringCellDataFeatures.getValue().getCreatorId())
                         .getFullName()));
         status.setCellValueFactory(new PropertyValueFactory<>("Status"));
-        category.setCellValueFactory(new PropertyValueFactory<>("Category"));
-        // creationDate.setCellValueFactory(new PropertyValueFactory<>("CreationDate"));
+        category.setCellValueFactory(ts -> new SimpleStringProperty(Category.categories.get
+                (ts.getValue().getCategoryId()).getName()));
         creationDate.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
                 .getValue().getCreationDate())));
-        // changeDate.setCellValueFactory(new PropertyValueFactory<>("ChangeDate"));
         changeDate.setCellValueFactory(ticketStringCellDataFeatures -> {
             if (ticketStringCellDataFeatures.getValue()
                     .getChangeDate()
