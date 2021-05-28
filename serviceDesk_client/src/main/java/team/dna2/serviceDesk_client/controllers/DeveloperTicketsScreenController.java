@@ -90,7 +90,6 @@ public class DeveloperTicketsScreenController implements Initializable {
         status.setCellValueFactory(new PropertyValueFactory<>("Status"));
         category.setCellValueFactory(ts -> new SimpleStringProperty(Category.categories.get
                 (ts.getValue().getCategoryId()).getName()));
-        category.setText(Category.categories.get(Ticket.currentTicket.getCategoryId()).getName());
         creationDate.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
                         .getValue().getCreationDate())));

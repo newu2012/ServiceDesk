@@ -16,6 +16,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import team.dna2.serviceDesk_client.Main;
 import team.dna2.serviceDesk_client.PlaceholdersManager;
 import team.dna2.serviceDesk_client.ScreenManager;
+import team.dna2.serviceDesk_client.ServerManager;
 
 /**
  * Класс, отвечающий за подготовку к запуску приложения, его запуск и закрытие.
@@ -28,7 +29,6 @@ public class ClientApplication extends Application {
     private Parent rootNode;
     private ConfigurableApplicationContext springContext;
     public FXMLLoader fxmlLoader;
-    private ScreenManager screenManager;
 
     /**
      * Тут происходит подготовка к запуску приложения.
@@ -45,6 +45,8 @@ public class ClientApplication extends Application {
                 .run(getParameters().getRaw().toArray(new String[0]));
         springContext = SpringApplication.run(Main.class);
 
+        ScreenManager.SetUpScreenManager(); // Передача clientApplication для перехода между страницами
+        ServerManager.SetUpServerManager(); // Запуск клиента для подключения к серверу
         PlaceholdersManager.SetUpPlaceholders(); // Добавление данных по умолчанию (пользователи, софт, модули)
 
         fxmlLoader = new FXMLLoader(getClass().getResource("/views/InitLoading.fxml"));
@@ -64,7 +66,6 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage stage) {
         System.out.println("Application starts");
-        screenManager = new ScreenManager();
 
         springContext.publishEvent(new StageReadyEvent(stage));
         ScreenManager.stage = stage;

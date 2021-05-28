@@ -1,6 +1,5 @@
 package team.dna2.serviceDesk_client;
 
-import org.jboss.resteasy.client.jaxrs.internal.ClientResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
@@ -10,22 +9,21 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ServerManager {
     private static ClientApplication clientApplication;
+    private static Client client;
     public static String baseUrl = "http://localhost:8080/";
 
     //region MainPaths TODO дописать
     public static String DeveloperLicences = "developer/licences/";
     //endregion
 
+    public static void SetUpServerManager() {
+        client = ClientBuilder.newClient();
+    }
 
     //region MainMethods
     public ServerManager() {
@@ -37,9 +35,7 @@ public class ServerManager {
     }
 
     public static String SetConnection(String url, String method) {
-        Client client = ClientBuilder.newClient();
         WebTarget target = client.target(baseUrl + url);
-
         return target.request(MediaType.APPLICATION_JSON).get(String.class);
     }
 
@@ -66,15 +62,9 @@ public class ServerManager {
 
         return newLicences;
     }
-
-    public static ArrayList<License> UpdateArrayListFromResponse(ArrayList<License> list, ArrayList<License> responseList) {
-        list.addAll(responseList);
-
-        return list;
-    }
     //endregion
 
     public static void FetchLicences() {
-        UpdateArrayListFromResponse(License.licenses, TryGetResponseMessage(SetConnection(DeveloperLicences)));
+        License.licenses.addAll(TryGetResponseMessage(SetConnection(DeveloperLicences)));
     }
 }

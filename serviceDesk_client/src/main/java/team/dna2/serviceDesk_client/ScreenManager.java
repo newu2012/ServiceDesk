@@ -25,7 +25,6 @@ public class ScreenManager {
     private static ClientApplication clientApplication;
     public static Stage stage;
 
-
     public static Window mainScreen;
     public static Window secondScreen;
     public static String currentScreenUrl;
@@ -34,9 +33,9 @@ public class ScreenManager {
 
     //region MainMethods
     /**
-     * Чтобы переключать экраны
+     * Установка clientApplication для перехода между экранами
      */
-    public ScreenManager() {
+    public static void SetUpScreenManager() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 
