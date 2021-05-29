@@ -32,10 +32,14 @@ public class Licence {
     @Column(name = "start_date", nullable = false)
     private Timestamp startDate;
 
-    @Column(name = "expiration_date", nullable = false)
+    //Если не заполнено - значит бессрочная
+    @Column(name = "expiration_date")
     private Timestamp expirationDate;
 
-    @Column(name = "users_limit", nullable = false)
+    //Если не заполнено - значит неограниченное количество юзеров
+    @Column(name = "users_limit")
     private Integer usersLimit;
 
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive;
 }
