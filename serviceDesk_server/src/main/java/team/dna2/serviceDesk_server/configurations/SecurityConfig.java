@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -11,10 +13,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import team.dna2.serviceDesk_server.databaseService.services.UserService;
 
+import javax.annotation.Resource;
+
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+public class SecurityConfig extends WebSecurityConfigurerAdapter  {
+    @Resource
     UserService userService;
 
     @Bean
@@ -30,14 +34,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-            .and().authorizeRequests()
-                .antMatchers("/**").permitAll()
-                .antMatchers("/developer/**").permitAll()//.hasRole("DEVELOPER")
-                .antMatchers("/member/**").permitAll()//.hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
-                .antMatchers("/owner/**").permitAll();//.hasAnyRole("OWNER", "DEVELOPER");
+                .httpBasic()//сообщает Spring, чтобы он ожидал базовую HTTP аутентификацию username:password
+                    .and()
+                .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                .and()
+                .authorizeRequests()
+                    .antMatchers("/developer/**").hasRole("DEVELOPER")
+                    .antMatchers("/member/**").hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
+                    .antMatchers("/owner/**").hasAnyRole("OWNER", "DEVELOPER")
+                .anyRequest().authenticated()
+                .and()
+                //Настройка для входа в систему
+                .formLogin()
+                    .loginPage("/login").permitAll()
+                    .and()
+                    .logout().permitAll();
     }
 
 }

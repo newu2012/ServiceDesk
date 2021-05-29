@@ -1,5 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class User implements Serializable, UserDetails {
 //    @Column(name = "login", nullable = false, unique = true, updatable = false, length = 63)
 //    private String login;
 
+    //@JsonIgnore
     @Column(name = "password_hash", nullable = false, length = 127)
     private String passwordHash;
 

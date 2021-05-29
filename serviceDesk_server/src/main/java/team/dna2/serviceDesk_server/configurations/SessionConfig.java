@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Configuration
 @EnableSpringHttpSession
-public class MainConfig {
+public class SessionConfig {
 
     @Bean
     public MapSessionRepository sessionRepository() {
