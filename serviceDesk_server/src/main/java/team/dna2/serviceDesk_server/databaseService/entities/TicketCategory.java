@@ -15,11 +15,11 @@ import java.io.Serializable;
 public class TicketCategory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "category_name", unique = true, nullable = false, length = 32)
-    private String categoryName;
+    private String name;
 
     @Column(name = "description", length = 1024)
     private String description;

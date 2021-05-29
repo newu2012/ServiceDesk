@@ -15,10 +15,10 @@ import java.sql.Timestamp;
 public class Licence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "serial_number", nullable = false, unique = true)
+    @Column(name = "serial_number", unique = true)
     private String serialNumber;
 
     @ManyToOne
@@ -28,6 +28,9 @@ public class Licence {
     @OneToOne
     @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false)
     private Software software;
+
+    @Column(name = "start_date", nullable = false)
+    private Timestamp startDate;
 
     @Column(name = "expiration_date", nullable = false)
     private Timestamp expirationDate;

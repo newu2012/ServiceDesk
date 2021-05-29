@@ -15,15 +15,15 @@ import java.io.Serializable;
 public class SoftwareModule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Software software;
 
     @Column(name = "module_name", nullable = false, length = 128)
-    private String moduleName;
+    private String name;
 
     @Column(name = "description", length = 1024)
     private String description;

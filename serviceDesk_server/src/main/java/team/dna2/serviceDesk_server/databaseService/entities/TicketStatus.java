@@ -8,20 +8,19 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "DEVELOPERS")
+@Table(name = "COMPENDIUM_TICKET_STATUS")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
-public class Developer implements Serializable {
+public class TicketStatus implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false, updatable = false)
-    private User user;
+    @Column(name = "status_name", unique = true, nullable = false, length = 32)
+    private String name;
 
-    @Column(name = "bio", length = 512)
-    private String bio;
+    @Column(name = "description", length = 1024)
+    private String description;
 }

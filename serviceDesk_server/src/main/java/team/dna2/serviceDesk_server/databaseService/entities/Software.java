@@ -15,11 +15,11 @@ import java.io.Serializable;
 public class Software implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "software_name", unique = true, nullable = false, length = 128)
-    private String softwareName;
+    private String name;
 
     @Column(name = "description", length = 1024)
     private String description;

@@ -17,9 +17,10 @@ import java.util.Set;
 public class Role implements Serializable, GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
+    //В любом удобном виде, например - Представитель заказчика
     @Column(name = "informal_name")
     private String informalName;
 
