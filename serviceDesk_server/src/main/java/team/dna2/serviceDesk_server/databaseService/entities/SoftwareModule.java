@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
-public class CompendiumSoftwareModule implements Serializable {
+public class SoftwareModule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,7 +20,7 @@ public class CompendiumSoftwareModule implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false)
-    private CompendiumSoftware software;
+    private Software software;
 
     @Column(name = "module_name", nullable = false, length = 128)
     private String moduleName;

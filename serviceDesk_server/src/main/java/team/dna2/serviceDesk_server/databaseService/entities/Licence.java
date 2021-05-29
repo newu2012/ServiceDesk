@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Data
-public class CompendiumLicence {
+public class Licence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -27,7 +27,7 @@ public class CompendiumLicence {
 
     @OneToOne
     @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false)
-    private CompendiumSoftware software;
+    private Software software;
 
     @Column(name = "expiration_date", nullable = false)
     private Timestamp expirationDate;

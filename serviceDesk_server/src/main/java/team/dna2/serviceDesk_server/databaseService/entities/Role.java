@@ -14,7 +14,7 @@ import java.util.Set;
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Data
 @NoArgsConstructor
-public class CompendiumRole implements Serializable, GrantedAuthority {
+public class Role implements Serializable, GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -34,11 +34,11 @@ public class CompendiumRole implements Serializable, GrantedAuthority {
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public CompendiumRole(Long id) {
+    public Role(Long id) {
         this.id = id;
     }
 
-    public CompendiumRole(Long id, String name) {
+    public Role(Long id, String name) {
         this.id = id;
         this.name = name;
     }

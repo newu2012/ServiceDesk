@@ -44,7 +44,7 @@ public class User implements Serializable, UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     //@JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     @JoinColumn(nullable = false)
-    private Set<CompendiumRole> roles;
+    private Set<Role> roles;
 
     @OneToOne
     @JoinColumn(name = "avatar_file_id", referencedColumnName = "id")

@@ -33,11 +33,11 @@ public class Ticket implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
-    private CompendiumTicketCategory category;
+    private TicketCategory category;
 
     @OneToOne
     @JoinColumn(name = "software_module_id", referencedColumnName = "id", nullable = false)
-    private CompendiumSoftwareModule softwareModule;
+    private SoftwareModule softwareModule;
 
     @Column(name = "creation_date", nullable = false)
     private Timestamp creationDate;

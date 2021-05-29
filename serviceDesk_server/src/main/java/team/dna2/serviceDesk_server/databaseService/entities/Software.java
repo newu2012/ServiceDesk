@@ -8,18 +8,18 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "COMPENDIUM_TICKET_CATEGORIES")
+@Table(name = "COMPENDIUM_SOFTWARE")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
-public class CompendiumTicketCategory implements Serializable {
+public class Software implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "category_name", unique = true, nullable = false, length = 32)
-    private String categoryName;
+    @Column(name = "software_name", unique = true, nullable = false, length = 128)
+    private String softwareName;
 
     @Column(name = "description", length = 1024)
     private String description;
