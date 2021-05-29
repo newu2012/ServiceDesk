@@ -15,17 +15,17 @@ import java.io.Serializable;
 public class Member implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false, updatable = false)
     private User user;
 
     @Column(name = "is_owner", nullable = false)
     private Boolean isOwner;
 
     @OneToOne
-    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Organization organization;
 }

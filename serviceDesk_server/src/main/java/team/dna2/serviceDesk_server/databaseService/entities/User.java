@@ -20,7 +20,7 @@ import java.util.Set;
 public class User implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "email", nullable = false, unique = true, length = 63)
@@ -44,13 +44,13 @@ public class User implements Serializable, UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     //@JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     @JoinColumn(nullable = false)
-    private Set<CompendiumRole> roles;
+    private Set<Role> roles;
 
     @OneToOne
     @JoinColumn(name = "avatar_file_id", referencedColumnName = "id")
     private File avatarFile;
 
-    @Column(name = "registration_date", nullable = false)
+    @Column(name = "registration_date", nullable = false, updatable = false)
     private Timestamp registrationDate;
 
     @Column(name = "is_active", nullable = false)

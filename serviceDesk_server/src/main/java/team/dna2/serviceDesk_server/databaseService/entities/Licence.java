@@ -12,13 +12,13 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Data
-public class CompendiumLicence {
+public class Licence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "serial_number", nullable = false, unique = true)
+    @Column(name = "serial_number", unique = true)
     private String serialNumber;
 
     @ManyToOne
@@ -27,12 +27,19 @@ public class CompendiumLicence {
 
     @OneToOne
     @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false)
-    private CompendiumSoftware software;
+    private Software software;
 
-    @Column(name = "expiration_date", nullable = false)
+    @Column(name = "start_date", nullable = false)
+    private Timestamp startDate;
+
+    //Если не заполнено - значит бессрочная
+    @Column(name = "expiration_date")
     private Timestamp expirationDate;
 
-    @Column(name = "users_limit", nullable = false)
+    //Если не заполнено - значит неограниченное количество юзеров
+    @Column(name = "users_limit")
     private Integer usersLimit;
 
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive;
 }

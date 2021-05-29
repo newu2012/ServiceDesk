@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import team.dna2.serviceDesk_server.databaseService.entities.CompendiumTicketCategory;
-import team.dna2.serviceDesk_server.databaseService.services.CompendiumTicketCategoryService;
+import team.dna2.serviceDesk_server.databaseService.entities.TicketCategory;
+import team.dna2.serviceDesk_server.databaseService.services.TicketCategoryService;
 
 import javax.annotation.Resource;
 import java.util.Collection;
@@ -17,15 +17,15 @@ import java.util.Collection;
 public class TicketCategoriesController {
 
     @Resource
-    private CompendiumTicketCategoryService ticketCategoryService;
+    private TicketCategoryService ticketCategoryService;
 
     @GetMapping("/")
-    public Collection<CompendiumTicketCategory> getAllTicketCategories(){
+    public Collection<TicketCategory> getAllTicketCategories(){
         return ticketCategoryService.getAll();
     }
 
     @GetMapping("/{ticketCategoryId}")
-    public CompendiumTicketCategory getTicketCategory(@PathVariable Long ticketCategoryId){
+    public TicketCategory getTicketCategory(@PathVariable Long ticketCategoryId){
         return ticketCategoryService.getOneById(ticketCategoryId);
     }
 }
