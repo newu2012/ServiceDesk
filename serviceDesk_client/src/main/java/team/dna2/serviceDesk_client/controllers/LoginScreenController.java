@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static team.dna2.serviceDesk_client.ServerManager.FetchLicences;
+import static team.dna2.serviceDesk_client.ServerManager.FetchOrganizations;
 
 
 /**
@@ -43,7 +43,7 @@ public class LoginScreenController {
     }
 
     private void printSomeInfo () {
-        FetchLicences();
+        FetchOrganizations();
     }
 
     /**

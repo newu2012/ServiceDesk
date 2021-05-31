@@ -21,6 +21,7 @@ import team.dna2.serviceDesk_client.models.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -42,7 +43,7 @@ public class DeveloperCompendiumScreenController implements Initializable {
     @FXML private TableView<Category> CategoriesTable;
     @FXML private TableView<Software> SoftwareTable;
     @FXML private TableView<SoftwareModule> SoftwareModulesTable;
-    @FXML private TableView<User> OwnersTable;
+    @FXML private TableView<Organization> OrganizationsTable;
     @FXML private TableView<User> MembersTable;
     @FXML private TableView<User> DevelopersTable;
     //endregion
@@ -56,9 +57,8 @@ public class DeveloperCompendiumScreenController implements Initializable {
             .observableArrayList(Software.software);
     public ObservableList<SoftwareModule> softwareModules = FXCollections
             .observableArrayList(SoftwareModule.softwareModules);
-    public ObservableList<User> owners = FXCollections
-            .observableArrayList(User.users.stream()
-            .filter(u -> u.getRole().equals("Владелец ЛК Заказчика")).collect(Collectors.toList()));
+    public ObservableList<Organization> organizations = FXCollections
+            .observableArrayList(Organization.organizations);
     public ObservableList<User> members = FXCollections.observableArrayList(User.users.stream()
             .filter(u -> u.organisationId != -1).collect(Collectors.toList()));
     public ObservableList<User> developers = FXCollections.observableArrayList(User.users.stream()
@@ -105,6 +105,14 @@ public class DeveloperCompendiumScreenController implements Initializable {
     //endregion
 
     //region OrganisationsColumns
+    @FXML public TableColumn<Organization, Long> OrganizationId;
+    @FXML public TableColumn<Organization, String> OrganizationLogo;
+    @FXML public TableColumn<Organization, String> OrganizationName;
+    @FXML public TableColumn<Organization, String> OrganizationOwner;
+    @FXML public TableColumn<Organization, String> OrganizationDescription;
+    @FXML public TableColumn<Organization, String> OrganizationRegDate;
+    @FXML public TableColumn<Organization, String> OrganizationStatus;
+    @FXML public TableColumn<Organization, String> OrganizationBlockDate;
     //endregion
 
     //region DevelopersColumns
@@ -121,7 +129,9 @@ public class DeveloperCompendiumScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+        MyProfileCircle.setFill(new ImagePattern(
+                new Image(Objects.requireNonNull(getClass()
+                        .getResourceAsStream("/images/" + User.currentUser.getAvatarFileName())))));
         MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
 
         initTables();
@@ -187,7 +197,28 @@ public class DeveloperCompendiumScreenController implements Initializable {
     }
 
     public void initOrganisationTable() {
+        for (Organization org: Organization.organizations
+             ) {
+            System.out.println(org);
+        }
         // TODO Заполнить
+
+        OrganizationId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        OrganizationName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        OrganizationLogo.setCellValueFactory((ts -> // TODO Реализовать вставку лого
+                new SimpleStringProperty(null)));
+        OrganizationDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
+        OrganizationRegDate.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getRegistrationDate())));
+        OrganizationStatus.setCellValueFactory(ts ->
+                new SimpleStringProperty(ts.getValue().getIsActive() ? "Активна" : "Не активна")); //
+        OrganizationBlockDate.setCellValueFactory(ticketStringCellDataFeatures ->
+                new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
+                        .getValue().getRegistrationDate()))); // TODO Проверка на null и вывод BlockDate
+
+        organizations = FXCollections.observableArrayList(Organization.organizations);
+        OrganizationsTable.setItems(organizations);
     }
 
     public void initMembersTable() {

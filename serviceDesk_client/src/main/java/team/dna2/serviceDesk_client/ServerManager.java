@@ -1,28 +1,37 @@
 package team.dna2.serviceDesk_client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
 import team.dna2.serviceDesk_client.models.License;
+import team.dna2.serviceDesk_client.models.Organization;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import java.io.File;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ServerManager {
     private static ClientApplication clientApplication;
     private static Client client;
-    public static String baseUrl = "http://localhost:8080/";
+    private static ObjectMapper objectMapper;
+    public static String baseUrl = "http://localhost:8888/";
 
     //region MainPaths TODO дописать
-    public static String DeveloperLicences = "developer/licences/";
+    public static String URLDeveloperLicences = "developer/licences/";
+    public static String URLOrganizations = "organizations/";
     //endregion
 
     public static void SetUpServerManager() {
         client = ClientBuilder.newClient();
+        objectMapper = new ObjectMapper();
     }
 
     //region MainMethods
@@ -36,35 +45,27 @@ public class ServerManager {
 
     public static String SetConnection(String url, String method) {
         WebTarget target = client.target(baseUrl + url);
-        return target.request(MediaType.APPLICATION_JSON).get(String.class);
+        return target.request(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Basic ZGVuaXNAZG5hMi5ydTpkZW5pcw==")
+                .get(String.class);
     }
 
-    public static ArrayList<License> TryGetResponseMessage(String responseMessage) {
-        // JSONObject obj =  new JSONObject(responseMessage);
-        // JSONArray objects = obj.getJSONArray("");
-        JSONArray arr = new JSONArray(responseMessage);
+    public static ArrayList<Organization> TryGetResponseMessage(String responseMessage) {
+        ArrayList<Organization> newOrganizations = new ArrayList<>();
 
-        ArrayList<License> newLicences = new ArrayList<>();
-
-        for (int i = 0; i < arr.length(); i++) {
-            JSONObject element = arr.getJSONObject(i);
-            License license = new License(
-                    element.getString("serialNumber"),
-                    0L,
-                    0L,
-                    element.getLong("usersLimit"),
-                    new Date(),
-                    new Date(System.currentTimeMillis() + 100000000000L));
-            newLicences.add(license);
-
-            System.out.println(element);
+        try {
+            // Если не массив
+            // newOrganizations.add(objectMapper.readValue(responseMessage, Organization.class));
+            newOrganizations = objectMapper.readValue(responseMessage, new TypeReference<>() {});
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
 
-        return newLicences;
+        return newOrganizations;
     }
     //endregion
 
-    public static void FetchLicences() {
-        License.licenses.addAll(TryGetResponseMessage(SetConnection(DeveloperLicences)));
+    public static void FetchOrganizations() {
+        Organization.organizations.addAll(TryGetResponseMessage(SetConnection(URLOrganizations)));
     }
 }

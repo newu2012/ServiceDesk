@@ -159,7 +159,7 @@
                               </VBox>
                            </content>
                         </Tab>
-                        <Tab fx:id="OwnersTab" text="Заказчики">
+                        <Tab fx:id="OrganizationsTab" text="Организации">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -169,16 +169,16 @@
                                        </children></AnchorPane>
                                     <AnchorPane prefHeight="430.0" prefWidth="1244.0">
                                        <children>
-                                          <TableView fx:id="OwnersTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
+                                          <TableView fx:id="OrganizationsTable" layoutX="70.0" layoutY="10.0" maxHeight="400.0" maxWidth="1100.0" minHeight="400.0" minWidth="1100.0" prefHeight="400.0" prefWidth="1100.0">
                                              <columns>
-                                                <TableColumn fx:id="owner_id" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
-                                                <TableColumn fx:id="owner_logo" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="Лого" />
-                                                <TableColumn fx:id="owner_organization" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Организация" />
-                                                <TableColumn fx:id="owner_LK" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Владелец ЛК" />
-                                                <TableColumn fx:id="owner_description" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" text="Описание" />
-                                                <TableColumn fx:id="owner_reg_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
-                                                 <TableColumn fx:id="owner_status" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Статус" />
-                                                 <TableColumn fx:id="owner_block_date" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
+                                                <TableColumn fx:id="OrganizationId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" text="ID" />
+                                                <TableColumn fx:id="OrganizationLogo" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" text="Лого" />
+                                                <TableColumn fx:id="OrganizationName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Организация" />
+                                                <TableColumn fx:id="OrganizationOwner" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Владелец ЛК" />
+                                                <TableColumn fx:id="OrganizationDescription" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" text="Описание" />
+                                                <TableColumn fx:id="OrganizationRegDate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата регистрации" />
+                                                 <TableColumn fx:id="OrganizationStatus" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Статус" />
+                                                 <TableColumn fx:id="OrganizationBlockDate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата блокировки" />
                                              </columns>
                                           </TableView>
                                        </children></AnchorPane>
