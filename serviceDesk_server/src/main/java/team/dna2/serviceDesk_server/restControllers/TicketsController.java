@@ -1,6 +1,8 @@
 package team.dna2.serviceDesk_server.restControllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 import team.dna2.serviceDesk_server.databaseService.entities.Ticket;
@@ -22,7 +24,7 @@ public class TicketsController {
     private OrganizationService organizationService;
 
     @GetMapping("/")
-    public Collection<Ticket> getTickets(Long userId){
+    public Collection<Ticket> getTickets(@RequestBody Long userId){
         Organization org = organizationService.getOrganizationByUserId(userId);
         return ticketService.getAllTicketsByOrganization(org.getId());
     }
@@ -39,7 +41,32 @@ public class TicketsController {
 
     @GetMapping("/by-dev/{devId}")
     public Collection<Ticket> getTicketsByDeveloper(@PathVariable Long devId){
-        return ticketService.getAllByDev(devId);
+        return  ticketService.getAllByDev(devId);
     }
 
+//    @PostMapping("/")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void addTicket(@RequestBody Ticket ticket){
+//        ticketService.addTicket(ticket);
+//    }
+
+    @PutMapping("/{ticketId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void editTicket(@PathVariable Long ticketId, @RequestParam Long editorId, @RequestBody Ticket editedTicket){
+        ticketService.editTicket(editorId, ticketId, editedTicket);
+    }
+
+    @PreAuthorize("hasRole('DEVELOPER')")
+    @PatchMapping("/{ticketId}/set-status")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void setStatusToTicket(@PathVariable Long ticketId, @RequestParam Long editorId, @RequestParam Long statusId){
+        ticketService.setStatusToTicket(editorId, ticketId, statusId);
+    }
+
+    @PreAuthorize("hasRole('DEVELOPER')")
+    @PatchMapping("/{ticketId}/set-developer")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void setDeveloperToTicket(@PathVariable Long ticketId, @RequestParam Long editorId, @RequestParam Long devId){
+        ticketService.setDeveloperToTicket(editorId, ticketId, devId);
+    }
 }

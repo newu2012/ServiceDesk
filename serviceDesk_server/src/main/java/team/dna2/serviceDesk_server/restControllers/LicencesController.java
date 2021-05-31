@@ -1,10 +1,7 @@
 package team.dna2.serviceDesk_server.restControllers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import team.dna2.serviceDesk_server.databaseService.entities.Licence;
 import team.dna2.serviceDesk_server.databaseService.services.LicenceService;
 
@@ -29,12 +26,4 @@ public class LicencesController {
         return  licenceService.getOneById(licenceId);
     }
 
-    /*
-    @PostMapping("/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public String addLicence(@RequestBody Licence licence){
-        return "200";
-        //TODO
-    }
-    */
 }

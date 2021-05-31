@@ -12,4 +12,6 @@ public interface RecordChangesRepository extends JpaRepository<RecordChange, Lon
 
     //Взять последнее изменение тикета
     RecordChange findFirstByTicket_IdOrderByDateTimeDesc(Long ticketId);
+
+
 }

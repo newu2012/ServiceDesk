@@ -2,6 +2,7 @@ package team.dna2.serviceDesk_server.databaseService.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import team.dna2.serviceDesk_server.databaseService.entities.Ticket;
 
 import java.util.List;
