@@ -8,6 +8,8 @@ import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnu
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.Instant;
+
 
 @Entity
 @Table(name = "RECORD_CHANGES")
@@ -17,25 +19,39 @@ import java.sql.Timestamp;
 public class RecordChange implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "editor_user_id", referencedColumnName = "id", nullable = false)
-    private User editorUser;
+    @JoinColumn(name = "editor_id", referencedColumnName = "id", nullable = false, updatable = false)
+    private User editor;
 
     @ManyToOne
-    @JoinColumn(name = "ticket_id", referencedColumnName = "id")
+    @JoinColumn(name = "ticket_id", referencedColumnName = "id", updatable = false)
     private Ticket ticket;
 
     @ManyToOne
-    @JoinColumn(name = "comment_id", referencedColumnName = "id")
+    @JoinColumn(name = "comment_id", referencedColumnName = "id", updatable = false)
     private TicketComment comment;
 
-    @Column(name = "date_time", nullable = false)
+    @Column(name = "date_time", nullable = false, updatable = false)
     private Timestamp dateTime;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "record_type", nullable = false, length = 32)
+    @Column(name = "record_type", nullable = false, length = 32, updatable = false)
     private RecordTypeEnum recordType;
+
+    public RecordChange(User editor, Ticket ticket){
+        this.setEditor(editor);
+        this.setRecordType(RecordTypeEnum.TICKET);
+        this.setTicket(ticket);
+        this.setDateTime(Timestamp.from(Instant.now()));
+    }
+
+    public RecordChange(User editor, TicketComment comment){
+        this.setEditor(editor);
+        this.setRecordType(RecordTypeEnum.COMMENT);
+        this.setComment(comment);
+        this.setDateTime(Timestamp.from(Instant.now()));
+    }
 }

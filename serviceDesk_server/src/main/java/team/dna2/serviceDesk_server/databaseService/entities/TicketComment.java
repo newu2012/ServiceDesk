@@ -16,20 +16,24 @@ import java.sql.Timestamp;
 public class TicketComment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ticket_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "ticket_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Ticket ticket;
 
     @OneToOne
-    @JoinColumn(name = "author_user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false, updatable = false)
     private User author;
 
     @Column(name = "comment_text", nullable = false, length = 2047)
     private String commentText;
 
-    @Column(name = "creation_date", nullable = false)
+    @Column(name = "creation_date", nullable = false, updatable = false)
     private Timestamp creationDate;
+
+    @OneToOne
+    @JoinColumn(name = "last_change_id", referencedColumnName = "id")
+    private RecordChange lastChange;
 }

@@ -16,23 +16,23 @@ import java.io.Serializable;
 public class Attachment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "record_type", nullable = false, length = 32)
+    @Column(name = "record_type", nullable = false, updatable = false)
     private RecordTypeEnum recordType;
 
     @ManyToOne
-    @JoinColumn(name = "ticket_id", referencedColumnName = "id")
+    @JoinColumn(name = "ticket_id", referencedColumnName = "id", updatable = false)
     private Ticket ticket;
 
     @ManyToOne
-    @JoinColumn(name = "comment_id", referencedColumnName = "id")
+    @JoinColumn(name = "comment_id", referencedColumnName = "id", updatable = false)
     private TicketComment comment;
 
     @OneToOne
-    @JoinColumn(name = "file_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "file_id", referencedColumnName = "id", nullable = false, updatable = false)
     private File file;
 
 }

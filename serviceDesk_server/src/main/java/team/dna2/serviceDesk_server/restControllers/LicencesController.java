@@ -1,12 +1,9 @@
 package team.dna2.serviceDesk_server.restControllers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import team.dna2.serviceDesk_server.databaseService.entities.CompendiumLicence;
-import team.dna2.serviceDesk_server.databaseService.services.CompendiumLicenceService;
+import org.springframework.web.bind.annotation.*;
+import team.dna2.serviceDesk_server.databaseService.entities.Licence;
+import team.dna2.serviceDesk_server.databaseService.services.LicenceService;
 
 import javax.annotation.Resource;
 import java.util.Collection;
@@ -17,24 +14,16 @@ import java.util.Collection;
 public class LicencesController {
 
     @Resource
-    private CompendiumLicenceService licenceService;
+    private LicenceService licenceService;
 
     @GetMapping("/")
-    public Collection<CompendiumLicence> getAllLicences() {
+    public Collection<Licence> getAllLicences() {
         return licenceService.getAll();
     }
 
     @GetMapping("/{licenceId}")
-    public CompendiumLicence getLicence(@PathVariable Long licenceId) {
+    public Licence getLicence(@PathVariable Long licenceId) {
         return  licenceService.getOneById(licenceId);
     }
 
-    /*
-    @PostMapping("/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public String addLicence(@RequestBody CompendiumLicence licence){
-        return "200";
-        //TODO
-    }
-    */
 }

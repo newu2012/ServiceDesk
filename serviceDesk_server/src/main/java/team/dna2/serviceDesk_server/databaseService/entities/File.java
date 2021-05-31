@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class File implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "file_path", nullable = false, length = 256)
