@@ -20,12 +20,12 @@ public class OrganizationsController {
     private OrganizationService organizationService;
 
     @GetMapping("/")
-    public Collection<Organization> getAllLicences() {
+    public Collection<Organization> getAllOrganizations() {
         return organizationService.getAll();
     }
 
     @GetMapping("/{organizationId}")
-    public Organization getLicence(@PathVariable Long organizationId) {
+    public Organization getOrganization(@PathVariable Long organizationId) {
         return  organizationService.getOneById(organizationId);
     }
 

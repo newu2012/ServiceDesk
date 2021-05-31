@@ -56,15 +56,15 @@ public class TicketsController {
         ticketService.editTicket(editorId, ticketId, editedTicket);
     }
 
-    @PreAuthorize("hasRole('DEVELOPER')")
     @PatchMapping("/{ticketId}/set-status")
+    @PreAuthorize("hasRole('DEVELOPER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setStatusToTicket(@PathVariable Long ticketId, @RequestParam Long editorId, @RequestParam Long statusId){
         ticketService.setStatusToTicket(editorId, ticketId, statusId);
     }
 
-    @PreAuthorize("hasRole('DEVELOPER')")
     @PatchMapping("/{ticketId}/set-developer")
+    @PreAuthorize("hasRole('DEVELOPER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setDeveloperToTicket(@PathVariable Long ticketId, @RequestParam Long editorId, @RequestParam Long devId){
         ticketService.setDeveloperToTicket(editorId, ticketId, devId);
