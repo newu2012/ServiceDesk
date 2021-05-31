@@ -47,7 +47,7 @@
       <AnchorPane prefHeight="128.0" prefWidth="840.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="СhangeLicenseButton" layoutX="295.0" layoutY="58.0" mnemonicParsing="false" onAction="#СhangeLicenseButtonClicked" styleClass="main-button-v3" text="Изменить лицензию" />
-            <Button fx:id="SaveLicenseButton" layoutX="295.0" layoutY="58.0" mnemonicParsing="false" onAction="#SaveLicenseButtonClicked" styleClass="main-button" text="Сохранить изменения" visible="false" />
+            <Button fx:id="SaveLicenseButton" disable="true" layoutX="295.0" layoutY="58.0" mnemonicParsing="false" onAction="#SaveLicenseButtonClicked" styleClass="main-button" text="Сохранить изменения" visible="false" />
          </children>
       </AnchorPane>
    </bottom>
