@@ -8,6 +8,8 @@ import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnu
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.Instant;
+
 
 @Entity
 @Table(name = "RECORD_CHANGES")
@@ -22,7 +24,7 @@ public class RecordChange implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "editor_id", referencedColumnName = "id", nullable = false, updatable = false)
-    private User user;
+    private User editor;
 
     @ManyToOne
     @JoinColumn(name = "ticket_id", referencedColumnName = "id", updatable = false)
@@ -38,4 +40,18 @@ public class RecordChange implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "record_type", nullable = false, length = 32, updatable = false)
     private RecordTypeEnum recordType;
+
+    public RecordChange(User editor, Ticket ticket){
+        this.setEditor(editor);
+        this.setRecordType(RecordTypeEnum.TICKET);
+        this.setTicket(ticket);
+        this.setDateTime(Timestamp.from(Instant.now()));
+    }
+
+    public RecordChange(User editor, TicketComment comment){
+        this.setEditor(editor);
+        this.setRecordType(RecordTypeEnum.COMMENT);
+        this.setComment(comment);
+        this.setDateTime(Timestamp.from(Instant.now()));
+    }
 }

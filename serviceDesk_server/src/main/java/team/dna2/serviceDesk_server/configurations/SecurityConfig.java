@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     @Resource
     UserService userService;
@@ -34,10 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .httpBasic()//сообщает Spring, чтобы он ожидал базовую HTTP аутентификацию username:password
+                .csrf()
+                    .disable()
+                //^чтобы позволить отправлять post-, patch-, put- запросы, в прод нужно будет добавить csrf tokens
+                .httpBasic()
+                //^сообщает Spring, чтобы он ожидал базовую HTTP аутентификацию Basic username:password
                     .and()
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                    .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                 .authorizeRequests()
                     .antMatchers("/developer/**").hasRole("DEVELOPER")
