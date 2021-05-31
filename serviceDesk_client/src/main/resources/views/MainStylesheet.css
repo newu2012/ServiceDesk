@@ -315,3 +315,24 @@
     -fx-border-color: red;
     -fx-border-width: 2;
 }
+
+.owner-tab{
+    -fx-padding: 12 75 10 75;
+    -fx-font-size: 18;
+}
+
+.owner-imagine {
+    -fx-border-color: #7d2e7e;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+.change-button {
+    -fx-text-fill: black;
+    -fx-background-color: #00d29d;
+}
+
+/*.member-table:first-child {*/
+/*    -fx-border-color: #7d2e7e;*/
+/*    -fx-border-width: 1 0 1 0;*/
+/*}*/

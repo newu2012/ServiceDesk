@@ -2,6 +2,7 @@ package team.dna2.serviceDesk_client.controllers;
 
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
@@ -108,6 +109,12 @@ public class MemberOrganisationScreenController
     @FXML
     public void LogoClicked() {
         ScreenManager.OpenTickets();
+    }
+
+    public void OrganizationChangeButtonClick(ActionEvent actionEvent) {
+    }
+
+    public void AddMemberButtonClick(ActionEvent actionEvent) {
     }
     //endregion
 }

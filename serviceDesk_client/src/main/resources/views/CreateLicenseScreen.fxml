@@ -20,7 +20,7 @@
         </AnchorPane>
     </top>
     <bottom>
-        <Button fx:id="CreateLicenseButton" defaultButton="true" mnemonicParsing="false" onAction="#CreateLicenseButtonClicked" prefHeight="50.0" prefWidth="200.0" styleClass="main-button" text="Создать лицензии" BorderPane.alignment="CENTER">
+        <Button fx:id="CreateLicenseButton" defaultButton="true" mnemonicParsing="false" onAction="#CreateLicenseButtonClicked" prefHeight="58.0" prefWidth="200.0" styleClass="main-button" text="Создать лицензии" BorderPane.alignment="CENTER">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
