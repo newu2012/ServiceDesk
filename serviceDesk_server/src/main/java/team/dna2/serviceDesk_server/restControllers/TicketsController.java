@@ -24,7 +24,7 @@ public class TicketsController {
     private OrganizationService organizationService;
 
     @GetMapping("/")
-    public Collection<Ticket> getTickets(@RequestBody Long userId){
+    public Collection<Ticket> getTickets(@RequestParam Long userId){
         Organization org = organizationService.getOrganizationByUserId(userId);
         return ticketService.getAllTicketsByOrganization(org.getId());
     }
@@ -34,13 +34,13 @@ public class TicketsController {
         return ticketService.getOneById(ticketId);
     }
 
-    @GetMapping("/by-author/{authorId}")
-    public Collection<Ticket> getTicketsByAuthor(@PathVariable Long authorId){
+    @GetMapping("/by-author")
+    public Collection<Ticket> getTicketsByAuthor(@RequestParam Long authorId){
         return ticketService.getAllByAuthor(authorId);
     }
 
-    @GetMapping("/by-dev/{devId}")
-    public Collection<Ticket> getTicketsByDeveloper(@PathVariable Long devId){
+    @GetMapping("/by-dev")
+    public Collection<Ticket> getTicketsByDeveloper(@RequestParam Long devId){
         return  ticketService.getAllByDev(devId);
     }
 
