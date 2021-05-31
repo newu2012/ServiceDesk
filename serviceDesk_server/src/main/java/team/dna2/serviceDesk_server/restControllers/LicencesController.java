@@ -12,7 +12,6 @@ import java.util.Collection;
 @RequestMapping("/developer/licences")
 @Slf4j
 public class LicencesController {
-
     @Resource
     private LicenceService licenceService;
 

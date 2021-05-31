@@ -17,21 +17,6 @@ import java.util.Collection;
 @RequestMapping("/member")
 @Slf4j
 public class MemberController {
-
-    @Resource
-    private TicketService ticketService;
-
-//    @GetMapping("/tickets")
-//    public List<Ticket> getTickets(Long orgId){
-//        return ticketService.getAllTicketsByOrganization(orgId);
-//    }
-    //TODO
-
-    @GetMapping("/tickets/{ticketId}")
-    public Ticket getSelectedTicket(@PathVariable Long ticketId){
-        return ticketService.getOneById(ticketId);
-    }
-
     @Resource
     private MemberService memberService;
 

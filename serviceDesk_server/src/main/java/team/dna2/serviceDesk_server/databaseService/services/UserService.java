@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import team.dna2.serviceDesk_server.databaseService.entities.Role;
 import team.dna2.serviceDesk_server.databaseService.entities.User;
 import team.dna2.serviceDesk_server.databaseService.repositories.RoleRepository;
@@ -69,5 +70,15 @@ public class UserService implements UserDetailsService {
             return true;
         }
         return false;
+    }
+
+    @Transactional
+    public void blockUser(Long id){
+        userRepository.blockUserById(id);
+    }
+
+    @Transactional
+    public void unblockUser(Long id){
+        userRepository.unblockUserById(id);
     }
 }

@@ -1,10 +1,9 @@
 package team.dna2.serviceDesk_server.restControllers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 import team.dna2.serviceDesk_server.databaseService.entities.User;
 import team.dna2.serviceDesk_server.databaseService.services.UserService;
 
@@ -18,7 +17,21 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{userId}")
-    public User getTicketCategory(@PathVariable Long userId){
+    public User getUser(@PathVariable Long userId){
         return userService.findUserById(userId);
+    }
+
+    @PatchMapping("/{userId}/block")
+    @PreAuthorize("hasRole('DEVELOPER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void blockUser(@PathVariable Long userId){
+        userService.blockUser(userId);
+    }
+
+    @PatchMapping("/{userId}/unblock")
+    @PreAuthorize("hasRole('DEVELOPER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void unblockUser(@PathVariable Long userId){
+        userService.unblockUser(userId);
     }
 }
