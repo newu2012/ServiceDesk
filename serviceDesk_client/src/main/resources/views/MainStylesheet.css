@@ -25,6 +25,14 @@
     -fx-pref-height: 50;
 }
 
+.main-button-v3 {
+    -fx-font-size: 20;
+    -fx-background-color: #E09B26;
+    -fx-text-fill: #000000;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+}
+
 .main-button-v2 {
     -fx-font-size: 16;
     -fx-background-color: #00D29D;
