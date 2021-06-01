@@ -40,15 +40,16 @@ public class TicketsController {
     }
 
     @GetMapping("/by-dev")
+    @PreAuthorize("hasRole('DEVELOPER')")
     public Collection<Ticket> getTicketsByDeveloper(@RequestParam Long devId){
         return  ticketService.getAllByDev(devId);
     }
 
-//    @PostMapping("/")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void addTicket(@RequestBody Ticket ticket){
-//        ticketService.addTicket(ticket);
-//    }
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addTicket(@RequestBody Ticket ticket){
+        ticketService.addTicket(ticket);
+    }
 
     @PutMapping("/{ticketId}")
     @ResponseStatus(HttpStatus.ACCEPTED)

@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,6 +24,7 @@ public class Organization implements Serializable {
     private String name;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "logo_file_id", referencedColumnName = "id")
     private File logoFile;
 

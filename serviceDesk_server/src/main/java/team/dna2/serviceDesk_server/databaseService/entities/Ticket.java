@@ -1,6 +1,8 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.TicketStatusEnum;
@@ -22,6 +24,7 @@ public class Ticket implements Serializable {
     private Long id;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
     private User author;
 
@@ -29,14 +32,17 @@ public class Ticket implements Serializable {
     private String title;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
     private TicketStatus status;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
     private TicketCategory category;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "software_module_id", referencedColumnName = "id", nullable = false)
     private SoftwareModule softwareModule;
 
@@ -46,7 +52,8 @@ public class Ticket implements Serializable {
     @Column(name = "completed_date")
     private Timestamp completedDate;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "developer_id", referencedColumnName = "id")
     private Developer developer;
 
@@ -54,10 +61,17 @@ public class Ticket implements Serializable {
     private String ticketText;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
     private Organization organization;
 
-    @OneToOne
-    @JoinColumn(name = "last_change_id", referencedColumnName = "id")
-    private RecordChange lastChange;
+//    @OneToOne
+//    @JsonManagedReference
+//    @JoinColumn(name = "last_change_id", referencedColumnName = "id")
+//    private RecordChange lastChange;
+
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference
+    @Transient
+    private Set<RecordChange> changes;
 }

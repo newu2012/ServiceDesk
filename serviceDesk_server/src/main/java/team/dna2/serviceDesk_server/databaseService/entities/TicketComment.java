@@ -1,12 +1,15 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "TICKET_COMMENTS")
@@ -20,10 +23,12 @@ public class TicketComment implements Serializable {
     private Long id;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "ticket_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Ticket ticket;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false, updatable = false)
     private User author;
 
@@ -33,7 +38,13 @@ public class TicketComment implements Serializable {
     @Column(name = "creation_date", nullable = false, updatable = false)
     private Timestamp creationDate;
 
-    @OneToOne
-    @JoinColumn(name = "last_change_id", referencedColumnName = "id")
-    private RecordChange lastChange;
+//    @OneToOne
+//    @JsonManagedReference
+//    @JoinColumn(name = "last_change_id", referencedColumnName = "id")
+//    private RecordChange lastChange;
+
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference
+    @Transient
+    private Set<RecordChange> changes;
 }

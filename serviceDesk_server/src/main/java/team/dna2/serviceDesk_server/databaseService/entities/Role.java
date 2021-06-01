@@ -1,6 +1,8 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,6 +34,7 @@ public class Role implements Serializable, GrantedAuthority {
     private String description;
 
     @Transient
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 

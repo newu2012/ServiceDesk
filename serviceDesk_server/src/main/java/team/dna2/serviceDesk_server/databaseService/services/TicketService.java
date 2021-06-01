@@ -65,7 +65,7 @@ public class TicketService {
 
         var newRecordChange = new RecordChange(usersRepository.getOne(editorId), ticket);
         changesRepository.save(newRecordChange);
-        ticket.setLastChange(changesRepository.findFirstByTicket_IdOrderByDateTimeDesc(ticketId));
+        //ticket.setLastChange(changesRepository.findFirstByTicket_IdOrderByDateTimeDesc(ticketId));
 
         ticketsRepository.save(ticket);
     }
@@ -79,7 +79,7 @@ public class TicketService {
 
         var newRecordChange = new RecordChange(usersRepository.getOne(editorId), ticket);
         changesRepository.save(newRecordChange);
-        ticket.setLastChange(changesRepository.findFirstByTicket_IdOrderByDateTimeDesc(ticketId));
+        //ticket.setLastChange(changesRepository.findFirstByTicket_IdOrderByDateTimeDesc(ticketId));
 
         ticketsRepository.save(ticket);
     }
@@ -95,14 +95,14 @@ public class TicketService {
 
         var newRecordChange = new RecordChange(usersRepository.getOne(editorId), ticket);
         changesRepository.save(newRecordChange);
-        ticket.setLastChange(changesRepository.findFirstByTicket_IdOrderByDateTimeDesc(ticketId));
+        //ticket.setLastChange(changesRepository.findFirstByTicket_IdOrderByDateTimeDesc(ticketId));
 
         ticketsRepository.save(ticket);
     }
 
 //    //TODO
-//    @Transactional
-//    public void addTicket(Ticket newTicket){
-//        ticketsRepository.save(newTicket);
-//    }
+    @Transactional
+    public void addTicket(Ticket newTicket){
+        ticketsRepository.save(newTicket);
+    }
 }

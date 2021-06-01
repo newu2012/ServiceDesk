@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +20,7 @@ public class SoftwareModule implements Serializable {
     private Long id;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Software software;
 

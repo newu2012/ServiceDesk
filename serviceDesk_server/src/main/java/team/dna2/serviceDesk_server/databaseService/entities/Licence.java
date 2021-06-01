@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,10 +23,12 @@ public class Licence {
     private String serialNumber;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
     private Organization organization;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false)
     private Software software;
 

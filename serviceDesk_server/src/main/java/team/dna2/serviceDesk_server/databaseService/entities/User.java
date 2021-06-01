@@ -2,6 +2,7 @@ package team.dna2.serviceDesk_server.databaseService.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,7 +31,7 @@ public class User implements Serializable, UserDetails {
 //    @Column(name = "login", nullable = false, unique = true, updatable = false, length = 63)
 //    private String login;
 
-    //@JsonIgnore
+    @JsonIgnore
     @Column(name = "password_hash", nullable = false, length = 127)
     private String passwordHash;
 
@@ -44,11 +45,12 @@ public class User implements Serializable, UserDetails {
     private String patronymicName;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     @JoinColumn(nullable = false)
     private Set<Role> roles;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "avatar_file_id", referencedColumnName = "id")
     private File avatarFile;
 
@@ -64,6 +66,7 @@ public class User implements Serializable, UserDetails {
     @Transient
     private String passwordConfirm;
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
