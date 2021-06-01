@@ -4,13 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import team.dna2.serviceDesk_client.ScreenManager;
-import team.dna2.serviceDesk_client.models.Organisation;
+import team.dna2.serviceDesk_client.models.Organization;
 import team.dna2.serviceDesk_client.models.Software;
 
 public class PreviewLicenseScreenController {
     //region FXMLNodes
     @FXML private TextField PrevSerialNumberField;
-    @FXML private ChoiceBox<Organisation> PrevOrganisationBox;
+    @FXML private ChoiceBox<Organization> PrevOrganisationBox;
     @FXML private ChoiceBox<Software> PrevSoftwareBox;
     @FXML private TextField PrevUsersField;
     @FXML private DatePicker PrevLicenseEndDate;
