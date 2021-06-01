@@ -22,7 +22,7 @@ import team.dna2.serviceDesk_client.models.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MemberOrganisationScreenController
+public class OwnerOrganisationScreenController
 { //implements Initializable {
     private ClientApplication clientApplication;
     private ApplicationContext context;
@@ -41,41 +41,41 @@ public class MemberOrganisationScreenController
     //endregion
 
     /**
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
-        MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
-        MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
+     @Override
+     public void initialize(URL url, ResourceBundle resourceBundle) {
+     MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
+     MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
+     MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
 
-        MainTabPane = new JFXTabPane();
-        OrganisationMainPane.getChildren().add(MainTabPane);
+     MainTabPane = new JFXTabPane();
+     OrganisationMainPane.getChildren().add(MainTabPane);
 
-        //region MainTabSets
-        MainTabPane.setLayoutX(133);
-        MainTabPane.setLayoutY(59);
-        MainTabPane.setMinWidth(1100);
-        MainTabPane.setMaxWidth(1100);
-        MainTabPane.setMinHeight(580);
-        MainTabPane.setMaxHeight(580);
-        MainTabPane.setTabMinHeight(30);
-        MainTabPane.setTabMaxHeight(30);
-        //endregion
+     //region MainTabSets
+     MainTabPane.setLayoutX(133);
+     MainTabPane.setLayoutY(59);
+     MainTabPane.setMinWidth(1100);
+     MainTabPane.setMaxWidth(1100);
+     MainTabPane.setMinHeight(580);
+     MainTabPane.setMaxHeight(580);
+     MainTabPane.setTabMinHeight(30);
+     MainTabPane.setTabMaxHeight(30);
+     //endregion
 
-        var infoTab = new Tab();
-        var membersTab = new Tab();
-        var licensesTab = new Tab();
+     var infoTab = new Tab();
+     var membersTab = new Tab();
+     var licensesTab = new Tab();
 
-            infoTab.setText("        Информация об организации        ");
-         membersTab.setText("     Список представителей заказчика     ");
-        licensesTab.setText("             Список лицензий             ");
+     infoTab.setText("        Информация об организации        ");
+     membersTab.setText("     Список представителей заказчика     ");
+     licensesTab.setText("             Список лицензий             ");
 
-        MainTabPane.getTabs().addAll(infoTab,membersTab, licensesTab);
-    }
+     MainTabPane.getTabs().addAll(infoTab,membersTab, licensesTab);
+     }
 
-    public MemberOrganisationScreenController() {
-        clientApplication = ClientApplication.GetClientApplicationInstance();
-    }
-    */
+     public MemberOrganisationScreenController() {
+     clientApplication = ClientApplication.GetClientApplicationInstance();
+     }
+     */
 
     //region MemberMenu
     /**
