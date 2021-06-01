@@ -8,8 +8,10 @@ import team.dna2.serviceDesk_server.databaseService.entities.Organization;
 import team.dna2.serviceDesk_server.databaseService.entities.Ticket;
 import team.dna2.serviceDesk_server.databaseService.services.OrganizationService;
 import team.dna2.serviceDesk_server.databaseService.services.TicketService;
+import team.dna2.serviceDesk_server.restControllers.requestModels.TicketRequest;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.Collection;
 
 @RestController
@@ -40,15 +42,16 @@ public class TicketsController {
     }
 
     @GetMapping("/by-dev")
+    @PreAuthorize("hasRole('DEVELOPER')")
     public Collection<Ticket> getTicketsByDeveloper(@RequestParam Long devId){
         return  ticketService.getAllByDev(devId);
     }
 
-//    @PostMapping("/")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void addTicket(@RequestBody Ticket ticket){
-//        ticketService.addTicket(ticket);
-//    }
+    @PostMapping(consumes = "application/json", produces = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createPerson(@Valid @RequestBody TicketRequest ticketRequest) {
+        ticketService.createTicketFromRequest(ticketRequest);
+    }
 
     @PutMapping("/{ticketId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
