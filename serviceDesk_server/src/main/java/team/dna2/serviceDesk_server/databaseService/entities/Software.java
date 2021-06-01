@@ -1,37 +1,41 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table(name = "MEMBERS")
+@Table(name = "COMPENDIUM_SOFTWARE")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Member implements Serializable {
+public class Software implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @OneToOne
-    @JsonManagedReference
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false, updatable = false)
-    private User user;
+    @Column(name = "software_name", unique = true, nullable = false, length = 128)
+    private String name;
 
-    @Column(name = "is_owner", nullable = false)
-    private Boolean isOwner;
+    @Column(name = "description", length = 1024)
+    private String description;
 
-    @ManyToOne
-    @JsonManagedReference
-    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false, updatable = false)
-    private Organization organization;
+    @Transient
+    @OneToMany(mappedBy = "software")
+    @JsonBackReference(value = "moduleReference")
+    private Set<SoftwareModule> modules;
+
+    @Transient
+    @OneToMany(mappedBy = "software")
+    @JsonBackReference(value = "moduleReference")
+    private Set<Licence> licence;
 }

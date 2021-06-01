@@ -1,6 +1,9 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,10 +15,11 @@ import java.io.Serializable;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class File implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "file_path", nullable = false, length = 256)
@@ -32,4 +36,19 @@ public class File implements Serializable {
 
     @Column(name = "file_extension", nullable = false, length = 32)
     private String fileExtension;
+
+    @Transient
+    @OneToOne(mappedBy = "file")
+    @JsonBackReference(value = "attachmentReference")
+    private Attachment attachment;
+
+    @Transient
+    @OneToOne(mappedBy = "logoFile")
+    @JsonBackReference(value = "organizationReference")
+    private Organization organization;
+
+    @Transient
+    @OneToOne(mappedBy = "avatarFile")
+    @JsonBackReference(value = "userReference")
+    private User user;
 }

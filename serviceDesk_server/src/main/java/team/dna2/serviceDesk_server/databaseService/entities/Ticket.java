@@ -1,6 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.TicketStatusEnum;
@@ -8,36 +8,42 @@ import team.dna2.serviceDesk_server.databaseService.entities.enums.TicketStatusE
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "TICKETS")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Ticket implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "author_user_id", referencedColumnName = "id", nullable = false)
-    private User author;
+    @JsonManagedReference
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    private User user;
 
     @Column(name = "title", nullable = false, length = 127)
     private String title;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false, length = 63)
-    private TicketStatusEnum status;
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
+    private TicketStatus ticketStatus;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
-    private CompendiumTicketCategory category;
+    private TicketCategory ticketCategory;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "software_module_id", referencedColumnName = "id", nullable = false)
-    private CompendiumSoftwareModule softwareModule;
+    private SoftwareModule softwareModule;
 
     @Column(name = "creation_date", nullable = false)
     private Timestamp creationDate;
@@ -45,7 +51,8 @@ public class Ticket implements Serializable {
     @Column(name = "completed_date")
     private Timestamp completedDate;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "developer_id", referencedColumnName = "id")
     private Developer developer;
 
@@ -53,7 +60,22 @@ public class Ticket implements Serializable {
     private String ticketText;
 
     @ManyToOne
-    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
+    @JsonManagedReference
+    @JoinColumn(name = "organization_id", referencedColumnName = "id")
     private Organization organization;
 
+    @Transient
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference(value = "recordChangeReference")
+    private Set<RecordChange> recordChanges;
+
+    @Transient
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference(value = "attachmentReference")
+    private Set<Attachment> attachments;
+
+    @Transient
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference(value = "ticketReference")
+    private Set<TicketComment> ticketComments;
 }

@@ -6,9 +6,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import team.dna2.serviceDesk_server.databaseService.entities.CompendiumRole;
+import org.springframework.transaction.annotation.Transactional;
+import team.dna2.serviceDesk_server.databaseService.entities.Role;
 import team.dna2.serviceDesk_server.databaseService.entities.User;
-import team.dna2.serviceDesk_server.databaseService.repositories.CompendiumRoleRepository;
+import team.dna2.serviceDesk_server.databaseService.repositories.RoleRepository;
 import team.dna2.serviceDesk_server.databaseService.repositories.UsersRepository;
 
 import javax.persistence.EntityManager;
@@ -23,7 +24,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     UsersRepository userRepository;
     @Autowired
-    CompendiumRoleRepository roleRepository;
+    RoleRepository roleRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
     @PersistenceContext
@@ -56,7 +57,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(new CompendiumRole(1L, "ROLE_USER")));
+        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
@@ -69,5 +70,15 @@ public class UserService implements UserDetailsService {
             return true;
         }
         return false;
+    }
+
+    @Transactional
+    public void blockUser(Long id){
+        userRepository.blockUserById(id);
+    }
+
+    @Transactional
+    public void unblockUser(Long id){
+        userRepository.unblockUserById(id);
     }
 }

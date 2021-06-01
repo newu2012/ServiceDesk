@@ -1,6 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,10 +17,11 @@ import java.util.Set;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class User implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "email", nullable = false, unique = true, length = 63)
@@ -29,6 +30,7 @@ public class User implements Serializable, UserDetails {
 //    @Column(name = "login", nullable = false, unique = true, updatable = false, length = 63)
 //    private String login;
 
+    @JsonIgnore
     @Column(name = "password_hash", nullable = false, length = 127)
     private String passwordHash;
 
@@ -42,15 +44,16 @@ public class User implements Serializable, UserDetails {
     private String patronymicName;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     @JoinColumn(nullable = false)
-    private Set<CompendiumRole> roles;
+    private Set<Role> roles;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "avatar_file_id", referencedColumnName = "id")
     private File avatarFile;
 
-    @Column(name = "registration_date", nullable = false)
+    @Column(name = "registration_date", nullable = false, updatable = false)
     private Timestamp registrationDate;
 
     @Column(name = "is_active", nullable = false)
@@ -62,6 +65,32 @@ public class User implements Serializable, UserDetails {
     @Transient
     private String passwordConfirm;
 
+    @Transient
+    @OneToOne(mappedBy = "user")
+    @JsonBackReference(value = "developerReference")
+    private Developer developer;
+
+    @Transient
+    @OneToOne(mappedBy = "user")
+    @JsonBackReference(value = "memberReference")
+    private Member member;
+
+    @Transient
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference(value = "recordChangeReference")
+    private Set<RecordChange> recordChangeSet;
+
+    @Transient
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    private Set<Ticket> ticketSet;
+
+    @Transient
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference(value = "ticketCommentReference")
+    private Set<TicketComment> ticketComments;
+
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
@@ -84,7 +113,7 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return getIsActive();
     }
 
     @Override
@@ -94,6 +123,6 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return getIsActive();
     }
 }
