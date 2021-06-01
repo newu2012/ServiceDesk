@@ -1,6 +1,7 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.RecordTypeEnum;
@@ -22,15 +23,18 @@ public class RecordChange implements Serializable {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "editor_id", referencedColumnName = "id", nullable = false, updatable = false)
-    private User editor;
+    private User user;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "ticket_id", referencedColumnName = "id", updatable = false)
     private Ticket ticket;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "comment_id", referencedColumnName = "id", updatable = false)
     private TicketComment comment;
 
@@ -41,15 +45,15 @@ public class RecordChange implements Serializable {
     @Column(name = "record_type", nullable = false, length = 32, updatable = false)
     private RecordTypeEnum recordType;
 
-    public RecordChange(User editor, Ticket ticket){
-        this.setEditor(editor);
+    public RecordChange(User user, Ticket ticket){
+        this.setUser(user);
         this.setRecordType(RecordTypeEnum.TICKET);
         this.setTicket(ticket);
         this.setDateTime(Timestamp.from(Instant.now()));
     }
 
-    public RecordChange(User editor, TicketComment comment){
-        this.setEditor(editor);
+    public RecordChange(User user, TicketComment comment){
+        this.setUser(user);
         this.setRecordType(RecordTypeEnum.COMMENT);
         this.setComment(comment);
         this.setDateTime(Timestamp.from(Instant.now()));

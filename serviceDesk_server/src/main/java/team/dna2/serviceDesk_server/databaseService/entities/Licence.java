@@ -1,6 +1,9 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +15,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Data
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Licence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +26,12 @@ public class Licence {
     private String serialNumber;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
     private Organization organization;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "software_id", referencedColumnName = "id", nullable = false)
     private Software software;
 
