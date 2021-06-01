@@ -1,16 +1,15 @@
 package team.dna2.serviceDesk_client.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import team.dna2.serviceDesk_client.ScreenManager;
-import team.dna2.serviceDesk_client.models.Organisation;
+import team.dna2.serviceDesk_client.models.Organization;
 import team.dna2.serviceDesk_client.models.Software;
 
 public class CreateLicenseScreenController {
     //region FXMLNodes
     @FXML private TextField SerialNumberField;
-    @FXML private ChoiceBox<Organisation> OrganisationBox;
+    @FXML private ChoiceBox<Organization> OrganisationBox;
     @FXML private ChoiceBox<Software> SoftwareBox;
     @FXML private TextField UsersField;
     @FXML private DatePicker LicenseEndDate;

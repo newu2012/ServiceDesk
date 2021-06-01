@@ -1,24 +1,30 @@
 package team.dna2.serviceDesk_client;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.controllers.ClientApplication;
 import team.dna2.serviceDesk_client.models.Role;
 import team.dna2.serviceDesk_client.models.User;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @Component
 public class ScreenManager {
     private static ClientApplication clientApplication;
+    public static Stage stage;
+
     public static Window mainScreen;
     public static Window secondScreen;
     public static String currentScreenUrl;
@@ -27,9 +33,9 @@ public class ScreenManager {
 
     //region MainMethods
     /**
-     * Чтобы переключать экраны
+     * Установка clientApplication для перехода между экранами
      */
-    public ScreenManager() {
+    public static void SetUpScreenManager() {
         clientApplication = ClientApplication.GetClientApplicationInstance();
     }
 
@@ -242,7 +248,78 @@ public class ScreenManager {
     }
     //endregion
 
+    //region Alerts
+    private static void ShowAlert(Alert.AlertType alertType, String title, String header,
+                                  int secondsToShow, String message) {
+        ButtonType buttonCancelLocalised = new ButtonType("Закрыть", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ShowAlert(alertType, title, header, secondsToShow, message, buttonCancelLocalised);
+    }
+
+    private static void ShowAlert(Alert.AlertType alertType, String title, String header,
+                                  int secondsToShow, String message, ButtonType... buttons) {
+        Alert alert = new Alert(alertType, message, buttons);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+
+        Timeline idleStage = new Timeline( new KeyFrame( Duration.seconds(secondsToShow), event -> {
+            alert.setResult(ButtonType.CANCEL);
+            alert.hide();
+        }));
+        idleStage.setCycleCount(1);
+        idleStage.play();
+
+        alert.showAndWait();
+    }
+
+    public static void ShowAlertError(String message) {
+        ShowAlert(Alert.AlertType.ERROR, "Ошибка", "Ошибка", 5, message);
+    }
+
+    public static void ShowAlertCreate(String message) {
+        ShowAlert(Alert.AlertType.INFORMATION, "Успешное создание", "Успешное создание", 3, message);
+    }
+
+    public static void ShowAlertChange(String message) {
+        ShowAlert(Alert.AlertType.INFORMATION, "Успешное изменение", "Успешное изменение", 3, message);
+    }
+    //endregion
+
     //region Utils
+    /**
+     * Основной способ смены экрана (сцены)
+     * @param fxmlUrl Название файла экрана типа "Screen.fxml"
+     */
+    public static void ChangeScene(String fxmlUrl) {
+        try {
+            Parent pane = FXMLLoader.load(Objects.requireNonNull(clientApplication.
+                    getClass().getResource("/views/" + fxmlUrl))); // Файлы лежат в папке views
+
+            if (!fxmlUrl.equals("LoginScreen.fxml")) { // Если мы открываем не экран входа в аккаунт, то размер "большой"
+                stage.setWidth(1380); // Тогда реальная ширина 1366
+                stage.setHeight(775); // Тоже самое
+            }
+            else { // Иначе небольшое окошко
+                stage.setWidth(600);
+                stage.setHeight(550);
+            }
+
+            stage.centerOnScreen();
+            stage.getScene().setRoot(pane);
+        }
+        catch (Exception e) {
+            // TODO Логирование
+            // Вывод ошибки в консоль
+            // for (StackTraceElement el: e.getStackTrace()) {
+            //     System.out.println(el.toString());
+            // }
+
+            System.out.println(e.getLocalizedMessage());
+            if (e.getLocalizedMessage().equals("Location is required.")) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Этот экран для этой роли ещё не сделан.", ButtonType.CLOSE);
+                alert.showAndWait();
+            }
+        }
+    }
 
 
 
@@ -264,7 +341,7 @@ public class ScreenManager {
      * Переключает основной экран на предыдущий.
      */
     public static void ShowPreviousScreen() {
-        clientApplication.ChangeScene(previousScreenUrl);
+        ChangeScene(previousScreenUrl);
         currentScreenUrl = previousScreenUrl;
     }
 
@@ -275,7 +352,7 @@ public class ScreenManager {
     public static void UpdateCurrentAndPreviousScreens(String newCurrentStringUrl) {
         previousScreenUrl = currentScreenUrl;
         currentScreenUrl = newCurrentStringUrl;
-        clientApplication.ChangeScene(newCurrentStringUrl);
+        ChangeScene(newCurrentStringUrl);
     }
 
     /**
