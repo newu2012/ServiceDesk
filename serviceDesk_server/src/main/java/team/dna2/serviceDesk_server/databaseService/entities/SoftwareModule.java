@@ -1,18 +1,19 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "COMPENDIUM_SOFTWARE_MODULES")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class SoftwareModule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +30,9 @@ public class SoftwareModule implements Serializable {
 
     @Column(name = "description", length = 1024)
     private String description;
+
+    @Transient
+    @OneToMany(mappedBy = "softwareModule")
+    @JsonBackReference
+    private Set<Ticket> ticketSet;
 }

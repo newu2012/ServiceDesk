@@ -1,8 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +14,7 @@ import java.util.Set;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class TicketComment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +26,10 @@ public class TicketComment implements Serializable {
     @JoinColumn(name = "ticket_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Ticket ticket;
 
-    @OneToOne
+    @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false, updatable = false)
-    private User author;
+    private User user;
 
     @Column(name = "comment_text", nullable = false, length = 2047)
     private String commentText;
@@ -43,8 +42,13 @@ public class TicketComment implements Serializable {
 //    @JoinColumn(name = "last_change_id", referencedColumnName = "id")
 //    private RecordChange lastChange;
 
-    @OneToMany(mappedBy = "ticket")
-    @JsonBackReference
     @Transient
+    @OneToMany(mappedBy = "comment")
+    @JsonBackReference(value = "recordChangeReference")
     private Set<RecordChange> changes;
+
+    @Transient
+    @OneToMany(mappedBy = "comment")
+    @JsonBackReference(value = "attachmentReference")
+    private Set<Attachment> attachments;
 }

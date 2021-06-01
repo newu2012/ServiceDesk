@@ -1,8 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +17,7 @@ import java.util.Set;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class User implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,6 +64,31 @@ public class User implements Serializable, UserDetails {
 
     @Transient
     private String passwordConfirm;
+
+    @Transient
+    @OneToOne(mappedBy = "user")
+    @JsonBackReference(value = "developerReference")
+    private Developer developer;
+
+    @Transient
+    @OneToOne(mappedBy = "user")
+    @JsonBackReference(value = "memberReference")
+    private Member member;
+
+    @Transient
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference(value = "recordChangeReference")
+    private Set<RecordChange> recordChangeSet;
+
+    @Transient
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    private Set<Ticket> ticketSet;
+
+    @Transient
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference(value = "ticketCommentReference")
+    private Set<TicketComment> ticketComments;
 
     @JsonIgnore
     @Override

@@ -11,7 +11,7 @@ import java.util.List;
 public interface TicketsRepository extends JpaRepository<Ticket, Long> {
 
     //Взять все тикеты по автору
-    List<Ticket> findTicketsByAuthor_Id(Long userId);
+    List<Ticket> findTicketsByUser_Id(Long userId);
 
     //Взять все тикеты по исполнителю
     List<Ticket> findTicketsByDeveloper_Id(Long devId);

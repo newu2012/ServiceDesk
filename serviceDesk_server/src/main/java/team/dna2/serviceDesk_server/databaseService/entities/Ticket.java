@@ -1,8 +1,6 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import team.dna2.serviceDesk_server.databaseService.entities.enums.TicketStatusEnum;
@@ -17,6 +15,7 @@ import java.util.Set;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Ticket implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,7 @@ public class Ticket implements Serializable {
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    private User author;
+    private User user;
 
     @Column(name = "title", nullable = false, length = 127)
     private String title;
@@ -34,12 +33,12 @@ public class Ticket implements Serializable {
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
-    private TicketStatus status;
+    private TicketStatus ticketStatus;
 
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
-    private TicketCategory category;
+    private TicketCategory ticketCategory;
 
     @ManyToOne
     @JsonManagedReference
@@ -62,16 +61,21 @@ public class Ticket implements Serializable {
 
     @ManyToOne
     @JsonManagedReference
-    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "organization_id", referencedColumnName = "id")
     private Organization organization;
 
-//    @OneToOne
-//    @JsonManagedReference
-//    @JoinColumn(name = "last_change_id", referencedColumnName = "id")
-//    private RecordChange lastChange;
-
-    @OneToMany(mappedBy = "ticket")
-    @JsonBackReference
     @Transient
-    private Set<RecordChange> changes;
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference(value = "recordChangeReference")
+    private Set<RecordChange> recordChanges;
+
+    @Transient
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference(value = "attachmentReference")
+    private Set<Attachment> attachments;
+
+    @Transient
+    @OneToMany(mappedBy = "ticket")
+    @JsonBackReference(value = "ticketReference")
+    private Set<TicketComment> ticketComments;
 }

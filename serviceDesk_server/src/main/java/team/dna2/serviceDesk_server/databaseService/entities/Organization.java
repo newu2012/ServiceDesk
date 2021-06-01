@@ -1,19 +1,20 @@
 package team.dna2.serviceDesk_server.databaseService.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "ORGANIZATIONS")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @NoArgsConstructor
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Organization implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +41,18 @@ public class Organization implements Serializable {
     @Column(name = "block_date")
     private Timestamp blockDate;
 
+    @Transient
+    @OneToMany(mappedBy = "organization")
+    @JsonBackReference(value = "licenceReference")
+    private Set<Licence> licenceSet;
+
+    @Transient
+    @OneToMany(mappedBy = "organization")
+    @JsonBackReference(value = "memberReference")
+    private Set<Member> members;
+
+    @Transient
+    @OneToMany(mappedBy = "organization")
+    @JsonBackReference(value = "ticketReference")
+    private Set<Ticket> ticketSet;
 }
