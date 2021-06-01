@@ -4,10 +4,11 @@
 
 .pane-borders {
     -fx-border-width: 3;
-    -fx-border-color: #777777;
+    -fx-border-color: #7d2e7e;
     -fx-background-radius: 30;
     -fx-border-radius: 30;
     -fx-text-fill: #ffffff;
+    -fx-background-color: transparent;
 }
 
 .button {
@@ -336,3 +337,14 @@
 /*    -fx-border-color: #7d2e7e;*/
 /*    -fx-border-width: 1 0 1 0;*/
 /*}*/
+
+.reopen-ticket-button {
+    -fx-font-size: 16;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-font-style: bold;
+    -fx-border-width: 3;
+    -fx-border-color: #E09B26;
+    -fx-border-radius: 20;
+
+}

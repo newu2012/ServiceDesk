@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
@@ -139,6 +141,20 @@ public class MemberShowTicketScreenController implements Initializable {
     @FXML
     public void LogoClicked() {
         ScreenManager.OpenTickets();
+    }
+
+    public void AuthorReopenButtonClicked(ActionEvent actionEvent) {
+    }
+
+    public void DeveloperRedTicketButtonClicked(ActionEvent actionEvent) {
+        //TODO оставляем так, мастер!
+    }
+
+    public void AuthorTicketChangeClicked(ActionEvent actionEvent) {
+    }
+
+    public void PreviousScreenButtonClicked(MouseEvent mouseEvent) {
+        ScreenManager.TryShowPreviousScreen();
     }
     //endregion
 }

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="main-pane" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.dna2.serviceDesk_client.controllers.MemberShowTicketScreenController">
+    <top>
+        <HBox alignment="CENTER_LEFT" maxHeight="64.0" maxWidth="1366.0" minHeight="64.0" minWidth="1366.0" prefHeight="64.0" prefWidth="1366.0" styleClass="navigation-menu" BorderPane.alignment="CENTER_LEFT">
+            <children>
+                <Text fx:id="Logo" fill="WHITE" onMouseClicked="#LogoClicked" styleClass="logo" text="Service-Desk" textAlignment="CENTER" wrappingWidth="240.0">
+                    <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                    </font>
+                </Text>
+                <AnchorPane prefHeight="64.0" prefWidth="829.0" />
+                <HBox alignment="BASELINE_RIGHT" maxHeight="64.0" maxWidth="400.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="64.0" prefWidth="400.0" HBox.hgrow="NEVER">
+                    <children>
+                        <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
+                            <children>
+                                <Text fx:id="MyProfile" layoutY="30.0" onMouseClicked="#MyProfileClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Мой профиль" textAlignment="RIGHT" wrappingWidth="136.0" />
+                                <Circle fx:id="MyProfileCircle" fill="DODGERBLUE" layoutX="168.0" layoutY="32.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0">
+                            <children>
+                                <Text fx:id="MyOrganisation" layoutY="30.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="RIGHT" wrappingWidth="136.0" />
+                                <Circle fx:id="MyOrganisationCircle" fill="DODGERBLUE" layoutX="168.0" layoutY="32.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+            </children></HBox>
+    </top>
+   <left>
+      <AnchorPane prefHeight="704.0" prefWidth="74.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="2.0" layoutY="50.0" onMouseClicked="#PreviousScreenButtonClicked" styleClass="previous-screen-button" text="&lt;" />
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="706.0" prefWidth="1271.0">
+               <children>
+                  <VBox prefHeight="706.0" prefWidth="973.0">
+                     <children>
+                        <AnchorPane prefHeight="93.0" prefWidth="890.0">
+                           <children>
+                              <Label layoutX="42.0" layoutY="23.0" styleClass="title-text" text="Просмотр обращения" />
+                              <Line endX="-1.6" endY="1.5" layoutX="170.0" layoutY="59.0" startX="-126.0" startY="1.5" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="5.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="609.0" prefWidth="890.0">
+                           <children>
+                              <AnchorPane layoutX="140.0" layoutY="10.0" prefHeight="484.0" prefWidth="740.0" styleClass="pane-borders">
+                                 <children>
+                                    <Label fx:id="TicketName" layoutX="40.0" layoutY="20.0" prefHeight="40.0" prefWidth="650.0" text="Название обращения">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="40.0" layoutY="60.0" text="Описание">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="-33.000030517578125" endY="1.1999588012695312" layoutX="165.0" layoutY="88.0" startX="-122.99995422363281" startY="1.199981689453125" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="4.0" />
+                                    <TextArea disable="true" layoutX="40.0" layoutY="100.0" prefHeight="358.0" prefWidth="650.0" promptText="ОПИСАНИЕ ОПИСАНИЕ ОПИСАНИЕ ОПИСАНИЕ ОПИСАНИЕ ОПИСАНИЕ ОПИСАНИЕ ">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextArea>
+                                    <Button fx:id="AuthorTicketChange" layoutX="160.0" layoutY="65.0" mnemonicParsing="false" onAction="#AuthorTicketChangeClicked" prefHeight="15.0" prefWidth="94.0" styleClass="change-button" text="Изменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fx:id="CreatorAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="CreatorFName" layoutX="10.0" layoutY="120.0" prefHeight="30.0" prefWidth="120.0" text="Имя">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="CreatorSName" layoutX="10.0" layoutY="150.0" prefHeight="30.0" prefWidth="120.0" text="Фамилия">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <AnchorPane prefHeight="706.0" prefWidth="465.0">
+                     <children>
+                        <AnchorPane layoutX="30.0" layoutY="103.0" prefHeight="475.0" prefWidth="340.0" styleClass="pane-borders">
+                           <children>
+                              <Label layoutX="30.0" layoutY="30.0" text="Статус:" textFill="#00d29d">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="30.0" layoutY="70.0" text="Тип обращения:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="30.0" layoutY="110.0" text="ПО:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="30.0" layoutY="150.0" text="Модуль ПО:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="30.0" layoutY="190.0" text="Дата создания:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="30.0" layoutY="230.0" text="Дата изменения:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="30.0" layoutY="270.0" text="Дата обработки:">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TicketStatus" layoutX="190.0" layoutY="30.0" text="Активен">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TicketType" layoutX="190.0" layoutY="70.0" text="Ошибка">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TicketSoftware" layoutX="190.0" layoutY="110.0" text="Service Desk">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TicketModuleSoftware" layoutX="190.0" layoutY="150.0" text="Профиль пред.">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TicketCreateDate" layoutX="190.0" layoutY="190.0" text="00.00.00">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TicketChangeDate" layoutX="190.0" layoutY="230.0" text="00.00.00">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TicketProcessingDate" layoutX="190.0" layoutY="270.0" text="00.00.00">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="AuthorAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="30.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="30.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label layoutX="100.0" layoutY="320.0" text="Автор обращения" textFill="#00d29d">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="AuthorFName" layoutX="100.0" layoutY="350.0" text="Имя Автрора">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="AuthorSName" layoutX="100.0" layoutY="370.0" text="Фамилия Автора">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="100.0" layoutY="410.0" text="Исполнитель" textFill="#00d29d">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="DeveloperFName" layoutX="100.0" layoutY="440.0" text="Имя Исполнителя">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="DeveloperSName" layoutX="100.0" layoutY="460.0" text="Фамилия Исполнителя">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="156.73336791992188" endY="1.1999969482421875" layoutX="155.0" layoutY="53.0" startX="-122.99995422363281" startY="1.199981689453125" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="2.0" />
+                              <Line endX="24.399993896484375" endY="1.0" layoutX="219.0" layoutY="433.0" startX="-118.00003051757812" startY="1.0" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="2.0" />
+                           </children>
+                        </AnchorPane>
+                        <Button fx:id="AuthorReopenButton" layoutX="30.0" layoutY="610.0" mnemonicParsing="false" onAction="#AuthorReopenButtonClicked" prefHeight="70.0" prefWidth="340.0" styleClass="reopen-ticket-button" text="Запрос на переоткрытие обращения">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="DeveloperRedTicketButton" disable="true" layoutX="30.0" layoutY="20.0" mnemonicParsing="false" onAction="#DeveloperRedTicketButtonClicked" prefHeight="70.0" prefWidth="340.0" styleClass="reopen-ticket-button" text="Редактировать данные по обращению" visible="false" />
+                        <Line endX="24.399993896484375" endY="1.0" layoutX="249.0" layoutY="445.0" startX="-118.00003051757812" startY="1.0" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="2.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
