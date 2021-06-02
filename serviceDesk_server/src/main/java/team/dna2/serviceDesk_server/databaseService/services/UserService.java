@@ -15,6 +15,8 @@ import team.dna2.serviceDesk_server.restControllers.requestModels.DeveloperReque
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.*;
 
 @Service
@@ -76,11 +78,14 @@ public class UserService implements UserDetailsService {
         user.setFirstName(developerRequest.getFirstName());
         user.setLastName(developerRequest.getLastName());
         user.setPatronymicName(developerRequest.getPatronymicName());
+        user.setIsActive(true);
+        user.setRegistrationDate(Timestamp.from(Instant.now()));
+
         var roles = new HashSet<Role>();
         roles.add(roleRepository.getOne(1L));
-        roles.add(roleRepository.getOne(3L));
+        roles.add(roleRepository.getOne(2L));
         user.setRoles(roles);
-        user.setIsActive(true);
+
         userRepository.save(user);
     }
 
