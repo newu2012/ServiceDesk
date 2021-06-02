@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                     .antMatchers("/developer/**").hasRole("DEVELOPER")
                     .antMatchers("/member/**").hasAnyRole("MEMBER", "DEVELOPER", "OWNER")
                     .antMatchers("/owner/**").hasAnyRole("OWNER", "DEVELOPER")
+                    .antMatchers("/basic/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 //Настройка для входа в систему
