@@ -13,29 +13,29 @@ import javax.validation.constraints.Size;
 @Getter
 @AllArgsConstructor
 @ToString
-public class TicketRequest {
+public class MemberRequest {
 
     @NotNull
-    @Min(1)
-    private Long authorId;
-
-    @NotNull
-    @Min(1)
-    private Long categoryId;
-
-    @NotNull
-    @Size(max = 127, min = 8)
-    private String title;
-
-    @NotNull
-    @Size(max = 8191, min = 8)
-    private String text;
-
-    @NotNull
-    @Min(1)
-    private Long softwareModuleId;
-
     @Min(1)
     private Long organizationId;
 
+    @NotNull
+    @Size(min = 5, max = 63)
+    private String email;
+
+    @NotNull
+    @Size(min = 3, max = 127)
+    private String password;
+
+    @NotNull
+    @Size(min = 1, max = 31)
+    private String firstName;
+
+    @NotNull
+    @Size(min = 1, max = 31)
+    private String lastName;
+
+    @NotNull
+    @Size(min = 1, max = 31)
+    private String patronymicName;
 }

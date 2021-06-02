@@ -20,12 +20,12 @@ public class MemberController {
     @Resource
     private MemberService memberService;
 
-    @GetMapping("/members")
+    @GetMapping("/members/")
     public Collection<Member> getAllMembers(){
         return memberService.getAll();
     }
 
-    @GetMapping("/members/{memberId}")
+    @GetMapping("/members/{memberId}/")
     public Member getMember(@PathVariable Long memberId){
         return memberService.getOneById(memberId);
     }

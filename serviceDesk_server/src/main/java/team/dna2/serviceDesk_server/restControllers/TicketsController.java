@@ -31,29 +31,29 @@ public class TicketsController {
         return ticketService.getAllTicketsByOrganization(org.getId());
     }
 
-    @GetMapping("/{ticketId}")
+    @GetMapping("/{ticketId}/")
     public Ticket getTicket(@PathVariable Long ticketId){
         return ticketService.getOneById(ticketId);
     }
 
-    @GetMapping("/by-author")
+    @GetMapping("/by-author/")
     public Collection<Ticket> getTicketsByAuthor(@RequestParam Long authorId){
         return ticketService.getAllByAuthor(authorId);
     }
 
-    @GetMapping("/by-dev")
+    @GetMapping("/by-dev/")
     @PreAuthorize("hasRole('DEVELOPER')")
     public Collection<Ticket> getTicketsByDeveloper(@RequestParam Long devId){
         return  ticketService.getAllByDev(devId);
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/", consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createPerson(@Valid @RequestBody TicketRequest ticketRequest) {
+    public void createTicket(@Valid @RequestBody TicketRequest ticketRequest) {
         ticketService.createTicketFromRequest(ticketRequest);
     }
 
-    @PutMapping("/{ticketId}")
+    @PutMapping("/{ticketId}/")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void editTicket(@PathVariable Long ticketId, @RequestParam Long editorId, @RequestBody Ticket editedTicket){
         ticketService.editTicket(editorId, ticketId, editedTicket);

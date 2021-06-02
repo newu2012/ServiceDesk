@@ -33,22 +33,22 @@ public class BasicController {
     @Resource
     private LicenceService licenceService;
 
-    @GetMapping("/software")
+    @GetMapping("/software/")
     public Collection<Software> getBasicSoftware() {
         return softwareService.getAll();
     }
 
-    @GetMapping("/software-modules")
+    @GetMapping("/software-modules/")
     public Collection<SoftwareModule> getBasicSoftwareModules(){
         return moduleService.getAll();
     }
 
-    @GetMapping("/categories")
+    @GetMapping("/categories/")
     public Collection<TicketCategory> getBasicTicketCategories(){
         return categoryService.getAll();
     }
 
-    @GetMapping("/licences")
+    @GetMapping("/licences/")
     public Collection<Licence> getBasicAllLicences(){
         return licenceService.getAll();
     }
