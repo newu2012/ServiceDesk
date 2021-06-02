@@ -25,17 +25,17 @@ public class OrganizationsController {
         return organizationService.getAll();
     }
 
-    @GetMapping("/{orgId}")
+    @GetMapping("/{orgId}/")
     public Organization getOrganization(@PathVariable Long orgId) {
         return organizationService.getOneById(orgId);
     }
 
-    @GetMapping("/by-user")
+    @GetMapping("/by-user/")
     public Organization getOrgByUserId(@RequestParam Long userId){
         return organizationService.getOrganizationByUserId(userId);
     }
 
-    @GetMapping("/{orgId}/licences")
+    @GetMapping("/{orgId}/licences/")
     public Collection<Licence> getOrgLicences(@PathVariable Long orgId){
         return organizationService.getLicencesByOrganizationId(orgId);
     }

@@ -24,7 +24,7 @@ public class TicketCategoriesController {
         return ticketCategoryService.getAll();
     }
 
-    @GetMapping("/{ticketCategoryId}")
+    @GetMapping("/{ticketCategoryId}/")
     public TicketCategory getTicketCategory(@PathVariable Long ticketCategoryId){
         return ticketCategoryService.getOneById(ticketCategoryId);
     }

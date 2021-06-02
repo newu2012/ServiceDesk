@@ -16,19 +16,19 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("/{userId}")
+    @GetMapping("/{userId}/")
     public User getUser(@PathVariable Long userId){
         return userService.findUserById(userId);
     }
 
-    @PatchMapping("/{userId}/block")
+    @PatchMapping("/{userId}/block/")
     @PreAuthorize("hasRole('DEVELOPER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void blockUser(@PathVariable Long userId){
         userService.blockUser(userId);
     }
 
-    @PatchMapping("/{userId}/unblock")
+    @PatchMapping("/{userId}/unblock/")
     @PreAuthorize("hasRole('DEVELOPER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void unblockUser(@PathVariable Long userId){

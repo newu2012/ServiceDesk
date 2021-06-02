@@ -11,12 +11,11 @@ import team.dna2.serviceDesk_server.databaseService.entities.Role;
 import team.dna2.serviceDesk_server.databaseService.entities.User;
 import team.dna2.serviceDesk_server.databaseService.repositories.RoleRepository;
 import team.dna2.serviceDesk_server.databaseService.repositories.UsersRepository;
+import team.dna2.serviceDesk_server.restControllers.requestModels.DeveloperRequest;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -50,17 +49,39 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user) {
-        User userFromDB = userRepository.findByEmail(user.getUsername());
+//    @Transactional
+//    public boolean saveUser(User user) {
+//        User userFromDB = userRepository.findByEmail(user.getUsername());
+//
+//        if (userFromDB != null) {
+//            return false;
+//        }
+//
+//        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+//        user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPassword()));
+//        userRepository.save(user);
+//        return true;
+//    }
 
+    @Transactional
+    public void createUserDeveloperFromRequest(DeveloperRequest developerRequest) throws Exception{
+        User userFromDB = userRepository.findByEmail(developerRequest.getEmail());
         if (userFromDB != null) {
-            return false;
+            throw new Exception("User with this email already exists");
         }
 
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPassword()));
+        var user = new User();
+        user.setEmail(developerRequest.getEmail());
+        user.setPasswordHash(bCryptPasswordEncoder.encode(developerRequest.getPassword()));
+        user.setFirstName(developerRequest.getFirstName());
+        user.setLastName(developerRequest.getLastName());
+        user.setPatronymicName(developerRequest.getPatronymicName());
+        var roles = new HashSet<Role>();
+        roles.add(roleRepository.getOne(1L));
+        roles.add(roleRepository.getOne(3L));
+        user.setRoles(roles);
+        user.setIsActive(true);
         userRepository.save(user);
-        return true;
     }
 
     @Deprecated
