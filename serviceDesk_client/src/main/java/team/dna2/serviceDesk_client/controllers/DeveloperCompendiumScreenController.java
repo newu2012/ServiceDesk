@@ -20,7 +20,6 @@ import team.dna2.serviceDesk_client.models.*;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -155,13 +154,13 @@ public class DeveloperCompendiumScreenController implements Initializable {
         LicenseSoftware.setCellValueFactory(new PropertyValueFactory<>("SoftwareId"));
         LicenseSoftware.setCellValueFactory(ts ->
                 new SimpleStringProperty(software.get(Math.toIntExact(ts.getValue().getSoftwareId())).getName()));
-        LicenseLimit.setCellValueFactory(new PropertyValueFactory<>("Limit"));
+        LicenseLimit.setCellValueFactory(new PropertyValueFactory<>("UsersLimit"));
         LicenseStartDate.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
                         .getValue().getStartDate())));
         LicenseEndDate.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
-                        .getValue().getEndDate())));
+                        .getValue().getExpirationDate())));
 
         licenses = FXCollections.observableArrayList(License.licenses);
         LicensesTable.setItems(licenses);

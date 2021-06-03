@@ -1,65 +1,38 @@
 package team.dna2.serviceDesk_client.models;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SoftwareModule {
-    public SimpleIntegerProperty id;
-    public SimpleIntegerProperty softwareId;
-    public SimpleStringProperty name;
-    public SimpleStringProperty description;
+    public Long id;
+    public Long softwareId;
+    public String name;
+    public String description;
+    public Software software;
 
     public static ArrayList<SoftwareModule> softwareModules = new ArrayList<>();
-    public static int nextId = 0;
+    public static Long nextId = 0L;
 
-    public SoftwareModule(Integer softwareId, String name) {
-        this.id = new SimpleIntegerProperty(nextId++);
-        this.softwareId = new SimpleIntegerProperty(softwareId);
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty("");
+    public SoftwareModule(Long softwareId, String name) {
+        this(softwareId, name, "");
+    }
+
+    public SoftwareModule(Long softwareId, String name, String description) {
+        this.id = nextId++;
+        this.softwareId = softwareId;
+        this.name = name;
+        this.description = description;
         softwareModules.add(this);
     }
 
-    public SoftwareModule(Integer softwareId, String name, String description) {
-        this.id = new SimpleIntegerProperty(nextId++);
-        this.softwareId = new SimpleIntegerProperty(softwareId);
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-        softwareModules.add(this);
-    }
-
-    public int getId() {
-        return id.get();
-    }
-
-    public int getSoftwareId() {
-        return softwareId.get();
-    }
-
-    public void setSoftwareId(Integer softwareId) {
-        this.softwareId.set(softwareId);
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    @Override
-    public String toString() {
-        return this.getName();
-    }
+    //@Override
+    //public String toString() {
+    //    return this.getName();
+    //}
 }

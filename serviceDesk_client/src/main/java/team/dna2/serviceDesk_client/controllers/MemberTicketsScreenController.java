@@ -86,11 +86,11 @@ public class MemberTicketsScreenController implements Initializable {
         title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         creator.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(User.users
-                        .get(ticketStringCellDataFeatures.getValue().getCreatorId())
+                        .get(ticketStringCellDataFeatures.getValue().getCreatorId().intValue())
                         .getFullName()));
         status.setCellValueFactory(new PropertyValueFactory<>("Status"));
         category.setCellValueFactory(ts -> new SimpleStringProperty(Category.categories.get
-                (ts.getValue().getCategoryId()).getName()));
+                (ts.getValue().getCategoryId().intValue()).getName()));
         creationDate.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(dateFormat.format(ticketStringCellDataFeatures
                 .getValue().getCreationDate())));
@@ -105,14 +105,14 @@ public class MemberTicketsScreenController implements Initializable {
         });
         software.setCellValueFactory(ticketStringCellDataFeatures ->
                 new SimpleStringProperty(Software.software
-                        .get(ticketStringCellDataFeatures.getValue().getSoftware())
+                        .get(ticketStringCellDataFeatures.getValue().getSoftwareId().intValue())
                         .getName()));
         helper.setCellValueFactory(ticketStringCellDataFeatures -> {
             if (ticketStringCellDataFeatures.getValue().getHelperId() == -1)
                 return new SimpleStringProperty("");
             else return
                     new SimpleStringProperty(User.users
-                            .get(ticketStringCellDataFeatures.getValue().getHelperId())
+                            .get(ticketStringCellDataFeatures.getValue().getHelperId().intValue())
                             .getFullName());
         });
 

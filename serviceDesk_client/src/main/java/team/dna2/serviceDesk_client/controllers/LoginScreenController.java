@@ -9,16 +9,9 @@ import javafx.scene.input.MouseEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import team.dna2.serviceDesk_client.ScreenManager;
-import team.dna2.serviceDesk_client.ServerManager;
 import team.dna2.serviceDesk_client.models.User;
 
-import javax.net.ssl.HttpsURLConnection;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import static team.dna2.serviceDesk_client.ServerManager.FetchOrganizations;
+import static team.dna2.serviceDesk_client.ServerManager.FetchAll;
 
 
 /**
@@ -42,18 +35,13 @@ public class LoginScreenController {
         CheckLogIn();
     }
 
-    private void printSomeInfo () {
-        FetchOrganizations();
-    }
-
     /**
      * WIP
      * Проверяет возможность входа в аккаунт с указанными данными
-     * @throws NullPointerException Почему-то кидалась, сейчас точно не скажу
      */
-    private void CheckLogIn() throws NullPointerException, Exception {
+    private void CheckLogIn() {
         try {
-        printSomeInfo();
+            FetchAll();
         } catch (Exception e) {
             e.printStackTrace();
         }

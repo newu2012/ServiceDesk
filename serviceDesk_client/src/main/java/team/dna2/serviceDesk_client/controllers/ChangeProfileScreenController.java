@@ -1,7 +1,5 @@
 package team.dna2.serviceDesk_client.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -92,7 +90,7 @@ public class ChangeProfileScreenController implements Initializable {
 
         User.currentUser.setLastName(LastName.getText());
         User.currentUser.setFirstName(FirstName.getText());
-        User.currentUser.setPatronymic(Patronymic.getText());
+        User.currentUser.setPatronymicName(Patronymic.getText());
         User.currentUser.setFullName(LastName.getText() + " " + FirstName.getText() + " " + Patronymic.getText());
 
         if (changingPassword)

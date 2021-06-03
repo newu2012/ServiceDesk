@@ -1,9 +1,7 @@
 package team.dna2.serviceDesk_client.controllers;
 
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -72,18 +70,18 @@ public class DeveloperShowTicketScreenController implements Initializable {
         MyProfile.setText(User.currentUser.getFirstName() + " " + User.currentUser.getLastName());
 
         //region FieldsSets
-        var oStatuses = FXCollections.observableArrayList(TicketStatus.values());
+        var oStatuses = FXCollections.observableArrayList(TicketStatus.ticketStatuses);
 
         Title.setText(Ticket.currentTicket.getTitle());
-        CreatorFullName.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getFullName());
-        CreatorRole.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getRole());
-        CreatorAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getCreatorId()).getAvatarFileName())));
+        CreatorFullName.setText(User.users.get(Math.toIntExact(Ticket.currentTicket.getCreatorId())).getFullName());
+        CreatorRole.setText(User.users.get(Math.toIntExact(Ticket.currentTicket.getCreatorId())).getRole());
+        CreatorAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Math.toIntExact(Ticket.currentTicket.getCreatorId())).getAvatarFileName())));
         Description.setText(Ticket.currentTicket.getDescription());
         Status.setItems(oStatuses);
-        Status.setValue(oStatuses.stream().filter(st -> st.getStatus().equals(Ticket.currentTicket.getStatus().toString())).findFirst().orElse(null));
-        Category.setText(team.dna2.serviceDesk_client.models.Category.categories.get(Ticket.currentTicket.getCategoryId()).getName());
-        Software.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getName());
-        Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getSoftwareModuleById(Ticket.currentTicket.getModuleId()).getName());
+        Status.setValue(oStatuses.stream().filter(st -> st.getName().equals(Ticket.currentTicket.getTicketStatus().toString())).findFirst().orElse(null));
+        Category.setText(team.dna2.serviceDesk_client.models.Category.categories.get(Math.toIntExact(Ticket.currentTicket.getCategoryId())).getName());
+        Software.setText(team.dna2.serviceDesk_client.models.Software.software.get(Math.toIntExact(Ticket.currentTicket.getSoftwareId())).getName());
+        Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Math.toIntExact(Ticket.currentTicket.getSoftwareId())).getSoftwareModuleById(Math.toIntExact(Ticket.currentTicket.getModuleId())).getName());
         CreationDate.setText(dateFormat.format(Ticket.currentTicket.getCreationDate()));
 
         TicketCreatorFullName.setText(CreatorFullName.getText());
@@ -91,7 +89,7 @@ public class DeveloperShowTicketScreenController implements Initializable {
         TicketCreatorAvatar.setImage(CreatorAvatar.getImage());
         if (Ticket.currentTicket.getHelperId() == -1) {
             TicketHelperFullName.setItems(FXCollections.observableList(User.users
-                    .stream().filter(user -> user.role.get().equals(Role.DEVELOPER.toString()))
+                    .stream().filter(user -> user.role.equals(Role.DEVELOPER.toString()))
                     .collect(Collectors.toList())));
         }
         //endregion
@@ -105,9 +103,9 @@ public class DeveloperShowTicketScreenController implements Initializable {
     public void SetTicketHelper() {
         Ticket.currentTicket.setHelperId(TicketHelperFullName.getValue().getId());
 
-        TicketHelperFullName.setValue(User.users.get(Ticket.currentTicket.getHelperId()));
-        TicketHelperRole.setText(User.users.get(Ticket.currentTicket.getHelperId()).getRole());
-        TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getHelperId()).getAvatarFileName())));
+        TicketHelperFullName.setValue(User.users.get(Math.toIntExact(Ticket.currentTicket.getHelperId())));
+        TicketHelperRole.setText(User.users.get(Math.toIntExact(Ticket.currentTicket.getHelperId())).getRole());
+        TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Math.toIntExact(Ticket.currentTicket.getHelperId())).getAvatarFileName())));
 
         Ticket.currentTicket.setChangeDate(new Date());
         ChangeDate.setText(dateFormat.format(Ticket.currentTicket.getChangeDate()));
@@ -115,7 +113,7 @@ public class DeveloperShowTicketScreenController implements Initializable {
 
     @FXML
     public void ChangeStatus() {
-        Ticket.currentTicket.setStatus(Status.getValue());
+        Ticket.currentTicket.setTicketStatus(Status.getValue());
     }
 
     //region DeveloperMenu

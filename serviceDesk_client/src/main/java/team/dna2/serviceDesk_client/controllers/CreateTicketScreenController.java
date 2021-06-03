@@ -63,7 +63,7 @@ public class CreateTicketScreenController implements Initializable {
      */
     @FXML
     public void SoftwareBoxChanged() {
-        int currentSoftware = SoftwareBox.getValue().getId();
+        Long currentSoftware = SoftwareBox.getValue().getId();
         var newModules = oSoftware
                 .stream().filter(software -> software.getId() == currentSoftware)
                 .findFirst()
@@ -109,14 +109,14 @@ public class CreateTicketScreenController implements Initializable {
             return;
         }
 
-        int moduleId = -1;
+        Long moduleId = -1L;
 
         if (ModuleBox.getValue() != null)
             moduleId = ModuleBox.getValue().getId();
 
         Ticket.AddTicket(
                 TitleField.getText(),
-                Math.toIntExact(CategoryBox.getValue().getId()),
+                CategoryBox.getValue().getId(),
                 SoftwareBox.getValue().getId(),
                 moduleId,
                 DescriptionTextArea.getText());

@@ -1,33 +1,36 @@
 package team.dna2.serviceDesk_client.models;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class License {
     private Long id;
     private String serialNumber;
     private Long organisationId;
+    private Organization organization;
+    private Software software;
     private Long softwareId;
-    private Long limit;
-    private Date startDate;
-    private Date endDate;
+    private Long usersLimit;
+    private Timestamp startDate;
+    private Timestamp expirationDate;
+    private Boolean isActive;
 
     public static ArrayList<License> licenses = new ArrayList<>();
     public static Long nextId = 0L;
 
-    public License(String serialNumber, Long organisationId, Long softwareId, Long limit, Date startDate, Date endDate) {
+    public License(String serialNumber, Long organisationId, Long softwareId, Long usersLimit, Timestamp startDate, Timestamp expirationDate) {
         this.id = nextId++;
         this.serialNumber = serialNumber;
         this.organisationId = organisationId;
         this.softwareId = softwareId;
-        this.limit = limit;
+        this.usersLimit = usersLimit;
         this.startDate = startDate;
-        this.endDate = endDate;
+        this.expirationDate = expirationDate;
     }
 }

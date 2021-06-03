@@ -1,29 +1,40 @@
 package team.dna2.serviceDesk_client.models;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Ticket {
-    public SimpleIntegerProperty id;
-    public SimpleStringProperty title;
-    public SimpleIntegerProperty creatorId;
-    public SimpleObjectProperty<TicketStatus> status;
-    public SimpleIntegerProperty categoryId;
-    public SimpleObjectProperty<Date> creationDate;
-    public SimpleObjectProperty<Date> changeDate;
-    public SimpleIntegerProperty softwareId;
-    public SimpleIntegerProperty moduleId;
-    public SimpleIntegerProperty helperId;
-    public SimpleStringProperty description;
+    public Long id;
+    public String title;
+    public Long creatorId;
+    public User user;
+    public TicketStatus ticketStatus;
+    public Long categoryId;
+    public Category ticketCategory;
+    public Date creationDate;
+    public Date changeDate;
+    public Date completedDate;
+    public Software software;
+    public Long softwareId;
+    public SoftwareModule softwareModule;
+    public Long moduleId;
+    public Long helperId;
+    public String description;
+    public Developer developer;
+    public String ticketText;
+    public Organization organization;
 
-    public static ArrayList<Ticket> tickets = new ArrayList<Ticket>(); // Список обращений всей системы
+    public static ArrayList<Ticket> tickets = new ArrayList<>(); // Список обращений всей системы
     public static Ticket currentTicket; // Активное просматриваемое активным пользователем обращение
-    public static int nextId = 0;
+    public static Long nextId = 0L;
 
     /**
      * WIP
@@ -31,7 +42,7 @@ public class Ticket {
      * Создание обращения (тикета). Обращение - основная сущность системы
      * @param title Тема обращения, не менее 10 символов
      * @param creatorId ID создателя обращения
-     * @param status Статус обращения (отдельный файл статусов)
+     * @param ticketStatus Статус обращения (отдельный файл статусов)
      * @param categoryId Категория обращения (отдельный файл категорий)
      * @param creationDate Дата создания, ставится автоматически при создании обращения
      * @param changeDate Дата последнего изменения/комментирования/смены статуса обращения
@@ -41,26 +52,26 @@ public class Ticket {
      */
     public Ticket(
                   String title,
-                  Integer creatorId,
-                  TicketStatus status,
-                  Integer categoryId,
+                  Long creatorId,
+                  TicketStatus ticketStatus,
+                  Long categoryId,
                   Date creationDate,
                   Date changeDate,
-                  Integer softwareId,
-                  Integer moduleId,
-                  Integer helperId,
+                  Long softwareId,
+                  Long moduleId,
+                  Long helperId,
                   String description) {
-        this.id = new SimpleIntegerProperty(nextId++);
-        this.title = new SimpleStringProperty(title);
-        this.creatorId = new SimpleIntegerProperty(creatorId);
-        this.status = new SimpleObjectProperty<TicketStatus>(status);
-        this.categoryId = new SimpleIntegerProperty(categoryId);
-        this.creationDate = new SimpleObjectProperty<Date>(creationDate);
-        this.changeDate = new SimpleObjectProperty<Date>(changeDate);
-        this.softwareId = new SimpleIntegerProperty(softwareId);
-        this.moduleId = new SimpleIntegerProperty(moduleId);
-        this.helperId = new SimpleIntegerProperty(helperId);
-        this.description = new SimpleStringProperty(description);
+        this.id = nextId++;
+        this.title = title;
+        this.creatorId = creatorId;
+        this.ticketStatus = ticketStatus;
+        this.categoryId = categoryId;
+        this.creationDate = creationDate;
+        this.changeDate = changeDate;
+        this.softwareId = softwareId;
+        this.moduleId = moduleId;
+        this.helperId = helperId;
+        this.description = description;
     }
 
     /**
@@ -74,20 +85,20 @@ public class Ticket {
      */
     public static void AddTicket(
         String title,
-        Integer categoryId,
-        Integer softwareId,
-        Integer moduleId,
+        Long categoryId,
+        Long softwareId,
+        Long moduleId,
         String description) {
             tickets.add(new Ticket(
                     title,
                     User.currentUser.getId(),
-                    TicketStatus.OPEN,
+                    TicketStatus.ticketStatuses.get(0),
                     categoryId,
                     new Date(),
                     null,
                     softwareId,
                     moduleId,
-                    -1,
+                    -1L,
                     description
             ));
     }
@@ -97,87 +108,7 @@ public class Ticket {
         return this.getTitle() + " - " + this.getCategoryId() + " - " + this.getDescription();
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public String getTitle() {
-        return title.get();
-    }
-
-    public void setTitle(String title) {
-        this.title.set(title);
-    }
-
-    public int getCreatorId() {
-        return creatorId.get();
-    }
-
-    public void setCreatorId(int creatorId) {
-        this.creatorId.set(creatorId);
-    }
-
-    public TicketStatus getStatus() {
-        return status.get();
-    }
-
-    public void setStatus(TicketStatus status) {
-        this.status.set(status);
-    }
-
-    public int getCategoryId() {
-        return categoryId.get();
-    }
-
-    public void setCategoryId(int category) {
-        this.categoryId.set(category);
-    }
-
-    public Date getCreationDate() {
-        return creationDate.get();
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate.set(creationDate);
-    }
-
     public Date getChangeDate() {
-        return null == changeDate ? Date.from(Instant.ofEpochSecond(0)) : changeDate.get();
+        return null == changeDate ? Date.from(Instant.ofEpochSecond(0)) : changeDate;
     } // TODO Пустая строка при null
-
-    public void setChangeDate(Date changeDate) {
-        this.changeDate.set(changeDate);
-    }
-
-    public Integer getSoftware() {
-        return softwareId.get();
-    }
-
-    public void setSoftware(Integer softwareId) {
-        this.softwareId.set(softwareId);
-    }
-
-    public Integer getModuleId() {
-        return moduleId.get();
-    }
-
-    public void setModuleId(Integer moduleId) {
-        this.moduleId.set(moduleId);
-    }
-
-    public Integer getHelperId() {
-        return helperId.get();
-    }
-
-    public void setHelperId(Integer helperId) {
-        this.helperId.set(helperId);
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
 }

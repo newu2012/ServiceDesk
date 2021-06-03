@@ -1,14 +1,8 @@
 package team.dna2.serviceDesk_client.controllers;
 
 import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -75,14 +69,14 @@ public class MemberShowTicketScreenController implements Initializable {
 
         //region FieldsSets
         Title.setText(Ticket.currentTicket.getTitle());
-        CreatorFullName.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getFullName());
-        CreatorRole.setText(User.users.get(Ticket.currentTicket.getCreatorId()).getRole());
-        CreatorAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getCreatorId()).getAvatarFileName())));
+        CreatorFullName.setText(User.users.get(Math.toIntExact(Ticket.currentTicket.getCreatorId())).getFullName());
+        CreatorRole.setText(User.users.get(Math.toIntExact(Ticket.currentTicket.getCreatorId())).getRole());
+        CreatorAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Math.toIntExact(Ticket.currentTicket.getCreatorId())).getAvatarFileName())));
         Description.setText(Ticket.currentTicket.getDescription());
-        Status.setText(Ticket.currentTicket.getStatus().toString());
-        Category.setText(team.dna2.serviceDesk_client.models.Category.categories.get(Ticket.currentTicket.getCategoryId()).getName());
-        Software.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getName());
-        Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftware()).getSoftwareModuleById(Ticket.currentTicket.getModuleId()).getName());
+        Status.setText(Ticket.currentTicket.getTicketStatus().toString());
+        Category.setText(team.dna2.serviceDesk_client.models.Category.categories.get(Math.toIntExact(Ticket.currentTicket.getCategoryId())).getName());
+        Software.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftwareId().intValue()).getName());
+        Module.setText(team.dna2.serviceDesk_client.models.Software.software.get(Ticket.currentTicket.getSoftwareId().intValue()).getSoftwareModuleById(Ticket.currentTicket.getModuleId().intValue()).getName());
         CreationDate.setText(dateFormat.format(Ticket.currentTicket.getCreationDate()));
 
         TicketCreatorFullName.setText(CreatorFullName.getText());
@@ -91,9 +85,9 @@ public class MemberShowTicketScreenController implements Initializable {
         if (Ticket.currentTicket.getHelperId() == -1)
             TicketHelperPane.setVisible(false);
         else {
-            TicketHelperFullName.setText(User.users.get(Ticket.currentTicket.getHelperId()).getFullName());
-            TicketHelperRole.setText(User.users.get(Ticket.currentTicket.getHelperId()).getRole());
-            TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getHelperId()).getAvatarFileName())));
+            TicketHelperFullName.setText(User.users.get(Ticket.currentTicket.getHelperId().intValue()).getFullName());
+            TicketHelperRole.setText(User.users.get(Ticket.currentTicket.getHelperId().intValue()).getRole());
+            TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getHelperId().intValue()).getAvatarFileName())));
 
             Ticket.currentTicket.setChangeDate(new Date());
             ChangeDate.setText(dateFormat.format(Ticket.currentTicket.getChangeDate()));

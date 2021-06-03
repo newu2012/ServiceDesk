@@ -1,24 +1,23 @@
 package team.dna2.serviceDesk_client.models;
 
-public enum TicketStatus {
-    OPEN("Открыто"),
-    REGISTERED("Зарегестрировано"),
-    IN_WORK("В работе"),
-    FIXED("Исправлено"),
-    REOPENED("Переоткрыто");
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    private final String status;
+import java.util.ArrayList;
 
-    TicketStatus(String status) {
-        this.status = status;
-    }
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class TicketStatus {
+    private Long id;
+    private String name;
+    private String description;
 
-    public String getStatus() {
-        return status;
-    }
+    public static ArrayList<TicketStatus> ticketStatuses = new ArrayList<>();
 
     @Override
     public String toString() {
-        return this.getStatus();
+        return this.getName();
     }
 }
