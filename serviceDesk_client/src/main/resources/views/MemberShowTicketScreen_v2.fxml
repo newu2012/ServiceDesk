@@ -208,7 +208,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <Button fx:id="AuthorReopenButton" layoutX="30.0" layoutY="600.0" mnemonicParsing="false" onAction="#AuthorReopenButtonClicked" prefHeight="70.0" prefWidth="340.0" styleClass="reopen-ticket-button" text="Запрос на переоткрытие обращения">
+                        <Button fx:id="AuthorReopenButton" disable="true" layoutX="30.0" layoutY="600.0" mnemonicParsing="false" onAction="#AuthorReopenButtonClicked" prefHeight="70.0" prefWidth="340.0" styleClass="reopen-ticket-button" text="Запрос на переоткрытие обращения" visible="false">
                            <font>
                               <Font size="16.0" />
                            </font>
