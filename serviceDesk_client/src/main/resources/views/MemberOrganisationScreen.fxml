@@ -52,7 +52,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="1178.0">
                <children>
-                  <Label layoutX="42.0" layoutY="23.0" styleClass="title-text" text="Профиль оргаризации" />
+                  <Label layoutX="42.0" layoutY="23.0" styleClass="title-text" text="Личный кабинет заказчика" />
                   <Line endX="-1.6" endY="1.5" layoutX="171.0" layoutY="59.0" startX="-126.0" startY="1.5" stroke="#7d2e7e" strokeLineCap="ROUND" strokeWidth="5.0" />
                </children></AnchorPane>
             <AnchorPane prefHeight="730.0" prefWidth="1178.0">
