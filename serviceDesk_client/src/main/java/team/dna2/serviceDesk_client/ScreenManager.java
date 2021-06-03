@@ -113,9 +113,9 @@ public class ScreenManager {
     public static void ShowTicket() {
 
         if (Role.DEVELOPER.getRole().equals(userRole))
-            UpdateCurrentAndPreviousScreens("DeveloperShowTicketScreen.fxml");
+            UpdateCurrentAndPreviousScreens("DeveloperShowTicketScreen_v2.fxml");
         else
-            UpdateCurrentAndPreviousScreens("MemberShowTicketScreen.fxml");
+            UpdateCurrentAndPreviousScreens("MemberShowTicketScreen_v2.fxml");
     }
     //endregion
 
