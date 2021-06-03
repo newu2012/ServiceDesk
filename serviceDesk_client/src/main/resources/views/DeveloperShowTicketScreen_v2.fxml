@@ -23,7 +23,10 @@
                         <Font name="System Bold Italic" size="36.0" />
                     </font>
                 </Text>
-                <AnchorPane prefHeight="64.0" prefWidth="829.0" />
+            <Text onMouseClicked="#TicketsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Обращения" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text onMouseClicked="#CompendiumsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Справочники" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text disable="true" onMouseClicked="#StatisticsClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-text" text="Статистика" textAlignment="CENTER" visible="false" wrappingWidth="200.0" />
+                <AnchorPane prefHeight="64.0" prefWidth="510.0" />
                 <HBox alignment="BASELINE_RIGHT" maxHeight="64.0" maxWidth="400.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="64.0" prefWidth="400.0" HBox.hgrow="NEVER">
                     <children>
                         <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0" HBox.hgrow="NEVER">
