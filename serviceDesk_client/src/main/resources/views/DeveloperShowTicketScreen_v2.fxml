@@ -35,12 +35,6 @@
                                 <Circle fx:id="MyProfileCircle" fill="DODGERBLUE" layoutX="168.0" layoutY="32.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
                             </children>
                         </AnchorPane>
-                        <AnchorPane maxHeight="64.0" maxWidth="200.0" minHeight="64.0" minWidth="200.0" prefHeight="64.0" prefWidth="200.0">
-                            <children>
-                                <Text fx:id="MyOrganisation" layoutY="30.0" onMouseClicked="#MyOrganisationClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation-menu-subtext" text="Моя организация" textAlignment="RIGHT" wrappingWidth="136.0" />
-                                <Circle fx:id="MyOrganisationCircle" fill="DODGERBLUE" layoutX="168.0" layoutY="32.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-                            </children>
-                        </AnchorPane>
                     </children>
                 </HBox>
             </children></HBox>
