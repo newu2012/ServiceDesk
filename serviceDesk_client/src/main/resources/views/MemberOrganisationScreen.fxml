@@ -164,7 +164,7 @@
                                  <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="1157.0">
                                        <children>
-                                          <Button fx:id="AddMemberButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddMemberButtonClick" styleClass="add-compendiums-button" text="+ Добавить представителя" />
+                                          <Button fx:id="AddMemberButton" disable="true" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddMemberButtonClick" styleClass="add-compendiums-button" text="+ Добавить представителя" visible="false" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="433.0" prefWidth="1157.0">
