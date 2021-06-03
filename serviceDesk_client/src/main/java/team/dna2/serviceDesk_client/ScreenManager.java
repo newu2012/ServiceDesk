@@ -309,9 +309,9 @@ public class ScreenManager {
         catch (Exception e) {
             // TODO Логирование
             // Вывод ошибки в консоль
-            // for (StackTraceElement el: e.getStackTrace()) {
-            //     System.out.println(el.toString());
-            // }
+            for (StackTraceElement el: e.getStackTrace()) {
+                System.out.println(el.toString());
+            }
 
             System.out.println(e.getLocalizedMessage());
             if (e.getLocalizedMessage().equals("Location is required.")) {

@@ -7,6 +7,8 @@ import team.dna2.serviceDesk_client.ScreenManager;
 
 public class DeveloperShowTicketScreen_v2Controller {
 
+
+
     @FXML
     public void LogoClicked(MouseEvent mouseEvent) {
     }

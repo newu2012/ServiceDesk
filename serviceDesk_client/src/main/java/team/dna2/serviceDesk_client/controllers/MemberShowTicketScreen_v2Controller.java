@@ -28,7 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class MemberShowTicketScreen_v2Controller //implements Initializable
+public class MemberShowTicketScreen_v2Controller implements Initializable
 {
 
     private ClientApplication clientApplication;
@@ -36,7 +36,7 @@ public class MemberShowTicketScreen_v2Controller //implements Initializable
 
     //region FXMLNodes
     @FXML private Text Logo;
-    @FXML private Text Tickets;
+    //@FXML private Text Tickets;
     @FXML private Text MyProfile;
     @FXML private Circle MyProfileCircle;
     @FXML private Text MyOrganisation;
@@ -54,7 +54,7 @@ public class MemberShowTicketScreen_v2Controller //implements Initializable
     @FXML private Text TicketModule;
     @FXML private Text TicketCreationDate;
     @FXML private Text TicketChangeDate;
-    @FXML private VBox TicketInfo;
+    //@FXML private VBox TicketInfo;
 
     @FXML private Text TicketCreatorFullName;
     @FXML private Text TicketCreatorRole;
@@ -67,7 +67,7 @@ public class MemberShowTicketScreen_v2Controller //implements Initializable
 
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
-    //@Override
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         MyProfileCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getAvatarFileName()))));
         MyOrganisationCircle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/images/" + User.currentUser.getOrgAvatarFileName()))));
@@ -89,36 +89,37 @@ public class MemberShowTicketScreen_v2Controller //implements Initializable
         TicketCreatorRole.setText(CreatorRole.getText());
         TicketCreatorAvatar.setImage(CreatorAvatar.getImage());
 
-//        if (Ticket.currentTicket.getHelperId() == -1)
-//            TicketHelperPane.setVisible(false);
-//        else {
+        if (Ticket.currentTicket.getHelperId() == -1) {
+            TicketHelperFullName.setVisible(false);
+            TicketHelperRole.setVisible(false);
+            TicketHelperAvatar.setVisible(false);
+        }
+        else {
             TicketHelperFullName.setText(User.users.get(Ticket.currentTicket.getHelperId()).getFullName());
             TicketHelperRole.setText(User.users.get(Ticket.currentTicket.getHelperId()).getRole());
             TicketHelperAvatar.setImage(new Image(getClass().getResourceAsStream("/images/" + User.users.get(Ticket.currentTicket.getHelperId()).getAvatarFileName())));
-
             Ticket.currentTicket.setChangeDate(new Date());
             TicketChangeDate.setText(dateFormat.format(Ticket.currentTicket.getChangeDate()));
-//        }
+        }
         //endregion
 
-        TicketDescription.addEventHandler(KeyEvent.KEY_TYPED, keyEvent -> {
-            int areaRows = TicketDescription.getText().length() / 50 + 1; // TODO Автоматическая выставка высоты от текста
-            TicketDescription.setPrefHeight(areaRows * 12);
-        });
+        //TicketDescription.addEventHandler(KeyEvent.KEY_TYPED, keyEvent -> {
+        //    int areaRows = TicketDescription.getText().length() / 50 + 1; // TODO Автоматическая выставка высоты от текста
+        //    TicketDescription.setPrefHeight(areaRows * 12);
+        //});
     }
-
-
-
-
 
 
     public void LogoClicked(MouseEvent mouseEvent) {
+        ScreenManager.OpenTickets();
     }
 
     public void MyProfileClicked(MouseEvent mouseEvent) {
+        ScreenManager.OpenMyProfile();
     }
 
     public void MyOrganisationClicked(MouseEvent mouseEvent) {
+        ScreenManager.OpenOrganisation();
     }
 
     public void PreviousScreenButtonClicked(MouseEvent mouseEvent) {
