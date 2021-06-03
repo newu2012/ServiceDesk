@@ -132,7 +132,7 @@
                                                                 <Font size="16.0" />
                                                             </font>
                                                         </Label>
-                                                        <Button fx:id="OrganizationChangeButton" disable="true" layoutX="500.0" layoutY="30.0" mnemonicParsing="false" onAction="#OrganizationChangeButtonClick" prefHeight="20.0" prefWidth="120.0" styleClass="change-button" text="Изменить" visible="false">
+                                                        <Button fx:id="OrganizationChangeButton" layoutX="500.0" layoutY="30.0" mnemonicParsing="false" onAction="#OrganizationChangeButtonClick" prefHeight="20.0" prefWidth="120.0" styleClass="change-button" text="Изменить">
                                                             <font>
                                                                 <Font size="14.0" />
                                                             </font>
@@ -164,7 +164,7 @@
                                             <children>
                                                 <AnchorPane prefHeight="60.0" prefWidth="1157.0">
                                                     <children>
-                                                        <Button fx:id="AddMemberButton" disable="true" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddMemberButtonClick" styleClass="add-compendiums-button" text="+ Добавить представителя" visible="false" />
+                                                        <Button fx:id="AddMemberButton" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#AddMemberButtonClick" styleClass="add-compendiums-button" text="+ Добавить представителя" />
                                                     </children>
                                                 </AnchorPane>
                                                 <AnchorPane prefHeight="433.0" prefWidth="1157.0">
