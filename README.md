@@ -1,12 +1,12 @@
 # ServiceDesk-in-work
 Рабочий репозиторий проекта Service Desk. 
-### Прочитать README - обязательно.  
+### Прочитать README.  
 Build Structure Settings in Intelij IDEA:  Java 11; JDK - Amazon Corretto 11; Language Level - 11;
 
 # Build
 Для запуска нужно скачать JavaFX SDK 11. Ссылка на скачивание JavaFX SDK 11 - https://gluonhq.com/products/javafx/
 В настройках VM установить: 
---module-path
+``--module-path
 "path/to/file"/lib
 --add-modules
 javafx.controls,javafx.fxml
@@ -22,6 +22,7 @@ javafx.base/com.sun.javafx.binding=ALL-UNNAMED
 javafx.base/com.sun.javafx.event=ALL-UNNAMED
 --add-opens
 javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED
+``
 
 # Package build
 Сборка Jar производится командой mvn package
